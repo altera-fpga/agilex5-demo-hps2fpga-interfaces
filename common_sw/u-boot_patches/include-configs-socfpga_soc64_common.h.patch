@@ -1,0 +1,51 @@
+diff --git a/include/configs/socfpga_soc64_common.h b/include/configs/socfpga_soc64_common.h
+index cb8969a0..ea2d0fed 100644
+--- a/include/configs/socfpga_soc64_common.h
++++ b/include/configs/socfpga_soc64_common.h
+@@ -164,6 +164,46 @@
+ 	"smc_fid_rd=0xC2000007\0" \
+ 	"smc_fid_wr=0xC2000008\0" \
+ 	"smc_fid_upd=0xC2000009\0 " \
++"no-pins_bootcmd=env delete NEXTSCRIPT;" \
++"env delete NEXTFPGA;" \
++"if env exists FIRSTBOOT;" \
++"then env set NEXTPROG sw_boot_app;" \
++"else sf probe || echo ERROR: sf probe && exit 1;" \
++"sf read 86000000 00500000 01b00000 || echo ERROR: sf read && exit 1;" \
++"imxtract 86000000 lzma-no-pins-demos 8a000000 || echo ERROR: imxtract && exit 1;" \
++"lzmadec 8a000000 82000000 04000000 || echo ERROR: lzmadec && exit 1;" \
++"env set NEXTPROG sw_boot_app;" \
++"env set FIRSTBOOT 1;" \
++"fi;" \
++"run BOOTLOOP\0" \
++"BOOTLOOP=while env exists NEXTPROG;" \
++"do env set THEPROG ${NEXTPROG};" \
++"env delete NEXTPROG;" \
++"run RUNPROG || echo ERROR: RUNPROG && exit 1;" \
++"if env exists NEXTSCRIPT;" \
++"then env set THESCRIPT ${NEXTSCRIPT};" \
++"env delete NEXTSCRIPT;" \
++"run RUNSCRIPT || echo ERROR: RUNSCRIPT && exit 1;" \
++"fi;" \
++"if env exists NEXTFPGA;" \
++"then env set THEFPGA ${NEXTFPGA};" \
++"env delete NEXTFPGA;" \
++"run CONFIGFPGA || echo ERROR: CONFIGFPGA && exit 1;" \
++"fi;" \
++"done;" \
++"echo;" \
++"echo Exiting to u-boot console;" \
++"echo\0" \
++"RUNPROG=imxtract 82000000 ${THEPROG} 90000000 || echo ERROR: imxtract ${THEPROG} && exit 1;" \
++"icache flush;" \
++"dcache flush;" \
++"go 90000000 || echo ERROR: go && exit 1\0" \
++"RUNSCRIPT=source 82000000:${THESCRIPT} || echo ERROR: source ${THESCRIPT} && exit 1\0" \
++"CONFIGFPGA=bridge disable || echo ERROR: bridge disable && exit 1;" \
++"imxtract 82000000 ${THEFPGA} 90000000 || echo ERROR: imxtract ${THEFPGA} && exit 1;" \
++"dcache flush;" \
++"fpga load 0 90000000 ${filesize} || echo ERROR: fpga load ${THEFPGA} && exit 1;" \
++"bridge enable || echo ERROR: bridge enable && exit 1\0" \
+ 	BOOTENV
+ 
+ #else

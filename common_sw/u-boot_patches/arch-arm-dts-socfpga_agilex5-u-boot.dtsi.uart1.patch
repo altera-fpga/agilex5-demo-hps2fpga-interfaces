@@ -1,0 +1,13 @@
+diff --git a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi b/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
+index 046b8290..71d133d3 100644
+--- a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
++++ b/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
+@@ -661,7 +661,7 @@
+ 	bootph-all;
+ };
+ 
+-&uart0 {
++&uart1 {
+ 	bootph-all;
+ };
+ 

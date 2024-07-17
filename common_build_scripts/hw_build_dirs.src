@@ -1,0 +1,22 @@
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+
+HW_BUILD_DIRECTORIES="
+./hw_a55_no_periph \
+./hw_a76_no_periph \
+./hw_config_clk \
+./hw_f2h_bridge \
+./hw_f2h_irq \
+./hw_f2sdram_bridge \
+./hw_h2f_bridge \
+./hw_h2f_user_clk \
+./hw_hps_gp \
+./hw_hps_jamb \
+./hw_i2c_bridge \
+./hw_lwh2f_bridge \
+./hw_spi_bridge \
+./hw_uart
+"
+

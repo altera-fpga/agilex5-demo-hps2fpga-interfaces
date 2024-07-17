@@ -1,0 +1,31 @@
+diff --git a/examples/standalone/Makefile b/examples/standalone/Makefile
+index 559170dd5c..9d37580ba8 100644
+--- a/examples/standalone/Makefile
++++ b/examples/standalone/Makefile
+@@ -6,6 +6,26 @@
+ extra-y        := hello_world
+ extra-$(CONFIG_SPI_FLASH_ATMEL)    += atmel_df_pow2
+ extra-$(CONFIG_PPC)                += sched
++extra-y += armv8_regs
++extra-y += boot_app
++extra-y += cache_regs
++extra-y += config_clk
++extra-y += f2h_bridge
++extra-y += f2h_irq
++extra-y += f2h_irq_handler
++extra-y += f2sdram_bridge
++extra-y += h2f_bridge
++extra-y += h2f_bridge_def_sub
++extra-y += h2f_user_clk
++extra-y += hps_gp
++extra-y += i2c_bridge
++extra-y += lwh2f_bridge
++extra-y += lwh2f_bridge_def_sub
++extra-y += read_sensors
++extra-y += sdm_query
++extra-y += spi_bridge
++extra-y += system_counter
++extra-y += uart
+ 
+ #
+ # Some versions of make do not handle trailing white spaces properly;

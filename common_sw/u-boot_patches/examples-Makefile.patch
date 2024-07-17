@@ -1,0 +1,11 @@
+diff --git a/examples/Makefile b/examples/Makefile
+index bf518bd221..4f00560120 100644
+--- a/examples/Makefile
++++ b/examples/Makefile
+@@ -7,5 +7,5 @@ subdir-ccflags-y += -finstrument-functions -DFTRACE
+ endif
+ 
+ subdir-y += standalone
+-subdir-$(CONFIG_API) += api
++#subdir-$(CONFIG_API) += api
+ endif

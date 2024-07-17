@@ -1,0 +1,208 @@
+diff --git a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts b/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
+index 06d696b42..fe69b1480 100644
+--- a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
++++ b/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
+@@ -272,3 +272,203 @@ input@40001 {
+ 		};
+ 	};
+ };
++
++/* adjust the default properties */
++/ {
++	aliases {
++		serial0 = &uart1;
++		/delete-property/ ethernet0;
++		/delete-property/ ethernet2;
++	};
++
++	/delete-node/ leds;
++};
++
++/* add a 64MB reserved memory region just above the service layer driver */
++/ {
++	reserved-memory {
++		bootloader_reserved: bootbuffer@0 {
++			reg = <0x0 0x82000000 0x0 0x04000000>;
++		};
++	};
++};
++
++/* add hwmon voltage and temperature sensors for Agilex 5 */
++/ { soc { firmware { svc {
++	hwmon {
++		compatible = "intel,soc64-hwmon";
++		voltage {
++			#address-cells = <1>;
++			#size-cells = <0>;
++			input@0 {
++				label = "VSIGP";
++				reg = <0>;
++			};
++			input@1 {
++				label = "VSIGN";
++				reg = <1>;
++			};
++			input@2 {
++				label = "VCC";
++				reg = <2>;
++			};
++			input@3 {
++				label = "VCCIO_SDM";
++				reg = <3>;
++			};
++			input@4 {
++				label = "VCCPT";
++				reg = <4>;
++			};
++			input@5 {
++				label = "VCCRCORE";
++				reg = <5>;
++			};
++			input@6 {
++				label = "VCCH_SDM";
++				reg = <6>;
++			};
++			input@7 {
++				label = "VCCL_SDM";
++				reg = <7>;
++			};
++			input@9 {
++				label = "VCCADC";
++				reg = <9>;
++			};
++		};
++		temperature {
++			#address-cells = <1>;
++			#size-cells = <0>;
++
++			input@0 {
++				label = "SDM";
++				reg = <0x0>;
++			};
++			input@10000 {
++				label = "LOWER LEFT MAX";
++				reg = <0x10000>;
++			};
++			input@10001 {
++				label = "LOWER LEFT CORNER";
++				reg = <0x10001>;
++			};
++			input@10002 {
++				label = "LOWER LEFT XCVR 2";
++				reg = <0x10002>;
++			};
++			input@10003 {
++				label = "LOWER LEFT XCVR 3";
++				reg = <0x10003>;
++			};
++			input@10004 {
++				label = "LOWER LEFT CENTER";
++				reg = <0x10004>;
++			};
++			input@30000 {
++				label = "LOWER RIGHT MAX";
++				reg = <0x30000>;
++			};
++			input@30001 {
++				label = "LOWER RIGHT CORNER";
++				reg = <0x30001>;
++			};
++			input@30002 {
++				label = "LOWER RIGHT XCVR 2";
++				reg = <0x30002>;
++			};
++			input@30003 {
++				label = "LOWER RIGHT XCVR 3";
++				reg = <0x30003>;
++			};
++			input@30004 {
++				label = "LOWER RIGHT CENTER";
++				reg = <0x30004>;
++			};
++			input@40000 {
++				label = "UPPER RIGHT MAX";
++				reg = <0x40000>;
++			};
++			input@40001 {
++				label = "UPPER RIGHT CORNER";
++				reg = <0x40001>;
++			};
++			input@40002 {
++				label = "UPPER RIGHT XCVR 2";
++				reg = <0x40002>;
++			};
++			input@40003 {
++				label = "UPPER RIGHT XCVR 3";
++				reg = <0x40003>;
++			};
++			input@40004 {
++				label = "UPPER RIGHT CENTER";
++				reg = <0x40004>;
++			};
++			input@40005 {
++				label = "HPS";
++				reg = <0x40005>;
++			};
++		};
++	};
++}; }; }; };
++
++/* tune the temperature sensors for our device */
++/ { soc { firmware { svc { hwmon {
++	temperature {
++		/delete-node/ input@30004;
++		/delete-node/ input@40002;
++	};
++}; }; }; }; };
++
++&gpio1 {
++	status = "disabled";
++};
++
++&gmac2 {
++	status = "disabled";
++};
++
++&mmc {
++	status = "disabled";
++};
++
++&uart0 {
++	status = "disabled";
++};
++
++&uart1 {
++	status = "okay";
++};
++
++&usb0 {
++	status = "disabled";
++};
++
++&usb31 {
++	status = "disabled";
++};
++
++&spi0 {
++	/delete-property/ dmas;
++	/delete-property/ dma-names;
++	/delete-node/ m25p128@0;
++};
++
++/* adjust the QSPI flash properties */
++&qspi {
++	flash@0 {
++		compatible = "micron,mt25qu01g", "jedec,spi-nor";
++		partitions {
++			/delete-node/ partition@4200000;
++			partition@0 {
++				reg = <0x00000000 0x02000000>;
++			};
++		};
++	};
++};
++
++/* disable fcs driver as it currently conflicts with RSU and HWMON */
++&fcs {
++	status = "disabled";
++};

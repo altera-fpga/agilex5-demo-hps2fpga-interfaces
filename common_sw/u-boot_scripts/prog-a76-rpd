@@ -1,0 +1,15 @@
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+echo
+echo
+echo Begin programming QSPI flash with a76_rpd image...
+echo
+imxtract 82000000 a76_rpd 90000000 || echo ERROR: imxtract a76_rpd && exit 1
+dcache flush
+sf erase 0 +${filesize} || echo ERROR: sf erase && exit 1
+sf write 90000000 0 ${filesize} || echo ERROR: sf write && exit 1
+echo
+echo Completed programming QSPI flash with a76_rpd image...
+echo

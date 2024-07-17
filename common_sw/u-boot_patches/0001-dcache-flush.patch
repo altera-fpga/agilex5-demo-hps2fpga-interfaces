@@ -1,0 +1,134 @@
+From 45978e78db11fdc4bf677a92e6cd2ddde44b019c Mon Sep 17 00:00:00 2001
+From: Rod Frazer <rod.frazer@intel.com>
+Date: Tue, 26 Mar 2024 11:37:12 -0400
+Subject: [PATCH] dcache flush
+
+---
+ arch/arm/mach-socfpga/Makefile     |   1 +
+ arch/arm/mach-socfpga/ccu_ncore3.c | 102 +++++++++++++++++++++++++++++
+ 2 files changed, 103 insertions(+)
+ create mode 100755 arch/arm/mach-socfpga/ccu_ncore3.c
+
+diff --git a/arch/arm/mach-socfpga/Makefile b/arch/arm/mach-socfpga/Makefile
+index dd6f775e5e..bf279e4341 100644
+--- a/arch/arm/mach-socfpga/Makefile
++++ b/arch/arm/mach-socfpga/Makefile
+@@ -87,6 +87,7 @@ obj-y	+= mailbox_s10.o
+ obj-y	+= misc_soc64.o
+ obj-y	+= mmu-arm64_s10.o
+ obj-y	+= reset_manager_s10.o
++obj-y	+= ccu_ncore3.o
+ obj-$(CONFIG_SOCFPGA_SECURE_VAB_AUTH)	+= secure_vab.o
+ # obj-y	+= smmu_agilex5.o
+ # obj-y	+= socfpga_smmuv3.o
+diff --git a/arch/arm/mach-socfpga/ccu_ncore3.c b/arch/arm/mach-socfpga/ccu_ncore3.c
+new file mode 100755
+index 0000000000..ab6082700b
+--- /dev/null
++++ b/arch/arm/mach-socfpga/ccu_ncore3.c
+@@ -0,0 +1,102 @@
++// SPDX-License-Identifier: GPL-2.0
++/*
++ * Copyright (C) 2024 Intel Corporation <www.intel.com>
++ *
++ */
++#define DEBUG
++#include <common.h>
++#include <wait_bit.h>
++#include <linux/bitfield.h>
++
++#define CCU_DMI0_DMIUSMCISR				SOCFPGA_CCU_ADDRESS + 0x730C
++#define CCU_DMI0_DMIUSMCMCR				SOCFPGA_CCU_ADDRESS + 0x7340
++#define CCU_DMI0_DMIUSMCMAR				SOCFPGA_CCU_ADDRESS + 0x7344
++#define CCU_DMI0_DMIUSMCMCR_MNTOP		GENMASK(3, 0)
++#define MAX_DISTRIBUTED_MEM_INTERFACE	2
++#define INIT_ALL_ENTRIES				0x0
++#define FLUSH_ALL_ENTRIES				0x4
++#define CCU_DMI0_DMIUSMCMCR_ARRAY_ID	GENMASK(21, 16)
++#define ARRAY_ID_TAG					0x00
++#define ARRAY_ID_DATA					0x01
++#define DATA_INIT_DONE					BIT(1)
++#define TAG_INIT_DONE					BIT(0)
++#define CACHE_OPERATION_DONE			BIT(0)
++#define TIMEOUT_200MS					200
++
++int __asm_flush_l3_dcache(void)
++{
++	int i;
++	int ret = 0;
++
++	/* Flushing all entries in CCU system memory cache */
++	for (i = 0; i < MAX_DISTRIBUTED_MEM_INTERFACE; i++) {
++		writel(FIELD_PREP(CCU_DMI0_DMIUSMCMCR_MNTOP,
++			   FLUSH_ALL_ENTRIES) | FIELD_PREP(CCU_DMI0_DMIUSMCMCR_ARRAY_ID,
++			   ARRAY_ID_TAG),
++			   (uintptr_t)(CCU_DMI0_DMIUSMCMCR + (i * 0x1000)));
++
++		/* Wait for cache maintenance operation done */
++		ret = wait_for_bit_le32((const void *)
++								(uintptr_t)(CCU_DMI0_DMIUSMCMAR +
++								(i * 0x1000)), CACHE_OPERATION_DONE, false,
++								TIMEOUT_200MS, false);
++		if (ret) {
++			debug("%s: Timeout while waiting for flushing tag in DMI%d done\n",
++				  __func__, i);
++			return ret;
++		}
++
++		writel(FIELD_PREP(CCU_DMI0_DMIUSMCMCR_MNTOP,
++			   FLUSH_ALL_ENTRIES) | FIELD_PREP(CCU_DMI0_DMIUSMCMCR_ARRAY_ID,
++			   ARRAY_ID_DATA),
++			   (uintptr_t)(CCU_DMI0_DMIUSMCMCR + (i * 0x1000)));
++
++		/* Wait for cache maintenance operation done */
++		ret = wait_for_bit_le32((const void *)
++								(uintptr_t)(CCU_DMI0_DMIUSMCMAR +
++								(i * 0x1000)), CACHE_OPERATION_DONE, false,
++								TIMEOUT_200MS, false);
++		if (ret) {
++			debug("%s: Timeout while waiting for flushing data in DMI%d done\n",
++				  __func__, i);
++			return ret;
++		}
++	}
++//	printf("Flushing all entries in CCU system memory cache\n");
++
++	/* Re-initialize all entries in system cache */
++	for (i = 0; i < MAX_DISTRIBUTED_MEM_INTERFACE; i++) {
++		writel(FIELD_PREP(CCU_DMI0_DMIUSMCMCR_MNTOP,
++			   INIT_ALL_ENTRIES) | FIELD_PREP(CCU_DMI0_DMIUSMCMCR_ARRAY_ID,
++			   ARRAY_ID_TAG),
++			   (uintptr_t)(CCU_DMI0_DMIUSMCMCR + (i * 0x1000)));
++
++		/* Wait for CCU tag init done */
++		ret = wait_for_bit_le32((const void *)
++								(uintptr_t)(CCU_DMI0_DMIUSMCISR +
++								(i * 0x1000)), TAG_INIT_DONE, true,
++								TIMEOUT_200MS, false);
++		if (ret) {
++			debug("%s: Timeout while waiting for CCU DMI%d tag init done\n",
++				  __func__, i);
++			return ret;
++		}
++
++		writel(FIELD_PREP(CCU_DMI0_DMIUSMCMCR_MNTOP,
++			   INIT_ALL_ENTRIES) | FIELD_PREP(CCU_DMI0_DMIUSMCMCR_ARRAY_ID,
++			   ARRAY_ID_DATA),
++			   (uintptr_t)(CCU_DMI0_DMIUSMCMCR + (i * 0x1000)));
++
++		/* Wait for CCU data init done */
++		ret = wait_for_bit_le32((const void *)
++								(uintptr_t)(CCU_DMI0_DMIUSMCISR +
++								(i * 0x1000)), DATA_INIT_DONE, true,
++								TIMEOUT_200MS, false);
++		if (ret)
++			debug("%s: Timeout while waiting for CCU DMI%d data init done\n",
++				  __func__, i);
++	}
++//	printf("Re-initialized all entries in system cache\n");
++
++	return ret;
++}
+-- 
+2.44.0
+

@@ -1,0 +1,23 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_i2c_bridge.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/soc/i2c@10c02800";
+		__overlay__ {
+			status = "okay";
+		};
+	};
+};
+

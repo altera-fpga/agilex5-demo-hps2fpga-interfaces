@@ -1,0 +1,17 @@
+diff --git a/include/_exports.h b/include/_exports.h
+index 1af946fac3..1dddebc80d 100644
+--- a/include/_exports.h
++++ b/include/_exports.h
+@@ -86,3 +86,12 @@
+ 	EXPORT_FUNC(miiphy_set_current_dev, int, miiphy_set_current_dev,
+ 		    const char *devname)
+ #endif
++	EXPORT_FUNC(cm_get_mpu_clk_hz, unsigned long, cm_get_mpu_clk_hz,
++		    void)
++	EXPORT_FUNC(cm_get_l4_sys_free_clk_hz, unsigned int,
++		    cm_get_l4_sys_free_clk_hz, void)
++	EXPORT_FUNC(memcmp, int, memcmp, const void *, const void *, size_t)
++	EXPORT_FUNC(memcpy, void *, memcpy, void *restrict,
++		    const void *restrict, size_t)
++	EXPORT_FUNC(flush_dcache_range, void, flush_dcache_range, unsigned long, unsigned long)
++	EXPORT_FUNC(env_set_hex, int, env_set_hex, const char *, ulong)

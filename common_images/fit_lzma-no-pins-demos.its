@@ -1,0 +1,24 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+
+/ {
+	description = "lzma-no-pins-demos";
+	#address-cells = <1>;
+
+	images {
+
+		lzma-no-pins-demos {
+			description = "lzma-no-pins-demos";
+			data = /incbin/("./no-pins-demos.itb.bin.lzma");
+			type = "multi";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+	};
+};

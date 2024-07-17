@@ -1,0 +1,686 @@
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+proc do_create_f2h_irq {} {
+	# create the system
+	create_system f2h_irq
+	set_project_property BOARD {default}
+	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE_FAMILY {Agilex 5}
+	set_project_property HIDE_FROM_IP_CATALOG {false}
+	set_use_testbench_naming_pattern 0 {}
+
+	# add HDL parameters
+
+	# add the components
+	add_component gp_in_const ip/no_pins_pd_top/gp_in_const.ip hps_gp_in_constant gp_in_const 1.0
+	load_component gp_in_const
+	set_component_parameter_value GPIN_CONSTANT {542200393}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation gp_in_const
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface hps_gp_in conduit INPUT
+	set_instantiation_interface_parameter_value hps_gp_in associatedClock {}
+	set_instantiation_interface_parameter_value hps_gp_in associatedReset {}
+	set_instantiation_interface_parameter_value hps_gp_in prSafe {false}
+	add_instantiation_interface_port hps_gp_in gp_in gp_exp 32 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component gp_out_irq ip/f2h_irq/gp_out_irq.ip hps_gp_out_irq gp_out_irq 1.0
+	load_component gp_out_irq
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation gp_out_irq
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface hps_gp_out conduit INPUT
+	set_instantiation_interface_parameter_value hps_gp_out associatedClock {}
+	set_instantiation_interface_parameter_value hps_gp_out associatedReset {}
+	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
+	add_instantiation_interface_port hps_gp_out gp_in gp_exp 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface f2h_irq_0 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_0 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_0 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_0 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_0 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_0 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_0 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_0 irq_0 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_1 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_1 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_1 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_1 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_1 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_1 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_1 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_1 irq_1 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_2 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_2 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_2 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_2 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_2 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_2 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_2 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_2 irq_2 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_3 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_3 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_3 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_3 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_3 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_3 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_3 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_3 irq_3 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_4 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_4 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_4 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_4 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_4 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_4 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_4 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_4 irq_4 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_5 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_5 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_5 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_5 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_5 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_5 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_5 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_5 irq_5 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_6 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_6 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_6 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_6 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_6 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_6 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_6 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_6 irq_6 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_7 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_7 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_7 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_7 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_7 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_7 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_7 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_7 irq_7 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_8 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_8 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_8 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_8 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_8 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_8 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_8 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_8 irq_8 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_9 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_9 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_9 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_9 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_9 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_9 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_9 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_9 irq_9 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_10 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_10 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_10 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_10 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_10 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_10 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_10 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_10 irq_10 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_11 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_11 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_11 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_11 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_11 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_11 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_11 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_11 irq_11 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_12 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_12 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_12 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_12 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_12 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_12 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_12 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_12 irq_12 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_13 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_13 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_13 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_13 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_13 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_13 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_13 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_13 irq_13 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_14 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_14 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_14 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_14 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_14 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_14 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_14 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_14 irq_14 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_15 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_15 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_15 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_15 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_15 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_15 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_15 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_15 irq_15 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_16 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_16 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_16 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_16 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_16 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_16 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_16 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_16 irq_16 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_17 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_17 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_17 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_17 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_17 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_17 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_17 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_17 irq_17 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_18 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_18 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_18 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_18 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_18 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_18 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_18 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_18 irq_18 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_19 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_19 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_19 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_19 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_19 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_19 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_19 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_19 irq_19 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_20 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_20 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_20 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_20 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_20 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_20 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_20 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_20 irq_20 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_21 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_21 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_21 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_21 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_21 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_21 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_21 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_21 irq_21 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_22 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_22 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_22 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_22 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_22 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_22 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_22 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_22 irq_22 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_23 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_23 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_23 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_23 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_23 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_23 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_23 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_23 irq_23 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_24 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_24 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_24 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_24 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_24 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_24 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_24 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_24 irq_24 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_25 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_25 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_25 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_25 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_25 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_25 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_25 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_25 irq_25 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_26 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_26 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_26 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_26 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_26 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_26 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_26 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_26 irq_26 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_27 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_27 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_27 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_27 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_27 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_27 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_27 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_27 irq_27 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_28 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_28 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_28 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_28 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_28 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_28 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_28 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_28 irq_28 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_29 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_29 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_29 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_29 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_29 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_29 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_29 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_29 irq_29 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_30 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_30 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_30 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_30 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_30 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_30 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_30 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_30 irq_30 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_31 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_31 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_31 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_31 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_31 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_31 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_31 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_31 irq_31 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_32 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_32 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_32 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_32 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_32 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_32 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_32 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_32 irq_32 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_33 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_33 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_33 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_33 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_33 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_33 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_33 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_33 irq_33 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_34 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_34 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_34 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_34 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_34 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_34 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_34 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_34 irq_34 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_35 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_35 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_35 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_35 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_35 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_35 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_35 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_35 irq_35 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_36 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_36 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_36 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_36 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_36 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_36 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_36 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_36 irq_36 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_37 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_37 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_37 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_37 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_37 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_37 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_37 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_37 irq_37 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_38 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_38 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_38 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_38 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_38 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_38 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_38 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_38 irq_38 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_39 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_39 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_39 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_39 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_39 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_39 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_39 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_39 irq_39 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_40 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_40 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_40 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_40 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_40 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_40 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_40 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_40 irq_40 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_41 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_41 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_41 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_41 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_41 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_41 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_41 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_41 irq_41 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_42 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_42 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_42 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_42 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_42 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_42 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_42 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_42 irq_42 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_43 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_43 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_43 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_43 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_43 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_43 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_43 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_43 irq_43 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_44 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_44 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_44 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_44 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_44 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_44 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_44 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_44 irq_44 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_45 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_45 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_45 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_45 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_45 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_45 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_45 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_45 irq_45 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_46 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_46 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_46 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_46 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_46 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_46 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_46 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_46 irq_46 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_47 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_47 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_47 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_47 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_47 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_47 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_47 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_47 irq_47 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_48 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_48 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_48 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_48 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_48 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_48 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_48 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_48 irq_48 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_49 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_49 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_49 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_49 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_49 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_49 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_49 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_49 irq_49 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_50 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_50 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_50 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_50 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_50 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_50 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_50 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_50 irq_50 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_51 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_51 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_51 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_51 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_51 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_51 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_51 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_51 irq_51 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_52 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_52 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_52 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_52 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_52 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_52 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_52 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_52 irq_52 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_53 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_53 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_53 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_53 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_53 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_53 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_53 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_53 irq_53 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_54 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_54 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_54 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_54 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_54 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_54 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_54 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_54 irq_54 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_55 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_55 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_55 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_55 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_55 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_55 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_55 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_55 irq_55 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_56 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_56 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_56 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_56 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_56 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_56 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_56 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_56 irq_56 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_57 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_57 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_57 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_57 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_57 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_57 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_57 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_57 irq_57 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_58 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_58 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_58 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_58 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_58 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_58 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_58 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_58 irq_58 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_59 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_59 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_59 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_59 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_59 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_59 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_59 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_59 irq_59 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_60 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_60 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_60 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_60 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_60 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_60 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_60 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_60 irq_60 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_61 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_61 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_61 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_61 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_61 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_61 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_61 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_61 irq_61 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_62 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_62 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_62 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_62 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_62 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_62 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_62 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_62 irq_62 irq 1 STD_LOGIC Output
+	add_instantiation_interface f2h_irq_63 interrupt INPUT
+	set_instantiation_interface_parameter_value f2h_irq_63 associatedAddressablePoint {}
+	set_instantiation_interface_parameter_value f2h_irq_63 associatedClock {}
+	set_instantiation_interface_parameter_value f2h_irq_63 associatedReset {}
+	set_instantiation_interface_parameter_value f2h_irq_63 bridgedReceiverOffset {0}
+	set_instantiation_interface_parameter_value f2h_irq_63 bridgesToReceiver {}
+	set_instantiation_interface_parameter_value f2h_irq_63 irqScheme {NONE}
+	add_instantiation_interface_port f2h_irq_63 irq_63 irq 1 STD_LOGIC Output
+	save_instantiation
+	add_component hps_gp_split ip/no_pins_pd_top/hps_gp_split.ip hps_gp_splitter hps_gp_split 1.0
+	load_component hps_gp_split
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation hps_gp_split
+	remove_instantiation_interfaces_and_ports
+	add_instantiation_interface hps_gp conduit INPUT
+	set_instantiation_interface_parameter_value hps_gp associatedClock {}
+	set_instantiation_interface_parameter_value hps_gp associatedReset {}
+	set_instantiation_interface_parameter_value hps_gp prSafe {false}
+	add_instantiation_interface_port hps_gp hps_gp_gp_in gp_in 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port hps_gp hps_gp_gp_out gp_out 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface hps_gp_in conduit INPUT
+	set_instantiation_interface_parameter_value hps_gp_in associatedClock {}
+	set_instantiation_interface_parameter_value hps_gp_in associatedReset {}
+	set_instantiation_interface_parameter_value hps_gp_in prSafe {false}
+	add_instantiation_interface_port hps_gp_in gp_in gp_exp 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface hps_gp_out conduit INPUT
+	set_instantiation_interface_parameter_value hps_gp_out associatedClock {}
+	set_instantiation_interface_parameter_value hps_gp_out associatedReset {}
+	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
+	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
+	save_instantiation
+
+	# add wirelevel expressions
+
+	# preserve ports for debug
+
+	# add the connections
+	add_connection gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in
+	set_connection_parameter_value gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in endPort {}
+	set_connection_parameter_value gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in endPortLSB {0}
+	set_connection_parameter_value gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in startPort {}
+	set_connection_parameter_value gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in startPortLSB {0}
+	set_connection_parameter_value gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in width {0}
+	add_connection hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out
+	set_connection_parameter_value hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out endPort {}
+	set_connection_parameter_value hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out endPortLSB {0}
+	set_connection_parameter_value hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out startPort {}
+	set_connection_parameter_value hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out startPortLSB {0}
+	set_connection_parameter_value hps_gp_split.hps_gp_out/gp_out_irq.hps_gp_out width {0}
+
+	# add the exports
+	set_interface_property gp_out_irq_f2h_irq_0 EXPORT_OF gp_out_irq.f2h_irq_0
+	set_interface_property gp_out_irq_f2h_irq_1 EXPORT_OF gp_out_irq.f2h_irq_1
+	set_interface_property gp_out_irq_f2h_irq_2 EXPORT_OF gp_out_irq.f2h_irq_2
+	set_interface_property gp_out_irq_f2h_irq_3 EXPORT_OF gp_out_irq.f2h_irq_3
+	set_interface_property gp_out_irq_f2h_irq_4 EXPORT_OF gp_out_irq.f2h_irq_4
+	set_interface_property gp_out_irq_f2h_irq_5 EXPORT_OF gp_out_irq.f2h_irq_5
+	set_interface_property gp_out_irq_f2h_irq_6 EXPORT_OF gp_out_irq.f2h_irq_6
+	set_interface_property gp_out_irq_f2h_irq_7 EXPORT_OF gp_out_irq.f2h_irq_7
+	set_interface_property gp_out_irq_f2h_irq_8 EXPORT_OF gp_out_irq.f2h_irq_8
+	set_interface_property gp_out_irq_f2h_irq_9 EXPORT_OF gp_out_irq.f2h_irq_9
+	set_interface_property gp_out_irq_f2h_irq_10 EXPORT_OF gp_out_irq.f2h_irq_10
+	set_interface_property gp_out_irq_f2h_irq_11 EXPORT_OF gp_out_irq.f2h_irq_11
+	set_interface_property gp_out_irq_f2h_irq_12 EXPORT_OF gp_out_irq.f2h_irq_12
+	set_interface_property gp_out_irq_f2h_irq_13 EXPORT_OF gp_out_irq.f2h_irq_13
+	set_interface_property gp_out_irq_f2h_irq_14 EXPORT_OF gp_out_irq.f2h_irq_14
+	set_interface_property gp_out_irq_f2h_irq_15 EXPORT_OF gp_out_irq.f2h_irq_15
+	set_interface_property gp_out_irq_f2h_irq_16 EXPORT_OF gp_out_irq.f2h_irq_16
+	set_interface_property gp_out_irq_f2h_irq_17 EXPORT_OF gp_out_irq.f2h_irq_17
+	set_interface_property gp_out_irq_f2h_irq_18 EXPORT_OF gp_out_irq.f2h_irq_18
+	set_interface_property gp_out_irq_f2h_irq_19 EXPORT_OF gp_out_irq.f2h_irq_19
+	set_interface_property gp_out_irq_f2h_irq_20 EXPORT_OF gp_out_irq.f2h_irq_20
+	set_interface_property gp_out_irq_f2h_irq_21 EXPORT_OF gp_out_irq.f2h_irq_21
+	set_interface_property gp_out_irq_f2h_irq_22 EXPORT_OF gp_out_irq.f2h_irq_22
+	set_interface_property gp_out_irq_f2h_irq_23 EXPORT_OF gp_out_irq.f2h_irq_23
+	set_interface_property gp_out_irq_f2h_irq_24 EXPORT_OF gp_out_irq.f2h_irq_24
+	set_interface_property gp_out_irq_f2h_irq_25 EXPORT_OF gp_out_irq.f2h_irq_25
+	set_interface_property gp_out_irq_f2h_irq_26 EXPORT_OF gp_out_irq.f2h_irq_26
+	set_interface_property gp_out_irq_f2h_irq_27 EXPORT_OF gp_out_irq.f2h_irq_27
+	set_interface_property gp_out_irq_f2h_irq_28 EXPORT_OF gp_out_irq.f2h_irq_28
+	set_interface_property gp_out_irq_f2h_irq_29 EXPORT_OF gp_out_irq.f2h_irq_29
+	set_interface_property gp_out_irq_f2h_irq_30 EXPORT_OF gp_out_irq.f2h_irq_30
+	set_interface_property gp_out_irq_f2h_irq_31 EXPORT_OF gp_out_irq.f2h_irq_31
+	set_interface_property gp_out_irq_f2h_irq_32 EXPORT_OF gp_out_irq.f2h_irq_32
+	set_interface_property gp_out_irq_f2h_irq_33 EXPORT_OF gp_out_irq.f2h_irq_33
+	set_interface_property gp_out_irq_f2h_irq_34 EXPORT_OF gp_out_irq.f2h_irq_34
+	set_interface_property gp_out_irq_f2h_irq_35 EXPORT_OF gp_out_irq.f2h_irq_35
+	set_interface_property gp_out_irq_f2h_irq_36 EXPORT_OF gp_out_irq.f2h_irq_36
+	set_interface_property gp_out_irq_f2h_irq_37 EXPORT_OF gp_out_irq.f2h_irq_37
+	set_interface_property gp_out_irq_f2h_irq_38 EXPORT_OF gp_out_irq.f2h_irq_38
+	set_interface_property gp_out_irq_f2h_irq_39 EXPORT_OF gp_out_irq.f2h_irq_39
+	set_interface_property gp_out_irq_f2h_irq_40 EXPORT_OF gp_out_irq.f2h_irq_40
+	set_interface_property gp_out_irq_f2h_irq_41 EXPORT_OF gp_out_irq.f2h_irq_41
+	set_interface_property gp_out_irq_f2h_irq_42 EXPORT_OF gp_out_irq.f2h_irq_42
+	set_interface_property gp_out_irq_f2h_irq_43 EXPORT_OF gp_out_irq.f2h_irq_43
+	set_interface_property gp_out_irq_f2h_irq_44 EXPORT_OF gp_out_irq.f2h_irq_44
+	set_interface_property gp_out_irq_f2h_irq_45 EXPORT_OF gp_out_irq.f2h_irq_45
+	set_interface_property gp_out_irq_f2h_irq_46 EXPORT_OF gp_out_irq.f2h_irq_46
+	set_interface_property gp_out_irq_f2h_irq_47 EXPORT_OF gp_out_irq.f2h_irq_47
+	set_interface_property gp_out_irq_f2h_irq_48 EXPORT_OF gp_out_irq.f2h_irq_48
+	set_interface_property gp_out_irq_f2h_irq_49 EXPORT_OF gp_out_irq.f2h_irq_49
+	set_interface_property gp_out_irq_f2h_irq_50 EXPORT_OF gp_out_irq.f2h_irq_50
+	set_interface_property gp_out_irq_f2h_irq_51 EXPORT_OF gp_out_irq.f2h_irq_51
+	set_interface_property gp_out_irq_f2h_irq_52 EXPORT_OF gp_out_irq.f2h_irq_52
+	set_interface_property gp_out_irq_f2h_irq_53 EXPORT_OF gp_out_irq.f2h_irq_53
+	set_interface_property gp_out_irq_f2h_irq_54 EXPORT_OF gp_out_irq.f2h_irq_54
+	set_interface_property gp_out_irq_f2h_irq_55 EXPORT_OF gp_out_irq.f2h_irq_55
+	set_interface_property gp_out_irq_f2h_irq_56 EXPORT_OF gp_out_irq.f2h_irq_56
+	set_interface_property gp_out_irq_f2h_irq_57 EXPORT_OF gp_out_irq.f2h_irq_57
+	set_interface_property gp_out_irq_f2h_irq_58 EXPORT_OF gp_out_irq.f2h_irq_58
+	set_interface_property gp_out_irq_f2h_irq_59 EXPORT_OF gp_out_irq.f2h_irq_59
+	set_interface_property gp_out_irq_f2h_irq_60 EXPORT_OF gp_out_irq.f2h_irq_60
+	set_interface_property gp_out_irq_f2h_irq_61 EXPORT_OF gp_out_irq.f2h_irq_61
+	set_interface_property gp_out_irq_f2h_irq_62 EXPORT_OF gp_out_irq.f2h_irq_62
+	set_interface_property gp_out_irq_f2h_irq_63 EXPORT_OF gp_out_irq.f2h_irq_63
+	set_interface_property hps_gp_split_hps_gp EXPORT_OF hps_gp_split.hps_gp
+
+	# set values for exposed HDL parameters
+
+	# set the the module properties
+	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
+<bonusData>
+ <element __value="gp_in_const">
+  <datum __value="_sortIndex" value="1" type="int" />
+ </element>
+ <element __value="gp_out_irq">
+  <datum __value="_sortIndex" value="2" type="int" />
+ </element>
+ <element __value="hps_gp_split">
+  <datum __value="_sortIndex" value="0" type="int" />
+ </element>
+</bonusData>
+}
+	set_module_property FILE {f2h_irq.qsys}
+	set_module_property GENERATION_ID {0x00000000}
+	set_module_property NAME {f2h_irq}
+
+	# save the system
+	sync_sysinfo_parameters
+	save_system f2h_irq
+}

@@ -1,0 +1,38 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_spi_bridge.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			#address-cells = <0x2>;
+			#size-cells = <0x2>;
+
+			rst-mgr@10D11000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x10D11000 0 0x00001000>;
+				reg-names = "rst-mgr";
+				linux,uio-name = "rst-mgr-uio";
+			};
+
+			spi-bridge-uio@10DA4000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x10DA4000 0 0x00001000>;
+				reg-names = "spi-bridge-uio";
+				linux,uio-name = "spi-bridge-uio";
+			};
+		};
+	};
+};
+

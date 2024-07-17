@@ -1,0 +1,25 @@
+<!--
+
+SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+SPDX-License-Identifier: MIT-0
+
+-->
+
+<library>
+	<path path="../../custom_ip/**/*" >
+		<tag2 key="COMPONENT_IN_PROJECT" value="true" />
+	</path>
+	<plugin
+		name="lpddr4_sulfur_x32_2rank.qprs"
+		file="../hw_base/lpddr4_sulfur_x32_2rank.qprs"
+		displayName="lpddr4_sulfur_x32_2rank.qprs"
+		version="0.0"
+		description=""
+		tags=""
+		categories=""
+		type="com.altera.sopcmodel.util.IElementPresetList"
+		subtype=""
+		factory="PresetFactory">
+		<tag2 key="PRESET_TYPE" value="emif_ph2_phy_arch_fp" />
+	</plugin>
+</library>

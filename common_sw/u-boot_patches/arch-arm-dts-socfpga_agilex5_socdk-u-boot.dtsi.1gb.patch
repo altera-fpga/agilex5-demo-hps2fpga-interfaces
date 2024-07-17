@@ -1,0 +1,17 @@
+diff --git a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+index dc9c552db7..c862d4d658 100644
+--- a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
++++ b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+@@ -22,9 +22,9 @@
+ 	};
+ 
+ 	memory {
+-		/* 8GB */
+-		reg = <0 0x80000000 0 0x80000000>,
+-		      <8 0x80000000 1 0x80000000>;
++		/* 1GB */
++		reg = <0 0x80000000 0 0x40000000>;
++
+ 	};
+ 
+ 	chosen {

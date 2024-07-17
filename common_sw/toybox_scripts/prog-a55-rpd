@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+
+echo
+echo Begin programming a55 RPD image into flash...
+echo NOTE: this will take about two minutes
+echo
+if dd if=/lib/firmware/a55.rpd of=/dev/mtdblock0 bs=16M conv=fsync
+then
+  echo a55 RPD image successfully programmed into flash...
+  echo
+else
+  echo ERROR: while programming a55 RPD image into flash...
+  echo
+  exit 1
+fi
+exit 0

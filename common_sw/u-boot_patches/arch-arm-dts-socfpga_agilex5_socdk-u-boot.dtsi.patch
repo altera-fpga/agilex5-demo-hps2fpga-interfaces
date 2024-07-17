@@ -1,0 +1,31 @@
+diff --git a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+index dc9c552db7..138d7e569d 100644
+--- a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
++++ b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+@@ -29,7 +29,7 @@
+ 
+ 	chosen {
+ 		stdout-path = "serial0:115200n8";
+-		u-boot,spl-boot-order = &mmc,&flash0,&nand,"/memory";
++		u-boot,spl-boot-order = &flash0;
+ 	};
+ };
+ 
+@@ -54,7 +54,7 @@
+ };
+ 
+ &mmc {
+-	status = "okay";
++	status = "disabled";
+ 	bus-width = <4>;
+ 	sd-uhs-sdr50;
+ 	cap-mmc-highspeed;
+@@ -62,7 +62,7 @@
+ };
+ 
+ &combophy0 {
+-	status = "okay";
++	status = "disabled";
+ 	bootph-all;
+ 	cdns,phy-use-ext-lpbk-dqs = <1>;
+ 	cdns,phy-use-lpbk-dqs = <1>;

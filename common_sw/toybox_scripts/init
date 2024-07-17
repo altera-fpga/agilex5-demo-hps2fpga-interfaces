@@ -1,0 +1,35 @@
+#!/bin/sh
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+
+export HOME=/ PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+mkdir /dev
+mount -t devtmpfs devtmpfs /dev
+
+exec 0<>/dev/console 1>&0 2>&1
+
+export LINUX_ENTRY_TS="$(/usr/sbin/devmem 0x10D02000 8)"
+export UBOOT_EXIT_TS="$(/usr/sbin/devmem 0x0007FFF0 8)"
+export JTAG_USERCODE="$(/usr/sbin/devmem 0x0007FFF8 4)"
+
+mkdir /dev/shm
+chmod +t /dev/shm
+
+mkdir /proc
+mount -t proc proc /proc
+
+mkdir /sys
+mount -t sysfs sysfs /sys
+
+mount -t configfs none /sys/kernel/config
+
+echo "init script is running as PID $$"
+
+for i in $(find /etc/rc -type f 2>/dev/null | sort); do . /etc/rc/"$i"; done
+
+echo 'Running exit from shell will reboot system...'
+
+exec oneit -c /dev/ttyS0 /bin/sh /start

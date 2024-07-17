@@ -1,0 +1,39 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_f2sdram_bridge.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			#address-cells = <0x2>;
+			#size-cells = <0x2>;
+
+			f2sdram-bridge@20000000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x20000000 0 0x10000>;
+				reg-names = "f2sdram-bridge";
+				linux,uio-name = "f2sdram-bridge-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 17 4>;
+			};
+			resmem-buf@82000000 {
+				compatible = "no-pins,demo";
+				reg = <0x0 0x82000000 0x0 0x04000000>;
+				reg-names = "resmem-buf";
+				linux,uio-name = "resmem-buf-uio";
+			};
+		};
+	};
+};
+

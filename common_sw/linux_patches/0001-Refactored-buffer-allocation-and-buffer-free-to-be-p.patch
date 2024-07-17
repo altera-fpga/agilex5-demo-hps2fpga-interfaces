@@ -1,0 +1,140 @@
+From 36816901c91ba1f5c90136bcaa5f5df1311ada22 Mon Sep 17 00:00:00 2001
+From: Adrian Ng Ho Yin <adrian.ho.yin.ng@intel.com>
+Date: Fri, 17 May 2024 15:10:52 +0800
+Subject: [PATCH] Refactored buffer allocation and buffer free to be performed
+ during driver probe and driver remove. Buffers will be allocated once and
+ persistent until driver is unloaded.
+
+Refactored config termination to check buffer lock instead of buffer !=
+null.
+
+Signed-off-by: Adrian Ng Ho Yin <adrian.ho.yin.ng@intel.com>
+---
+ drivers/fpga/stratix10-soc.c | 60 ++++++++++++++++++++++++++----------
+ 1 file changed, 44 insertions(+), 16 deletions(-)
+
+diff --git a/drivers/fpga/stratix10-soc.c b/drivers/fpga/stratix10-soc.c
+index 57f9ec9c27bc..699b01f39cbd 100644
+--- a/drivers/fpga/stratix10-soc.c
++++ b/drivers/fpga/stratix10-soc.c
+@@ -118,6 +118,22 @@ static uint s10_free_buffer_count(struct fpga_manager *mgr)
+ 	return num_free;
+ }
+ 
++/*
++ * Returns count of how many buffers are not in use.
++ */
++static uint s10_free_unlock_buffer_count(struct fpga_manager *mgr)
++{
++	struct s10_priv *priv = mgr->priv;
++	uint num_free = 0;
++	uint i;
++
++	for (i = 0; i < NUM_SVC_BUFS; i++)
++		if (!priv->svc_bufs[i].lock)
++			num_free++;
++
++	return num_free;
++}
++
+ /*
+  * s10_unlock_bufs
+  * Given the returned buffer address, match that address to our buffer struct
+@@ -256,18 +272,8 @@ static int s10_ops_write_init(struct fpga_manager *mgr,
+ 		goto init_done;
+ 	}
+ 
+-	/* Allocate buffers from the service layer's pool. */
+-	for (i = 0; i < NUM_SVC_BUFS; i++) {
+-		kbuf = stratix10_svc_allocate_memory(priv->chan, SVC_BUF_SIZE);
+-		if (IS_ERR(kbuf)) {
+-			s10_free_buffers(mgr);
+-			ret = PTR_ERR(kbuf);
+-			goto init_done;
+-		}
+-
+-		priv->svc_bufs[i].buf = kbuf;
++	for (i = 0; i < NUM_SVC_BUFS; i++)
+ 		priv->svc_bufs[i].lock = 0;
+-	}
+ 
+ init_done:
+ 	stratix10_svc_done(priv->chan);
+@@ -336,7 +342,7 @@ static int s10_ops_write(struct fpga_manager *mgr, const char *buf,
+ 	 * Loop waiting for buffers to be returned.  When a buffer is returned,
+ 	 * reuse it to send more data or free if if all data has been sent.
+ 	 */
+-	while (count > 0 || s10_free_buffer_count(mgr) != NUM_SVC_BUFS) {
++	while (true) {
+ 		reinit_completion(&priv->status_return_completion);
+ 
+ 		if (count > 0) {
+@@ -347,7 +353,7 @@ static int s10_ops_write(struct fpga_manager *mgr, const char *buf,
+ 			count -= sent;
+ 			buf += sent;
+ 		} else {
+-			if (s10_free_buffers(mgr))
++			if (s10_free_unlock_buffer_count(mgr) == NUM_SVC_BUFS)
+ 				return 0;
+ 
+ 			ret = s10_svc_send_msg(
+@@ -381,8 +387,8 @@ static int s10_ops_write(struct fpga_manager *mgr, const char *buf,
+ 		}
+ 	}
+ 
+-	if (!s10_free_buffers(mgr))
+-		dev_err(dev, "%s not all buffers were freed\n", __func__);
++	/*if (!s10_free_buffers(mgr))
++		dev_err(dev, "%s not all buffers were freed\n", __func__);*/
+ 
+ 	return ret;
+ }
+@@ -446,8 +452,9 @@ static int s10_probe(struct platform_device *pdev)
+ 	struct device *dev = &pdev->dev;
+ 	struct s10_priv *priv;
+ 	struct fpga_manager *mgr;
+-	int ret;
++	int ret, i;
+ 	struct device_node *node = pdev->dev.of_node;
++	char *kbuf;
+ 
+ 	priv = devm_kzalloc(dev, sizeof(*priv), GFP_KERNEL);
+ 	if (!priv)
+@@ -501,6 +508,19 @@ static int s10_probe(struct platform_device *pdev)
+ 
+ 	ret = 0;
+ 
++	/* Allocate buffers from the service layer's pool. */
++	for (i = 0; i < NUM_SVC_BUFS; i++) {
++		kbuf = stratix10_svc_allocate_memory(priv->chan, SVC_BUF_SIZE);
++		if (IS_ERR(kbuf)) {
++			s10_free_buffers(mgr);
++			ret = PTR_ERR(kbuf);
++			goto probe_err;
++		}
++
++		priv->svc_bufs[i].buf = kbuf;
++		priv->svc_bufs[i].lock = 0;
++	}
++
+ 	stratix10_svc_done(priv->chan);
+ 	platform_set_drvdata(pdev, mgr);
+ 	return 0;
+@@ -514,6 +534,14 @@ static int s10_remove(struct platform_device *pdev)
+ {
+ 	struct fpga_manager *mgr = platform_get_drvdata(pdev);
+ 	struct s10_priv *priv = mgr->priv;
++	int i;
++
++	for (i = 0; i < NUM_SVC_BUFS; i++) {
++			stratix10_svc_free_memory(priv->chan,
++						  priv->svc_bufs[i].buf);
++			priv->svc_bufs[i].buf = NULL;
++	}
++	
+ 
+ 	fpga_mgr_unregister(mgr);
+ 	stratix10_svc_free_channel(priv->chan);
+-- 
+2.25.1
+

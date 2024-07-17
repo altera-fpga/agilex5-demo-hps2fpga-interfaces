@@ -1,0 +1,12 @@
+diff --git a/arch/arm/dts/socfpga_agilex5.dtsi b/arch/arm/dts/socfpga_agilex5.dtsi
+index 97ed35c9..b1b3ffb4 100644
+--- a/arch/arm/dts/socfpga_agilex5.dtsi
++++ b/arch/arm/dts/socfpga_agilex5.dtsi
+@@ -489,6 +489,7 @@
+ 			resets = <&rst UART1_RESET>;
+ 			clocks = <&clkmgr AGILEX5_L4_SP_CLK>;
+ 			status = "disabled";
++			clock-frequency = <100000000>;
+ 		};
+ 
+ 		usbphy0: usbphy@0 {

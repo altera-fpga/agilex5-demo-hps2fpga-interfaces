@@ -1,0 +1,465 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_f2h_irq.rbf";
+			config-complete-timeout-us = <30000000>;
+
+			f2h-irq-0 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-0-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 17 4>;
+			};
+
+			f2h-irq-1 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-1-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 18 4>;
+			};
+
+			f2h-irq-2 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-2-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 19 4>;
+			};
+
+			f2h-irq-3 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-3-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 20 4>;
+			};
+
+			f2h-irq-4 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-4-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 21 4>;
+			};
+
+			f2h-irq-5 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-5-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 22 4>;
+			};
+
+			f2h-irq-6 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-6-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 23 4>;
+			};
+
+			f2h-irq-7 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-7-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 24 4>;
+			};
+
+			f2h-irq-8 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-8-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 25 4>;
+			};
+
+			f2h-irq-9 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-9-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 26 4>;
+			};
+
+			f2h-irq-10 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-10-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 27 4>;
+			};
+
+			f2h-irq-11 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-11-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 28 4>;
+			};
+
+			f2h-irq-12 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-12-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 29 4>;
+			};
+
+			f2h-irq-13 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-13-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 30 4>;
+			};
+
+			f2h-irq-14 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-14-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 31 4>;
+			};
+
+			f2h-irq-15 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-15-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 32 4>;
+			};
+
+			f2h-irq-16 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-16-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 33 4>;
+			};
+
+			f2h-irq-17 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-17-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 34 4>;
+			};
+
+			f2h-irq-18 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-18-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 35 4>;
+			};
+
+			f2h-irq-19 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-19-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 36 4>;
+			};
+
+			f2h-irq-20 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-20-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 37 4>;
+			};
+
+			f2h-irq-21 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-21-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 38 4>;
+			};
+
+			f2h-irq-22 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-22-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 39 4>;
+			};
+
+			f2h-irq-23 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-23-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 40 4>;
+			};
+
+			f2h-irq-24 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-24-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 41 4>;
+			};
+
+			f2h-irq-25 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-25-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 42 4>;
+			};
+
+			f2h-irq-26 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-26-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 43 4>;
+			};
+
+			f2h-irq-27 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-27-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 44 4>;
+			};
+
+			f2h-irq-28 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-28-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 45 4>;
+			};
+
+			f2h-irq-29 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-29-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 46 4>;
+			};
+
+			f2h-irq-30 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-30-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 47 4>;
+			};
+
+			f2h-irq-31 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-31-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 48 4>;
+			};
+
+			f2h-irq-32 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-32-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 49 4>;
+			};
+
+			f2h-irq-33 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-33-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 50 4>;
+			};
+
+			f2h-irq-34 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-34-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 51 4>;
+			};
+
+			f2h-irq-35 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-35-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 52 4>;
+			};
+
+			f2h-irq-36 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-36-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 53 4>;
+			};
+
+			f2h-irq-37 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-37-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 54 4>;
+			};
+
+			f2h-irq-38 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-38-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 55 4>;
+			};
+
+			f2h-irq-39 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-39-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 56 4>;
+			};
+
+			f2h-irq-40 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-40-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 57 4>;
+			};
+
+			f2h-irq-41 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-41-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 58 4>;
+			};
+
+			f2h-irq-42 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-42-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 59 4>;
+			};
+
+			f2h-irq-43 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-43-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 60 4>;
+			};
+
+			f2h-irq-44 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-44-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 61 4>;
+			};
+
+			f2h-irq-45 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-45-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 62 4>;
+			};
+
+			f2h-irq-46 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-46-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 63 4>;
+			};
+
+			f2h-irq-47 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-47-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 64 4>;
+			};
+
+			f2h-irq-48 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-48-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 65 4>;
+			};
+
+			f2h-irq-49 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-49-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 66 4>;
+			};
+
+			f2h-irq-50 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-50-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 67 4>;
+			};
+
+			f2h-irq-51 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-51-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 68 4>;
+			};
+
+			f2h-irq-52 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-52-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 69 4>;
+			};
+
+			f2h-irq-53 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-53-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 70 4>;
+			};
+
+			f2h-irq-54 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-54-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 71 4>;
+			};
+
+			f2h-irq-55 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-55-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 72 4>;
+			};
+
+			f2h-irq-56 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-56-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 73 4>;
+			};
+
+			f2h-irq-57 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-57-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 74 4>;
+			};
+
+			f2h-irq-58 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-58-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 75 4>;
+			};
+
+			f2h-irq-59 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-59-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 76 4>;
+			};
+
+			f2h-irq-60 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-60-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 77 4>;
+			};
+
+			f2h-irq-61 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-61-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 78 4>;
+			};
+
+			f2h-irq-62 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-62-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 79 4>;
+			};
+
+			f2h-irq-63 {
+				compatible = "no-pins,demo";
+				linux,uio-name = "f2h-irq-63-uio";
+				interrupt-parent = <&intc>;
+				interrupts = <0 80 4>;
+			};
+		};
+	};
+};
+

@@ -1,0 +1,37 @@
+#!/bin/sh
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+printf "\n"
+printf "Reading Sensors Demo\n"
+printf "\n"
+
+printf "   HWMON   |         VOLTAGE      |                   THERMAL\n"
+printf "   SENSOR  |         SENSOR       |                   SENSOR\n"
+printf " ----------+----------------------+--------------------------------\n"
+
+for NEXT in {0..15}
+do
+
+	printf "     %2d    | " "${NEXT}"
+
+	[ -f /sys/class/hwmon/hwmon0/in${NEXT}_label ] && \
+	[ -f /sys/class/hwmon/hwmon0/in${NEXT}_input ] && \
+	printf "%10s : %6s mV |" \
+		"$(cat /sys/class/hwmon/hwmon0/in${NEXT}_label)" \
+		"$(cat /sys/class/hwmon/hwmon0/in${NEXT}_input)" || \
+	printf "%10s : %6s    |" "--" "--"
+
+	[ -f /sys/class/hwmon/hwmon0/temp$((NEXT+1))_label ] && \
+	[ -f /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input ] && \
+	printf "%21s : %6s mC\n" \
+		"$(cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_label)" \
+		"$(cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input)" || \
+	printf "%21s : %6s   \n" "--" "--"
+
+done
+
+/sw_images/waitforonechar  || exit 1
+
+exit 0

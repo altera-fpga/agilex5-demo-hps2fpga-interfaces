@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+
+echo boot_app > /NEXTPROG
+
+while [ -f /NEXTPROG ]
+do
+  RUNPROG=$(cat /NEXTPROG)
+  rm -f /NEXTPROG
+
+  if ! /sw_images/${RUNPROG}
+  then
+    echo ERROR: RUNPROG
+    exit 1
+  fi
+
+  if [ -f /NEXTSCRIPT ]
+  then
+    RUNSCRIPT=$(cat /NEXTSCRIPT)
+    rm -f /NEXTSCRIPT
+    if ! /scripts/${RUNSCRIPT}
+    then
+      echo ERROR: RUNSCRIPT
+      exit 1
+    fi
+  fi
+
+  if [ -f /NEXTFPGA ]
+  then
+    THEFPGA=$(cat /NEXTFPGA)
+    rm -f /NEXTFPGA
+    rmdir /sys/kernel/config/device-tree/overlays/*
+    mkdir /sys/kernel/config/device-tree/overlays/${THEFPGA}
+    if ! echo ${THEFPGA}.dtbo > /sys/kernel/config/device-tree/overlays/${THEFPGA}/path
+    then
+    	echo ERROR: CONFIGFPGA3
+    	exit 1
+    fi
+  fi
+
+done
+
+echo
+echo Exiting to linux console
+echo

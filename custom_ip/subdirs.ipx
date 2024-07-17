@@ -1,0 +1,12 @@
+<!--
+
+SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+SPDX-License-Identifier: MIT-0
+
+-->
+
+<library>
+	<path path="./*/**/*" >
+		<tag2 key="COMPONENT_IN_PROJECT" value="true" />
+	</path>
+</library>

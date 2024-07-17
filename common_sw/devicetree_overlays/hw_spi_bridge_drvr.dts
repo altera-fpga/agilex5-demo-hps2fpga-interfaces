@@ -1,0 +1,32 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_spi_bridge.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/soc/spi@10da4000";
+		__overlay__ {
+			#address-cells = <1>;
+			#size-cells = <0>;
+
+			status = "okay";
+
+			spidev@0 {
+				compatible = "rohm,dh2228fv";
+				reg = <0>;
+				spi-max-frequency = <25000000>;
+			};
+		};
+	};
+};
+

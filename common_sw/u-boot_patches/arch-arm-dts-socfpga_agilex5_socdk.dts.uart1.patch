@@ -1,0 +1,128 @@
+diff --git a/arch/arm/dts/socfpga_agilex5_socdk.dts b/arch/arm/dts/socfpga_agilex5_socdk.dts
+index 88c96269..1aa7baa3 100644
+--- a/arch/arm/dts/socfpga_agilex5_socdk.dts
++++ b/arch/arm/dts/socfpga_agilex5_socdk.dts
+@@ -8,27 +8,7 @@
+ 	model = "SoCFPGA Agilex5 SoCDK";
+ 
+ 	aliases {
+-		serial0 = &uart0;
+-		ethernet0 = &gmac0;
+-		ethernet2 = &gmac2;
+-	};
+-
+-	leds {
+-		compatible = "gpio-leds";
+-		hps0 {
+-			label = "hps_led0";
+-			gpios = <&portb 20 GPIO_ACTIVE_HIGH>;
+-		};
+-
+-		hps1 {
+-			label = "hps_led1";
+-			gpios = <&portb 19 GPIO_ACTIVE_HIGH>;
+-		};
+-
+-		hps2 {
+-			label = "hps_led2";
+-			gpios = <&portb 21 GPIO_ACTIVE_HIGH>;
+-		};
++		serial0 = &uart1;
+ 	};
+ 
+ 	memory {
+@@ -47,11 +27,11 @@
+ };
+ 
+ &gpio0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &gpio1 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &i2c0 {
+@@ -75,19 +55,19 @@
+ };
+ 
+ &mmc {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &combophy0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+-&uart0 {
++&uart1 {
+ 	status = "okay";
+ };
+ 
+ &usbphy0 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &usb0 {
+@@ -96,7 +76,7 @@
+ };
+ 
+ &usb31 {
+-	status = "okay";
++	status = "disabled";
+ };
+ 
+ &watchdog0 {
+@@ -163,6 +143,7 @@
+ };
+ 
+ &qspi {
++	status = "okay";
+ 	flash0: flash@0 {
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+@@ -186,36 +167,14 @@
+ 
+ 			qspi_boot: partition@0 {
+ 				label = "u-boot";
+-				reg = <0x0 0x04200000>;
+-			};
+-
+-			root: partition@4200000 {
+-				label = "root";
+-				reg = <0x04200000 0x0BE00000>;
++				reg = <0x0 0x02000000>;
+ 			};
+ 		};
+ 	};
+ };
+ 
+-&gmac0 {
+-	status = "okay";
+-	phy-mode = "rgmii";
+-	phy-handle = <&emac0_phy0>;
+-
+-	max-frame-size = <9000>;
+-
+-	mdio0 {
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-		compatible = "snps,dwxgmac-mdio";
+-		emac0_phy0: ethernet-phy@0 {
+-			reg = <0>;
+-		};
+-	};
+-};
+-
+-&gmac2 {
+-	status = "okay";
++&gmac1 {
++	status = "disabled";
+ 	phy-mode = "rgmii";
+ 	phy-handle = <&emac2_phy0>;
+ 

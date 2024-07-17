@@ -1,0 +1,43 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_h2f_bridge.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			#address-cells = <0x2>;
+			#size-cells = <0x2>;
+
+			h2f-bridge-1g@40000000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x40000000 0 0x40000000>;
+				reg-names = "h2f-bridge-1g";
+				linux,uio-name = "h2f-bridge-1g-uio";
+			};
+			h2f-bridge-15g@440000000 {
+				compatible = "no-pins,demo";
+				reg = <0x4 0x40000000 0x3 0xC0000000>;
+				reg-names = "h2f-bridge-15g";
+				linux,uio-name = "h2f-bridge-15g-uio";
+			};
+			h2f-bridge-240g@4400000000 {
+				compatible = "no-pins,demo";
+				reg = <0x44 0x00000000 0x3C 0x00000000>;
+				reg-names = "h2f-bridge-240g";
+				linux,uio-name = "h2f-bridge-240g-uio";
+			};
+		};
+	};
+};
+

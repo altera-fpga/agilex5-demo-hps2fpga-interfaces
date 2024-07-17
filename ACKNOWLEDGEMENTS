@@ -1,0 +1,36 @@
+--------------------------------------------------------------------------------
+This project makes use of the following open source projects:
+--------------------------------------------------------------------------------
+
+ PROJECT: arm-trusted-firmware
+LOCATION: https://github.com/altera-opensource/arm-trusted-firmware
+ LICENSE: BSD-3-Clause
+
+ PROJECT: u-boot-socfpga
+LOCATION: https://github.com/altera-opensource/u-boot-socfpga
+ LICENSE: GPL-2.0
+
+ PROJECT: linux-socfpga
+LOCATION: https://github.com/altera-opensource/linux-socfpga
+ LICENSE: GPL-2.0
+
+ PROJECT: toybox
+LOCATION: https://github.com/landley/toybox
+ LICENSE: 0BSD
+
+ PROJECT: musl libc library and aarch64-linux-musleabi-cross cross compiler
+LOCATION: https://landley.net/toybox/downloads/binaries/toolchains/latest/aarch64-linux-musleabi-cross.tar.xz
+ LICENSE: MIT
+
+--------------------------------------------------------------------------------
+This project makes use of the following projects distributed in the Quartus
+software release from Altera:
+--------------------------------------------------------------------------------
+
+ PROJECT: niosv-hal
+LOCATION: Quartus installation
+ LICENSE: MIT
+
+ PROJECT: newlib library and riscv32-unknown-elf-gcc cross compiler
+LOCATION: Quartus installation
+ LICENSE: various MIT-like and BSD-like

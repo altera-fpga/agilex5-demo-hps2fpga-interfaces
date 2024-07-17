@@ -1,0 +1,538 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+
+/ {
+	description = "no-pins demos FIT image";
+	#address-cells = <1>;
+
+	images {
+
+		a55_rpd {
+			description = "a55_rpd";
+			data = /incbin/("../hw_a55_no_periph/merged_hps.rpd");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		a76_rpd {
+			description = "a76_rpd";
+			data = /incbin/("../hw_a76_no_periph/merged_hps.rpd");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_no_periph {
+			description = "hw_no_periph";
+			data = /incbin/("../hw_a55_no_periph/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_hps_jamb {
+			description = "hw_hps_jamb";
+			data = /incbin/("../hw_hps_jamb/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_hps_gp {
+			description = "hw_hps_gp";
+			data = /incbin/("../hw_hps_gp/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_f2h_irq {
+			description = "hw_f2h_irq";
+			data = /incbin/("../hw_f2h_irq/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_config_clk {
+			description = "hw_config_clk";
+			data = /incbin/("../hw_config_clk/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_lwh2f_bridge {
+			description = "hw_lwh2f_bridge";
+			data = /incbin/("../hw_lwh2f_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_h2f_bridge {
+			description = "hw_h2f_bridge";
+			data = /incbin/("../hw_h2f_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_h2f_user_clk {
+			description = "hw_h2f_user_clk";
+			data = /incbin/("../hw_h2f_user_clk/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_f2sdram_bridge {
+			description = "hw_f2sdram_bridge";
+			data = /incbin/("../hw_f2sdram_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_f2h_bridge {
+			description = "hw_f2h_bridge";
+			data = /incbin/("../hw_f2h_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_uart {
+			description = "hw_uart";
+			data = /incbin/("../hw_uart/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_spi_bridge {
+			description = "hw_spi_bridge";
+			data = /incbin/("../hw_spi_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		hw_i2c_bridge {
+			description = "hw_i2c_bridge";
+			data = /incbin/("../hw_i2c_bridge/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_boot_app {
+			description = "sw_boot_app";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/boot_app.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_system_counter {
+			description = "sw_system_counter";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/system_counter.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_read_sensors {
+			description = "sw_read_sensors";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/read_sensors.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_sdm_query {
+			description = "sw_sdm_query";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/sdm_query.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_armv8_regs {
+			description = "sw_armv8_regs";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/armv8_regs.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_hps_gp {
+			description = "sw_hps_gp";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/hps_gp.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_f2h_irq {
+			description = "sw_f2h_irq";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2h_irq.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_config_clk {
+			description = "sw_config_clk";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/config_clk.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_h2f_user_clk {
+			description = "sw_h2f_user_clk";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/h2f_user_clk.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_lwh2f_bridge {
+			description = "sw_lwh2f_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/lwh2f_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_lwh2f_bridge_def_sub {
+			description = "sw_lwh2f_bridge_def_sub";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/lwh2f_bridge_def_sub.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_h2f_bridge {
+			description = "sw_h2f_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/h2f_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_h2f_bridge_def_sub {
+			description = "sw_h2f_bridge_def_sub";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/h2f_bridge_def_sub.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_f2sdram_bridge {
+			description = "sw_f2sdram_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2sdram_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_f2h_bridge {
+			description = "sw_f2h_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2h_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_cache_reg {
+			description = "sw_cache_reg";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/cache_regs.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_f2h_irq_handler {
+			description = "sw_f2h_irq_handler";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2h_irq_handler.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_uart {
+			description = "sw_uart";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/uart.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_spi_bridge {
+			description = "sw_spi_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/spi_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_i2c_bridge {
+			description = "sw_i2c_bridge";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/i2c_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-attribution {
+			description = "script-attribution";
+			data = /incbin/("./attribution.script");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-prog-a55-rpd {
+			description = "script-prog-a55-rpd";
+			data = /incbin/("../../common_sw/u-boot_scripts/prog-a55-rpd");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-prog-a76-rpd {
+			description = "script-prog-a75-rpd";
+			data = /incbin/("../../common_sw/u-boot_scripts/prog-a76-rpd");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-update-uboot-itb {
+			description = "script-update-uboot-itb";
+			data = /incbin/("../../common_sw/u-boot_scripts/update-uboot-itb");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-update-demos-itb {
+			description = "script-update-demos-itb";
+			data = /incbin/("../../common_sw/u-boot_scripts/update-demos-itb");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		script-start-linux {
+			description = "script-start-linux";
+			data = /incbin/("../../common_sw/u-boot_scripts/start-linux");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		linux-kernel {
+			description = "linux-kernel";
+			data = /incbin/("../sw_builds/linux-socfpga/arch/arm64/boot/Image");
+			type = "kernel";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		linux-devicetree {
+			description = "linux-devicetree";
+			data = /incbin/("../sw_builds/linux-socfpga/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dtb");
+			type = "flat_dt";
+			arch = "arm64";
+			compression = "none";
+			load = <0x8A000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+	};
+};

@@ -1,0 +1,27 @@
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+echo
+echo
+echo Begin update of demo.itb image in QSPI flash...
+echo
+dcache flush
+crc32 a0000000 01000000
+iminfo 86000000 || echo && echo Failed to validate FIT image && echo && exit 1
+fdt addr 86000000
+fdt get value FITDESC / description || echo ERROR: get FIT description && exit 1
+test "${FITDESC}" = "lzma-no-pins-demos" || echo ERROR: wrong FIT description && exit 1
+setexpr.b SIZE_WORD *86000004 * 01000000
+setexpr.b BYTE_1 *86000005 * 00010000
+setexpr.b SIZE_WORD ${SIZE_WORD} \| ${BYTE_1}
+setexpr.b BYTE_2 *86000006 * 00000100
+setexpr.b SIZE_WORD ${SIZE_WORD} \| ${BYTE_2}
+setexpr.b SIZE_WORD ${SIZE_WORD} \| *86000007
+itest ${SIZE_WORD} -le 01b00000 || echo ERROR: FIT size is greater than 01b00000... && echo && exit 1
+sf erase 00500000 +${SIZE_WORD} || echo && echo Failed to erase flash && echo && exit 1
+sf write 86000000 00500000 ${SIZE_WORD} || echo && echo Failed to write flash && echo && exit 1
+echo
+echo Completed update of demo.itb image in QSPI flash...
+echo
+

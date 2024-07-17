@@ -1,0 +1,109 @@
+#
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-License-Identifier: MIT-0
+#
+echo
+echo
+echo Starting Linux...
+echo
+
+dcache flush
+
+imxtract 82000000 linux-kernel 86000000      || echo ERROR: 1 && exit 1
+imxtract 82000000 linux-devicetree 8A000000  || echo ERROR: 2 && exit 1
+
+#
+# prepare to edit the linux kernel devicetree
+#
+fdt addr 8A000000  || echo ERROR: 3 && exit 1
+fdt resize 1000    || echo ERROR: 4 && exit 1
+
+#
+# add a devicetree node for UIO driver
+#
+#hps-gp@10D12000 {
+#	compatible = "no-pins,demo";
+#	reg = <10D12000 0x00001000>;
+#	reg-names = "hps-gp";
+#	linux,uio-name = "hps-gp-uio";
+#};
+#
+fdt mknode /soc hps-gp@10D12000                           || echo ERROR: 5 && exit 1
+fdt set /soc/hps-gp@10D12000 compatible "no-pins,demo"    || echo ERROR: 6 && exit 1
+fdt set /soc/hps-gp@10D12000 reg <0x10D12000 0x00001000>  || echo ERROR: 7 && exit 1
+fdt set /soc/hps-gp@10D12000 reg-names "hps-gp"           || echo ERROR: 8 && exit 1
+fdt set /soc/hps-gp@10D12000 linux,uio-name "hps-gp-uio"  || echo ERROR: 9 && exit 1
+
+#
+# add a devicetree node for UIO driver
+#
+#hps-ocram@0 {
+#	compatible = "no-pins,demo";
+#	reg = <0x00000000 0x00080000>;
+#	reg-names = "hps-ocram";
+#	linux,uio-name = "hps-ocram-uio";
+#};
+#
+fdt mknode /soc hps-ocram@0                              || echo ERROR: 10 && exit 1
+fdt set /soc/hps-ocram@0 compatible "no-pins,demo"       || echo ERROR: 11 && exit 1
+fdt set /soc/hps-ocram@0 reg <0x00000000 0x00080000>     || echo ERROR: 12 && exit 1
+fdt set /soc/hps-ocram@0 reg-names "hps-ocram"           || echo ERROR: 13 && exit 1
+fdt set /soc/hps-ocram@0 linux,uio-name "hps-ocram-uio"  || echo ERROR: 14 && exit 1
+
+#
+# add a devicetree node for UIO driver
+#
+#system-counter@10D02000 {
+#	compatible = "no-pins,demo";
+#	reg = <0x10D02000 0x00001000>;
+#	reg-names = "sys-cntr";
+#	linux,uio-name = "sys-cntr-uio";
+#};
+#
+fdt mknode /soc system-counter@10D02000                             || echo ERROR: 15 && exit 1
+fdt set /soc/system-counter@10D02000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
+fdt set /soc/system-counter@10D02000 reg <0x10D02000 0x00001000>    || echo ERROR: 17 && exit 1
+fdt set /soc/system-counter@10D02000 reg-names "sys-cntr"           || echo ERROR: 18 && exit 1
+fdt set /soc/system-counter@10D02000 linux,uio-name "sys-cntr-uio"  || echo ERROR: 19 && exit 1
+
+#
+# add a devicetree node for UIO driver
+#
+#gicd@1D000000 {
+#	compatible = "no-pins,demo";
+#	reg = <0x1D000000 0x00001000>;
+#	reg-names = "gicd-base";
+#	linux,uio-name = "gicd-base-uio";
+#};
+#
+fdt mknode /soc gicd@1D000000                             || echo ERROR: 15 && exit 1
+fdt set /soc/gicd@1D000000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
+fdt set /soc/gicd@1D000000 reg <0x1D000000 0x00001000>    || echo ERROR: 17 && exit 1
+fdt set /soc/gicd@1D000000 reg-names "gicd-base"           || echo ERROR: 18 && exit 1
+fdt set /soc/gicd@1D000000 linux,uio-name "gicd-base-uio"  || echo ERROR: 19 && exit 1
+
+#
+# the default u-boot environment has a script called linux_qspi_enable that
+# configures the linux devicetree to support the SDM QSPI flash in the linux
+# environment. We apply the required SDM QSPI controller clock frequency to our
+# linux devicetree in the same way. The SDM passes the QSPI controller clock
+# frequency into u-boot which stores it in the qspi_clock environment variable.
+#
+fdt set /clocks/qspi-clk clock-frequency ${qspi_clock};
+
+#
+# configure the linux kernel boot parameters
+#
+env set bootargs 'console=ttyS0,115200 earlycon panic=-1 uio_pdrv_genirq.of_id="no-pins,demo" arm-smmu-v3.disable_bypass=false' || echo ERROR: 20 && exit 1
+
+#
+# capture the JTAG USERCODE and an exit timestamp
+#
+mw.l 0007FFF8 ${JTAGUSERCODE}
+setexpr.q TIMEVAL *10D02000
+mw.q 0007FFF0 ${TIMEVAL}
+
+#
+# start the linux kernel
+#
+booti 86000000 - 8A000000

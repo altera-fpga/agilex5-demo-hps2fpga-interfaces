@@ -1,0 +1,15 @@
+diff --git a/plat/intel/soc/common/include/platform_def.h b/plat/intel/soc/common/include/platform_def.h
+index 7736218..024e582 100644
+--- a/plat/intel/soc/common/include/platform_def.h
++++ b/plat/intel/soc/common/include/platform_def.h
+@@ -150,8 +150,8 @@
+ /*******************************************************************************
+  * UART related constants
+  ******************************************************************************/
+-#define CRASH_CONSOLE_BASE			PLAT_UART0_BASE
+-#define PLAT_INTEL_UART_BASE			PLAT_UART0_BASE
++#define CRASH_CONSOLE_BASE			PLAT_UART1_BASE
++#define PLAT_INTEL_UART_BASE			PLAT_UART1_BASE
+ 
+ #define PLAT_BAUDRATE				(115200)
+ #define PLAT_UART_CLOCK				(100000000)
