@@ -37,6 +37,7 @@ Two additional components are visible in the f2h_bridge subsystem, a limiter_rem
 | :---: |
 | ![hw_f2h_bridge_subsys.png](./images/captures/hw_f2h_bridge_subsys.png) |
 
+**NOTE:** the msgdma core has been configured in this demo to support a maximum transfer length of 4KB. This was specifically chosen to optimize around the AXI requirement that bursts must not cross a 4KB boundary. This allows our software demo to choose base addresses aligned to 4KB boundaries and burst as much data as desired knowing that the msgdma core will break up any bursts larger than 4KB into multiple maximum 4KB burst transactions. Also, since the f2h bridge and the msgdma are configured for 256-bit data width, we do not have to worry about exceeding the AXI4 burst limit of 256 words per transaction. A full 4KB burst at 256-bit width will only require 128-word bursts per transaction. If software wanted to begin a DMA transfer using this msgdma core configuration that begins at an unaligned base address, then it would need to compensate for this in the descriptor configuration to ensure that no burst transactions cross a 4KB boundary.
 
 ## Software demo - u-boot standalone - menu-b
 

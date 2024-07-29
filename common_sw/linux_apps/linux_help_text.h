@@ -37,7 +37,7 @@
 
 //------------------------------------------------------------------------------
 #define linux_z_menu_HELP_TEXT z_menu_HELP_TEXT \
-, "\n\n\
+"\n\n\
     The demo uses UIO drivers to map the HPS peripheral addresses that\n\
     it accesses."
 

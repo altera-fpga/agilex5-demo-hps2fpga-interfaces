@@ -111,29 +111,29 @@ Enter menu selection:
 
 ## Hardware demo documentation
 
-* [**Top-Level PD System**](02_top_pd_sys.md) - the top-level Platform Designer system that is used for the phase 1 bitstream image that configures the device at power-on or after device wipe
+* [**Top-Level PD System**](02_top_pd_sys.md) - top-level Platform Designer system documentation, describes the top-level system that is used for the phase 1 bitstream image that configures the device at power-on or after device wipe
 
-* [**menu-g on hw_hps_gp**](03_menu_g_hw_hps_gp.md) - hps_gp demo, describes the hardware project design and software demos that run with it
+* [**menu-g on hw_hps_gp**](03_menu_g_hw_hps_gp.md) - hps_gp interface demo documentation, describes the hardware project design and software demos that interact with the hps_gp interface which provides a 32-bit GPI/GPO interface between the HPS and FPGA logic
 
-* [**menu-i, menu-l on hw_f2h_irq**](04_menu_il_hw_f2h_irq.md) - f2h_irq demos, describes the hardware project design and software demos that run with it
+* [**menu-i, menu-l on hw_f2h_irq**](04_menu_il_hw_f2h_irq.md) - f2h_irq interface demo documentation, describes the hardware project design and software demos that interact with the f2h_irq interface which provides a 64-bit interrupt interface from the FPGA into the HPS
 
-* [**menu-z on hw_config_clk**](05_menu_z_hw_config_clk.md) - configuration clock demo, describes the hardware project design and software demos that run with it
+* [**menu-z on hw_config_clk**](05_menu_z_hw_config_clk.md) - configuration clock demo documentation, describes the hardware project design and software demos that measure the configuration clock frequency
 
-* [**menu-y on hw_h2f_user_clk**](06_menu_y_hw_h2f_user_clk.md) - H2F user clocks demo, describes the hardware project design and software demos that run with it
+* [**menu-y on hw_h2f_user_clk**](06_menu_y_hw_h2f_user_clk.md) - H2F user clocks demo documentation, describes the hardware project design and software demos that measure the H2F user clock frequencies
 
-* [**menu-x, menu-w on hw_lwh2f_bridge**](07_menu_xw_hw_lwh2f_bridge.md) - LWH2F bridge demos, describes the hardware project design and software demos that run with it
+* [**menu-x, menu-w on hw_lwh2f_bridge**](07_menu_xw_hw_lwh2f_bridge.md) - LWH2F bridge demo documentation, describes the hardware project design and software demos that interact through the memory mapped LWH2F bridge into the FPGA logic design
 
-* [**menu-t, menu-r on hw_h2f_bridge**](08_menu_tr_hw_h2f_bridge.md) - H2F bridge demos, describes the hardware project design and software demos that run with it
+* [**menu-t, menu-r on hw_h2f_bridge**](08_menu_tr_hw_h2f_bridge.md) - H2F bridge demo documentation, describes the hardware project design and software demos that interact through the memory mapped H2F bridge into the FPGA logic design
 
-* [**menu-p on hw_f2sdram_bridge**](09_menu_p_hw_f2sdram_bridge.md) - F2SDRAM bridge demo, describes the hardware project design and software demos that run with it
+* [**menu-p on hw_f2sdram_bridge**](09_menu_p_hw_f2sdram_bridge.md) - F2SDRAM bridge demo documentation, describes the hardware project design and software demos that interact through the memory mapped F2SDRAM bridge allowing FPGA logic to interact with HPS EMIF memory
 
-* [**menu-b on hw_f2h_bridge**](10_menu_b_hw_f2h_bridge.md) - F2H bridge demo, describes the hardware project design and software demos that run with it
+* [**menu-b on hw_f2h_bridge**](10_menu_b_hw_f2h_bridge.md) - F2H bridge demo documentation, describes the hardware project design and software demos that interacts through the memory mapped F2H bridge allowing FPGA logic to interact coherently with HPS EMIF memory
 
-* [**menu-k on hw_uart**](11_menu_k_hw_uart.md) - HPS UART demo, describes the hardware project design and software demos that run with it
+* [**menu-k on hw_uart**](11_menu_k_hw_uart.md) - HPS UART demo documentation, describes the hardware project design and software demos that interact through the HPS UART peripheral into FPGA logic
 
-* [**menu-f on hw_spi_bridge**](12_menu_f_hw_spi_bridge.md) - HPS SPI demo, describes the hardware project design and software demos that run with it
+* [**menu-f on hw_spi_bridge**](12_menu_f_hw_spi_bridge.md) - HPS SPI demo documentation, describes the hardware project design and software demos that interact through the HPS SPI perihperal into FPGA logic
 
-* [**menu-e on hw_i2c_bridge**](13_menu_e_hw_i2c_bridge.md) - HPS I2C demo, describes the hardware project design and software demos that run with it
+* [**menu-e on hw_i2c_bridge**](13_menu_e_hw_i2c_bridge.md) - HPS I2C demo documentation, describes the hardware project design and software demos that interact through the HPS I2C peripheral into FPGA logic
 
 ## Software-only demo documentation
 
@@ -143,4 +143,4 @@ Enter menu selection:
 
 * [Maintenance Menus](16_maintenance_menus.md) - general overview of maintenance menu operations
 
-* [**menu-j on hw_hps_jamb**](14_menu_j_hw_hps_jamb.md) - JTAG Avalon Master Bridge maintenance image, describes the hardware project design and the development and debugging techniques that can be used with it
+* [**menu-j on hw_hps_jamb**](14_menu_j_hw_hps_jamb.md) - JTAG Avalon Master Bridge maintenance image documentation, describes the hardware project design and the development and debugging techniques that can be used with it

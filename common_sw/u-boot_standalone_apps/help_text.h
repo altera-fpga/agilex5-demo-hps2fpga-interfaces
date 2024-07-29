@@ -185,13 +185,14 @@ SOFTWARE DEMO OVERVIEW\n\
     the GPIN port.  By using the system counter in the processor, the\n\
     demo can calculate the frequency of the SDM configuration clock\n\
     provided to the FPGA core logic.\n\
-\n\
-    The SDM configuration clock should be 250MHz because our Quartus\n\
-    project defines the SDM OSC_CLK frequency so that the SDM can\n\
-    provide a precise frequency based on the external oscillator\n\
+","\n\
+    The SDM configuration clock should be 250MHz on 4S and 5S speed\n\
+    grade devices and 200MHz on 6S speed grade devices because our\n\
+    Quartus project defines the SDM OSC_CLK frequency so that the SDM\n\
+    can provide a precise frequency based on the external oscillator\n\
     frequency.  When the Quartus project does not define an SDM OSC_CLK\n\
     frequency, then the SDM uses an internal oscillator that will\n\
-    produce a clock rate of 190MHz to 230MHz into the FPGA core logic."
+    produce a clock rate of 160MHz to 230MHz into the FPGA core logic."
 
 //------------------------------------------------------------------------------
 #define y_menu_HELP_TEXT \
