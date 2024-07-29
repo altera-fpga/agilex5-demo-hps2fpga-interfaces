@@ -1022,7 +1022,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value MEM_PRESET_FILE_QPRS_FSP0 {mem_preset_file_qprs_fsp0.qprs}
 	set_component_parameter_value MEM_PRESET_FILE_QPRS_FSP1 {mem_preset_file_qprs_fsp1.qprs}
 	set_component_parameter_value MEM_PRESET_FILE_QPRS_FSP2 {mem_preset_file_qprs_fsp2.qprs}
-	set_component_parameter_value MEM_PRESET_ID {DDR4-1866M_933MHz_CL13_alloff_component_1CS_DDP_32Gb_2Gx16}
+	set_component_parameter_value MEM_PRESET_ID {DDR4-1600L_800MHz_CL12_alloff_component_1CS_DDP_32Gb_2Gx16}
 	set_component_parameter_value MEM_PRESET_ID_AUTO_BOOL {0}
 	set_component_parameter_value MEM_PRESET_ID_FSP0 {DDR4-3200AA 1600MHz CL22 ParityxOFF DMxOFF WDBIxOFF RDBIxOFF Component 1CS 1D 8Gb 512M x16}
 	set_component_parameter_value MEM_PRESET_ID_FSP0_AUTO_BOOL {1}
@@ -1046,7 +1046,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value PHY_FSP0_EN {1}
 	set_component_parameter_value PHY_FSP1_EN {0}
 	set_component_parameter_value PHY_FSP2_EN {0}
-	set_component_parameter_value PHY_MEMCLK_FREQ_MHZ {933.0}
+	set_component_parameter_value PHY_MEMCLK_FREQ_MHZ {800.0}
 	set_component_parameter_value PHY_MEMCLK_FREQ_MHZ_AUTO_BOOL {0}
 	set_component_parameter_value PHY_MEMCLK_FSP0_FREQ_MHZ {1600.0}
 	set_component_parameter_value PHY_MEMCLK_FSP0_FREQ_MHZ_AUTO_BOOL {1}
@@ -1056,7 +1056,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value PHY_MEMCLK_FSP2_FREQ_MHZ_AUTO_BOOL {1}
 	set_component_parameter_value PHY_NOC_EN {0}
 	set_component_parameter_value PHY_NOC_EN_AUTO_BOOL {1}
-	set_component_parameter_value PHY_REFCLK_FREQ_MHZ {116.625}
+	set_component_parameter_value PHY_REFCLK_FREQ_MHZ {100.0}
 	set_component_parameter_value PHY_REFCLK_FREQ_MHZ_AUTO_BOOL {0}
 	set_component_parameter_value SHOW_INTERNAL_SETTINGS {0}
 	set_component_parameter_value SHOW_LPDDR4 {0}

@@ -46,7 +46,7 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name FAMILY "Agilex 5"
 set_global_assignment -name TOP_LEVEL_ENTITY no_pins_top
 set_global_assignment -name BOARD default
-set_global_assignment -name DEVICE A5ED065BB32AE5SR0
+set_global_assignment -name DEVICE A5ED065BB32AE6SR0
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
