@@ -8,7 +8,7 @@ package require -exact qsys 23.4
 source ./do_create_no_pins_pd_top.tcl
 
 # create the system "uart"
-source ../../common_pd_subsystems/do_create_uart.tcl
+source ./do_create_uart.tcl
 
 # create the system "no_periph"
 source ../../common_pd_subsystems/do_create_no_periph.tcl

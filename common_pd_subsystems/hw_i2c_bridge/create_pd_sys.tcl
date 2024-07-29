@@ -8,7 +8,7 @@ package require -exact qsys 23.4
 source ./do_create_no_pins_pd_top.tcl
 
 # create the system "i2c_bridge"
-source ../../common_pd_subsystems/do_create_i2c_bridge.tcl
+source ./do_create_i2c_bridge.tcl
 
 # create the system "no_periph"
 source ../../common_pd_subsystems/do_create_no_periph.tcl
