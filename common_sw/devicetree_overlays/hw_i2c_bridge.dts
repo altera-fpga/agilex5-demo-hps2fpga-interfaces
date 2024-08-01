@@ -7,7 +7,7 @@
 /plugin/;
 / {
 	fragment@0 {
-		target-path = "/soc/base_fpga_region";
+		target-path = "/soc@0/base_fpga_region";
 		__overlay__ {
 			firmware-name = "hw_i2c_bridge.rbf";
 			config-complete-timeout-us = <30000000>;

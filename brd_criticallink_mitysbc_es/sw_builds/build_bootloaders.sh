@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS24.1_REL_AGILEX5_GSRD_PR"
+TAG_NAME="QPDS24.2_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -91,7 +91,6 @@ ln -s ../arm-trusted-firmware/build/agilex5/release/bl31.bin \
 	|| { echo "ERROR" ; exit 1 ; }
 
 PATCH_FILES="
-../../../common_sw/u-boot_patches/v1-0001-HSD-15015933655-ddr-altera-agilex5-Hack-dual-port-DO-NOT-MERGE.patch \
 ../../../common_sw/u-boot_patches/include-exports.h.patch \
 ../../../common_sw/u-boot_patches/include-configs-socfpga_soc64_common.h.patch \
 ../../../common_sw/u-boot_patches/include-_exports.h.patch \

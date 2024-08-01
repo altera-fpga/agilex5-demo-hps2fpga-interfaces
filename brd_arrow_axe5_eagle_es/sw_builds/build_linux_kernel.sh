@@ -4,7 +4,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS24.1_REL_AGILEX5_GSRD_PR"
+TAG_NAME="QPDS24.2_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -67,7 +67,6 @@ make tinyconfig \
 
 # apply patches to the kernel sources
 PATCH_FILES="
-../../../common_sw/linux_patches/0001-Refactored-buffer-allocation-and-buffer-free-to-be-p.patch \
 ../../../common_sw/linux_patches/brd_arrow_axe5_eagle_es-arch-arm64-boot-dts-intel-socfpga_agilex5_socdk.dts.patch
 "
 for NEXT_PATCH in ${PATCH_FILES:?}

@@ -2,7 +2,7 @@ diff --git a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts b/arch/arm64/bo
 index 06d696b42..fe69b1480 100644
 --- a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
 +++ b/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
-@@ -272,3 +272,203 @@ input@40001 {
+@@ -273,3 +273,205 @@ input@40001 {
  		};
  	};
  };
@@ -28,9 +28,11 @@ index 06d696b42..fe69b1480 100644
 +};
 +
 +/* add hwmon voltage and temperature sensors for Agilex 5 */
-+/ { soc { firmware { svc {
++/ { soc@0 { firmware { svc {
 +	hwmon {
 +		compatible = "intel,soc64-hwmon";
++		/delete-node/ voltage;
++		/delete-node/ temperature;
 +		voltage {
 +			#address-cells = <1>;
 +			#size-cells = <0>;
@@ -148,7 +150,7 @@ index 06d696b42..fe69b1480 100644
 +}; }; }; };
 +
 +/* tune the temperature sensors for our device */
-+/ { soc { firmware { svc { hwmon {
++/ { soc@0 { firmware { svc { hwmon {
 +	temperature {
 +		/delete-node/ input@30004;
 +		/delete-node/ input@40002;

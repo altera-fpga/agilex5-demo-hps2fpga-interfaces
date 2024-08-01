@@ -28,11 +28,11 @@ fdt resize 1000    || echo ERROR: 4 && exit 1
 #	linux,uio-name = "hps-gp-uio";
 #};
 #
-fdt mknode /soc hps-gp@10D12000                           || echo ERROR: 5 && exit 1
-fdt set /soc/hps-gp@10D12000 compatible "no-pins,demo"    || echo ERROR: 6 && exit 1
-fdt set /soc/hps-gp@10D12000 reg <0x10D12000 0x00001000>  || echo ERROR: 7 && exit 1
-fdt set /soc/hps-gp@10D12000 reg-names "hps-gp"           || echo ERROR: 8 && exit 1
-fdt set /soc/hps-gp@10D12000 linux,uio-name "hps-gp-uio"  || echo ERROR: 9 && exit 1
+fdt mknode /soc@0 hps-gp@10D12000                           || echo ERROR: 5 && exit 1
+fdt set /soc@0/hps-gp@10D12000 compatible "no-pins,demo"    || echo ERROR: 6 && exit 1
+fdt set /soc@0/hps-gp@10D12000 reg <0x10D12000 0x00001000>  || echo ERROR: 7 && exit 1
+fdt set /soc@0/hps-gp@10D12000 reg-names "hps-gp"           || echo ERROR: 8 && exit 1
+fdt set /soc@0/hps-gp@10D12000 linux,uio-name "hps-gp-uio"  || echo ERROR: 9 && exit 1
 
 #
 # add a devicetree node for UIO driver
@@ -44,11 +44,11 @@ fdt set /soc/hps-gp@10D12000 linux,uio-name "hps-gp-uio"  || echo ERROR: 9 && ex
 #	linux,uio-name = "hps-ocram-uio";
 #};
 #
-fdt mknode /soc hps-ocram@0                              || echo ERROR: 10 && exit 1
-fdt set /soc/hps-ocram@0 compatible "no-pins,demo"       || echo ERROR: 11 && exit 1
-fdt set /soc/hps-ocram@0 reg <0x00000000 0x00080000>     || echo ERROR: 12 && exit 1
-fdt set /soc/hps-ocram@0 reg-names "hps-ocram"           || echo ERROR: 13 && exit 1
-fdt set /soc/hps-ocram@0 linux,uio-name "hps-ocram-uio"  || echo ERROR: 14 && exit 1
+fdt mknode /soc@0 hps-ocram@0                              || echo ERROR: 10 && exit 1
+fdt set /soc@0/hps-ocram@0 compatible "no-pins,demo"       || echo ERROR: 11 && exit 1
+fdt set /soc@0/hps-ocram@0 reg <0x00000000 0x00080000>     || echo ERROR: 12 && exit 1
+fdt set /soc@0/hps-ocram@0 reg-names "hps-ocram"           || echo ERROR: 13 && exit 1
+fdt set /soc@0/hps-ocram@0 linux,uio-name "hps-ocram-uio"  || echo ERROR: 14 && exit 1
 
 #
 # add a devicetree node for UIO driver
@@ -60,11 +60,11 @@ fdt set /soc/hps-ocram@0 linux,uio-name "hps-ocram-uio"  || echo ERROR: 14 && ex
 #	linux,uio-name = "sys-cntr-uio";
 #};
 #
-fdt mknode /soc system-counter@10D02000                             || echo ERROR: 15 && exit 1
-fdt set /soc/system-counter@10D02000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
-fdt set /soc/system-counter@10D02000 reg <0x10D02000 0x00001000>    || echo ERROR: 17 && exit 1
-fdt set /soc/system-counter@10D02000 reg-names "sys-cntr"           || echo ERROR: 18 && exit 1
-fdt set /soc/system-counter@10D02000 linux,uio-name "sys-cntr-uio"  || echo ERROR: 19 && exit 1
+fdt mknode /soc@0 system-counter@10D02000                             || echo ERROR: 15 && exit 1
+fdt set /soc@0/system-counter@10D02000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
+fdt set /soc@0/system-counter@10D02000 reg <0x10D02000 0x00001000>    || echo ERROR: 17 && exit 1
+fdt set /soc@0/system-counter@10D02000 reg-names "sys-cntr"           || echo ERROR: 18 && exit 1
+fdt set /soc@0/system-counter@10D02000 linux,uio-name "sys-cntr-uio"  || echo ERROR: 19 && exit 1
 
 #
 # add a devicetree node for UIO driver
@@ -76,11 +76,11 @@ fdt set /soc/system-counter@10D02000 linux,uio-name "sys-cntr-uio"  || echo ERRO
 #	linux,uio-name = "gicd-base-uio";
 #};
 #
-fdt mknode /soc gicd@1D000000                             || echo ERROR: 15 && exit 1
-fdt set /soc/gicd@1D000000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
-fdt set /soc/gicd@1D000000 reg <0x1D000000 0x00001000>    || echo ERROR: 17 && exit 1
-fdt set /soc/gicd@1D000000 reg-names "gicd-base"           || echo ERROR: 18 && exit 1
-fdt set /soc/gicd@1D000000 linux,uio-name "gicd-base-uio"  || echo ERROR: 19 && exit 1
+fdt mknode /soc@0 gicd@1D000000                             || echo ERROR: 15 && exit 1
+fdt set /soc@0/gicd@1D000000 compatible "no-pins,demo"      || echo ERROR: 16 && exit 1
+fdt set /soc@0/gicd@1D000000 reg <0x1D000000 0x00001000>    || echo ERROR: 17 && exit 1
+fdt set /soc@0/gicd@1D000000 reg-names "gicd-base"           || echo ERROR: 18 && exit 1
+fdt set /soc@0/gicd@1D000000 linux,uio-name "gicd-base-uio"  || echo ERROR: 19 && exit 1
 
 #
 # the default u-boot environment has a script called linux_qspi_enable that
