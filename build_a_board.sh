@@ -17,6 +17,8 @@ cd $(dirname ${0})
 	echo "    'brd_altera_a5e065_premium_es'"
 	echo "    'brd_arrow_axe5_eagle_es'"
 	echo "    'brd_criticallink_mitysbc_es'"
+	echo "    'brd_macnica_sulfur_es_125'"
+	echo "    'brd_macnica_sulfur_es_25'"
 	echo ""
 	exit 1
 }
