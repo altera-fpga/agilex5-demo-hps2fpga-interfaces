@@ -425,6 +425,21 @@ int main(void)
 		},
 		{
 			/* menu selection letter */
+			"T",
+			/* display name */
+			"hps emac - uio driver",
+			/* software name */
+			"emac",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_emac",
+			/* help text */
+			linux_T_menu_HELP_TEXT,
+			""
+		},
+		{
+			/* menu selection letter */
 			"",
 			/* display name */
 			"%s%s%80s",

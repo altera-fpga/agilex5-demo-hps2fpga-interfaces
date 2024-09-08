@@ -1,0 +1,97 @@
+diff --git a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+index dc9c552db76..0f84a226d8c 100644
+--- a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
++++ b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
+@@ -142,3 +142,91 @@
+ };
+ #endif
+ 
++/* adjust the default properties */
++
++&gpio0 {
++	status = "disabled";
++};
++
++&gpio1 {
++	status = "disabled";
++};
++
++&i2c0 {
++	status = "disabled";
++};
++
++&i2c1 {
++	status = "disabled";
++};
++
++&i2c3 {
++	status = "disabled";
++};
++
++&i3c0 {
++	status = "disabled";
++};
++
++&i3c1 {
++	status = "disabled";
++};
++
++&mmc {
++	status = "disabled";
++};
++
++&combophy0 {
++	status = "disabled";
++};
++
++&usbphy0 {
++	status = "disabled";
++};
++
++&usb0 {
++	status = "disabled";
++};
++
++&usb31 {
++	status = "disabled";
++};
++
++&spi0 {
++	status = "disabled";
++};
++
++&spi1 {
++	status = "disabled";
++};
++
++&nand {
++	status = "disabled";
++};
++
++&gmac0 {
++	status = "disabled";
++};
++
++&gmac2 {
++	status = "disabled";
++};
++
++/delete-node/ &root;
++
++&qspi_boot {
++	reg = <0x0 0x2000000>;
++};
++
++/ {
++	aliases {
++		/delete-property/ ethernet0;
++		/delete-property/ ethernet2;
++	};
++
++	/delete-node/ leds;
++
++	chosen {
++		u-boot,spl-boot-order = &flash0;
++	};
++};
+\ No newline at end of file

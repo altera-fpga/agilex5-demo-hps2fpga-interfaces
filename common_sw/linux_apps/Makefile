@@ -38,6 +38,7 @@ APP_SRCS := \
 ./armv8_regs.c \
 ./boot_app.c \
 ./config_clk.c \
+./emac.c \
 ./f2h_bridge.c \
 ./f2h_irq.c \
 ./f2h_irq_handler.c \
@@ -107,6 +108,15 @@ config_clk : config_clk.elf
 	$(STRIP) -s -o $@ $<
 
 config_clk.elf : config_clk.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# emac app
+#-------------------------------------------------------------------------------
+emac : emac.elf
+	$(STRIP) -s -o $@ $<
+
+emac.elf : emac.o uio_helpers.o
 	$(CC) -static $(CFLAGS) -o $@ $^
 
 #-------------------------------------------------------------------------------

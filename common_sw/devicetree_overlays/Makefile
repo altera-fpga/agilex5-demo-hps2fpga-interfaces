@@ -11,6 +11,7 @@ DTC := $(THE_DTC)
 
 DTSSRCS := \
 ./hw_config_clk.dts \
+./hw_emac.dts \
 ./hw_f2h_bridge.dts \
 ./hw_f2h_irq.dts \
 ./hw_f2sdram_bridge.dts \

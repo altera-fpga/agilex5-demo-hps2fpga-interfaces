@@ -426,6 +426,25 @@ SOFTWARE DEMO OVERVIEW\n\
     operations through the HPS I2C interface in the demo summary output."
 
 //------------------------------------------------------------------------------
+#define T_menu_HELP_TEXT \
+"HPS EMAC Demo\n\
+\n\
+HARDWARE DEMO OVERVIEW\n\
+    FPGA core logic design connects the HPS EMAC to a GMII loopback\n\
+    component.\n\
+\n\
+SOFTWARE DEMO OVERVIEW\n\
+    Demonstrates packet transmission through the internal loopback\n\
+    inside the HPS EMAC peripheral and the GMII loopback in the FPGA\n\
+    logic.  The demo creates DMA descriptors in HPS EMIF memory to\n\
+    transmit data from buffers in HPS EMIF memory through the HPS EMAC\n\
+    and receive loopback data into receive buffers in the HPS EMIF\n\
+    memory.\n\
+\n\
+    The demo reports the time required to transfer packets through the\n\
+    HPS EMAC interface in the demo summary output."
+
+//------------------------------------------------------------------------------
 #define c_menu_HELP_TEXT \
 "Exit to the u-boot console."
 

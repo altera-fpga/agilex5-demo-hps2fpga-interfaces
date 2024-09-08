@@ -77,6 +77,7 @@
 #define SMC_CMD_HWMON_READVOLT	(0xC2000021)
 #define SMC_CMD_GET_USERCODE	(0xC200003D)
 #define SMC_CMD_GET_CHIPID	(0xC2000065)
+#define SMC_CMD_SEC_REG_WR	(0xC2000008)
 
 /* hps peripherals memory mapped base addresses */
 #define SYSTEM_COUNTER_BASE	(0x10D02000)
@@ -217,6 +218,43 @@
 #define CMD_STOP		(0x200)
 #define CMD_RESTART		(0x400)
 
+/* hps emac base addresses */
+#define HPS_EMAC0_TX_BUF_BASE	(0xA0000000)
+#define HPS_EMAC0_RX_BUF_BASE	(0xA0010000)
+#define HPS_EMAC0_TX_DESC_BASE	(0xA0020000)
+#define HPS_EMAC0_RX_DESC_BASE	(0xA0030000)
+
+#define EMAC0_MAC_BASE			(0x10810000)
+#define MAC_Tx_Configuration_OFST	(0x00000000)
+#define MAC_Rx_Configuration_OFST	(0x00000004)
+#define MAC_Packet_Filter_OFST		(0x00000008)
+#define MAC_RxQ_Ctrl0_OFST		(0x000000A0)
+
+#define EMAC0_MTL_BASE			(0x10811000)
+#define MTL_TxQ0_Operation_Mode_OFST	(0x00000100)
+#define MTL_RxQ0_Operation_Mode_OFST	(0x00000140)
+
+#define EMAC0_DMA_BASE			(0x10813000)
+#define DMA_Mode_OFST			(0x00000000)
+#define DMA_SysBus_Mode_OFST		(0x00000004)
+
+#define EMAC0_DMA_CH0_BASE			(0x10813100)
+#define DMA_CH0_TX_Control_OFST			(0x00000004)
+#define DMA_CH0_RX_Control_OFST			(0x00000008)
+#define DMA_CH0_TxDesc_List_LAddress_OFST	(0x00000014)
+#define DMA_CH0_RxDesc_List_LAddress_OFST	(0x0000001C)
+#define DMA_CH0_TxDesc_Tail_LPointer_OFST	(0x00000024)
+#define DMA_CH0_RxDesc_Tail_LPointer_OFST	(0x0000002C)
+#define DMA_CH0_TX_Control2_OFST		(0x00000030)
+#define DMA_CH0_RX_Control2_OFST		(0x00000034)
+#define DMA_CH0_Status_OFST			(0x00000060)
+
+#define SYSMGR_TSN0_BASE		(0x10D12044)
+#define SYSMGR_TSN0_PHY_INTF_SEL_RESET	(0x00000003)
+#define SYSMGR_TSN0_PHY_INTF_SEL_GMII	(0x00000000)
+
+#define PER0MODRST_EMAC0		(0x00000001)
+
 /* hps_gp_in signatures */
 #define GPIO_SIG		(0x4F495047)
 #define IRQ_SIG			(0x20515249)
@@ -229,6 +267,7 @@
 #define SAMB_SIG		(0x424D4153)
 #define IAMB_SIG		(0x424D4149)
 #define F2H_SIG			(0x20483246)
+#define EMAC_SIG		(0x43414D45)
 
 /* jtag usercodes */
 #define USERCODE_ARROWAXE5	(0x11111111)

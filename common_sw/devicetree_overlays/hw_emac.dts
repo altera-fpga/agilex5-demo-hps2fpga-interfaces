@@ -1,0 +1,45 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/soc@0/base_fpga_region";
+		__overlay__ {
+			firmware-name = "hw_emac.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			#address-cells = <0x2>;
+			#size-cells = <0x2>;
+
+			rst-mgr@10D11000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x10D11000 0 0x00001000>;
+				reg-names = "rst-mgr";
+				linux,uio-name = "rst-mgr-uio";
+			};
+
+			sys-mgr@10D12000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x10D12000 0 0x00000500>;
+				reg-names = "sys-mgr";
+				linux,uio-name = "sys-mgr-uio";
+			};
+
+			emac-uio@10810000 {
+				compatible = "no-pins,demo";
+				reg = <0 0x10810000 0 0x00003500>;
+				reg-names = "emac-uio";
+				linux,uio-name = "emac-uio";
+			};
+		};
+	};
+};
+

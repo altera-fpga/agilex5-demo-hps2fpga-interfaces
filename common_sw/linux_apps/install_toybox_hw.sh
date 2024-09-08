@@ -47,6 +47,7 @@ cp ../../hw_a55_no_periph/merged_hps.core.rbf "${DEST_DIR:?}/hw_no_periph.rbf" \
 #
 RBF_DIRS="
 hw_config_clk
+hw_emac
 hw_f2h_bridge
 hw_f2h_irq
 hw_f2sdram_bridge

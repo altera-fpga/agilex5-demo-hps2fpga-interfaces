@@ -416,6 +416,20 @@ int boot_app(int argc, char *const argv[])
 		},
 		{
 			/* menu selection letter */
+			"T",
+			/* display name */
+			"hps emac",
+			/* software name */
+			"sw_emac",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_emac",
+			/* help text */
+			T_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
 			"",
 			/* display name */
 			"%s%s%80s",

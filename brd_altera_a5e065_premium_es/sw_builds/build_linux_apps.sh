@@ -60,6 +60,7 @@ SOURCES="
 ../../../common_sw/linux_apps/boot_app.c
 ../../../common_sw/linux_apps/cache_regs.c
 ../../../common_sw/linux_apps/config_clk.c
+../../../common_sw/linux_apps/emac.c
 ../../../common_sw/linux_apps/f2h_bridge.c
 ../../../common_sw/linux_apps/f2h_irq.c
 ../../../common_sw/linux_apps/f2h_irq_handler.c

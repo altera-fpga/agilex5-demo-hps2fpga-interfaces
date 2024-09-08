@@ -191,6 +191,18 @@
 			};
 		};
 
+		hw_emac {
+			description = "hw_emac";
+			data = /incbin/("../hw_emac/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
 		sw_boot_app {
 			description = "sw_boot_app";
 			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/boot_app.bin");
@@ -415,6 +427,19 @@
 		sw_uart {
 			description = "sw_uart";
 			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/uart.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_emac {
+			description = "sw_emac";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/emac.bin");
 			type = "standalone";
 			arch = "arm64";
 			compression = "none";

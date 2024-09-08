@@ -1,8 +1,8 @@
 diff --git a/examples/standalone/Makefile b/examples/standalone/Makefile
-index 559170dd5c..9d37580ba8 100644
+index 559170dd5c9..cfff6b06d66 100644
 --- a/examples/standalone/Makefile
 +++ b/examples/standalone/Makefile
-@@ -6,6 +6,26 @@
+@@ -6,6 +6,27 @@
  extra-y        := hello_world
  extra-$(CONFIG_SPI_FLASH_ATMEL)    += atmel_df_pow2
  extra-$(CONFIG_PPC)                += sched
@@ -10,6 +10,7 @@ index 559170dd5c..9d37580ba8 100644
 +extra-y += boot_app
 +extra-y += cache_regs
 +extra-y += config_clk
++extra-y += emac
 +extra-y += f2h_bridge
 +extra-y += f2h_irq
 +extra-y += f2h_irq_handler

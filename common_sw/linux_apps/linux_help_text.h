@@ -120,6 +120,12 @@
     it accesses.  The demo uses the native linux driver for the HPS I2C."
 
 //------------------------------------------------------------------------------
+#define linux_T_menu_HELP_TEXT T_menu_HELP_TEXT \
+"\n\n\
+    The demo uses UIO drivers to map the HPS peripheral addresses that\n\
+    it accesses."
+
+//------------------------------------------------------------------------------
 #define linux_c_menu_HELP_TEXT \
 "Exit to the linux console."
 

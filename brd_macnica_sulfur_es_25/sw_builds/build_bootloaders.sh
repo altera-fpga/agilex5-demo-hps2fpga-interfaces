@@ -86,9 +86,7 @@ PATCH_FILES="
 ../../../common_sw/u-boot_patches/include-_exports.h.patch \
 ../../../common_sw/u-boot_patches/examples-standalone-Makefile.patch \
 ../../../common_sw/u-boot_patches/examples-Makefile.patch \
-../../../common_sw/u-boot_patches/arch-arm-dts-socfpga_agilex5_socdk.dts.uart0.patch \
-../../../common_sw/u-boot_patches/arch-arm-dts-socfpga_agilex5_socdk-u-boot.dtsi.4gb.patch \
-../../../common_sw/u-boot_patches/arch-arm-dts-socfpga_agilex5_socdk-u-boot.dtsi.patch
+../../../common_sw/u-boot_patches/brd_macnica_sulfur_es_25-arch-arm-dts-socfpga_agilex5_socdk-u-boot.dtsi.patch
 "
 for NEXT_PATCH in ${PATCH_FILES:?}
 do
@@ -103,6 +101,7 @@ ln	-s \
 ../../../../../common_sw/u-boot_standalone_apps/boot_app.c \
 ../../../../../common_sw/u-boot_standalone_apps/cache_regs.c \
 ../../../../../common_sw/u-boot_standalone_apps/config_clk.c \
+../../../../../common_sw/u-boot_standalone_apps/emac.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_bridge.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_irq.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_irq_handler.c \

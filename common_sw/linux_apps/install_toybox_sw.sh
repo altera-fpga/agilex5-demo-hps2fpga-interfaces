@@ -43,6 +43,7 @@ SW_APPS="
 armv8_regs
 boot_app
 config_clk
+emac
 f2h_bridge
 f2h_irq
 f2h_irq_handler
