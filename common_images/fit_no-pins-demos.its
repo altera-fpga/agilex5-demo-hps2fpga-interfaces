@@ -536,6 +536,16 @@
 			};
 		};
 
+		script-reset {
+			description = "script-reset";
+			data = /incbin/("../../common_sw/u-boot_scripts/reset");
+			type = "script";
+			compression = "none";
+			hash {
+				algo = "crc32";
+			};
+		};
+
 		linux-kernel {
 			description = "linux-kernel";
 			data = /incbin/("../sw_builds/linux-socfpga/arch/arm64/boot/Image");

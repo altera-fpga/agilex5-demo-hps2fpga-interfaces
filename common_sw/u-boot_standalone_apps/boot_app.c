@@ -553,7 +553,20 @@ int boot_app(int argc, char *const argv[])
 			/* help text */
 			d_menu_HELP_TEXT
 		},
-		/* used menu letters: abcdefg_ijklmnopqrstuvwxyz57 */
+		{
+			/* menu selection letter */
+			"R",
+			/* display name */
+			"reset HPS",
+			/* software name */
+			"",
+			/* script name */
+			"script-reset",
+			/* hardware name */
+			"",
+			/* help text */
+			R_menu_HELP_TEXT
+		},
 		{
 			NULL,
 			NULL,

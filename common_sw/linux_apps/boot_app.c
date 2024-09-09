@@ -543,7 +543,36 @@ int main(void)
 			linux_j_menu_HELP_TEXT,
 			""
 		},
-		/* used menu letters: abcdefg_ijklmnopqrstuvwxyz57 */
+		{
+			/* menu selection letter */
+			"R",
+			/* display name */
+			"reboot HPS",
+			/* software name */
+			"",
+			/* script name */
+			"reboot",
+			/* hardware name */
+			"",
+			/* help text */
+			linux_R_menu_HELP_TEXT,
+			""
+		},
+		{
+			/* menu selection letter */
+			"P",
+			/* display name */
+			"poweroff HPS",
+			/* software name */
+			"",
+			/* script name */
+			"poweroff",
+			/* hardware name */
+			"",
+			/* help text */
+			linux_P_menu_HELP_TEXT,
+			""
+		},
 		{
 			NULL,
 			NULL,

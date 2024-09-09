@@ -491,4 +491,8 @@ address 0x8600_0000.  If it validates a demo.itb FIT image in memory, it\n\
 programs that image into the SDM QSPI flash so that it will be accessed\n\
 by the SSBL upon the next HPS reset."
 
+//------------------------------------------------------------------------------
+#define R_menu_HELP_TEXT \
+"Resets the HPS CPU by triggering a cold reset of HPS."
+
 #endif  /* __HELP_TEXT_H__ */

@@ -62,6 +62,8 @@ SCRIPTS_SCRIPTS="
 ../../../common_sw/toybox_scripts/prog-a55-rpd
 ../../../common_sw/toybox_scripts/prog-a76-rpd
 ../../../common_sw/toybox_scripts/read_sensors
+../../../common_sw/toybox_scripts/reboot
+../../../common_sw/toybox_scripts/poweroff
 "
 
 for NEXT in ${SCRIPTS_SCRIPTS:?}

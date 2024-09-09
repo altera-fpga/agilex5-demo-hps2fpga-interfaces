@@ -144,4 +144,13 @@
 //------------------------------------------------------------------------------
 #define linux_j_menu_HELP_TEXT j_menu_HELP_TEXT
 
+//------------------------------------------------------------------------------
+#define linux_R_menu_HELP_TEXT \
+"Execute the toybox reboot command, which will cold reset the HPS CPU."
+
+//------------------------------------------------------------------------------
+#define linux_P_menu_HELP_TEXT \
+"Execute the toybox poweroff command, which will shutdown and halt the\n\
+HPS CPU."
+
 #endif  /* __LINUX_HELP_TEXT_H__ */
