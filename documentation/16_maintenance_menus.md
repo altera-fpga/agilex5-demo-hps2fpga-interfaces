@@ -66,5 +66,11 @@ Verifies that HPS EMIF memory contains a valid u-boot.itb FIT image at address 0
 
 Verifies that HPS EMIF memory contains a valid demo.itb FIT image at address 0x8600_0000.  If it validates a demo.itb FIT image in memory, it programs that image into the SDM QSPI flash so that it will be accessed by the SSBL upon the next HPS reset.
 
+## reset HPS - menu-R
+
+#### OVERVIEW
+
+Executes the u-boot reset command which issues a cold reset of the HPS.
+
 ---
 Return to [**Index**](01_index.md)

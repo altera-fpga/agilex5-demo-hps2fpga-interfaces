@@ -43,7 +43,7 @@ When the demo boots on the development kit, it stops in u-boot and presents this
 
 ```text
         Running on board: Altera Premium Dev Kit
-                  Uptime: 0000d'00h'00m'16s'512ms'853us'162ns
+                  Uptime: 0000d'00h'00m'15s'183ms'653us'342ns
          Running on core: 0
                Core type: Cortex A55 r2p0 core
  Current exception level: EL2
@@ -68,11 +68,13 @@ When the demo boots on the development kit, it stops in u-boot and presents this
  r - h2f bridge default subordinate     p - f2sdram bridge
  b - f2h bridge                         k - hps uart
  f - hps spi bridge                     e - hps i2c bridge
+ T - hps emac
   ---------------------------------------------------| Maintenance Options |----
  c - exit to u-boot console             m - display menu
  5 - program a55 rpd image into flash   7 - program a76 rpd image into flash
  n - load no-peripheral FPGA image      j - load jamb FPGA image
  u - update u-boot.itb image in flash   d - update demos.itb image in flash
+ R - reset HPS
 
 Enter menu selection:
 ```
@@ -81,9 +83,9 @@ If you select menu-L from the u-boot demo application, then the system boots int
 
 ```text
         Running on board: Altera Premium Dev Kit
-                  Uptime: 0000d'00h'38m'33s'439ms'438us'220ns
+                  Uptime: 0000d'00h'00m'18s'388ms'965us'190ns
                Core type: Cortex A55 r2p0 core
-    Last Linux Boot Time: 2860587292.500 ns
+    Last Linux Boot Time: 2116628472.500 ns
 
      Linux Application Menu
   ------------------------------------------------------------------| Help |----
@@ -100,11 +102,12 @@ If you select menu-L from the u-boot demo application, then the system boots int
  b - f2h bridge                         k - hps uart - uio driver
  K - hps uart - linux driver            f - hps spi bridge - uio driver
  F - hps spi bridge - linux driver      e - hps i2c bridge - uio driver
- E - hps i2c bridge - linux driver
+ E - hps i2c bridge - linux driver      T - hps emac - uio driver
   ---------------------------------------------------| Maintenance Options |----
  c - exit to linux console              m - display menu
  5 - program a55 rpd image into flash   7 - program a76 rpd image into flash
  n - load no-peripheral FPGA image      j - load jamb FPGA image
+ R - reboot HPS                         P - poweroff HPS
 
 Enter menu selection:
 ```
@@ -134,6 +137,8 @@ Enter menu selection:
 * [**menu-f on hw_spi_bridge**](12_menu_f_hw_spi_bridge.md) - HPS SPI demo documentation, describes the hardware project design and software demos that interact through the HPS SPI perihperal into FPGA logic
 
 * [**menu-e on hw_i2c_bridge**](13_menu_e_hw_i2c_bridge.md) - HPS I2C demo documentation, describes the hardware project design and software demos that interact through the HPS I2C peripheral into FPGA logic
+
+* [**menu-T on hw_emac**](18_menu_T_hw_emac.md) - HPS EMAC demo documentation, describes the hardware project design and software demos that interact through the HPS EMAC peripheral into FPGA logic
 
 ## Software-only demo documentation
 
