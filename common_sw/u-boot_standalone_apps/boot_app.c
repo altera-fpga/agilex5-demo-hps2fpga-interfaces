@@ -751,6 +751,9 @@ menu_loop:
 		i++;
 	}
 
+	if(column == 1)
+		puts("\n");
+
 	puts("\n");
 	printf ("Enter menu selection:");
 
@@ -830,6 +833,9 @@ help_menu_loop:
 		}
 		i++;
 	}
+
+	if(column == 1)
+		puts("\n");
 
 	puts("\n");
 	printf ("Enter help menu selection:");
