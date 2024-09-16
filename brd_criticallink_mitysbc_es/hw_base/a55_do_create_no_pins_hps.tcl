@@ -240,7 +240,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value PPLL_VCO_Override_mhz {3200.0}
 	set_component_parameter_value Periph_clk_emac0_sel {250}
 	set_component_parameter_value Periph_clk_emac1_sel {50}
-	set_component_parameter_value Periph_clk_emac2_sel {50}
+	set_component_parameter_value Periph_clk_emac2_sel {250}
 	set_component_parameter_value Periph_clk_override {0}
 	set_component_parameter_value Periph_emac_ptp_freq_override {400.0}
 	set_component_parameter_value Periph_emac_ptp_src_override {7}
