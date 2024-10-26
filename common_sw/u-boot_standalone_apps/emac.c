@@ -293,6 +293,9 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac) {
 		rx_descriptors[i].desc3 = 0x80000000;
 	}
 
+	/* enable interrupt from last RX descriptor */
+	rx_descriptors[i-1].desc3 |= 0x40000000;
+
 	/* null the last tx descriptor in the ring */
 	tx_descriptors[i].desc0 = 0;
 	tx_descriptors[i].desc1 = 0;
@@ -481,7 +484,7 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac) {
 
 	temp_32 = *((volatile uint32_t *)(EMAC0_DMA_CH0_BASE +
 							DMA_CH0_Status_OFST));
-	while(temp_32 != 0x00000084) {
+	while((temp_32 & 0x00000040) == 0) {
 		asm volatile (
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
@@ -600,6 +603,9 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac) {
 		/* rx desc3 - OWN, reserved */
 		rx_descriptors[i].desc3 = 0x80000000;
 	}
+
+	/* enable interrupt from last RX descriptor */
+	rx_descriptors[i-1].desc3 |= 0x40000000;
 
 	/* null the last tx descriptor in the ring */
 	tx_descriptors[i].desc0 = 0;
@@ -789,7 +795,7 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac) {
 
 	temp_32 = *((volatile uint32_t *)(EMAC0_DMA_CH0_BASE +
 							DMA_CH0_Status_OFST));
-	while(temp_32 != 0x00000084) {
+	while((temp_32 & 0x00000040) == 0) {
 		asm volatile (
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
