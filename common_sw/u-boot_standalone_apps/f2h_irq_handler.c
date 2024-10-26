@@ -222,6 +222,7 @@ void do_the_interesting_thing(struct f2h_irq_hndlr_s *f2h_irq_hndlr) {
 		/* mark the time */
 		asm volatile (
 			"dsb sy\n"
+			"isb\n"
 			"mrs %[start_time], cntpct_el0\n"
 			: [start_time] "=r" (start_time)
 		);
@@ -232,6 +233,8 @@ void do_the_interesting_thing(struct f2h_irq_hndlr_s *f2h_irq_hndlr) {
 		end_time = start_time + (cntfrq_el0 / 1000);
 		while(*((volatile uint32_t *)(HPS_GP_OUT_BASE)) != 0) {
 			asm volatile (
+				"dsb sy\n"
+				"isb\n"
 				"mrs %[temp_time], cntpct_el0\n"
 				: [temp_time] "=r" (temp_time)
 			);
@@ -242,6 +245,7 @@ void do_the_interesting_thing(struct f2h_irq_hndlr_s *f2h_irq_hndlr) {
 		/* mark the time */
 		asm volatile (
 			"dsb sy\n"
+			"isb\n"
 			"mrs %[end_time], cntpct_el0\n"
 			: [end_time] "=r" (end_time)
 		);
@@ -319,14 +323,16 @@ void my_exception_vectors(void) {
 		"curr_el_spx_irq:\n"
 			"stp x0, x1, [sp, #-16]!\n"
 			"adr x0, Vector_table_el3\n"
+			"dsb sy\n"
+			"isb\n"
 			"mrs x1, cntpct_el0\n"
 			"str x1, [x0, #8]!\n"
 			"mrs x1, S3_0_C12_C12_0\n" // icc_iar1_el1
 			"str x1, [x0, #8]!\n"
 			"ldr x0, =0x10D120E4\n"
 			"str wzr, [x0]\n"
-			"isb\n"
 			"dsb sy\n"
+			"isb\n"
 			"msr S3_0_C12_C12_1, x1\n" // icc_eoir1_el1
 			"ldp x0, x1, [sp], #16\n"
 			"eret\n"

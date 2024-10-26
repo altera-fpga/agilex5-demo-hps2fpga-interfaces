@@ -160,6 +160,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntpct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -167,6 +169,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -185,12 +189,16 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntpct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -218,6 +226,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 							HPS_UART_RBR_OFST)));
 
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -231,6 +241,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -258,6 +270,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntpct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -265,6 +279,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -283,12 +299,16 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntpct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -316,6 +336,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 							HPS_UART_RBR_OFST)));
 
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntpct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -329,6 +351,8 @@ void do_the_interesting_thing(struct hps_uart_s *hps_uart) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);

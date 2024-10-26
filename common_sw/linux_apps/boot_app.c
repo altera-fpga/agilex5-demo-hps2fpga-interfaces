@@ -586,6 +586,8 @@ int main(void)
 
 menu_loop:
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[cntvct_el0], cntvct_el0\n"
 		: [cntvct_el0] "=r" (cntvct_el0)
 	);

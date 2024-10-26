@@ -591,6 +591,8 @@ int boot_app(int argc, char *const argv[])
 
 menu_loop:
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[cntpct_el0], cntpct_el0\n"
 		: [cntpct_el0] "=r" (cntpct_el0)
 	);

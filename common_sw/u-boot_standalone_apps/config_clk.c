@@ -113,6 +113,8 @@ void do_the_interesting_thing(struct config_clk_s *config_clk) {
 
 	/* aquire generic timer value and config clock counter */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -123,6 +125,8 @@ void do_the_interesting_thing(struct config_clk_s *config_clk) {
 	do {
 		/* aquire generic timer value and config clock counter */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[cur_time], cntpct_el0\n"
 			: [cur_time] "=r" (cur_time)
 		);

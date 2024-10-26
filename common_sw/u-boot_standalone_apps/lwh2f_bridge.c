@@ -198,6 +198,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* write to first word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -206,6 +208,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -215,6 +219,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* write to last word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -223,6 +229,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -232,6 +240,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* read from first word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -240,6 +250,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -250,6 +262,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* read from last word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -258,6 +272,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -269,6 +285,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* write to first word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -277,6 +295,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -286,6 +306,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* write to last word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -294,6 +316,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -303,6 +327,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* read from first word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -311,6 +337,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -321,6 +349,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 /* read from last word */
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -329,6 +359,8 @@ void do_the_interesting_thing(struct lwh2f_bridge_s *lwh2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);

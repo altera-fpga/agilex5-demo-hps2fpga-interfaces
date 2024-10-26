@@ -491,11 +491,14 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 	/* wait for software reset to clear or timeout */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -503,6 +506,8 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -597,12 +602,15 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	/* wait for the DMA to idle, timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -612,6 +620,8 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 		((EMAC0_DMA_CH0_BASE + DMA_CH0_Status_OFST) & 0x3FFF)));
 	while((temp_32 & 0x00000040) == 0) {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -626,6 +636,7 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -644,6 +655,7 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -659,6 +671,7 @@ void do_the_interesting_thing(struct hps_emac_s *hps_emac,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);

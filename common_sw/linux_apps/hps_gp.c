@@ -204,6 +204,8 @@ void do_the_interesting_thing(struct hps_gp_s *hps_gp,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[start_time], cntvct_el0\n"
 			: [start_time] "=r" (start_time)
 		);
@@ -214,6 +216,8 @@ void do_the_interesting_thing(struct hps_gp_s *hps_gp,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[end_time], cntvct_el0\n"
 			: [end_time] "=r" (end_time)
 		);
@@ -222,6 +226,8 @@ void do_the_interesting_thing(struct hps_gp_s *hps_gp,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[start_time], cntvct_el0\n"
 			: [start_time] "=r" (start_time)
 		);
@@ -232,6 +238,8 @@ void do_the_interesting_thing(struct hps_gp_s *hps_gp,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[end_time], cntvct_el0\n"
 			: [end_time] "=r" (end_time)
 		);

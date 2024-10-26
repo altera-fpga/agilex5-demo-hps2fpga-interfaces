@@ -487,12 +487,15 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	/* wait for the DMA to idle, timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -504,6 +507,8 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 			((F2SDRAM_OCRAM_32K_SPAN * 2) - 1))))[0];
 	while((temp_32 & 0x00000001) == 0x00000001) {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -520,6 +525,7 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -562,12 +568,15 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
 
 	/* wait for the DMA to idle, timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -578,6 +587,8 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 		((F2SDRAM_OCRAM_32K_SPAN * 2) - 1))))[0];
 	while((temp_32 & 0x00000001) == 0x00000001) {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -594,6 +605,7 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -609,6 +621,7 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -623,6 +636,7 @@ void do_the_interesting_thing(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -761,6 +775,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -774,6 +789,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -860,6 +876,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -873,6 +890,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -919,6 +937,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -933,6 +952,7 @@ void do_the_interesting_thing_irq(struct f2sdram_bridge_s *f2sdram_bridge,
 	/* mark the time */
 	asm volatile (
 		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);

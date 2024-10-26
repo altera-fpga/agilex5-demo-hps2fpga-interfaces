@@ -303,6 +303,8 @@ void do_the_interesting_thing(struct f2h_irq_s *f2h_irq,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[start_time], cntvct_el0\n"
 			: [start_time] "=r" (start_time)
 		);
@@ -317,6 +319,8 @@ void do_the_interesting_thing(struct f2h_irq_s *f2h_irq,
 
 		/* mark the time */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[end_time], cntvct_el0\n"
 			: [end_time] "=r" (end_time)
 		);

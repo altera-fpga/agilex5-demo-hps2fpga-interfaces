@@ -195,6 +195,8 @@ void do_the_interesting_thing(struct h2f_bridge_s *h2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntpct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -213,6 +215,8 @@ void do_the_interesting_thing(struct h2f_bridge_s *h2f_bridge) {
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntpct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -258,6 +262,8 @@ void my_exception_vectors(void) {
 			"add x0, x0, #4\n"
 			"msr elr_el2, x0\n"
 			"adr x0, Vector_table_el3\n"
+			"dsb sy\n"
+			"isb\n"
 			"mrs x1, cntpct_el0\n"
 			"str x1, [x0, #8]!\n"
 			"ldp x0, x1, [sp], #16\n"
@@ -275,6 +281,8 @@ void my_exception_vectors(void) {
 			"add x0, x0, #4\n"
 			"msr elr_el2, x0\n"
 			"adr x0, Vector_table_el3\n"
+			"dsb sy\n"
+			"isb\n"
 			"mrs x1, cntpct_el0\n"
 			"str x1, [x0, #8]!\n"
 			"ldp x0, x1, [sp], #16\n"

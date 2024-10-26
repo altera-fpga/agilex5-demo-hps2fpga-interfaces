@@ -292,6 +292,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -299,6 +301,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -324,6 +328,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -332,6 +338,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -345,6 +353,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -353,6 +363,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -376,6 +388,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -384,6 +398,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -397,6 +413,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[start_time], cntvct_el0\n"
 		: [start_time] "=r" (start_time)
 	);
@@ -411,6 +429,8 @@ void do_the_interesting_thing(struct hps_i2c_s *hps_i2c,
 
 	/* mark the time */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[end_time], cntvct_el0\n"
 		: [end_time] "=r" (end_time)
 	);
@@ -502,6 +522,8 @@ int i2c_write_image(uint32_t write_addr, uint8_t *write_data,
 
 		/* create a timeout after 100ms */
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -511,6 +533,8 @@ int i2c_write_image(uint32_t write_addr, uint8_t *write_data,
 			/* wait for i2c0 tx fifo below 5 */
 			do {
 				asm volatile (
+					"dsb sy\n"
+					"isb\n"
 					"mrs %[temp], cntvct_el0\n"
 					: [temp] "=r" (temp)
 				);
@@ -534,6 +558,8 @@ int i2c_write_image(uint32_t write_addr, uint8_t *write_data,
 
 	/* create a timeout after 100ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -542,6 +568,8 @@ int i2c_write_image(uint32_t write_addr, uint8_t *write_data,
 	/* wait for idle status i2c0 */
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -613,6 +641,8 @@ int i2c_write_reg32(uint32_t write_addr, uint32_t write_data,
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -621,6 +651,8 @@ int i2c_write_reg32(uint32_t write_addr, uint32_t write_data,
 	/* wait for idle status i2c0 */
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
@@ -688,6 +720,8 @@ int i2c_read_reg32(uint32_t read_addr, uint32_t *read_data,
 
 	/* create a timeout after 1ms */
 	asm volatile (
+		"dsb sy\n"
+		"isb\n"
 		"mrs %[temp], cntvct_el0\n"
 		: [temp] "=r" (temp)
 	);
@@ -696,6 +730,8 @@ int i2c_read_reg32(uint32_t read_addr, uint32_t *read_data,
 	/* wait for idle status i2c0 */
 	do {
 		asm volatile (
+			"dsb sy\n"
+			"isb\n"
 			"mrs %[temp], cntvct_el0\n"
 			: [temp] "=r" (temp)
 		);
