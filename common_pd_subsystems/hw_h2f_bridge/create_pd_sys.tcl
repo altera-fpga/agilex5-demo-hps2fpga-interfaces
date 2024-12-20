@@ -2,7 +2,7 @@
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-License-Identifier: MIT-0
 #
-package require -exact qsys 23.4
+package require -exact qsys 24.3
 
 # create the system "no_pins_pd_top"
 source ./do_create_no_pins_pd_top.tcl

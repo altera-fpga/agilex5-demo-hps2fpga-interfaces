@@ -6,7 +6,7 @@ proc do_create_uart {} {
 	# create the system
 	create_system uart
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -194,8 +194,9 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value irq irqScheme {NONE}
 	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
 	save_instantiation
-	add_component niosv_c ip/no_pins_pd_top/niosv_c.ip intel_niosv_c niosv_c 1.2.0
+	add_component niosv_c ip/no_pins_pd_top/niosv_c.ip intel_niosv_c niosv_c 2.0.0
 	load_component niosv_c
+	set_component_parameter_value enableAvalonInterface {0}
 	set_component_parameter_value enableECCLite {0}
 	set_component_parameter_value numGpr {32}
 	set_component_parameter_value resetOffset {0}
@@ -245,9 +246,11 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
+	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
 	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {1}
 	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
@@ -282,9 +285,11 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value data_manager associatedReset {reset}
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value data_manager dataCheck {false}
+	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value data_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value data_manager poison {false}
 	set_instantiation_interface_parameter_value data_manager readIssuingCapability {1}
 	set_instantiation_interface_parameter_value data_manager securityAttribute {false}
@@ -314,7 +319,7 @@ proc do_create_uart {} {
 	add_instantiation_interface_port data_manager data_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port data_manager data_manager_rready rready 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.8
+	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.9
 	load_component ocram_8k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -533,7 +538,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value lw_uart.external_connection/xlate_uart.fpga_uart_io width {0}
 	add_connection niosv_c.data_manager/lw_uart.s1
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 addressMapSysInfo {<address-map><slave name='lw_uart.s1' start='0x1000' end='0x1020' datawidth='16' /><slave name='ocram_8k.axi_s1' start='0x2000' end='0x4000' datawidth='32' /></address-map>}
-	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 addressWidthSysInfo {14}
+	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 baseAddress {0x1000}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 defaultConnection {0}
@@ -556,7 +561,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 slaveDataWidthSysInfo {-1}
 	add_connection niosv_c.data_manager/ocram_8k.axi_s1
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 addressMapSysInfo {<address-map><slave name='lw_uart.s1' start='0x1000' end='0x1020' datawidth='16' /><slave name='ocram_8k.axi_s1' start='0x2000' end='0x4000' datawidth='32' /></address-map>}
-	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 addressWidthSysInfo {14}
+	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 baseAddress {0x2000}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 defaultConnection {0}
@@ -579,7 +584,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 slaveDataWidthSysInfo {-1}
 	add_connection niosv_c.instruction_manager/ocram_8k.axi_s1
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 addressMapSysInfo {<address-map><slave name='ocram_8k.axi_s1' start='0x2000' end='0x4000' datawidth='32' /></address-map>}
-	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 addressWidthSysInfo {14}
+	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 baseAddress {0x2000}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 defaultConnection {0}

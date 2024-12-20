@@ -42,18 +42,18 @@ no_pins_pd_top hps_system (
 	.hps_io_uart0_tx    (HPS_UART0_TX),
 	.hps_io_uart0_rx    (HPS_UART0_RX),
 
-	.emif_bank3a_hps_emif_ref_clk_0_clk     (LPDDR4A_REFCK_p),
-	.emif_bank3a_hps_emif_mem_0_mem_ck_t    (LPDDR4A_CK_P),
-	.emif_bank3a_hps_emif_mem_0_mem_ck_c    (LPDDR4A_CK_N),
-	.emif_bank3a_hps_emif_mem_0_mem_cke     (LPDDR4A_CKE),
-	.emif_bank3a_hps_emif_mem_0_mem_reset_n (LPDDR4A_RST),
-	.emif_bank3a_hps_emif_mem_0_mem_cs      (LPDDR4A_CS_N),
-	.emif_bank3a_hps_emif_mem_0_mem_ca      (LPDDR4A_CA),
-	.emif_bank3a_hps_emif_mem_0_mem_dq      (LPDDR4A_DQ),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_t   ({LPDDR4A_DQSB1_p, LPDDR4A_DQSB0_p, LPDDR4A_DQSA1_p, LPDDR4A_DQSA0_p}),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_c   ({LPDDR4A_DQSB1_n, LPDDR4A_DQSB0_n, LPDDR4A_DQSA1_n, LPDDR4A_DQSA0_n}),
-	.emif_bank3a_hps_emif_mem_0_mem_dmi     ({LPDDR4A_DMB1,LPDDR4A_DMB0,LPDDR4A_DMA1,LPDDR4A_DMA0}),
-	.emif_bank3a_hps_emif_oct_0_oct_rzqin   (LPDDR4A_OCT_RZQIN)
+	.emif_bank3a_hps_ref_clk_clk             (LPDDR4A_REFCK_p),
+	.emif_bank3a_hps_mem_ck_0_mem_ck_t       (LPDDR4A_CK_P),
+	.emif_bank3a_hps_mem_ck_0_mem_ck_c       (LPDDR4A_CK_N),
+	.emif_bank3a_hps_mem_0_mem_cke           (LPDDR4A_CKE),
+	.emif_bank3a_hps_mem_reset_n_mem_reset_n (LPDDR4A_RST),
+	.emif_bank3a_hps_mem_0_mem_cs            (LPDDR4A_CS_N),
+	.emif_bank3a_hps_mem_0_mem_ca            (LPDDR4A_CA),
+	.emif_bank3a_hps_mem_0_mem_dq            (LPDDR4A_DQ),
+	.emif_bank3a_hps_mem_0_mem_dqs_t         ({LPDDR4A_DQSB1_p, LPDDR4A_DQSB0_p, LPDDR4A_DQSA1_p, LPDDR4A_DQSA0_p}),
+	.emif_bank3a_hps_mem_0_mem_dqs_c         ({LPDDR4A_DQSB1_n, LPDDR4A_DQSB0_n, LPDDR4A_DQSA1_n, LPDDR4A_DQSA0_n}),
+	.emif_bank3a_hps_mem_0_mem_dmi           ({LPDDR4A_DMB1,LPDDR4A_DMB0,LPDDR4A_DMA1,LPDDR4A_DMA0}),
+	.emif_bank3a_hps_oct_0_oct_rzqin         (LPDDR4A_OCT_RZQIN)
 );
 
 endmodule

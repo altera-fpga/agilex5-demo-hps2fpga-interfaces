@@ -36,6 +36,7 @@ cd $(dirname ${0})
 (
 ln -s ../hw_base/custom_ip.ipx . && \
 quartus_sh --script=../hw_base/create_quartus_project.tcl && \
+quartus_sh --script=add_jtag_sdc.tcl && \
 qsys-script --quartus-project=no_pins_top --script=create_pd_sys.tcl && \
 qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=no_pins_pd_top.qsys && \
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=no_pins_pd_top.qsys && \

@@ -33,18 +33,18 @@ no_pins_pd_top hps_system (
 	.hps_io_uart1_tx    (i_uart1_tx),
 	.hps_io_uart1_rx    (i_uart1_rx),
 
-	.emif_bank3a_hps_emif_ref_clk_0_clk     (i_hps_emif_ref_clk),
-	.emif_bank3a_hps_emif_mem_0_mem_ck_t    (hps_mem_ck_t),
-	.emif_bank3a_hps_emif_mem_0_mem_ck_c    (hps_mem_ck_c),
-	.emif_bank3a_hps_emif_mem_0_mem_cke     (hps_mem_cke),
-	.emif_bank3a_hps_emif_mem_0_mem_reset_n (hps_mem_reset_n),
-	.emif_bank3a_hps_emif_mem_0_mem_cs      (hps_mem_cs),
-	.emif_bank3a_hps_emif_mem_0_mem_ca      (hps_mem_ca),
-	.emif_bank3a_hps_emif_mem_0_mem_dq      (hps_mem_dq),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_t   (hps_mem_dqs_t),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_c   (hps_mem_dqs_c),
-	.emif_bank3a_hps_emif_mem_0_mem_dmi     (hps_mem_dmi),
-	.emif_bank3a_hps_emif_oct_0_oct_rzqin   (hps_oct_rzqin)
+	.emif_bank3a_hps_ref_clk_clk             (i_hps_emif_ref_clk),
+	.emif_bank3a_hps_mem_ck_0_mem_ck_t       (hps_mem_ck_t),
+	.emif_bank3a_hps_mem_ck_0_mem_ck_c       (hps_mem_ck_c),
+	.emif_bank3a_hps_mem_0_mem_cke           (hps_mem_cke),
+	.emif_bank3a_hps_mem_reset_n_mem_reset_n (hps_mem_reset_n),
+	.emif_bank3a_hps_mem_0_mem_cs            (hps_mem_cs),
+	.emif_bank3a_hps_mem_0_mem_ca            (hps_mem_ca),
+	.emif_bank3a_hps_mem_0_mem_dq            (hps_mem_dq),
+	.emif_bank3a_hps_mem_0_mem_dqs_t         (hps_mem_dqs_t),
+	.emif_bank3a_hps_mem_0_mem_dqs_c         (hps_mem_dqs_c),
+	.emif_bank3a_hps_mem_0_mem_dmi           (hps_mem_dmi),
+	.emif_bank3a_hps_oct_0_oct_rzqin         (hps_oct_rzqin)
 );
 
 endmodule

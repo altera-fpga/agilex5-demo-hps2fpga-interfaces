@@ -6,7 +6,7 @@ proc do_create_lwh2f_bridge {} {
 	# create the system
 	create_system lwh2f_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -135,7 +135,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
 	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_2k_0 ip/no_pins_pd_top/ocram_2k_0.ip intel_onchip_memory ocram_2k_0 1.4.8
+	add_component ocram_2k_0 ip/no_pins_pd_top/ocram_2k_0.ip intel_onchip_memory ocram_2k_0 1.4.9
 	load_component ocram_2k_0
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -270,7 +270,7 @@ proc do_create_lwh2f_bridge {} {
 	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
 	save_instantiation
-	add_component ocram_2k_1 ip/no_pins_pd_top/ocram_2k_1.ip intel_onchip_memory ocram_2k_1 1.4.8
+	add_component ocram_2k_1 ip/no_pins_pd_top/ocram_2k_1.ip intel_onchip_memory ocram_2k_1 1.4.9
 	load_component ocram_2k_1
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -405,7 +405,7 @@ proc do_create_lwh2f_bridge {} {
 	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
 	save_instantiation
-	add_component sysid ip/lwh2f_bridge/sysid.ip altera_avalon_sysid_qsys sysid 19.1.6
+	add_component sysid ip/lwh2f_bridge/sysid.ip altera_avalon_sysid_qsys sysid 19.1.7
 	load_component sysid
 	set_component_parameter_value id {843601740}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}

@@ -6,7 +6,7 @@ proc do_create_f2sdram_bridge {} {
 	# create the system
 	create_system f2sdram_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -142,12 +142,14 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_man associatedReset {reset}
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
+	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_man noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
@@ -472,12 +474,14 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value m0 associatedReset {reset}
 	set_instantiation_interface_parameter_value m0 combinedIssuingCapability {32}
 	set_instantiation_interface_parameter_value m0 dataCheck {false}
+	set_instantiation_interface_parameter_value m0 enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value m0 issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value m0 issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value m0 issuesWRAPBursts {false}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value m0 noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value m0 poison {false}
 	set_instantiation_interface_parameter_value m0 readIssuingCapability {16}
 	set_instantiation_interface_parameter_value m0 securityAttribute {false}
@@ -748,6 +752,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value mm_read dBSBigEndian {false}
 	set_instantiation_interface_parameter_value mm_read doStreamReads {false}
 	set_instantiation_interface_parameter_value mm_read doStreamWrites {false}
+	set_instantiation_interface_parameter_value mm_read enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value mm_read holdTime {0}
 	set_instantiation_interface_parameter_value mm_read interleaveBursts {false}
 	set_instantiation_interface_parameter_value mm_read isAsynchronous {false}
@@ -791,6 +796,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value mm_write dBSBigEndian {false}
 	set_instantiation_interface_parameter_value mm_write doStreamReads {false}
 	set_instantiation_interface_parameter_value mm_write doStreamWrites {false}
+	set_instantiation_interface_parameter_value mm_write enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value mm_write holdTime {0}
 	set_instantiation_interface_parameter_value mm_write interleaveBursts {false}
 	set_instantiation_interface_parameter_value mm_write isAsynchronous {false}
@@ -820,7 +826,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port mm_write mm_write_waitrequest waitrequest 1 STD_LOGIC Input
 	add_instantiation_interface_port mm_write mm_write_burstcount burstcount 8 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.8
+	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.9
 	load_component ocram_32k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -980,7 +986,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.6
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.7
 	load_component sysid
 	set_component_parameter_value id {1146303046}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}

@@ -6,7 +6,7 @@ proc do_create_i2c_bridge {} {
 	# create the system
 	create_system i2c_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -101,6 +101,7 @@ proc do_create_i2c_bridge {} {
 	set_instantiation_interface_parameter_value avalon_master dBSBigEndian {false}
 	set_instantiation_interface_parameter_value avalon_master doStreamReads {false}
 	set_instantiation_interface_parameter_value avalon_master doStreamWrites {false}
+	set_instantiation_interface_parameter_value avalon_master enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value avalon_master holdTime {0}
 	set_instantiation_interface_parameter_value avalon_master interleaveBursts {false}
 	set_instantiation_interface_parameter_value avalon_master isAsynchronous {false}
@@ -144,7 +145,7 @@ proc do_create_i2c_bridge {} {
 	add_instantiation_interface_port conduit_end i2c_data_oe conduit_data_oe 1 STD_LOGIC Output
 	add_instantiation_interface_port conduit_end i2c_clk_oe conduit_clk_oe 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.8
+	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.9
 	load_component ocram_4k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}

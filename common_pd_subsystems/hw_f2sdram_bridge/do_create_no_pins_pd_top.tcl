@@ -6,7 +6,7 @@ proc do_create_no_pins_pd_top {} {
 	# create the system
 	create_system no_pins_pd_top
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -34,7 +34,7 @@ proc do_create_no_pins_pd_top {} {
 	add_instance f2sdram_bridge f2sdram_bridge
 	add_instance no_periph no_periph
 	add_instance no_pins_hps no_pins_hps
-	add_component usermode_entry ip/no_pins_pd_top/no_pins_pd_top_usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.0
+	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.0
 	load_component usermode_entry
 	set_component_parameter_value outputType {Reset Interface}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -123,7 +123,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.responseFifoType {REGISTER_BASED}
@@ -146,7 +146,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
@@ -169,7 +169,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.responseFifoType {REGISTER_BASED}
@@ -192,39 +192,39 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 slaveDataWidthSysInfo {256}
-	add_connection no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressMapSysInfo {<address-map><slave name='no_pins_hps/agilex_5_soc.fpga2hps' start='0x0' end='0x100000000' datawidth='256' /></address-map>}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.clockCrossingAdapter {HANDSHAKE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableAllPipelines {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.maxAdditionalLatency {1}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {256}
-	add_connection no_pins_hps.agilex_5_soc_fpga2hps_interrupt/f2sdram_bridge.msgdma_256b_csr_irq
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_fpga2hps_interrupt/f2sdram_bridge.msgdma_256b_csr_irq interruptsUsedSysInfo {1}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_fpga2hps_interrupt/f2sdram_bridge.msgdma_256b_csr_irq irqNumber {0}
+	add_connection no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressMapSysInfo {<address-map><slave name='no_pins_hps/agilex_5_soc.fpga2hps' start='0x0' end='0x100000000' datawidth='256' /></address-map>}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {256}
+	add_connection no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq0/f2sdram_bridge.msgdma_256b_csr_irq
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq0/f2sdram_bridge.msgdma_256b_csr_irq interruptsUsedSysInfo {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq0/f2sdram_bridge.msgdma_256b_csr_irq irqNumber {0}
 	add_connection no_pins_hps.agilex_5_soc_h2f_reset/f2sdram_bridge.reset_br_in_reset
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/f2sdram_bridge.reset_br_in_reset clockDomainSysInfo {2}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/f2sdram_bridge.reset_br_in_reset clockResetSysInfo {<info><reset name="reset_br_in_reset" domain="0" /></info>}
@@ -271,7 +271,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.responseFifoType {REGISTER_BASED}
@@ -294,7 +294,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.responseFifoType {REGISTER_BASED}
@@ -317,7 +317,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.responseFifoType {REGISTER_BASED}
@@ -340,7 +340,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
@@ -363,7 +363,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.maxAdditionalLatency {4}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.responseFifoType {REGISTER_BASED}
@@ -407,15 +407,18 @@ proc do_create_no_pins_pd_top {} {
 	set_interface_property spim0 EXPORT_OF no_pins_hps.agilex_5_soc_spim0
 	set_interface_property spim0_sclk_out EXPORT_OF no_pins_hps.agilex_5_soc_spim0_sclk_out
 	set_interface_property uart1 EXPORT_OF no_pins_hps.agilex_5_soc_uart1
-	set_interface_property i2c0_scl_i EXPORT_OF no_pins_hps.agilex_5_soc_I2C0_scl_i
-	set_interface_property i2c0_scl_oe EXPORT_OF no_pins_hps.agilex_5_soc_I2C0_scl_oe
-	set_interface_property i2c0 EXPORT_OF no_pins_hps.agilex_5_soc_I2C0
+	set_interface_property i2c0_scl_i EXPORT_OF no_pins_hps.agilex_5_soc_i2c0_scl_i
+	set_interface_property i2c0_scl_oe EXPORT_OF no_pins_hps.agilex_5_soc_i2c0_scl_oe
+	set_interface_property i2c0 EXPORT_OF no_pins_hps.agilex_5_soc_i2c0
 	set_interface_property h2f_user0_clk EXPORT_OF no_pins_hps.agilex_5_soc_h2f_user0_clk
 	set_interface_property h2f_user1_clk EXPORT_OF no_pins_hps.agilex_5_soc_h2f_user1_clk
 	set_interface_property hps_io EXPORT_OF no_pins_hps.agilex_5_soc_hps_io
-	set_interface_property emif_bank3a_hps_emif_mem_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_mem_0
-	set_interface_property emif_bank3a_hps_emif_oct_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_oct_0
-	set_interface_property emif_bank3a_hps_emif_ref_clk_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_ref_clk_0
+	set_interface_property fpga2hps_interrupt_irq1 EXPORT_OF no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq1
+	set_interface_property emif_bank3a_hps_mem_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_0
+	set_interface_property emif_bank3a_hps_mem_ck_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_ck_0
+	set_interface_property emif_bank3a_hps_mem_reset_n EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_reset_n
+	set_interface_property emif_bank3a_hps_oct_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_oct_0
+	set_interface_property emif_bank3a_hps_ref_clk EXPORT_OF no_pins_hps.emif_bank3a_hps_ref_clk
 
 	# set values for exposed HDL parameters
 	set_domain_assignment f2sdram_bridge.f2sdram_adapt_256b_axi4_man qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -442,28 +445,27 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.interconnectType STANDARD
-	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.maxAdditionalLatency 4
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.responseFifoType REGISTER_BASED
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.syncResets TRUE
 	set_domain_assignment f2sdram_bridge.msgdma_256b_mm_read qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.clockCrossingAdapter HANDSHAKE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableAllPipelines FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableEccProtection FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableInstrumentation FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableOutOfOrderSupport FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.insertDefaultSlave FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.interconnectResetSource DEFAULT
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.interconnectType STANDARD
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.maxAdditionalLatency 1
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.optimizeRdFifoSize FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.piplineType PIPELINE_STAGE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.responseFifoType REGISTER_BASED
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.syncResets TRUE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
-	set_postadaptation_assignment mm_interconnect_0|f2sdram_bridge_ocram_32k_s1_burst_adapter.source0/f2sdram_bridge_ocram_32k_s1_agent.cp qsys_mm.postTransform.pipelineCount 1
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableEccProtection FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectType STANDARD
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.syncResets TRUE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 
 	# set the the module properties
 	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
@@ -474,14 +476,20 @@ proc do_create_no_pins_pd_top {} {
  <element __value="f2sdram_bridge">
   <datum __value="_sortIndex" value="4" type="int" />
  </element>
+ <element __value="f2sdram_bridge.msgdma_256b_csr">
+  <datum __value="baseAddress" value="4096" type="String" />
+ </element>
+ <element __value="f2sdram_bridge.msgdma_256b_descriptor_slave">
+  <datum __value="baseAddress" value="8192" type="String" />
+ </element>
+ <element __value="f2sdram_bridge.ocram_32k_s1">
+  <datum __value="baseAddress" value="32768" type="String" />
+ </element>
  <element __value="no_periph">
   <datum __value="_sortIndex" value="3" type="int" />
  </element>
  <element __value="no_pins_hps">
   <datum __value="_sortIndex" value="2" type="int" />
- </element>
- <element __value="onchip_M20Kx64.axi_s1">
-  <datum __value="baseAddress" value="65536" type="String" />
  </element>
  <element __value="usermode_entry">
   <datum __value="_sortIndex" value="1" type="int" />

@@ -33,18 +33,18 @@ no_pins_pd_top hps_system (
 	.hps_io_uart0_tx    (hps_io_uart0_tx),
 	.hps_io_uart0_rx    (hps_io_uart0_rx),
 
-	.emif_bank3a_hps_emif_mem_0_mem_ck_t    (lpddr4_m1_ck_t),
-	.emif_bank3a_hps_emif_mem_0_mem_ck_c    (lpddr4_m1_ck_c),
-	.emif_bank3a_hps_emif_mem_0_mem_cke     (lpddr4_m1_cke),
-	.emif_bank3a_hps_emif_mem_0_mem_reset_n (lpddr4_m1_reset_n),
-	.emif_bank3a_hps_emif_mem_0_mem_cs      (lpddr4_m1_cs),
-	.emif_bank3a_hps_emif_mem_0_mem_ca      (lpddr4_m1_ca),
-	.emif_bank3a_hps_emif_mem_0_mem_dq      (lpddr4_m1_dq),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_t   (lpddr4_m1_dqs_t),
-	.emif_bank3a_hps_emif_mem_0_mem_dqs_c   (lpddr4_m1_dqs_c),
-	.emif_bank3a_hps_emif_mem_0_mem_dmi     (lpddr4_m1_dmi),
-	.emif_bank3a_hps_emif_oct_0_oct_rzqin   (lpddr4_m1_rzqin),
-	.emif_bank3a_hps_emif_ref_clk_0_clk     (lpddr4_m1_refclk)
+	.emif_bank3a_hps_mem_ck_0_mem_ck_t       (lpddr4_m1_ck_t),
+	.emif_bank3a_hps_mem_ck_0_mem_ck_c       (lpddr4_m1_ck_c),
+	.emif_bank3a_hps_mem_0_mem_cke           (lpddr4_m1_cke),
+	.emif_bank3a_hps_mem_reset_n_mem_reset_n (lpddr4_m1_reset_n),
+	.emif_bank3a_hps_mem_0_mem_cs            (lpddr4_m1_cs),
+	.emif_bank3a_hps_mem_0_mem_ca            (lpddr4_m1_ca),
+	.emif_bank3a_hps_mem_0_mem_dq            (lpddr4_m1_dq),
+	.emif_bank3a_hps_mem_0_mem_dqs_t         (lpddr4_m1_dqs_t),
+	.emif_bank3a_hps_mem_0_mem_dqs_c         (lpddr4_m1_dqs_c),
+	.emif_bank3a_hps_mem_0_mem_dmi           (lpddr4_m1_dmi),
+	.emif_bank3a_hps_oct_0_oct_rzqin         (lpddr4_m1_rzqin),
+	.emif_bank3a_hps_ref_clk_clk             (lpddr4_m1_refclk)
 );
 
 endmodule

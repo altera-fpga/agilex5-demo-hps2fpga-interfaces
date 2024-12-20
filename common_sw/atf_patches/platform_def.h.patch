@@ -1,8 +1,8 @@
 diff --git a/plat/intel/soc/common/include/platform_def.h b/plat/intel/soc/common/include/platform_def.h
-index 7736218..024e582 100644
+index 77e593d1b..1c1584262 100644
 --- a/plat/intel/soc/common/include/platform_def.h
 +++ b/plat/intel/soc/common/include/platform_def.h
-@@ -150,8 +150,8 @@
+@@ -163,8 +163,8 @@
  /*******************************************************************************
   * UART related constants
   ******************************************************************************/

@@ -6,7 +6,7 @@ proc do_create_emac {} {
 	# create the system
 	create_system emac
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}

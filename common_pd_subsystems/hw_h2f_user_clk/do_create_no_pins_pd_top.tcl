@@ -6,7 +6,7 @@ proc do_create_no_pins_pd_top {} {
 	# create the system
 	create_system no_pins_pd_top
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -34,7 +34,7 @@ proc do_create_no_pins_pd_top {} {
 	add_instance h2f_user_clk h2f_user_clk
 	add_instance no_periph no_periph
 	add_instance no_pins_hps no_pins_hps
-	add_component usermode_entry ip/no_pins_pd_top/no_pins_pd_top_usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.0
+	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.0
 	load_component usermode_entry
 	set_component_parameter_value outputType {Reset Interface}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -74,35 +74,29 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value config_clk_250m.clkout/no_pins_hps.agilex_5_soc_fpga2hps_clock clockRateSysInfo {}
 	set_connection_parameter_value config_clk_250m.clkout/no_pins_hps.agilex_5_soc_fpga2hps_clock clockResetSysInfo {}
 	set_connection_parameter_value config_clk_250m.clkout/no_pins_hps.agilex_5_soc_fpga2hps_clock resetDomainSysInfo {1}
-	add_connection h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp
-	set_connection_parameter_value h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp endPort {}
-	set_connection_parameter_value h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp endPortLSB {0}
-	set_connection_parameter_value h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp startPort {}
-	set_connection_parameter_value h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp startPortLSB {0}
-	set_connection_parameter_value h2f_user_clk.hps_gp_split_hps_gp/no_pins_hps.agilex_5_soc_hps_gp width {0}
-	add_connection no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressMapSysInfo {<address-map><slave name='no_pins_hps/agilex_5_soc.fpga2hps' start='0x0' end='0x100000000' datawidth='256' /></address-map>}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.clockCrossingAdapter {HANDSHAKE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableAllPipelines {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.maxAdditionalLatency {1}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
-	set_connection_parameter_value no_periph.f2h_term_acelite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {-1}
+	add_connection no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressMapSysInfo {<address-map><slave name='no_pins_hps/agilex_5_soc.fpga2hps' start='0x0' end='0x100000000' datawidth='256' /></address-map>}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {-1}
 	add_connection no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram addressMapSysInfo {<address-map><slave name='no_pins_hps.agilex_5_soc.f2sdram' start='0x0' end='0x100000000' datawidth='256' /></address-map>}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram addressWidthSysInfo {32}
@@ -136,6 +130,12 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_user1_clk/h2f_user_clk.clk_br_1_in_clk clockRateSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_user1_clk/h2f_user_clk.clk_br_1_in_clk clockResetSysInfo {<info><clock name="clk_br_1_in_clk" rate="0" domain="3" /></info>}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_user1_clk/h2f_user_clk.clk_br_1_in_clk resetDomainSysInfo {3}
+	add_connection no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp endPort {}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp endPortLSB {0}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp startPort {}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp startPortLSB {0}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps_gp/h2f_user_clk.hps_gp_split_hps_gp width {0}
 	add_connection usermode_entry.ninit_done/no_periph.f2h_term_reset
 	set_connection_parameter_value usermode_entry.ninit_done/no_periph.f2h_term_reset clockDomainSysInfo {16}
 	set_connection_parameter_value usermode_entry.ninit_done/no_periph.f2h_term_reset clockResetSysInfo {}
@@ -169,31 +169,34 @@ proc do_create_no_pins_pd_top {} {
 	set_interface_property spim0 EXPORT_OF no_pins_hps.agilex_5_soc_spim0
 	set_interface_property spim0_sclk_out EXPORT_OF no_pins_hps.agilex_5_soc_spim0_sclk_out
 	set_interface_property uart1 EXPORT_OF no_pins_hps.agilex_5_soc_uart1
-	set_interface_property i2c0_scl_i EXPORT_OF no_pins_hps.agilex_5_soc_I2C0_scl_i
-	set_interface_property i2c0_scl_oe EXPORT_OF no_pins_hps.agilex_5_soc_I2C0_scl_oe
-	set_interface_property i2c0 EXPORT_OF no_pins_hps.agilex_5_soc_I2C0
+	set_interface_property i2c0_scl_i EXPORT_OF no_pins_hps.agilex_5_soc_i2c0_scl_i
+	set_interface_property i2c0_scl_oe EXPORT_OF no_pins_hps.agilex_5_soc_i2c0_scl_oe
+	set_interface_property i2c0 EXPORT_OF no_pins_hps.agilex_5_soc_i2c0
 	set_interface_property hps_io EXPORT_OF no_pins_hps.agilex_5_soc_hps_io
-	set_interface_property fpga2hps_interrupt EXPORT_OF no_pins_hps.agilex_5_soc_fpga2hps_interrupt
-	set_interface_property emif_bank3a_hps_emif_mem_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_mem_0
-	set_interface_property emif_bank3a_hps_emif_oct_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_oct_0
-	set_interface_property emif_bank3a_hps_emif_ref_clk_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_emif_ref_clk_0
+	set_interface_property fpga2hps_interrupt_irq1 EXPORT_OF no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq1
+	set_interface_property fpga2hps_interrupt_irq0 EXPORT_OF no_pins_hps.agilex_5_soc_fpga2hps_interrupt_irq0
+	set_interface_property emif_bank3a_hps_mem_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_0
+	set_interface_property emif_bank3a_hps_mem_ck_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_ck_0
+	set_interface_property emif_bank3a_hps_mem_reset_n EXPORT_OF no_pins_hps.emif_bank3a_hps_mem_reset_n
+	set_interface_property emif_bank3a_hps_oct_0 EXPORT_OF no_pins_hps.emif_bank3a_hps_oct_0
+	set_interface_property emif_bank3a_hps_ref_clk EXPORT_OF no_pins_hps.emif_bank3a_hps_ref_clk
 
 	# set values for exposed HDL parameters
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.clockCrossingAdapter HANDSHAKE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableAllPipelines FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableEccProtection FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableInstrumentation FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.enableOutOfOrderSupport FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.insertDefaultSlave FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.interconnectResetSource DEFAULT
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.interconnectType STANDARD
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.maxAdditionalLatency 1
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.optimizeRdFifoSize FALSE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.piplineType PIPELINE_STAGE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.responseFifoType REGISTER_BASED
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.syncResets TRUE
-	set_domain_assignment no_periph.f2h_term_acelite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableEccProtection FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectType STANDARD
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.syncResets TRUE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.clockCrossingAdapter HANDSHAKE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableAllPipelines FALSE
@@ -224,9 +227,6 @@ proc do_create_no_pins_pd_top {} {
  </element>
  <element __value="no_pins_hps">
   <datum __value="_sortIndex" value="2" type="int" />
- </element>
- <element __value="onchip_M20Kx64.axi_s1">
-  <datum __value="baseAddress" value="65536" type="String" />
  </element>
  <element __value="usermode_entry">
   <datum __value="_sortIndex" value="1" type="int" />

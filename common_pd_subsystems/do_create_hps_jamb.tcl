@@ -6,7 +6,7 @@ proc do_create_hps_jamb {} {
 	# create the system
 	create_system hps_jamb
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE5SR0}
+	#set_project_property DEVICE {A5ED065BB32AE4SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -36,93 +36,6 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {0}
 	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
 	save_instantiation
-	add_component f2h_term_256 ip/no_pins_pd_top/f2h_term_256.ip f2h_terminator_256 f2h_term_256 1.0
-	load_component f2h_term_256
-	set_component_project_property HIDE_FROM_IP_CATALOG {false}
-	save_component
-	load_instantiation f2h_term_256
-	remove_instantiation_interfaces_and_ports
-	add_instantiation_interface clock clock INPUT
-	set_instantiation_interface_parameter_value clock clockRate {0}
-	set_instantiation_interface_parameter_value clock externallyDriven {false}
-	set_instantiation_interface_parameter_value clock ptfSchematicName {}
-	add_instantiation_interface_port clock clk clk 1 STD_LOGIC Input
-	add_instantiation_interface reset reset INPUT
-	set_instantiation_interface_parameter_value reset associatedClock {clock}
-	set_instantiation_interface_parameter_value reset synchronousEdges {DEASSERT}
-	add_instantiation_interface_port reset reset reset 1 STD_LOGIC Input
-	add_instantiation_interface acelite_manager acelite OUTPUT
-	set_instantiation_interface_parameter_value acelite_manager addressCheck {false}
-	set_instantiation_interface_parameter_value acelite_manager associatedClock {clock}
-	set_instantiation_interface_parameter_value acelite_manager associatedReset {reset}
-	set_instantiation_interface_parameter_value acelite_manager combinedIssuingCapability {16}
-	set_instantiation_interface_parameter_value acelite_manager dataCheck {false}
-	set_instantiation_interface_parameter_value acelite_manager issuesFIXEDBursts {true}
-	set_instantiation_interface_parameter_value acelite_manager issuesINCRBursts {true}
-	set_instantiation_interface_parameter_value acelite_manager issuesWRAPBursts {true}
-	set_instantiation_interface_parameter_value acelite_manager maximumOutstandingReads {1}
-	set_instantiation_interface_parameter_value acelite_manager maximumOutstandingTransactions {1}
-	set_instantiation_interface_parameter_value acelite_manager maximumOutstandingWrites {1}
-	set_instantiation_interface_parameter_value acelite_manager poison {false}
-	set_instantiation_interface_parameter_value acelite_manager readIssuingCapability {8}
-	set_instantiation_interface_parameter_value acelite_manager securityAttribute {false}
-	set_instantiation_interface_parameter_value acelite_manager traceSignals {false}
-	set_instantiation_interface_parameter_value acelite_manager trustzoneAware {true}
-	set_instantiation_interface_parameter_value acelite_manager uniqueIdSupport {false}
-	set_instantiation_interface_parameter_value acelite_manager userData {false}
-	set_instantiation_interface_parameter_value acelite_manager wakeupSignals {false}
-	set_instantiation_interface_parameter_value acelite_manager writeIssuingCapability {8}
-	add_instantiation_interface_port acelite_manager m0_awid awid 5 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awaddr awaddr 32 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awlen awlen 8 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awsize awsize 3 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awburst awburst 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awlock awlock 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_awcache awcache 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awprot awprot 3 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awvalid awvalid 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_awready awready 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_awqos awqos 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_wdata wdata 256 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_wlast wlast 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_wvalid wvalid 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_wready wready 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_bid bid 5 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_bresp bresp 2 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_bvalid bvalid 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_bready bready 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_arid arid 5 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_araddr araddr 32 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arlen arlen 8 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arsize arsize 3 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arburst arburst 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arlock arlock 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_arcache arcache 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arprot arprot 3 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arvalid arvalid 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_arready arready 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_arqos arqos 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_rid rid 5 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_rdata rdata 256 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_rresp rresp 2 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_rlast rlast 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_rvalid rvalid 1 STD_LOGIC Input
-	add_instantiation_interface_port acelite_manager m0_rready rready 1 STD_LOGIC Output
-	add_instantiation_interface_port acelite_manager m0_awdomain awdomain 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awbar awbar 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_ardomain ardomain 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arbar arbar 2 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arsnoop arsnoop 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awsnoop awsnoop 3 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_aruser aruser 8 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awuser awuser 8 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_buser buser 8 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_ruser ruser 8 STD_LOGIC_VECTOR Input
-	add_instantiation_interface_port acelite_manager m0_wuser wuser 8 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_arregion arregion 4 STD_LOGIC_VECTOR Output
-	add_instantiation_interface_port acelite_manager m0_awregion awregion 4 STD_LOGIC_VECTOR Output
-	save_instantiation
 	add_component f2sdram_adapt_64 ip/no_pins_pd_top/f2sdram_adapt_64.ip f2sdram_adapter_64 f2sdram_adapt_64 1.0
 	load_component f2sdram_adapt_64
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -144,12 +57,14 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_man associatedReset {reset}
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
+	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_man noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
@@ -322,6 +237,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value master dBSBigEndian {false}
 	set_instantiation_interface_parameter_value master doStreamReads {false}
 	set_instantiation_interface_parameter_value master doStreamWrites {false}
+	set_instantiation_interface_parameter_value master enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value master holdTime {0}
 	set_instantiation_interface_parameter_value master interleaveBursts {false}
 	set_instantiation_interface_parameter_value master isAsynchronous {false}
@@ -471,9 +387,6 @@ proc do_create_hps_jamb {} {
 
 	# add the exports
 	set_interface_property clock_bridge_in_clk EXPORT_OF clock_bridge.in_clk
-	set_interface_property f2h_term_256_clock EXPORT_OF f2h_term_256.clock
-	set_interface_property f2h_term_256_reset EXPORT_OF f2h_term_256.reset
-	set_interface_property f2h_term_256_acelite_manager EXPORT_OF f2h_term_256.acelite_manager
 	set_interface_property f2sdram_adapt_64_axi4_man EXPORT_OF f2sdram_adapt_64.axi4_man
 	set_interface_property f2sdram_jamb_master_reset EXPORT_OF f2sdram_jamb.master_reset
 	set_interface_property hps_gp_split_hps_gp EXPORT_OF hps_gp_split.hps_gp
@@ -501,10 +414,7 @@ proc do_create_hps_jamb {} {
 	set_module_property BONUS_DATA {<?xml version="1.0" encoding="UTF-8"?>
 <bonusData>
  <element __value="clock_bridge">
-  <datum __value="_sortIndex" value="6" type="int" />
- </element>
- <element __value="f2h_term_256">
-  <datum __value="_sortIndex" value="2" type="int" />
+  <datum __value="_sortIndex" value="5" type="int" />
  </element>
  <element __value="f2sdram_adapt_64">
   <datum __value="_sortIndex" value="0" type="int" />
@@ -513,13 +423,13 @@ proc do_create_hps_jamb {} {
   <datum __value="_sortIndex" value="1" type="int" />
  </element>
  <element __value="hps_gp_in_const">
-  <datum __value="_sortIndex" value="4" type="int" />
- </element>
- <element __value="hps_gp_split">
   <datum __value="_sortIndex" value="3" type="int" />
  </element>
+ <element __value="hps_gp_split">
+  <datum __value="_sortIndex" value="2" type="int" />
+ </element>
  <element __value="reset_bridge">
-  <datum __value="_sortIndex" value="5" type="int" />
+  <datum __value="_sortIndex" value="4" type="int" />
  </element>
 </bonusData>
 }
