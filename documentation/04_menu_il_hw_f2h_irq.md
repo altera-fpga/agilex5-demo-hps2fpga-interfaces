@@ -25,15 +25,13 @@ The menu-i, f2h irq demo, and the menu-l, f2h irq handler demo, use the same har
 
 | hw_f2h_irq top level |
 | :---: |
-| ![hw_f2h_irq_top_lo.png](./images/captures/hw_f2h_irq_top_lo.png) |
-| ![hw_f2h_irq_top_hi.png](./images/captures/hw_f2h_irq_top_hi.png) |
+| ![hw_f2h_irq_top.png](./images/captures/hw_f2h_irq_top.png) |
 
 Inside the f2h_irq subsystem, we instantiate an hp_gp_splitter core and then drive a constant into the hps_gp_in interface and we take the hps_gp_out interface into an hps_gp_out_irq core that converts the lower six bits of the hps_gp_out interface into a 64-bit vector value when then connects into the f2h_irq interface.
 
 | f2h_irq subsystem |
 | :---: |
-| ![hw_f2h_irq_subsys_lo.png](./images/captures/hw_f2h_irq_subsys_lo.png) |
-| ![hw_f2h_irq_subsys_hi.png](./images/captures/hw_f2h_irq_subsys_hi.png) |
+| ![hw_f2h_irq_subsys.png](./images/captures/hw_f2h_irq_subsys.png) |
 
 ## Software demo - u-boot standalone - menu-i
 
