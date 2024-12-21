@@ -6,7 +6,7 @@
 - **title**: agilex5-demo-hps2fpga-interfaces
 - **source**: GitHub
 - **family**: Agilex 5
-- **quartus_version**: Version 24.2.0 Build 40 06/27/2024 SC Pro Edition
+- **quartus_version**: Version 24.3.0 Build 212 11/18/2024 SC Pro Edition
 - **devkit**: Agilex 5 FPGA E-Series 065B Premium Development Kit, and others
 - **device_part**: A5ED065BB32AE5SR0, A5ED065BB32AE4SR0, A5ED065BB32AE6SR0
 - **description**: Agilex 5 HPS-to-FPGA interfaces demos.
