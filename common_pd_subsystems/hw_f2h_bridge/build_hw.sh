@@ -40,6 +40,8 @@ qsys-script --quartus-project=no_pins_top --script=create_pd_sys.tcl && \
 qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=f2h_bridge.qsys && \
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=f2h_bridge.qsys && \
 qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG && \
+sed -i.bak -e "/f2soc_a[r|w]mmusecsid({/,/})/ s/1'b1/1'b0/" ip/no_pins_hps/agilex_5_soc/intel_sundancemesa_hps_100/synth/agilex_5_soc_intel_sundancemesa_hps_100_*.v && \
+sed -i.bak -e "/f2soc_a[r|w]mmusecsid({/,/})/ s/1'b1/1'b0/" ip/no_pins_hps/agilex_5_soc/intel_sundancemesa_mpfe_100/synth/agilex_5_soc_intel_sundancemesa_mpfe_100_*.v && \
 quartus_sh --flow compile no_pins_top && \
 echo Build flow completed successfully... || \
 echo Build flow encountered errors...

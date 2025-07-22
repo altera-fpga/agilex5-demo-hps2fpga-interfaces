@@ -12,6 +12,7 @@ struct results_s {
 	uint32_t ccsidr_el1_l1d;
 	uint32_t ccsidr_el1_l2d;
 	uint32_t ccsidr_el1_l3d;
+	uint32_t clusterpwrstat_el1;
 };
 
 void do_the_interesting_thing(struct results_s *);
@@ -52,6 +53,23 @@ int cache_regs(int argc, char *const argv[])
 	printf("    L1D-CCSIDR_EL1 = 0x%08X\n", results.ccsidr_el1_l1d);
 	printf("    L2D-CCSIDR_EL1 = 0x%08X\n", results.ccsidr_el1_l2d);
 	printf("    L3D-CCSIDR_EL1 = 0x%08X\n", results.ccsidr_el1_l3d);
+	printf("CLUSTERPWRSTAT_EL1 = 0x%08X\n", results.clusterpwrstat_el1);
+
+	puts("\n");
+	puts("CLUSTERPWRSTAT Details:\n");
+	printf("  Cache portion power status: %s\n",
+		((results.clusterpwrstat_el1 & 0xF0) == 0x00) ?
+			"No L3 cache ways powered" :
+		((results.clusterpwrstat_el1 & 0xF0) == 0x10) ?
+			"L3 cache ways 0-3 powered" :
+		((results.clusterpwrstat_el1 & 0xF0) == 0x30) ?
+			"L3 cache ways 0-7 powered" :
+		((results.clusterpwrstat_el1 & 0xF0) == 0x70) ?
+			"L3 cache ways 0-11 powered" :
+		((results.clusterpwrstat_el1 & 0xF0) == 0xF0) ?
+			"L3 cache ways 0-15 powered" :
+			"INVALID VALUE"
+	);
 
 	puts("\n");
 	puts("CLIDR Details:\n");
@@ -175,8 +193,14 @@ void do_the_interesting_thing(struct results_s *results) {
 	uint32_t ccsidr_el1_l1d;
 	uint32_t ccsidr_el1_l2d;
 	uint32_t ccsidr_el1_l3d;
+	uint32_t clusterpwrstat_el1;
 
 	/* read the cache registers */
+	asm volatile (
+		"mrs %[clusterpwrstat_el1], S3_0_C15_C3_7\n"
+		: [clusterpwrstat_el1] "=r" (clusterpwrstat_el1)
+	);
+
 	asm volatile (
 		"mrs %[clidr_el1], clidr_el1\n"
 		: [clidr_el1] "=r" (clidr_el1)
@@ -236,5 +260,6 @@ void do_the_interesting_thing(struct results_s *results) {
 	results->ccsidr_el1_l1d = ccsidr_el1_l1d;
 	results->ccsidr_el1_l2d = ccsidr_el1_l2d;
 	results->ccsidr_el1_l3d = ccsidr_el1_l3d;
+	results->clusterpwrstat_el1 = clusterpwrstat_el1;
 }
 

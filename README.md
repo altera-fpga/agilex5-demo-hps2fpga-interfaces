@@ -1,12 +1,13 @@
 # agilex5-demo-hps2fpga-interfaces
 <!-- SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation -->
+<!-- SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation -->
 <!-- SPDX-License-Identifier: MIT-0 -->
 
 - **id**:
 - **title**: agilex5-demo-hps2fpga-interfaces
 - **source**: GitHub
 - **family**: Agilex 5
-- **quartus_version**: Version 24.3.0 Build 212 11/18/2024 SC Pro Edition
+- **quartus_version**: Version 24.3.1 Build 102 01/14/2025 Patches 1.14 SC Pro Edition
 - **devkit**: Agilex 5 FPGA E-Series 065B Premium Development Kit, and others
 - **device_part**: A5ED065BB32AE5SR0, A5ED065BB32AE4SR0, A5ED065BB32AE6SR0
 - **description**: Agilex 5 HPS-to-FPGA interfaces demos.
@@ -26,7 +27,7 @@ The project build instructions are documented [**here**](./documentation/17_buil
 
 | Repo Directory | Board Info |
 | :--- | :--- |
-| brd_altera_a5e065_premium_es | **Company:** Altera, An Intel Company<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device |
+| brd_altera_a5e065_premium_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device |
 | brd_arrow_axe5_eagle_es | **Company:** Arrow Electronics, Inc.<br>**Board Name:** Arrow AXE5-Eagle Development Platform<br>**OPN:** AXE5-EAGLE-ES<br>**Comment:** ES device |
 | brd_criticallink_mitysbc_es | **Company:** Critical Link, LLC<br>**Board Name:** MitySBC-A5E Single Board Computer<br>**OPN:** A5ED-B9-C7F-RC-SBC-X<br>**Comment:** ES device |
 | brd_macnica_sulfur_es_125 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device - 125MHz SDM_OSC_CLK |

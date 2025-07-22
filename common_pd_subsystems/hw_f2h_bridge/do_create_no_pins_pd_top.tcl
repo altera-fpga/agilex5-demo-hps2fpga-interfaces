@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_pins_pd_top {} {
@@ -14,7 +15,7 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.4
+	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.5
 	load_component config_clk_250m
 	set_component_parameter_value CBX_AUTO_BLACKBOX {ALL}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -34,9 +35,10 @@ proc do_create_no_pins_pd_top {} {
 	add_instance f2h_bridge f2h_bridge
 	add_instance no_periph no_periph
 	add_instance no_pins_hps no_pins_hps
-	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.0
+	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.1
 	load_component usermode_entry
 	set_component_parameter_value outputType {Reset Interface}
+	set_component_parameter_value simRstPeriod {51}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation usermode_entry

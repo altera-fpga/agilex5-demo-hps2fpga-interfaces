@@ -43,6 +43,16 @@ sed -i.bak -e '/SUPPORTED_DEVICE_FAMILIES/ s|set_module_property SUPPORTED_DEVIC
 ```
 ---
 ---
+#### Special Note: Quartus 24.3.1 build 102 patch 1.14 requirement
+
+In the Quartus 24.3.1 build 102 tools release, there is a requirement to apply patch 1.14 to the Quartus tools prior to building the hardware examples. There is a defect in the release that incorrectly constrains the configuration clock that is utilized in the hardware example designs.
+
+If you do not have patch 1.14 applied to the Quartus tools, you can work around this issue by adding the following step between the Qsys system generation step and the Quartus compilation step in the build_hw.sh scripts contained in the common_pd_subsystems directory. The altera_s10_configuration_clock.sdc file that is generated without patch 1.14 contains an incorrect constraint definition that will not properly constrain the configuration clock.
+```text
+sed -i.bak -e "s/oscillator_clock\.reg/oscillator_clock/" ./ip/no_pins_pd_top/config_clk_250m/altera_s10_configuration_clock_1915/synth/altera_s10_configuration_clock.sdc
+```
+---
+---
 
 You should not need to configure the CROSS_COMPILE or ARCH environment variables because the software build scripts do this themselves.
 

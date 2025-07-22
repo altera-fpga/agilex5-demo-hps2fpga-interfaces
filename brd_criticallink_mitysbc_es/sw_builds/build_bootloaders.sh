@@ -1,10 +1,11 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS24.3_REL_GSRD_PR"
+TAG_NAME="QPDS24.3.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -91,6 +92,7 @@ ln -s ../arm-trusted-firmware/build/agilex5/release/bl31.bin \
 	|| { echo "ERROR" ; exit 1 ; }
 
 PATCH_FILES="
+../../../common_sw/u-boot_patches/scripts_dtc_pylibfdt_libfdt.i_shipped.patch \
 ../../../common_sw/u-boot_patches/include-exports.h.patch \
 ../../../common_sw/u-boot_patches/include-configs-socfpga_soc64_common.h.patch \
 ../../../common_sw/u-boot_patches/include-_exports.h.patch \

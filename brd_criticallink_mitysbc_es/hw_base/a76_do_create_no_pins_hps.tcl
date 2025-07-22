@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_pins_hps {} {
@@ -14,7 +15,7 @@ proc do_create_no_pins_hps {} {
 	# add HDL parameters
 
 	# add the components
-	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 5.1.0
+	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 6.0.0
 	load_component agilex_5_soc
 	set_component_parameter_value ATB_Enable {0}
 	set_component_parameter_value CM_Mode {N/A}
@@ -295,6 +296,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value f2s_address_width {32}
 	set_component_parameter_value f2s_data_width {256}
 	set_component_parameter_value f2s_mode {ace5lite}
+	set_component_parameter_value f2sdram_SMMU {0}
 	set_component_parameter_value f2sdram_address_width {32}
 	set_component_parameter_value f2sdram_data_width {256}
 	set_component_parameter_value hps_ioa10_opd_en {0}
@@ -758,6 +760,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value fpga2hps traceSignals {false}
 	set_instantiation_interface_parameter_value fpga2hps trustzoneAware {true}
 	set_instantiation_interface_parameter_value fpga2hps uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value fpga2hps untranslatedTransactions {true}
 	set_instantiation_interface_parameter_value fpga2hps userData {false}
 	set_instantiation_interface_parameter_value fpga2hps wakeupSignals {false}
 	set_instantiation_interface_parameter_value fpga2hps writeAcceptanceCapability {16}
@@ -881,11 +884,17 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 1.0.0
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 2.0.0
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {LPDDR4}
+	set_component_parameter_value EMIF_REF_CLK_SHARING {0}
+	set_component_parameter_value EMIF_RZQ_SHARING {0}
+	set_component_parameter_value EMIF_SHOW_INTERNAL_SETTINGS {0}
 	set_component_parameter_value EMIF_TOPOLOGY {1x32}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_MARGIN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_REQ {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_WEQ {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_USER_WIDTH {32}
@@ -901,6 +910,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp DIAG_HMC_ADDR_SWAP_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp IS_HPS {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {}
@@ -922,6 +932,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CL_CYC {20.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_COL_ADDR_WIDTH {10}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH_PHYSICAL {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CWL_CYC {16.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_C_WIDTH {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_DIE_DENSITY_GBITS {8}
@@ -1040,11 +1051,18 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp SYSINFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
 	set_component_sub_module_parameter_value emif_0_ddr4comp SYSINFO_SUPPORTS_VID {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_R2R_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_R2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_R2W_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_R2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_W2R_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_W2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_W2W_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp TURNAROUND_W2W_SAMECS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_MARGIN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_RD_DFE {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_REQ {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_WEQ {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_WR_DFE {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_USER_WIDTH {32}
@@ -1059,6 +1077,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_CH1_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp IS_HPS {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {}
@@ -1123,9 +1142,9 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSCK_CYC {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSCK_MAX_CYC {0.325}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSCK_MIN_CYC {-0.325}
-	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSS_CYC {0.5}
+	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSS_CYC {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSS_MAX_CYC {0.625}
-	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSS_MIN_CYC {0.0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TDQSS_MIN_CYC {-0.625}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TFAW_NS {14.28571}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TMRD_NS {14.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TMRR_NS {14.0}
@@ -1143,7 +1162,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TRC_NS {46.28571}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFI1_NS {3900.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFI2_NS {1950.0}
-	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFISB_NS {3900.0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFISB_NS {975.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFPDEN_CYC {2.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TREFSBRD_NS {30.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_TRFC1_NS {195.0}
@@ -1167,7 +1186,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_WR_POSTAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_WR_PREAMBLE_MODE {3.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_AC_PLACEMENT {BOT}
-	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_1 {p1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_1 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_2 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_3 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_4 {0}
@@ -1207,11 +1226,18 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp SYSINFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
 	set_component_sub_module_parameter_value emif_0_ddr5comp SYSINFO_SUPPORTS_VID {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_R2R_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_R2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_R2W_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_R2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_W2R_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_W2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_W2W_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp TURNAROUND_W2W_SAMECS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_MARGIN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_RD_DFE {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_REQ {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WEQ {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WR_DFE {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_USER_WIDTH {32}
@@ -1225,6 +1251,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_CH1_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm IS_HPS {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm JEDEC_OVERRIDE_TABLE_PARAM_NAME {}
@@ -1301,9 +1328,9 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSCK_CYC {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSCK_MAX_CYC {0.325}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSCK_MIN_CYC {-0.325}
-	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSS_CYC {0.5}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSS_CYC {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSS_MAX_CYC {0.625}
-	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSS_MIN_CYC {0.0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TDQSS_MIN_CYC {-0.625}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TFAW_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TFAW_NS {11.42857}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TMRD_NS {14.0}
@@ -1322,7 +1349,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TRC_NS {46.28571}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFI1_NS {3900.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFI2_NS {1950.0}
-	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFISB_NS {3900.0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFISB_NS {975.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFPDEN_CYC {2.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TREFSBRD_NS {30.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_TRFC1_NS {195.0}
@@ -1347,7 +1374,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_WR_POSTAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_WR_PREAMBLE_MODE {3.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_AC_PLACEMENT {BOT_BOT}
-	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_1 {p1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_1 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_2 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_3 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_4 {0}
@@ -1387,11 +1414,18 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm SYSINFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm SYSINFO_SUPPORTS_VID {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_R2R_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_R2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_R2W_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_R2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_W2R_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_W2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_W2W_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm TURNAROUND_W2W_SAMECS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_MARGIN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_RD_DFE {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_REQ {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_WEQ {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_WR_DFE {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr4 AXI4_ADDR_WIDTH {40}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_AUTO_PRECHARGE_EN {0}
@@ -1530,11 +1564,18 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 SYSINFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
 	set_component_sub_module_parameter_value emif_0_lpddr4 SYSINFO_SUPPORTS_VID {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_R2R_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_R2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_R2W_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_R2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_W2R_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_W2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_W2W_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 TURNAROUND_W2W_SAMECS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_MARGIN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_RD_DFE {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_REQ {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_WEQ {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_WR_DFE {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr5 AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_AUTO_PRECHARGE_EN {0}
@@ -1721,10 +1762,12 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_DQ_VREF {14.67}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_GPIO_IO_STD_TYPE {LVCMOS}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_REFCLK_IO_STD_TYPE {TRUE_DIFF}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_RESET_N_OUTPUT_IO_STD_TYPE {LVSTL105}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_AC_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_CK_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_CS_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_DQ_OUTPUT_OHM {SERIES_40_OHM_CAL}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_RESET_N_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_T_DQ_INPUT_OHM {RT_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_T_GPIO_INPUT_OHM {RT_OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_T_REFCLK_INPUT_OHM {RT_DIFF}
@@ -1746,11 +1789,13 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 SYSINFO_DEVICE_TEMPERATURE_GRADE {EXTENDED}
 	set_component_sub_module_parameter_value emif_0_lpddr5 SYSINFO_SUPPORTS_VID {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_R2R_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_R2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_R2W_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_R2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_W2R_DIFFCS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_W2R_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_W2W_DIFFCS_CYC {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 TURNAROUND_W2W_SAMECS_CYC {0}
 	set_component_sub_module_parameter_value emif_1_ddr4comp INSTANCE_ID {1}
 	set_component_sub_module_parameter_value emif_1_ddr4comp PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_1_ddr5comp INSTANCE_ID {1}
@@ -1761,6 +1806,10 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_1_lpddr4 PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_1_lpddr5 INSTANCE_ID {1}
 	set_component_sub_module_parameter_value emif_1_lpddr5 PHY_SWIZZLE_MAP {}
+	set_component_sub_module_parameter_value refclk_bridge CONNECTIONS {refclk_in\ \ \ \ \ \ \ \ refclk_in_gpio refclk_out_gpio\ \ refclk_out}
+	set_component_sub_module_parameter_value refclk_bridge CUSTOM_ELABORATION_COMMANDS {}
+	set_component_sub_module_parameter_value refclk_bridge INTERFACES {refclk_in\ \ \ \ \ \ \ \ clock\ \ \ \ sink refclk_out\ \ \ \ \ \ \ clock\ \ \ \ source refclk_in_gpio\ \ \ conduit\ \ end refclk_out_gpio\ \ conduit\ \ start}
+	set_component_sub_module_parameter_value refclk_bridge PORTS {refclk_in\ \ \ \ \ \ \ \ refclk_in\ \ \ \ \ \ \ \ \ clk\ \ \ \ \ \ input\ \ \ \ 1 refclk_out\ \ \ \ \ \ \ refclk_out\ \ \ \ \ \ \ \ clk\ \ \ \ \ \ output\ \ \ 1 refclk_in_gpio\ \ \ refclk_in_gpio\ \ \ \ export\ \ \ output\ \ \ 1 refclk_out_gpio\ \ refclk_out_gpio\ \ \ export\ \ \ input\ \ \ \ 1}
 	save_component
 	load_instantiation emif_bank3a_hps
 	remove_instantiation_interfaces_and_ports

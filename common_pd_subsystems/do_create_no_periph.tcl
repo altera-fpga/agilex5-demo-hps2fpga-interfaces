@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_periph {} {
@@ -51,6 +52,7 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value ace5lite_manager traceSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value ace5lite_manager uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value ace5lite_manager untranslatedTransactions {true}
 	set_instantiation_interface_parameter_value ace5lite_manager userData {false}
 	set_instantiation_interface_parameter_value ace5lite_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager writeIssuingCapability {1}

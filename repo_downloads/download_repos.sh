@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -8,8 +9,8 @@
 cd $(dirname ${0})
 
 
-QPDS_TAG="QPDS24.3_REL_GSRD_PR"
-TOYBOX_TAG="0.8.11"
+QPDS_TAG="QPDS24.3.1_REL_GSRD_PR"
+TOYBOX_TAG="0.8.12"
 
 REPO_LIST="
 https://github.com/altera-opensource/arm-trusted-firmware/archive/refs/tags/${QPDS_TAG:?}.tar.gz

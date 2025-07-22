@@ -2,10 +2,11 @@ diff --git a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi b/arch/arm/dts/socfp
 index dc9c552db76..92755781d13 100644
 --- a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
 +++ b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
-@@ -142,3 +142,95 @@
+@@ -141,3 +141,96 @@
+ 	/delete-node/ kernel;
  };
  #endif
- 
++
 +/* adjust the default properties */
 +
 +&gpio0 {

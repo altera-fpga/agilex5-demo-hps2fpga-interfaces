@@ -1,10 +1,11 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="0.8.11"
+TAG_NAME="0.8.12"
 
 # change into the directory of this script
 cd $(dirname ${0})
