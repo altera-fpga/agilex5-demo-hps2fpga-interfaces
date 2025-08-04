@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
  * SPDX-License-Identifier: MIT-0
  */
 
@@ -7,7 +8,7 @@
 /plugin/;
 / {
 	fragment@0 {
-		target-path = "/soc@0/base_fpga_region";
+		target-path = "/fpga-region";
 		__overlay__ {
 			firmware-name = "hw_emac.rbf";
 			config-complete-timeout-us = <30000000>;
@@ -33,12 +34,20 @@
 				linux,uio-name = "sys-mgr-uio";
 			};
 
-			emac-uio@10810000 {
+			emac_uio: emac-uio@10810000 {
 				compatible = "no-pins,demo";
 				reg = <0 0x10810000 0 0x00003500>;
 				reg-names = "emac-uio";
 				linux,uio-name = "emac-uio";
+				iommus = <&smmu 1>;
+				memory-region = <&bootloader_reserved>;
 			};
+		};
+	};
+	fragment@2 {
+		target-path = "/reserved-memory/bootbuffer@0";
+		__overlay__ {
+			iommu-addresses = <&emac_uio 0x0 0x82000000 0x0 0x04000000>;
 		};
 	};
 };

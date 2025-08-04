@@ -7,7 +7,7 @@ proc do_create_no_periph {} {
 	# create the system
 	create_system no_periph
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -39,6 +39,7 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value ace5lite_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value ace5lite_manager dataCheck {false}
 	set_instantiation_interface_parameter_value ace5lite_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value ace5lite_manager isTranslator {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesWRAPBursts {false}
@@ -132,6 +133,7 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}

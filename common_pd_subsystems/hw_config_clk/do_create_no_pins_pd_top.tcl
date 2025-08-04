@@ -7,7 +7,7 @@ proc do_create_no_pins_pd_top {} {
 	# create the system
 	create_system no_pins_pd_top
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -16,7 +16,7 @@ proc do_create_no_pins_pd_top {} {
 
 	# add the components
 	add_instance config_clk config_clk
-	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.5
+	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.6
 	load_component config_clk_250m
 	set_component_parameter_value CBX_AUTO_BLACKBOX {ALL}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -38,7 +38,6 @@ proc do_create_no_pins_pd_top {} {
 	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.1
 	load_component usermode_entry
 	set_component_parameter_value outputType {Reset Interface}
-	set_component_parameter_value simRstPeriod {51}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation usermode_entry
@@ -86,6 +85,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -109,6 +109,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram addressWidthSysInfo {32}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram arbitrationPriority {1}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram baseAddress {0x0000}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram defaultConnection {0}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram domainAlias {}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

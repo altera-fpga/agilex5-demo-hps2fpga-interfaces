@@ -1,12 +1,13 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_f2sdram_bridge {} {
 	# create the system
 	create_system f2sdram_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -88,6 +89,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value default_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value default_sub isTranslator {false}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
@@ -143,6 +145,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
@@ -221,6 +224,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_sub isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
@@ -475,6 +479,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value m0 combinedIssuingCapability {32}
 	set_instantiation_interface_parameter_value m0 dataCheck {false}
 	set_instantiation_interface_parameter_value m0 enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value m0 isTranslator {false}
 	set_instantiation_interface_parameter_value m0 issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value m0 issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value m0 issuesWRAPBursts {false}
@@ -527,7 +532,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.4
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.5
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -765,6 +770,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value mm_read maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value mm_read minimumReadLatency {1}
 	set_instantiation_interface_parameter_value mm_read minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value mm_read optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value mm_read prSafe {false}
 	set_instantiation_interface_parameter_value mm_read readLatency {0}
 	set_instantiation_interface_parameter_value mm_read readWaitTime {1}
@@ -809,6 +815,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value mm_write maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value mm_write minimumReadLatency {1}
 	set_instantiation_interface_parameter_value mm_write minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value mm_write optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value mm_write prSafe {false}
 	set_instantiation_interface_parameter_value mm_write readLatency {0}
 	set_instantiation_interface_parameter_value mm_write readWaitTime {1}
@@ -826,7 +833,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port mm_write mm_write_waitrequest waitrequest 1 STD_LOGIC Input
 	add_instantiation_interface_port mm_write mm_write_burstcount burstcount 8 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.9
+	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.10
 	load_component ocram_32k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -986,7 +993,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.7
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
 	load_component sysid
 	set_component_parameter_value id {1146303046}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -994,12 +1001,12 @@ proc do_create_f2sdram_bridge {} {
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {1146303046}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {1753189397}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {1146303046}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
+	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {1753189397}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}
@@ -1121,6 +1128,7 @@ proc do_create_f2sdram_bridge {} {
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub addressWidthSysInfo {32}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub arbitrationPriority {1}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub baseAddress {0x0000}
+	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub cpuInfoIdSysInfo {}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub defaultConnection {0}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub domainAlias {}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

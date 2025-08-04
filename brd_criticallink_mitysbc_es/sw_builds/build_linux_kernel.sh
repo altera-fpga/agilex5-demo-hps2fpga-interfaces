@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS24.3.1_REL_GSRD_PR"
+TAG_NAME="QPDS25.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -78,5 +78,5 @@ do
 done
 
 # make the kernel and devicetree
-make -j 48 Image dtbs \
+make -j 48 DTC_FLAGS="-@" Image dtbs \
 	|| { echo "ERROR" ; exit 1 ; }

@@ -1,12 +1,13 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_uart {} {
 	# create the system
 	create_system uart
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -16,7 +17,7 @@ proc do_create_uart {} {
 	# add the components
 	add_component clk_250m ip/no_pins_pd_top/clk_250m.ip altera_clock_bridge clk_250m 19.2.0
 	load_component clk_250m
-	set_component_parameter_value EXPLICIT_CLOCK_RATE {250000000.0}
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {200000000.0}
 	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
@@ -29,11 +30,11 @@ proc do_create_uart {} {
 	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
 	add_instantiation_interface out_clk clock OUTPUT
 	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
-	set_instantiation_interface_parameter_value out_clk clockRate {250000000}
+	set_instantiation_interface_parameter_value out_clk clockRate {200000000}
 	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
 	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
 	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
-	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {250000000}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {200000000}
 	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
 	save_instantiation
 	add_component gp_in_const ip/no_pins_pd_top/gp_in_const.ip hps_gp_in_constant gp_in_const 1.0
@@ -72,7 +73,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
 	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component lw_uart ip/no_pins_pd_top/lw_uart.ip intel_lw_uart lw_uart 1.0.7
+	add_component lw_uart ip/no_pins_pd_top/lw_uart.ip intel_lw_uart lw_uart 1.0.8
 	load_component lw_uart
 	set_component_parameter_value baud {115200}
 	set_component_parameter_value dataBits {8}
@@ -95,7 +96,7 @@ proc do_create_uart {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.BAUD {115200}
 	set_instantiation_assignment_value embeddedsw.CMacro.DATA_BITS {8}
 	set_instantiation_assignment_value embeddedsw.CMacro.FIXED_BAUD {1}
-	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {250000000}
+	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {200000000}
 	set_instantiation_assignment_value embeddedsw.CMacro.PARITY {'N'}
 	set_instantiation_assignment_value embeddedsw.CMacro.READ_DEPTH {2048}
 	set_instantiation_assignment_value embeddedsw.CMacro.SIM_TRUE_BAUD {0}
@@ -194,10 +195,13 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value irq irqScheme {NONE}
 	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
 	save_instantiation
-	add_component niosv_c ip/no_pins_pd_top/niosv_c.ip intel_niosv_c niosv_c 2.0.0
+	add_component niosv_c ip/no_pins_pd_top/niosv_c.ip intel_niosv_c niosv_c 4.0.0
 	load_component niosv_c
+	set_component_parameter_value archSize {32}
 	set_component_parameter_value enableAvalonInterface {0}
 	set_component_parameter_value enableECCLite {0}
+	set_component_parameter_value enableResetReq {0}
+	set_component_parameter_value hartID {0}
 	set_component_parameter_value numGpr {32}
 	set_component_parameter_value resetOffset {0}
 	set_component_parameter_value resetSlave {ocram_8k.axi_s1}
@@ -206,7 +210,7 @@ proc do_create_uart {} {
 	save_component
 	load_instantiation niosv_c
 	remove_instantiation_interfaces_and_ports
-	set_instantiation_assignment_value embeddedsw.CMacro.CPU_FREQ {250000000u}
+	set_instantiation_assignment_value embeddedsw.CMacro.CPU_FREQ {200000000u}
 	set_instantiation_assignment_value embeddedsw.CMacro.DATA_ADDR_WIDTH {32}
 	set_instantiation_assignment_value embeddedsw.CMacro.DCACHE_LINE_SIZE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.DCACHE_LINE_SIZE_LOG2 {0}
@@ -222,11 +226,13 @@ proc do_create_uart {} {
 	set_instantiation_assignment_value embeddedsw.configuration.HDLSimCachesCleared {1}
 	set_instantiation_assignment_value embeddedsw.configuration.cpuArchitecture {Small Core}
 	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {0}
+	set_instantiation_assignment_value embeddedsw.configuration.fsqrtFdivDisabled {0}
+	set_instantiation_assignment_value embeddedsw.configuration.interruptMode {0}
 	set_instantiation_assignment_value embeddedsw.configuration.numGpr {32}
 	set_instantiation_assignment_value embeddedsw.configuration.resetOffset {0}
 	set_instantiation_assignment_value embeddedsw.configuration.resetSlave {ocram_8k.axi_s1}
 	set_instantiation_assignment_value embeddedsw.dts.params.altr,reset-addr {0x00002000}
-	set_instantiation_assignment_value embeddedsw.dts.params.clock-frequency {250000000u}
+	set_instantiation_assignment_value embeddedsw.dts.params.clock-frequency {200000000u}
 	set_instantiation_assignment_value embeddedsw.dts.params.dcache-line-size {0}
 	set_instantiation_assignment_value embeddedsw.dts.params.dcache-size {0}
 	set_instantiation_assignment_value embeddedsw.dts.params.icache-line-size {0}
@@ -247,6 +253,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value instruction_manager isTranslator {false}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
@@ -286,6 +293,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value data_manager dataCheck {false}
 	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value data_manager isTranslator {false}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
@@ -319,7 +327,7 @@ proc do_create_uart {} {
 	add_instantiation_interface_port data_manager data_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port data_manager data_manager_rready rready 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.9
+	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.10
 	load_component ocram_8k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -402,6 +410,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterId {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterName {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi_s1 isTranslator {false}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
@@ -511,17 +520,17 @@ proc do_create_uart {} {
 	# add the connections
 	add_connection clk_250m.out_clk/lw_uart.clk
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockRateSysInfo {250000000.0}
+	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockRateSysInfo {200000000.0}
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk resetDomainSysInfo {1}
 	add_connection clk_250m.out_clk/niosv_c.clk
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockRateSysInfo {250000000.0}
+	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockRateSysInfo {200000000.0}
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk resetDomainSysInfo {1}
 	add_connection clk_250m.out_clk/ocram_8k.clk1
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockRateSysInfo {250000000.0}
+	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockRateSysInfo {200000000.0}
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 resetDomainSysInfo {1}
 	add_connection gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in
@@ -541,6 +550,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 baseAddress {0x1000}
+	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 defaultConnection {0}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 domainAlias {}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -564,6 +574,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 baseAddress {0x2000}
+	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 defaultConnection {0}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 domainAlias {}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -587,6 +598,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 addressWidthSysInfo {}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 arbitrationPriority {1}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 baseAddress {0x2000}
+	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 defaultConnection {0}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 domainAlias {}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

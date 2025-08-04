@@ -1,12 +1,13 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_spi_bridge {} {
 	# create the system
 	create_system spi_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -16,7 +17,7 @@ proc do_create_spi_bridge {} {
 	# add the components
 	add_component clock_250m ip/no_pins_pd_top/clock_250m.ip altera_clock_bridge clock_250m 19.2.0
 	load_component clock_250m
-	set_component_parameter_value EXPLICIT_CLOCK_RATE {250000000.0}
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {200000000.0}
 	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
@@ -29,11 +30,11 @@ proc do_create_spi_bridge {} {
 	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
 	add_instantiation_interface out_clk clock OUTPUT
 	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
-	set_instantiation_interface_parameter_value out_clk clockRate {250000000}
+	set_instantiation_interface_parameter_value out_clk clockRate {200000000}
 	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
 	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
 	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
-	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {250000000}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {200000000}
 	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
 	save_instantiation
 	add_component gp_in_const ip/no_pins_pd_top/gp_in_const.ip hps_gp_in_constant gp_in_const 1.0
@@ -72,7 +73,7 @@ proc do_create_spi_bridge {} {
 	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
 	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.9
+	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.10
 	load_component ocram_4k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -283,6 +284,7 @@ proc do_create_spi_bridge {} {
 	set_instantiation_interface_parameter_value avalon_master maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value avalon_master minimumReadLatency {1}
 	set_instantiation_interface_parameter_value avalon_master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value avalon_master optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value avalon_master prSafe {false}
 	set_instantiation_interface_parameter_value avalon_master readLatency {0}
 	set_instantiation_interface_parameter_value avalon_master readWaitTime {1}
@@ -342,12 +344,12 @@ proc do_create_spi_bridge {} {
 	# add the connections
 	add_connection clock_250m.out_clk/ocram_4k.clk1
 	set_connection_parameter_value clock_250m.out_clk/ocram_4k.clk1 clockDomainSysInfo {-1}
-	set_connection_parameter_value clock_250m.out_clk/ocram_4k.clk1 clockRateSysInfo {250000000.0}
+	set_connection_parameter_value clock_250m.out_clk/ocram_4k.clk1 clockRateSysInfo {200000000.0}
 	set_connection_parameter_value clock_250m.out_clk/ocram_4k.clk1 clockResetSysInfo {}
 	set_connection_parameter_value clock_250m.out_clk/ocram_4k.clk1 resetDomainSysInfo {-1}
 	add_connection clock_250m.out_clk/samb.clk
 	set_connection_parameter_value clock_250m.out_clk/samb.clk clockDomainSysInfo {-1}
-	set_connection_parameter_value clock_250m.out_clk/samb.clk clockRateSysInfo {250000000.0}
+	set_connection_parameter_value clock_250m.out_clk/samb.clk clockRateSysInfo {200000000.0}
 	set_connection_parameter_value clock_250m.out_clk/samb.clk clockResetSysInfo {}
 	set_connection_parameter_value clock_250m.out_clk/samb.clk resetDomainSysInfo {-1}
 	add_connection gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in
@@ -369,6 +371,7 @@ proc do_create_spi_bridge {} {
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 addressWidthSysInfo {}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 arbitrationPriority {1}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 baseAddress {0x0000}
+	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 defaultConnection {0}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 domainAlias {}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

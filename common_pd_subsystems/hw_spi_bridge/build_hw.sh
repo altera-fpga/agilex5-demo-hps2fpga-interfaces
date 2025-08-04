@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -36,7 +37,8 @@ cd $(dirname ${0})
 cp ../../common_pd_subsystems/do_create_spi_bridge.tcl do_create_spi_bridge.tcl \
 	|| { echo "ERROR" ; exit 1 ; }
 
-[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium_es" ] && {
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_criticallink_mitysbc_es" ] && {
 	sed \
 	-e "s/250000000/200000000/" \
 	../../common_pd_subsystems/do_create_spi_bridge.tcl \
@@ -44,9 +46,12 @@ cp ../../common_pd_subsystems/do_create_spi_bridge.tcl do_create_spi_bridge.tcl 
 		|| { echo "ERROR" ; exit 1 ; }
 }
 
-[ "$(basename $(dirname $(pwd)))" == "brd_criticallink_mitysbc_es" ] && {
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013b0_premium_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_arrow_axe5_eagle_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_macnica_sulfur_es_125" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_macnica_sulfur_es_25" ] && {
 	sed \
-	-e "s/250000000/200000000/" \
+	-e "s/200000000/250000000/" \
 	../../common_pd_subsystems/do_create_spi_bridge.tcl \
 	> do_create_spi_bridge.tcl \
 		|| { echo "ERROR" ; exit 1 ; }

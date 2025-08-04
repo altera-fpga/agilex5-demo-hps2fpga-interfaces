@@ -15,9 +15,9 @@ index 6f8c9cf451..fcc98b7dcf 100644
  unsigned long get_version(void);
  int  getc(void);
  int  tstc(void);
-@@ -71,7 +77,7 @@ struct jt_funcs {
+@@ -70,7 +76,7 @@ struct jt_funcs {
+ #undef EXPORT_FUNC
  };
- 
  
 -#define XF_VERSION	9
 +#define XF_VERSION	10

@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -100,13 +101,11 @@ cp ../../../common_sw/devicetree_overlays/*.dtbo \
 #
 COPIED_UART_DTBO=0
 
-[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_premium_es" ] && {
-	cp "${DEST_DIR:?}/hw_uart1_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
-		|| { echo "ERROR" ; exit 1 ; }
-	COPIED_UART_DTBO=1
-}
-
-[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_arrow_axe5_eagle_es" ] && {
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e013b0_premium_es" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_premium_es" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_arrow_axe5_eagle_es" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_125" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_25" ] && {
 	cp "${DEST_DIR:?}/hw_uart1_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
 		|| { echo "ERROR" ; exit 1 ; }
 	COPIED_UART_DTBO=1
@@ -114,18 +113,6 @@ COPIED_UART_DTBO=0
 
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_criticallink_mitysbc_es" ] && {
 	cp "${DEST_DIR:?}/hw_uart0_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
-		|| { echo "ERROR" ; exit 1 ; }
-	COPIED_UART_DTBO=1
-}
-
-[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_125" ] && {
-	cp "${DEST_DIR:?}/hw_uart1_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
-		|| { echo "ERROR" ; exit 1 ; }
-	COPIED_UART_DTBO=1
-}
-
-[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_25" ] && {
-	cp "${DEST_DIR:?}/hw_uart1_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
 		|| { echo "ERROR" ; exit 1 ; }
 	COPIED_UART_DTBO=1
 }

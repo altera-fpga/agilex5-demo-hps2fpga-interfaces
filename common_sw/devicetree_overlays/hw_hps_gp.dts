@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
  * SPDX-License-Identifier: MIT-0
  */
 
@@ -7,7 +8,7 @@
 /plugin/;
 / {
 	fragment@0 {
-		target-path = "/soc@0/base_fpga_region";
+		target-path = "/fpga-region";
 		__overlay__ {
 			firmware-name = "hw_hps_gp.rbf";
 			config-complete-timeout-us = <30000000>;

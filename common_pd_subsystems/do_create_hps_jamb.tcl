@@ -1,12 +1,13 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_hps_jamb {} {
 	# create the system
 	create_system hps_jamb
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -58,6 +59,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
@@ -136,6 +138,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_sub isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
@@ -250,6 +253,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value master maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value master minimumReadLatency {1}
 	set_instantiation_interface_parameter_value master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value master optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value master prSafe {false}
 	set_instantiation_interface_parameter_value master readLatency {0}
 	set_instantiation_interface_parameter_value master readWaitTime {1}
@@ -352,6 +356,7 @@ proc do_create_hps_jamb {} {
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub addressWidthSysInfo {}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub baseAddress {0x0000}
+	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub defaultConnection {0}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub domainAlias {}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

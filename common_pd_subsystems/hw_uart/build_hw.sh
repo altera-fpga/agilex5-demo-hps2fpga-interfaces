@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -37,7 +38,8 @@ cd $(dirname ${0})
 cp ../../common_pd_subsystems/do_create_uart.tcl do_create_uart.tcl \
 	|| { echo "ERROR" ; exit 1 ; }
 
-[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium_es" ] && {
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_criticallink_mitysbc_es" ] && {
 	sed \
 	-e "s/250000000/200000000/" \
 	../../common_pd_subsystems/do_create_uart.tcl \
@@ -45,9 +47,12 @@ cp ../../common_pd_subsystems/do_create_uart.tcl do_create_uart.tcl \
 		|| { echo "ERROR" ; exit 1 ; }
 }
 
-[ "$(basename $(dirname $(pwd)))" == "brd_criticallink_mitysbc_es" ] && {
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013b0_premium_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_arrow_axe5_eagle_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_macnica_sulfur_es_125" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_macnica_sulfur_es_25" ] && {
 	sed \
-	-e "s/250000000/200000000/" \
+	-e "s/200000000/250000000/" \
 	../../common_pd_subsystems/do_create_uart.tcl \
 	> do_create_uart.tcl \
 		|| { echo "ERROR" ; exit 1 ; }
@@ -62,7 +67,7 @@ qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=no_
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=no_pins_pd_top.qsys && \
 qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG && \
 niosv-shell <<< './niosv_software/niosv_shell.src' && \
-cp ./niosv_software/niosv_app/build/main.hex ./ip/no_pins_pd_top/ocram_8k/intel_onchip_memory_149/synth/ocram_8k_ocram_8k.hex && \
+cp ./niosv_software/niosv_app/build/main.hex ./ip/no_pins_pd_top/ocram_8k/intel_onchip_memory_1410/synth/ocram_8k_ocram_8k.hex && \
 quartus_sh --flow compile no_pins_top && \
 echo Build flow completed successfully... || \
 echo Build flow encountered errors...

@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -64,6 +65,7 @@ set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
 set_global_assignment -name STRATIX_JTAG_USER_CODE 11111111
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 set_global_assignment -name HPS_INITIALIZATION "HPS FIRST"
+set_global_assignment -name QSPI_OWNERSHIP HPS
 
 set_location_assignment PIN_B20 -to ADDA_CLK
 set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to ADDA_CLK

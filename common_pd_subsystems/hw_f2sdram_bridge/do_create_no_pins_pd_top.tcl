@@ -15,7 +15,7 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.5
+	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.6
 	load_component config_clk_250m
 	set_component_parameter_value CBX_AUTO_BLACKBOX {ALL}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -38,7 +38,6 @@ proc do_create_no_pins_pd_top {} {
 	add_component usermode_entry ip/no_pins_pd_top/usermode_entry.ip intel_user_rst_clkgate usermode_entry 1.0.1
 	load_component usermode_entry
 	set_component_parameter_value outputType {Reset Interface}
-	set_component_parameter_value simRstPeriod {51}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation usermode_entry
@@ -91,6 +90,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram addressWidthSysInfo {32}
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram baseAddress {0x0000}
+	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram defaultConnection {0}
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram domainAlias {}
 	set_connection_parameter_value f2sdram_bridge.f2sdram_adapt_256b_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -114,6 +114,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 addressWidthSysInfo {33}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 baseAddress {0x0000}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 defaultConnection {0}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 domainAlias {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.limiter_removal_256b_s0 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -137,6 +138,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 baseAddress {0x0000000100000000}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 defaultConnection {0}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 domainAlias {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_read/f2sdram_bridge.ocram_32k_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -160,6 +162,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 baseAddress {0x0000}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 defaultConnection {0}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 domainAlias {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.limiter_removal_256b_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -183,6 +186,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 baseAddress {0x0000000100000000}
+	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 defaultConnection {0}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 domainAlias {}
 	set_connection_parameter_value f2sdram_bridge.msgdma_256b_mm_write/f2sdram_bridge.ocram_32k_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -206,6 +210,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps addressWidthSysInfo {32}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps arbitrationPriority {1}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps baseAddress {0x0000}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps defaultConnection {0}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps domainAlias {}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -262,6 +267,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub addressWidthSysInfo {16}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub baseAddress {0x0000}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub defaultConnection {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.def_sub_default_sub qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -285,6 +291,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr addressWidthSysInfo {16}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr baseAddress {0x1000}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr defaultConnection {0}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_csr qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -308,6 +315,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave addressWidthSysInfo {16}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave baseAddress {0x2000}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave defaultConnection {0}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.msgdma_256b_descriptor_slave qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -331,6 +339,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 addressWidthSysInfo {16}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 baseAddress {0x8000}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 defaultConnection {0}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.ocram_32k_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -354,6 +363,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave addressWidthSysInfo {16}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave baseAddress {0x0000}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave cpuInfoIdSysInfo {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave defaultConnection {0}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/f2sdram_bridge.sysid_control_slave qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

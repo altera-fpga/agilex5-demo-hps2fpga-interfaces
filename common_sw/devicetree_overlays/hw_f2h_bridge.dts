@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
  * SPDX-License-Identifier: MIT-0
  */
 
@@ -7,7 +8,7 @@
 /plugin/;
 / {
 	fragment@0 {
-		target-path = "/soc@0/base_fpga_region";
+		target-path = "/fpga-region";
 		__overlay__ {
 			firmware-name = "hw_f2h_bridge.rbf";
 			config-complete-timeout-us = <30000000>;
@@ -19,13 +20,15 @@
 			#address-cells = <0x2>;
 			#size-cells = <0x2>;
 
-			f2h-bridge@20000000 {
+			f2h_bridge: f2h-bridge@20000000 {
 				compatible = "no-pins,demo";
 				reg = <0 0x20000000 0 0x10000>;
 				reg-names = "f2h-bridge";
 				linux,uio-name = "f2h-bridge-uio";
 				interrupt-parent = <&intc>;
 				interrupts = <0 17 4>;
+				iommus = <&smmu 1>;
+				memory-region = <&bootloader_reserved>;
 			};
 			resmem-buf@82000000 {
 				compatible = "no-pins,demo";
@@ -33,6 +36,12 @@
 				reg-names = "resmem-buf";
 				linux,uio-name = "resmem-buf-uio";
 			};
+		};
+	};
+	fragment@2 {
+		target-path = "/reserved-memory/bootbuffer@0";
+		__overlay__ {
+			iommu-addresses = <&f2h_bridge 0x0 0x82000000 0x0 0x04000000>;
 		};
 	};
 };

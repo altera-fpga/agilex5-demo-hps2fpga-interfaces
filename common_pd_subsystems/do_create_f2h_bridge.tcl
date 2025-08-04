@@ -1,12 +1,13 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_f2h_bridge {} {
 	# create the system
 	create_system f2h_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4SR0}
+	#set_project_property DEVICE {A5ED065BB32AE6SR0}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -88,6 +89,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value default_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value default_sub isTranslator {false}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
@@ -154,6 +156,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_subordinate isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingWrites {1}
@@ -218,6 +221,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value ace5lite_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value ace5lite_manager dataCheck {false}
 	set_instantiation_interface_parameter_value ace5lite_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value ace5lite_manager isTranslator {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesWRAPBursts {false}
@@ -231,6 +235,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value ace5lite_manager traceSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager trustzoneAware {true}
 	set_instantiation_interface_parameter_value ace5lite_manager uniqueIdSupport {false}
+	set_instantiation_interface_parameter_value ace5lite_manager untranslatedTransactions {FALSE}
 	set_instantiation_interface_parameter_value ace5lite_manager userData {false}
 	set_instantiation_interface_parameter_value ace5lite_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager writeIssuingCapability {1}
@@ -481,6 +486,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value m0 combinedIssuingCapability {32}
 	set_instantiation_interface_parameter_value m0 dataCheck {false}
 	set_instantiation_interface_parameter_value m0 enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value m0 isTranslator {false}
 	set_instantiation_interface_parameter_value m0 issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value m0 issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value m0 issuesWRAPBursts {false}
@@ -533,7 +539,7 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.4
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.5
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -771,6 +777,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value mm_read maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value mm_read minimumReadLatency {1}
 	set_instantiation_interface_parameter_value mm_read minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value mm_read optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value mm_read prSafe {false}
 	set_instantiation_interface_parameter_value mm_read readLatency {0}
 	set_instantiation_interface_parameter_value mm_read readWaitTime {1}
@@ -815,6 +822,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value mm_write maximumPendingWriteTransactions {0}
 	set_instantiation_interface_parameter_value mm_write minimumReadLatency {1}
 	set_instantiation_interface_parameter_value mm_write minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value mm_write optimizedReadsWithBE {0}
 	set_instantiation_interface_parameter_value mm_write prSafe {false}
 	set_instantiation_interface_parameter_value mm_write readLatency {0}
 	set_instantiation_interface_parameter_value mm_write readWaitTime {1}
@@ -832,7 +840,7 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port mm_write mm_write_waitrequest waitrequest 1 STD_LOGIC Input
 	add_instantiation_interface_port mm_write mm_write_burstcount burstcount 8 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.9
+	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.10
 	load_component ocram_32k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -992,7 +1000,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.7
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
 	load_component sysid
 	set_component_parameter_value id {541602374}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -1127,6 +1135,7 @@ proc do_create_f2h_bridge {} {
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate addressWidthSysInfo {32}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate arbitrationPriority {1}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate baseAddress {0x0000}
+	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate cpuInfoIdSysInfo {}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate defaultConnection {0}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate domainAlias {}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}

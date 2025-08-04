@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -69,6 +70,7 @@ set_global_assignment -name POWER_APPLY_THERMAL_MARGIN ADDITIONAL
 set_global_assignment -name STRATIX_JTAG_USER_CODE 44444444
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 set_global_assignment -name HPS_INITIALIZATION "HPS FIRST"
+set_global_assignment -name QSPI_OWNERSHIP HPS
 
 set_location_assignment PIN_Y77 -to fpga_reset_n
 set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to fpga_reset_n
