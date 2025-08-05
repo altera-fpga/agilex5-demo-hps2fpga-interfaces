@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
  * SPDX-License-Identifier: MIT-0
  */
 
@@ -274,6 +275,7 @@
 #define USERCODE_CLMITYSBC	(0x22222222)
 #define USERCODE_ALTERAPREM	(0x33333333)
 #define USERCODE_MACNICASULFUR	(0x44444444)
+#define USERCODE_ALTERAMOD	(0x55555555)
 
 #endif  /* __STANDALONE_COMMON_H__ */
 

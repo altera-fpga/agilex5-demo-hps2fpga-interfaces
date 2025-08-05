@@ -1,5 +1,6 @@
 /*
  * SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
  * SPDX-License-Identifier: MIT-0
  */
 
@@ -628,6 +629,9 @@ menu_loop:
 			break;
 		case(USERCODE_ALTERAPREM):
 			puts("Altera Premium Dev Kit");
+			break;
+		case(USERCODE_ALTERAMOD):
+			puts("Altera Modular Dev Kit");
 			break;
 		case(USERCODE_MACNICASULFUR):
 			puts("Macnica Sulfur");

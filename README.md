@@ -28,6 +28,7 @@ The project build instructions are documented [**here**](./documentation/17_buil
 | Repo Directory | Board Info |
 | :--- | :--- |
 | brd_altera_a5e065_premium_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device |
+| brd_altera_a5e065_modular_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Modular Development Kit<br>**OPN:** MK-A5E065BB32AES1<br>**Comment:** ES device |
 | brd_arrow_axe5_eagle_es | **Company:** Arrow Electronics, Inc.<br>**Board Name:** Arrow AXE5-Eagle Development Platform<br>**OPN:** AXE5-EAGLE-ES<br>**Comment:** ES device |
 | brd_criticallink_mitysbc_es | **Company:** Critical Link, LLC<br>**Board Name:** MitySBC-A5E Single Board Computer<br>**OPN:** A5ED-B9-C7F-RC-SBC-X<br>**Comment:** ES device |
 | brd_macnica_sulfur_es_125 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device - 125MHz SDM_OSC_CLK |

@@ -38,6 +38,7 @@ cp ../../common_pd_subsystems/do_create_spi_bridge.tcl do_create_spi_bridge.tcl 
 	|| { echo "ERROR" ; exit 1 ; }
 
 [ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium_es" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_modular_es" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_criticallink_mitysbc_es" ] && {
 	sed \
 	-e "s/250000000/200000000/" \
