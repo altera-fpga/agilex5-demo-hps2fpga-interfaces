@@ -27,7 +27,10 @@ do
 	[ -f /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input ] && \
 	printf "%21s : %6s mC\n" \
 		"$(cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_label)" \
-		"$(cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input)" || \
+		"$(cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input \
+			> /dev/null 2> /dev/null && \
+			cat /sys/class/hwmon/hwmon0/temp$((NEXT+1))_input || \
+			echo NONE)" || \
 	printf "%21s : %6s   \n" "--" "--"
 
 done

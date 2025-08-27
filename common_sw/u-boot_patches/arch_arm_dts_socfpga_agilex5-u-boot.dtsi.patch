@@ -1,0 +1,20 @@
+diff --git a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi b/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
+index cba3258a..bd7871bf 100644
+--- a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
++++ b/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
+@@ -23,6 +23,15 @@
+ 			#size-cells = <1>;
+ 			bootph-all;
+ 
++			/* SMMU */
++			i_aps_smmu__sys_tcu_apb@16000000 {
++				reg = <0x16000000 0x00040000>;
++				intel,offset-settings =
++					/* SMMU_GBPA */
++					<0x00000044 0x80001000 0x80001000>;
++				bootph-all;
++			};
++
+ 			/* DSU */
+ 			i_ccu_caiu0@1c000000 {
+ 				reg = <0x1c000000 0x00001000>;

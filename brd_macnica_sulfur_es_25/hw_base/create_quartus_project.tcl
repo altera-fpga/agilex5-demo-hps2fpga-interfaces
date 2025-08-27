@@ -72,201 +72,132 @@ set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 set_global_assignment -name HPS_INITIALIZATION "HPS FIRST"
 set_global_assignment -name QSPI_OWNERSHIP HPS
 
-set_location_assignment PIN_Y77 -to fpga_reset_n
-set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to fpga_reset_n
-set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to fpga_user_led
-set_location_assignment PIN_D24 -to fpga_user_led[0]
-set_location_assignment PIN_F24 -to fpga_user_led[1]
-set_location_assignment PIN_H27 -to fpga_user_led[2]
-set_location_assignment PIN_F27 -to fpga_user_led[3]
-set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to fpga_user_push_sw
-set_location_assignment PIN_BR31 -to fpga_user_push_sw[0]
-set_location_assignment PIN_BP31 -to fpga_user_push_sw[1]
-set_location_assignment PIN_BH28 -to fpga_user_push_sw[2]
-set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to fpga_user_sw
-set_location_assignment PIN_B4 -to fpga_user_sw[0]
-set_location_assignment PIN_A8 -to fpga_user_sw[1]
-set_location_assignment PIN_A11 -to fpga_user_sw[2]
-set_location_assignment PIN_BK31 -to fr_clk_100m_6a
-set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to fr_clk_100m_6a
-set_location_assignment PIN_A23 -to fr_clk_100m_6d
-set_instance_assignment -name IO_STANDARD "1.8-V LVCMOS" -to fr_clk_100m_6d
-set_location_assignment PIN_U134 -to hps_io_emac2_pps
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_pps
-set_location_assignment PIN_AL120 -to hps_io_emac2_pps_trig
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_pps_trig
-set_location_assignment PIN_M124 -to hps_io_emac2_rx_clk
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rx_clk
-set_location_assignment PIN_AB127 -to hps_io_emac2_rx_ctl
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rx_ctl
-set_location_assignment PIN_H127 -to hps_io_emac2_rxd0
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rxd0
-set_location_assignment PIN_AB124 -to hps_io_emac2_rxd1
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rxd1
-set_location_assignment PIN_F124 -to hps_io_emac2_rxd2
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rxd2
-set_location_assignment PIN_D124 -to hps_io_emac2_rxd3
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_rxd3
-set_location_assignment PIN_M127 -to hps_io_emac2_tx_clk
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_tx_clk
-set_location_assignment PIN_K127 -to hps_io_emac2_tx_ctl
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_tx_ctl
-set_location_assignment PIN_K124 -to hps_io_emac2_txd0
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_txd0
-set_location_assignment PIN_Y127 -to hps_io_emac2_txd1
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_txd1
-set_location_assignment PIN_F127 -to hps_io_emac2_txd2
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_txd2
-set_location_assignment PIN_Y124 -to hps_io_emac2_txd3
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_emac2_txd3
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_eth_int_n
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_gpio_ioa11
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_hartbeat_led
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_hps_osc_clk
-set_location_assignment PIN_AK120 -to hps_io_i2c_emac1_scl
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_i2c_emac1_scl
-set_location_assignment PIN_N135 -to hps_io_i2c_emac1_sda
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_i2c_emac1_sda
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_int_n_1v8
-set_location_assignment PIN_AG115 -to hps_io_mdio2_mdc
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_mdio2_mdc
-set_location_assignment PIN_R134 -to hps_io_mdio2_mdio
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_mdio2_mdio
-set_location_assignment PIN_D132 -to hps_io_sdmmc_cclk
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_cclk
-set_location_assignment PIN_AB132 -to hps_io_sdmmc_cmd
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_cmd
-set_location_assignment PIN_E135 -to hps_io_sdmmc_data0
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data0
-set_location_assignment PIN_F132 -to hps_io_sdmmc_data1
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data1
-set_location_assignment PIN_AA135 -to hps_io_sdmmc_data2
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data2
-set_location_assignment PIN_V127 -to hps_io_sdmmc_data3
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data3
-set_location_assignment PIN_T127 -to hps_io_sdmmc_data4
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data4
-set_location_assignment PIN_Y132 -to hps_io_sdmmc_data5
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data5
-set_location_assignment PIN_T124 -to hps_io_sdmmc_data6
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data6
-set_location_assignment PIN_P124 -to hps_io_sdmmc_data7
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sdmmc_data7
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_sd_pwr_sel
+set_location_assignment PIN_AG123 -to hps_io_hps_osc_clk
+set_instance_assignment -name IO_STANDARD "1.8-V" -to hps_io_hps_osc_clk
 set_location_assignment PIN_AK115 -to hps_io_uart0_rx
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_uart0_rx
+set_instance_assignment -name IO_STANDARD "1.8-V" -to hps_io_uart0_rx
 set_location_assignment PIN_W134 -to hps_io_uart0_tx
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_uart0_tx
-set_location_assignment PIN_P132 -to hps_io_usb1_clk
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_clk
-set_location_assignment PIN_AD135 -to hps_io_usb1_data0
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data0
-set_location_assignment PIN_M132 -to hps_io_usb1_data1
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data1
-set_location_assignment PIN_K132 -to hps_io_usb1_data2
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data2
-set_location_assignment PIN_AG129 -to hps_io_usb1_data3
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data3
-set_location_assignment PIN_J134 -to hps_io_usb1_data4
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data4
-set_location_assignment PIN_AG120 -to hps_io_usb1_data5
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data5
-set_location_assignment PIN_G134 -to hps_io_usb1_data6
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data6
-set_location_assignment PIN_G135 -to hps_io_usb1_data7
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_data7
-set_location_assignment PIN_J135 -to hps_io_usb1_dir
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_dir
-set_location_assignment PIN_AD134 -to hps_io_usb1_nxr
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_nxr
-set_location_assignment PIN_L135 -to hps_io_usb1_stp
-set_instance_assignment -name IO_STANDARD "1.8 V" -to hps_io_usb1_stp
-set_location_assignment PIN_CD135 -to hps_usb31_flt_bar
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hps_usb31_flt_bar
-set_location_assignment PIN_CD134 -to hps_usb31_usb31_id
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hps_usb31_usb31_id
-set_location_assignment PIN_CG134 -to hps_usb31_usb_ctrl[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hps_usb31_usb_ctrl[0]
-set_location_assignment PIN_CG135 -to hps_usb31_usb_ctrl[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hps_usb31_usb_ctrl[1]
-set_location_assignment PIN_BE43 -to hps_usb31_vbus_det
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to hps_usb31_vbus_det
+set_instance_assignment -name IO_STANDARD "1.8-V" -to hps_io_uart0_tx
+set_location_assignment PIN_T114 -to lpddr4_m1_ca[0]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[0]
+set_location_assignment PIN_P114 -to lpddr4_m1_ca[1]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[1]
+set_location_assignment PIN_V117 -to lpddr4_m1_ca[2]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[2]
+set_location_assignment PIN_T117 -to lpddr4_m1_ca[3]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[3]
+set_location_assignment PIN_M114 -to lpddr4_m1_ca[4]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[4]
+set_location_assignment PIN_K114 -to lpddr4_m1_ca[5]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_ca[5]
+set_location_assignment PIN_AK104 -to lpddr4_m1_ck_c
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_ck_c
+set_location_assignment PIN_V108 -to lpddr4_m1_cke[0]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_cke[0]
+set_location_assignment PIN_T108 -to lpddr4_m1_cke[1]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_cke[1]
+set_location_assignment PIN_AK107 -to lpddr4_m1_ck_t
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_ck_t
+set_location_assignment PIN_T105 -to lpddr4_m1_cs[0]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_cs[0]
+set_location_assignment PIN_P105 -to lpddr4_m1_cs[1]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_cs[1]
+set_location_assignment PIN_B119 -to lpddr4_m1_dmi[0]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dmi[0]
+set_location_assignment PIN_F105 -to lpddr4_m1_dmi[1]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dmi[1]
+set_location_assignment PIN_H87 -to lpddr4_m1_dmi[2]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dmi[2]
+set_location_assignment PIN_B97 -to lpddr4_m1_dmi[3]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dmi[3]
+set_location_assignment PIN_B128 -to lpddr4_m1_dq[0]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[0]
+set_location_assignment PIN_A128 -to lpddr4_m1_dq[1]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[1]
+set_location_assignment PIN_F108 -to lpddr4_m1_dq[10]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[10]
+set_location_assignment PIN_H108 -to lpddr4_m1_dq[11]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[11]
+set_location_assignment PIN_M108 -to lpddr4_m1_dq[12]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[12]
+set_location_assignment PIN_K108 -to lpddr4_m1_dq[13]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[13]
+set_location_assignment PIN_H117 -to lpddr4_m1_dq[14]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[14]
+set_location_assignment PIN_F117 -to lpddr4_m1_dq[15]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[15]
+set_location_assignment PIN_F84 -to lpddr4_m1_dq[16]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[16]
+set_location_assignment PIN_D84 -to lpddr4_m1_dq[17]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[17]
+set_location_assignment PIN_F98 -to lpddr4_m1_dq[18]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[18]
+set_location_assignment PIN_H98 -to lpddr4_m1_dq[19]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[19]
+set_location_assignment PIN_B130 -to lpddr4_m1_dq[2]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[2]
+set_location_assignment PIN_K98 -to lpddr4_m1_dq[20]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[20]
+set_location_assignment PIN_M98 -to lpddr4_m1_dq[21]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[21]
+set_location_assignment PIN_K87 -to lpddr4_m1_dq[22]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[22]
+set_location_assignment PIN_M87 -to lpddr4_m1_dq[23]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[23]
+set_location_assignment PIN_B103 -to lpddr4_m1_dq[24]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[24]
+set_location_assignment PIN_A106 -to lpddr4_m1_dq[25]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[25]
+set_location_assignment PIN_B106 -to lpddr4_m1_dq[26]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[26]
+set_location_assignment PIN_A110 -to lpddr4_m1_dq[27]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[27]
+set_location_assignment PIN_B91 -to lpddr4_m1_dq[28]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[28]
+set_location_assignment PIN_A94 -to lpddr4_m1_dq[29]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[29]
+set_location_assignment PIN_A130 -to lpddr4_m1_dq[3]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[3]
+set_location_assignment PIN_B88 -to lpddr4_m1_dq[30]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[30]
+set_location_assignment PIN_A91 -to lpddr4_m1_dq[31]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[31]
+set_location_assignment PIN_B116 -to lpddr4_m1_dq[4]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[4]
+set_location_assignment PIN_A116 -to lpddr4_m1_dq[5]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[5]
+set_location_assignment PIN_B113 -to lpddr4_m1_dq[6]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[6]
+set_location_assignment PIN_A113 -to lpddr4_m1_dq[7]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[7]
+set_location_assignment PIN_K117 -to lpddr4_m1_dq[8]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[8]
+set_location_assignment PIN_M117 -to lpddr4_m1_dq[9]
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_dq[9]
+set_location_assignment PIN_A125 -to lpddr4_m1_dqs_c[0]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_c[0]
+set_location_assignment PIN_D114 -to lpddr4_m1_dqs_c[1]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_c[1]
+set_location_assignment PIN_D95 -to lpddr4_m1_dqs_c[2]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_c[2]
+set_location_assignment PIN_B101 -to lpddr4_m1_dqs_c[3]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_c[3]
+set_location_assignment PIN_B122 -to lpddr4_m1_dqs_t[0]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_t[0]
+set_location_assignment PIN_F114 -to lpddr4_m1_dqs_t[1]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_t[1]
+set_location_assignment PIN_F95 -to lpddr4_m1_dqs_t[2]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_t[2]
+set_location_assignment PIN_A101 -to lpddr4_m1_dqs_t[3]
+set_instance_assignment -name IO_STANDARD "DIFFERENTIAL 1.1-V LVSTL" -to lpddr4_m1_dqs_t[3]
 set_location_assignment PIN_M105 -to lpddr4_m1_refclk
+set_instance_assignment -name IO_STANDARD "1.1-V TRUE DIFFERENTIAL SIGNALING" -to lpddr4_m1_refclk
+set_location_assignment PIN_K105 -to "lpddr4_m1_refclk(n)"
+set_instance_assignment -name IO_STANDARD "1.1-V TRUE DIFFERENTIAL SIGNALING" -to "lpddr4_m1_refclk(n)"
 set_location_assignment PIN_AG111 -to lpddr4_m1_reset_n
+set_instance_assignment -name IO_STANDARD "1.1-V LVSTL" -to lpddr4_m1_reset_n
 set_location_assignment PIN_AK111 -to lpddr4_m1_rzqin
-set_location_assignment PIN_CH132 -to mcu_spi_cs_3V3
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mcu_spi_cs_3V3
-set_location_assignment PIN_CF132 -to mcu_spi_miso_3V3
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mcu_spi_miso_3V3
-set_location_assignment PIN_CL130 -to mcu_spi_mosi_3V3
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mcu_spi_mosi_3V3
-set_location_assignment PIN_CK134 -to mcu_spi_sck_3V3
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to mcu_spi_sck_3V3
-set_location_assignment PIN_AP120 -to usb3_refclk_p
-set_location_assignment PIN_AM133 -to usb3_up_rxd_n
-set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to usb3_up_rxd_n
-set_location_assignment PIN_AM135 -to usb3_up_rxd_p
-set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to usb3_up_rxd_p
-set_location_assignment PIN_AN126 -to usb3_up_txd_n
-set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to usb3_up_txd_n
-set_location_assignment PIN_AN129 -to usb3_up_txd_p
-set_instance_assignment -name IO_STANDARD "HIGH SPEED DIFFERENTIAL I/O" -to usb3_up_txd_p
-set_location_assignment PIN_CK4 -to user_gpio[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[0]
-set_location_assignment PIN_CJ2 -to user_gpio[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[1]
-set_location_assignment PIN_BF21 -to user_gpio[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[10]
-set_location_assignment PIN_BE21 -to user_gpio[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[11]
-set_location_assignment PIN_BF25 -to user_gpio[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[12]
-set_location_assignment PIN_BE25 -to user_gpio[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[13]
-set_location_assignment PIN_BF32 -to user_gpio[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[14]
-set_location_assignment PIN_BM118 -to user_gpio[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[15]
-set_location_assignment PIN_BK118 -to user_gpio[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[16]
-set_location_assignment PIN_BH118 -to user_gpio[17]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[17]
-set_location_assignment PIN_BF104 -to user_gpio[18]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[18]
-set_location_assignment PIN_BM112 -to user_gpio[19]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[19]
-set_location_assignment PIN_CK2 -to user_gpio[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[2]
-set_location_assignment PIN_BK112 -to user_gpio[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[20]
-set_location_assignment PIN_BH109 -to user_gpio[21]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[21]
-set_location_assignment PIN_BM109 -to user_gpio[22]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[22]
-set_location_assignment PIN_BR112 -to user_gpio[23]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[23]
-set_location_assignment PIN_BP112 -to user_gpio[24]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[24]
-set_location_assignment PIN_BK109 -to user_gpio[25]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[25]
-set_location_assignment PIN_BR109 -to user_gpio[26]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[26]
-set_location_assignment PIN_BU109 -to user_gpio[27]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[27]
-set_location_assignment PIN_CH4 -to user_gpio[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[3]
-set_location_assignment PIN_BU19 -to user_gpio[4]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[4]
-set_location_assignment PIN_BR19 -to user_gpio[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[5]
-set_location_assignment PIN_BM19 -to user_gpio[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[6]
-set_location_assignment PIN_BH19 -to user_gpio[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[7]
-set_location_assignment PIN_BK22 -to user_gpio[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[8]
-set_location_assignment PIN_BF16 -to user_gpio[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to user_gpio[9]
+set_instance_assignment -name IO_STANDARD "1.1-V" -to lpddr4_m1_rzqin
 
 export_assignments
 

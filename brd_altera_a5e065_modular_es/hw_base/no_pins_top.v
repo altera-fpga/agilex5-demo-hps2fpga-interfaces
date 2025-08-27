@@ -26,9 +26,9 @@ module no_pins_top (
 	input    wire          emif_hps_emif_mem_0_mem_alert_n,
 	input    wire          emif_hps_emif_oct_0_oct_rzqin,
 	input    wire          emif_hps_emif_ref_clk_0_clk,
-	inout    wire [3:0]    emif_hps_emif_mem_0_mem_dqs_t,
-	inout    wire [3:0]    emif_hps_emif_mem_0_mem_dqs_c,
-	inout    wire [31:0]   emif_hps_emif_mem_0_mem_dq
+	inout    wire [4:0]    emif_hps_emif_mem_0_mem_dqs_t,
+	inout    wire [4:0]    emif_hps_emif_mem_0_mem_dqs_c,
+	inout    wire [39:0]   emif_hps_emif_mem_0_mem_dq
 );
 
 no_pins_pd_top hps_system (

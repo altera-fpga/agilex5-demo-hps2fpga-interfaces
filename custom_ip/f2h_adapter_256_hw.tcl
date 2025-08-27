@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -149,13 +150,10 @@ add_interface ace5lite_manager ace5lite start
 set_interface_property ace5lite_manager associatedClock clock
 set_interface_property ace5lite_manager associatedReset reset
 set_interface_property ace5lite_manager wakeupSignals false
-set_interface_property ace5lite_manager uniqueIdSupport false
 set_interface_property ace5lite_manager poison false
 set_interface_property ace5lite_manager traceSignals false
 set_interface_property ace5lite_manager dataCheck false
 set_interface_property ace5lite_manager addressCheck false
-set_interface_property ace5lite_manager securityAttribute false
-set_interface_property ace5lite_manager userData false
 set_interface_property ace5lite_manager readIssuingCapability 1
 set_interface_property ace5lite_manager writeIssuingCapability 1
 set_interface_property ace5lite_manager combinedIssuingCapability 1
@@ -166,6 +164,7 @@ set_interface_property ace5lite_manager issuesWRAPBursts false
 set_interface_property ace5lite_manager issuesFIXEDBursts false
 set_interface_property ace5lite_manager atomicTransactions true
 set_interface_property ace5lite_manager cacheStashTransactions true
+set_interface_property ace5lite_manager untranslatedTransactions true
 set_interface_property ace5lite_manager ENABLED true
 set_interface_property ace5lite_manager EXPORT_OF ""
 set_interface_property ace5lite_manager PORT_NAME_MAP ""

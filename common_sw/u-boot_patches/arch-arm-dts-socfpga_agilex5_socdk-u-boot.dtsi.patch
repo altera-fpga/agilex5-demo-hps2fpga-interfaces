@@ -2,7 +2,7 @@ diff --git a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi b/arch/arm/dts/socfp
 index dc9c552db7..138d7e569d 100644
 --- a/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
 +++ b/arch/arm/dts/socfpga_agilex5_socdk-u-boot.dtsi
-@@ -29,7 +29,7 @@
+@@ -66,7 +66,7 @@
  
  	chosen {
  		stdout-path = "serial0:115200n8";
@@ -11,7 +11,7 @@ index dc9c552db7..138d7e569d 100644
  	};
  };
  
-@@ -54,7 +54,7 @@
+@@ -91,7 +91,7 @@
  };
  
  &mmc {
@@ -20,7 +20,7 @@ index dc9c552db7..138d7e569d 100644
  	bus-width = <4>;
  	sd-uhs-sdr50;
  	cap-mmc-highspeed;
-@@ -62,7 +62,7 @@
+@@ -99,7 +99,7 @@
  };
  
  &combophy0 {

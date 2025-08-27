@@ -7,7 +7,7 @@ proc do_create_uart {} {
 	# create the system
 	create_system uart
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -17,7 +17,7 @@ proc do_create_uart {} {
 	# add the components
 	add_component clk_250m ip/no_pins_pd_top/clk_250m.ip altera_clock_bridge clk_250m 19.2.0
 	load_component clk_250m
-	set_component_parameter_value EXPLICIT_CLOCK_RATE {200000000.0}
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {250000000.0}
 	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
@@ -30,11 +30,11 @@ proc do_create_uart {} {
 	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
 	add_instantiation_interface out_clk clock OUTPUT
 	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
-	set_instantiation_interface_parameter_value out_clk clockRate {200000000}
+	set_instantiation_interface_parameter_value out_clk clockRate {250000000}
 	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
 	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
 	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
-	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {200000000}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {250000000}
 	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
 	save_instantiation
 	add_component gp_in_const ip/no_pins_pd_top/gp_in_const.ip hps_gp_in_constant gp_in_const 1.0
@@ -96,7 +96,7 @@ proc do_create_uart {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.BAUD {115200}
 	set_instantiation_assignment_value embeddedsw.CMacro.DATA_BITS {8}
 	set_instantiation_assignment_value embeddedsw.CMacro.FIXED_BAUD {1}
-	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {200000000}
+	set_instantiation_assignment_value embeddedsw.CMacro.FREQ {250000000}
 	set_instantiation_assignment_value embeddedsw.CMacro.PARITY {'N'}
 	set_instantiation_assignment_value embeddedsw.CMacro.READ_DEPTH {2048}
 	set_instantiation_assignment_value embeddedsw.CMacro.SIM_TRUE_BAUD {0}
@@ -195,7 +195,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value irq irqScheme {NONE}
 	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
 	save_instantiation
-	add_component niosv_c ip/no_pins_pd_top/niosv_c.ip intel_niosv_c niosv_c 4.0.0
+	add_component niosv_c ip/uart/niosv_c.ip intel_niosv_c niosv_c 4.1.0
 	load_component niosv_c
 	set_component_parameter_value archSize {32}
 	set_component_parameter_value enableAvalonInterface {0}
@@ -210,7 +210,7 @@ proc do_create_uart {} {
 	save_component
 	load_instantiation niosv_c
 	remove_instantiation_interfaces_and_ports
-	set_instantiation_assignment_value embeddedsw.CMacro.CPU_FREQ {200000000u}
+	set_instantiation_assignment_value embeddedsw.CMacro.CPU_FREQ {250000000u}
 	set_instantiation_assignment_value embeddedsw.CMacro.DATA_ADDR_WIDTH {32}
 	set_instantiation_assignment_value embeddedsw.CMacro.DCACHE_LINE_SIZE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.DCACHE_LINE_SIZE_LOG2 {0}
@@ -231,8 +231,9 @@ proc do_create_uart {} {
 	set_instantiation_assignment_value embeddedsw.configuration.numGpr {32}
 	set_instantiation_assignment_value embeddedsw.configuration.resetOffset {0}
 	set_instantiation_assignment_value embeddedsw.configuration.resetSlave {ocram_8k.axi_s1}
+	set_instantiation_assignment_value embeddedsw.configuration.sharedInstructionDataInterface {0}
 	set_instantiation_assignment_value embeddedsw.dts.params.altr,reset-addr {0x00002000}
-	set_instantiation_assignment_value embeddedsw.dts.params.clock-frequency {200000000u}
+	set_instantiation_assignment_value embeddedsw.dts.params.clock-frequency {250000000u}
 	set_instantiation_assignment_value embeddedsw.dts.params.dcache-line-size {0}
 	set_instantiation_assignment_value embeddedsw.dts.params.dcache-size {0}
 	set_instantiation_assignment_value embeddedsw.dts.params.icache-line-size {0}
@@ -250,7 +251,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager addressCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager associatedClock {clk}
 	set_instantiation_interface_parameter_value instruction_manager associatedReset {reset}
-	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {1}
+	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {8}
 	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
 	set_instantiation_interface_parameter_value instruction_manager isTranslator {false}
@@ -259,7 +260,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
-	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {1}
+	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {8}
 	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value instruction_manager traceSignals {false}
 	set_instantiation_interface_parameter_value instruction_manager trustzoneAware {true}
@@ -520,17 +521,17 @@ proc do_create_uart {} {
 	# add the connections
 	add_connection clk_250m.out_clk/lw_uart.clk
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockRateSysInfo {200000000.0}
+	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockRateSysInfo {250000000.0}
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/lw_uart.clk resetDomainSysInfo {1}
 	add_connection clk_250m.out_clk/niosv_c.clk
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockRateSysInfo {200000000.0}
+	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockRateSysInfo {250000000.0}
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/niosv_c.clk resetDomainSysInfo {1}
 	add_connection clk_250m.out_clk/ocram_8k.clk1
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockDomainSysInfo {1}
-	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockRateSysInfo {200000000.0}
+	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockRateSysInfo {250000000.0}
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/ocram_8k.clk1 resetDomainSysInfo {1}
 	add_connection gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in

@@ -646,6 +646,9 @@ menu_loop:
 			case(USERCODE_ALTERAMOD):
 				puts("Altera Modular Dev Kit");
 				break;
+			case(USERCODE_ALTERA013CS):
+				puts("Altera 013CS Dev Kit");
+				break;
 			case(USERCODE_MACNICASULFUR):
 				puts("Macnica Sulfur");
 				break;

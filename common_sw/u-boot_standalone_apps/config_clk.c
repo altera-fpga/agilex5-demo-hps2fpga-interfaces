@@ -68,7 +68,7 @@ int config_clk(int argc, char *const argv[])
 	}
 
 	printf("      Counter Delta = 0x%08X\n", (uint32_t)counter_delta);
-	printf("          Frequency = %d MHz\n", (uint32_t)counter_delta);
+	printf("          Frequency = %d Hz\n", (uint32_t)counter_delta);
 
 	puts("\n");
 	printf ("Press any key to exit this demo.");

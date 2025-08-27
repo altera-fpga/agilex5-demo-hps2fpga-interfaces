@@ -48,6 +48,7 @@ cp ../../common_pd_subsystems/do_create_uart.tcl do_create_uart.tcl \
 		|| { echo "ERROR" ; exit 1 ; }
 }
 
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013cs" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013b0_premium_es" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_arrow_axe5_eagle_es" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_macnica_sulfur_es_125" ] ||

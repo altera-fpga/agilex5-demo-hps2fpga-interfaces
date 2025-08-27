@@ -101,6 +101,7 @@ cp ../../../common_sw/devicetree_overlays/*.dtbo \
 #
 COPIED_UART_DTBO=0
 
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e013cs" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e013b0_premium_es" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_premium_es" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_modular_es" ] ||

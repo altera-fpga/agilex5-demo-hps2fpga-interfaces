@@ -7,7 +7,7 @@ proc do_create_no_periph {} {
 	# create the system
 	create_system no_periph
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -39,22 +39,15 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value ace5lite_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value ace5lite_manager dataCheck {false}
 	set_instantiation_interface_parameter_value ace5lite_manager enableConcurrentSubordinateAccess {0}
-	set_instantiation_interface_parameter_value ace5lite_manager isTranslator {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesWRAPBursts {false}
-	set_instantiation_interface_parameter_value ace5lite_manager maximumOutstandingReads {1}
-	set_instantiation_interface_parameter_value ace5lite_manager maximumOutstandingTransactions {1}
-	set_instantiation_interface_parameter_value ace5lite_manager maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value ace5lite_manager noRepeatedIdsBetweenSubordinates {0}
 	set_instantiation_interface_parameter_value ace5lite_manager poison {false}
 	set_instantiation_interface_parameter_value ace5lite_manager readIssuingCapability {1}
-	set_instantiation_interface_parameter_value ace5lite_manager securityAttribute {false}
 	set_instantiation_interface_parameter_value ace5lite_manager traceSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager trustzoneAware {true}
-	set_instantiation_interface_parameter_value ace5lite_manager uniqueIdSupport {false}
 	set_instantiation_interface_parameter_value ace5lite_manager untranslatedTransactions {true}
-	set_instantiation_interface_parameter_value ace5lite_manager userData {false}
 	set_instantiation_interface_parameter_value ace5lite_manager wakeupSignals {false}
 	set_instantiation_interface_parameter_value ace5lite_manager writeIssuingCapability {1}
 	add_instantiation_interface_port ace5lite_manager m0_awid awid 5 STD_LOGIC_VECTOR Output

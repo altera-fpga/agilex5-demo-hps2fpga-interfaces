@@ -1,8 +1,8 @@
 diff --git a/examples/standalone/Makefile b/examples/standalone/Makefile
-index 559170dd5c9..cfff6b06d66 100644
+index 9b57f1c0..77360b0b 100644
 --- a/examples/standalone/Makefile
 +++ b/examples/standalone/Makefile
-@@ -6,6 +6,27 @@
+@@ -6,10 +6,33 @@
  extra-y        := hello_world
  extra-$(CONFIG_SPI_FLASH_ATMEL)    += atmel_df_pow2
  extra-$(CONFIG_PPC)                += sched
@@ -27,6 +27,12 @@ index 559170dd5c9..cfff6b06d66 100644
 +extra-y += spi_bridge
 +extra-y += system_counter
 +extra-y += uart
+ 
+ # Environment variable loadaddr is set from CONFIG_SYS_LOAD_ADDR.
+ # Run the examples 4 MiB above this address.
+ LOAD_ADDR:=${shell printf 0x%X $$(( $(CONFIG_SYS_LOAD_ADDR) + 0x400000 ))}
++# RSF set this to the legacy value from our previous releases
++LOAD_ADDR:=0x90000000
  
  #
  # Some versions of make do not handle trailing white spaces properly;

@@ -7,9 +7,9 @@
 - **title**: agilex5-demo-hps2fpga-interfaces
 - **source**: GitHub
 - **family**: Agilex 5
-- **quartus_version**: Version 25.1.0 Build 129 03/26/2025 SC Pro Edition
+- **quartus_version**: Version 25.1.1 Build 125 07/31/2025 SC Pro Edition
 - **devkit**: Agilex 5 FPGA E-Series 065B Premium Development Kit, and others
-- **device_part**: A5ED065BB32AE5SR0, A5ED065BB32AE4SR0, A5ED065BB32AE6SR0
+- **device_part**: A5ED065BB32AE5SR0, A5ED065BB32AE4SR0, A5ED065BB32AE6SR0, A5ED013BM16AE4SCS
 - **description**: Agilex 5 HPS-to-FPGA interfaces demos.
 - **rich_description**: This project is a demonstration and evaluation example that shows how users can implement and interact with the various hardware interfaces between the Hard Processing System (SoC) and FPGA fabric on the Agilex 5 FPGA device family.
 - **url**: https://github.com/altera-fpga/agilex5-demo-hps2fpga-interfaces
@@ -29,6 +29,7 @@ The project build instructions are documented [**here**](./documentation/17_buil
 | :--- | :--- |
 | brd_altera_a5e065_premium_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device |
 | brd_altera_a5e065_modular_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Modular Development Kit<br>**OPN:** MK-A5E065BB32AES1<br>**Comment:** ES device |
+| brd_altera_a5e013cs | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 013B Development Kit<br>**OPN:** DK-A5E013BM16AEA<br>**Comment:** Production device |
 | brd_arrow_axe5_eagle_es | **Company:** Arrow Electronics, Inc.<br>**Board Name:** Arrow AXE5-Eagle Development Platform<br>**OPN:** AXE5-EAGLE-ES<br>**Comment:** ES device |
 | brd_criticallink_mitysbc_es | **Company:** Critical Link, LLC<br>**Board Name:** MitySBC-A5E Single Board Computer<br>**OPN:** A5ED-B9-C7F-RC-SBC-X<br>**Comment:** ES device |
 | brd_macnica_sulfur_es_125 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device - 125MHz SDM_OSC_CLK |

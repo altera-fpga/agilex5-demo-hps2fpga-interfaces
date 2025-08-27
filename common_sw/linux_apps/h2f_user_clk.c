@@ -111,7 +111,7 @@ int main(void)
 	}
 
 	printf("      Counter Delta = 0x%08X\n", (uint32_t)counter_delta);
-	printf("          Frequency = %d MHz\n", (uint32_t)counter_delta);
+	printf("          Frequency = %d Hz\n", (uint32_t)counter_delta);
 	puts("");
 
 	puts("  H2F User1 Clock Stats:");
@@ -131,7 +131,7 @@ int main(void)
 	}
 
 	printf("      Counter Delta = 0x%08X\n", (uint32_t)counter_delta);
-	printf("          Frequency = %d MHz\n", (uint32_t)counter_delta);
+	printf("          Frequency = %d Hz\n", (uint32_t)counter_delta);
 
 	puts("");
 	printf ("Press any key to exit this demo.");

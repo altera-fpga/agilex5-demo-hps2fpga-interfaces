@@ -15,6 +15,7 @@ cd $(dirname ${0})
 	echo "Set BOARD_DIR environment variable to the board directory name."
 	echo ""
 	echo "Currently valid board directories:"
+	echo "    'brd_altera_a5e013cs'"
 	echo "    'brd_altera_a5e065_premium_es'"
 	echo "    'brd_altera_a5e065_modular_es'"
 	echo "    'brd_arrow_axe5_eagle_es'"

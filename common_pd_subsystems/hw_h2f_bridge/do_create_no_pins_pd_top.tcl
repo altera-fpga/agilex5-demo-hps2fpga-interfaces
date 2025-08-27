@@ -15,14 +15,16 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component axi4_br ip/no_pins_pd_top/axi4_br.ip altera_axi_bridge axi4_br 19.9.3
+	add_component axi4_br ip/no_pins_pd_top/axi4_br.ip altera_axi_bridge axi4_br 19.9.5
 	load_component axi4_br
 	set_component_parameter_value ACE5_LITE_SUPPORT {0}
 	set_component_parameter_value ACE_LITE_SUPPORT {0}
 	set_component_parameter_value ADDR_WIDTH {38}
+	set_component_parameter_value ATOMIC_TXN {0}
 	set_component_parameter_value AXI_VERSION {AXI4}
 	set_component_parameter_value BACKPRESSURE_DURING_RESET {0}
 	set_component_parameter_value BITSPERBYTE {0}
+	set_component_parameter_value CACHESTASHING_TXN {0}
 	set_component_parameter_value COMBINED_ACCEPTANCE_CAPABILITY {16}
 	set_component_parameter_value COMBINED_ISSUING_CAPABILITY {16}
 	set_component_parameter_value DATA_WIDTH {32}
@@ -39,7 +41,7 @@ proc do_create_no_pins_pd_top {} {
 	set_component_parameter_value SAI_WIDTH {1}
 	set_component_parameter_value SID_WIDTH {1}
 	set_component_parameter_value SYNC_RESET {1}
-	set_component_parameter_value UNTRANSLATED_TXN {FALSE}
+	set_component_parameter_value UNTRANSLATED_TXN {0}
 	set_component_parameter_value USE_M0_ADDRCHK {0}
 	set_component_parameter_value USE_M0_ARBURST {1}
 	set_component_parameter_value USE_M0_ARCACHE {1}
@@ -49,6 +51,7 @@ proc do_create_no_pins_pd_top {} {
 	set_component_parameter_value USE_M0_ARQOS {0}
 	set_component_parameter_value USE_M0_ARREGION {0}
 	set_component_parameter_value USE_M0_ARSIZE {1}
+	set_component_parameter_value USE_M0_ARSNOOP {0}
 	set_component_parameter_value USE_M0_ARUSER {0}
 	set_component_parameter_value USE_M0_AWAKEUP {0}
 	set_component_parameter_value USE_M0_AWBURST {1}
@@ -59,6 +62,7 @@ proc do_create_no_pins_pd_top {} {
 	set_component_parameter_value USE_M0_AWQOS {0}
 	set_component_parameter_value USE_M0_AWREGION {0}
 	set_component_parameter_value USE_M0_AWSIZE {1}
+	set_component_parameter_value USE_M0_AWSNOOP {0}
 	set_component_parameter_value USE_M0_AWUNIQUE {0}
 	set_component_parameter_value USE_M0_AWUSER {0}
 	set_component_parameter_value USE_M0_BID {1}
