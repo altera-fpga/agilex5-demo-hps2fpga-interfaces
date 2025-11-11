@@ -7,7 +7,7 @@ proc do_create_f2sdram_bridge {} {
 	# create the system
 	create_system f2sdram_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -93,6 +93,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value default_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value default_sub poison {false}
 	set_instantiation_interface_parameter_value default_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value default_sub readDataReorderingDepth {1}
@@ -153,6 +154,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value axi4_man noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value axi4_man optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
@@ -228,6 +230,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_sub poison {false}
 	set_instantiation_interface_parameter_value axi4_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi4_sub readDataReorderingDepth {1}
@@ -487,6 +490,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value m0 noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value m0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value m0 poison {false}
 	set_instantiation_interface_parameter_value m0 readIssuingCapability {16}
 	set_instantiation_interface_parameter_value m0 securityAttribute {false}
@@ -532,7 +536,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.5
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.2
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -558,6 +562,7 @@ proc do_create_f2sdram_bridge {} {
 	set_component_parameter_value PREFETCHER_READ_BURST_ENABLE {0}
 	set_component_parameter_value PROGRAMMABLE_BURST_ENABLE {0}
 	set_component_parameter_value RESPONSE_PORT {2}
+	set_component_parameter_value SIDEBAND_ENABLE {0}
 	set_component_parameter_value STRIDE_ENABLE {0}
 	set_component_parameter_value TRANSFER_TYPE {Full Word Accesses Only}
 	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
@@ -993,20 +998,22 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 20.0.0
 	load_component sysid
+	set_component_parameter_value USE_LIVE_TIMESTAMP {0}
+	set_component_parameter_value USE_MANUAL_ID {1}
 	set_component_parameter_value id {1146303046}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {1146303046}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {1753189397}
+	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {1146303046}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {1753189397}
+	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}

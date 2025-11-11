@@ -223,8 +223,8 @@ module ${output_name} (
 		output wire \[1:0\]   m0_arburst,
 		output wire           m0_arlock,
 
-	       output wire           m0_armmusecsid,
-	       output wire \[15:0\]  m0_armmusid,
+		output wire           m0_armmusecsid,
+		output wire \[15:0\]  m0_armmusid,
 
 		output wire \[3:0\]   m0_arcache,
 		output wire \[2:0\]   m0_arprot,
@@ -250,85 +250,272 @@ module ${output_name} (
 		output wire \[3:0\]   m0_awregion
 	);
 
-assign m0_wuser = 8'h00;
-assign m0_arregion = 4'h0;
-assign m0_awregion = 4'h0;
+(* preserve, noprune *) reg           in_awready;
+(* preserve, noprune *) reg           in_wready;
+(* preserve, noprune *) reg \[4:0\]   in_bid;
+(* preserve, noprune *) reg \[1:0\]   in_bresp;
+(* preserve, noprune *) reg           in_bvalid;
+(* preserve, noprune *) reg           in_arready;
+(* preserve, noprune *) reg \[4:0\]   in_rid;
+(* preserve, noprune *) reg \[255:0\] in_rdata;
+(* preserve, noprune *) reg \[1:0\]   in_rresp;
+(* preserve, noprune *) reg           in_rlast;
+(* preserve, noprune *) reg           in_rvalid;
+(* preserve, noprune *) reg \[7:0\]   in_buser;
+(* preserve, noprune *) reg \[7:0\]   in_ruser;
 
-assign m0_awdomain = 2'b01;
-assign m0_awsnoop = 4'h0;
-assign m0_awuser = 8'h04;
+(* preserve, noprune *) reg \[4:0\]   out_awid;
+(* preserve, noprune *) reg \[31:0\]  out_awaddr;
+(* preserve, noprune *) reg \[7:0\]   out_awlen;
+(* preserve, noprune *) reg \[2:0\]   out_awsize;
+(* preserve, noprune *) reg \[1:0\]   out_awburst;
+(* preserve, noprune *) reg           out_awlock;
+(* preserve, noprune *) reg           out_awmmusecsid;
+(* preserve, noprune *) reg \[15:0\]  out_awmmusid;
+(* preserve, noprune *) reg \[3:0\]   out_awcache;
+(* preserve, noprune *) reg \[2:0\]   out_awprot;
+(* preserve, noprune *) reg           out_awvalid;
+(* preserve, noprune *) reg \[3:0\]   out_awqos;
+(* preserve, noprune *) reg \[255:0\] out_wdata;
+(* preserve, noprune *) reg \[31:0\]  out_wstrb;
+(* preserve, noprune *) reg           out_wlast;
+(* preserve, noprune *) reg           out_wvalid;
+(* preserve, noprune *) reg \[10:0\]  out_awstashnid;
+(* preserve, noprune *) reg           out_awstashniden;
+(* preserve, noprune *) reg \[4:0\]   out_awstashlpid;
+(* preserve, noprune *) reg           out_awstashlpiden;
+(* preserve, noprune *) reg \[5:0\]   out_awatop;
+(* preserve, noprune *) reg           out_bready;
+(* preserve, noprune *) reg \[4:0\]   out_arid;
+(* preserve, noprune *) reg \[31:0\]  out_araddr;
+(* preserve, noprune *) reg \[7:0\]   out_arlen;
+(* preserve, noprune *) reg \[2:0\]   out_arsize;
+(* preserve, noprune *) reg \[1:0\]   out_arburst;
+(* preserve, noprune *) reg           out_arlock;
+(* preserve, noprune *) reg           out_armmusecsid;
+(* preserve, noprune *) reg \[15:0\]  out_armmusid;
+(* preserve, noprune *) reg \[3:0\]   out_arcache;
+(* preserve, noprune *) reg \[2:0\]   out_arprot;
+(* preserve, noprune *) reg           out_arvalid;
+(* preserve, noprune *) reg \[3:0\]   out_arqos;
+(* preserve, noprune *) reg           out_rready;
+(* preserve, noprune *) reg \[1:0\]   out_awdomain;
+(* preserve, noprune *) reg \[1:0\]   out_ardomain;
+(* preserve, noprune *) reg \[3:0\]   out_arsnoop;
+(* preserve, noprune *) reg \[3:0\]   out_awsnoop;
+(* preserve, noprune *) reg \[7:0\]   out_aruser;
+(* preserve, noprune *) reg \[7:0\]   out_awuser;
+(* preserve, noprune *) reg \[7:0\]   out_wuser;
+(* preserve, noprune *) reg \[3:0\]   out_arregion;
+(* preserve, noprune *) reg \[3:0\]   out_awregion;
 
-assign m0_ardomain = 2'b01;
-assign m0_arsnoop = 4'h0;
-assign m0_aruser = 8'h04;
+always @ (posedge clk or posedge reset) begin
+	if(reset) begin
+		in_awready <= 1'b0;
+		in_wready <= 1'b0;
+		in_bid <= 4'h0;
+		in_bresp <= 2'h0;
+		in_bvalid <= 1'b0;
+		in_arready <= 1'b0;
+		in_rid <= 5'h0;
+		in_rdata <= 256'h0;
+		in_rresp <= 2'h0;
+		in_rlast <= 1'b0;
+		in_rvalid <= 1'b0;
+		in_buser <= 8'h0;
+		in_ruser <= 8'h0;
+	end
+	else begin
+		in_awready <= m0_awready;
+		in_wready <= m0_wready;
+		in_bid <= m0_bid;
+		in_bresp <= m0_bresp;
+		in_bvalid <= m0_bvalid;
+		in_arready <= m0_arready;
+		in_rid <= m0_rid;
+		in_rdata <= m0_rdata;
+		in_rresp <= m0_rresp;
+		in_rlast <= m0_rlast;
+		in_rvalid <= m0_rvalid;
+		in_buser <= m0_buser;
+		in_ruser <= m0_ruser;
+	end
+end
 
-assign m0_awburst = 2'b00;
+always @ (posedge clk or posedge reset) begin
+	if(reset) begin
+		out_awid <= 5'h0;
+		out_awaddr <= 32'h0;
+		out_awlen <= 8'h0;
+		out_awsize <= 3'h0;
+		out_awburst <= 2'h0;
+		out_awlock <= 1'h0;
+		out_awmmusecsid <= 1'h0;
+		out_awmmusid <= 16'h0;
+		out_awcache <= 4'h0;
+		out_awprot <= 3'h0;
+		out_awvalid <= 1'h0;
+		out_awqos <= 4'h0;
+		out_wdata <= 256'h0;
+		out_wstrb <= 32'h0;
+		out_wlast <= 1'h0;
+		out_wvalid <= 1'h0;
+		out_awstashnid <= 11'h0;
+		out_awstashniden <= 1'h0;
+		out_awstashlpid <= 5'h0;
+		out_awstashlpiden <= 1'h0;
+		out_awatop <= 6'h0;
+		out_bready <= 1'h0;
+		out_arid <= 5'h0;
+		out_araddr <= 32'h0;
+		out_arlen <= 8'h0;
+		out_arsize <= 3'h0;
+		out_arburst <= 2'h0;
+		out_arlock <= 1'h0;
+		out_armmusecsid <= 1'h0;
+		out_armmusid <= 16'h0;
+		out_arcache <= 4'h0;
+		out_arprot <= 3'h0;
+		out_arvalid <= 1'h0;
+		out_arqos <= 4'h0;
+		out_rready <= 1'h0;
+		out_awdomain <= 2'h0;
+		out_ardomain <= 2'h0;
+		out_arsnoop <= 4'h0;
+		out_awsnoop <= 4'h0;
+		out_aruser <= 8'h0;
+		out_awuser <= 8'h0;
+		out_wuser <= 8'h0;
+		out_arregion <= 4'h0;
+		out_awregion <= 4'h0;
+	end
+	else begin
+		out_awid <= 5'h0;
+		out_awaddr <= 32'h0;
+		out_awlen <= 8'h0;
+		out_awsize <= 3'h0;
+		out_awburst <= 2'h0;
+		out_awlock <= 1'h0;
+		out_awmmusecsid <= 1'h0;
+		out_awmmusid <= 16'h0;
+		out_awcache <= 4'h0;
+		out_awprot <= 3'h0;
+		out_awvalid <= 1'h0;
+		out_awqos <= 4'h0;
+		out_wdata <= in_rdata;
+		out_wstrb <= 32'h0;
+		out_wlast <= 1'h0;
+		out_wvalid <= 1'h0;
+		out_awstashnid <= 11'h0;
+		out_awstashniden <= 1'h0;
+		out_awstashlpid <= 5'h0;
+		out_awstashlpiden <= 1'h0;
+		out_awatop <= 6'h0;
+		out_bready <= 1'h0;
+		out_arid <= 5'h0;
+		out_araddr <= 32'h0;
+		out_arlen <= 8'h0;
+		out_arsize <= 3'h0;
+		out_arburst <= 2'h0;
+		out_arlock <= 1'h0;
+		out_armmusecsid <= 1'h0;
+		out_armmusid <= 16'h0;
+		out_arcache <= 4'h0;
+		out_arprot <= 3'h0;
+		out_arvalid <= 1'h0;
+		out_arqos <= 4'h0;
+		out_rready <= 1'h0;
+		out_awdomain <= 2'h0;
+		out_ardomain <= 2'h0;
+		out_arsnoop <= 4'h0;
+		out_awsnoop <= 4'h0;
+		out_aruser <= 8'h0;
+		out_awuser <= 8'h0;
+		out_wuser <= 8'h0;
+		out_arregion <= 4'h0;
+		out_awregion <= 4'h0;
+	end
+end
 
-assign m0_arlen = 8'h0;
+assign m0_wuser = out_wuser;
+assign m0_arregion = out_arregion;
+assign m0_awregion = out_awregion;
 
-assign m0_arqos = 4'h0;
+assign m0_awdomain = out_awdomain;
+assign m0_awsnoop = out_awsnoop;
+assign m0_awuser = out_awuser;
 
-assign m0_wstrb = 32'h0;
+assign m0_ardomain = out_ardomain;
+assign m0_arsnoop = out_arsnoop;
+assign m0_aruser = out_aruser;
 
-assign m0_rready = 1'b0;
+assign m0_awburst = out_awburst;
 
-assign m0_awlen = 8'h0;
+assign m0_arlen = out_arlen;
 
-assign m0_awqos = 4'h0;
+assign m0_arqos = out_arqos;
 
-assign m0_arcache = 4'hF;
+assign m0_wstrb = out_wstrb;
 
-assign m0_wvalid = 1'b0;
+assign m0_rready = out_rready;
 
-assign m0_araddr = 32'h0;
+assign m0_awlen = out_awlen;
 
-assign m0_arprot = 3'b001;
+assign m0_awqos = out_awqos;
 
-assign m0_awprot = 3'b001;
+assign m0_arcache = out_arcache;
 
-assign m0_wdata = m0_rdata;
+assign m0_wvalid = out_wvalid;
 
-assign m0_arvalid = 1'b0;
+assign m0_araddr = out_araddr;
 
-assign m0_awcache = 4'hF;
+assign m0_arprot = out_arprot;
 
-assign m0_arid = 5'h0;
+assign m0_awprot = out_awprot;
 
-assign m0_arlock = 1'b0;
+assign m0_wdata = out_wdata;
 
-assign m0_armmusecsid = 1'b0;
-assign m0_armmusid = 16'h1;
+assign m0_arvalid = out_arvalid;
 
-assign m0_awlock = 1'b0;
+assign m0_awcache = out_awcache;
 
-assign m0_awmmusecsid = 1'b0;
-assign m0_awmmusid = 16'h1;
+assign m0_arid = out_arid;
 
-assign m0_awaddr = 32'h0;
+assign m0_arlock = out_arlock;
 
-assign m0_arburst = 2'b00;
+assign m0_armmusecsid = out_armmusecsid;
+assign m0_armmusid = out_armmusid;
 
-assign m0_arsize = 3'b000;
+assign m0_awlock = out_awlock;
 
-assign m0_bready = 1'b0;
+assign m0_awmmusecsid = out_awmmusecsid;
+assign m0_awmmusid = out_awmmusid;
 
-assign m0_wlast = 1'b0;
+assign m0_awaddr = out_awaddr;
 
-assign m0_awid = 5'h0;
+assign m0_arburst = out_arburst;
 
-assign m0_awsize = 3'b000;
+assign m0_arsize = out_arsize;
 
-assign m0_awvalid = 1'b0;
+assign m0_bready = out_bready;
 
-assign m0_awstashnid = 11'h0;
+assign m0_wlast = out_wlast;
 
-assign m0_awstashniden = 1'b0;
+assign m0_awid = out_awid;
 
-assign m0_awstashlpid = 5'h0;
+assign m0_awsize = out_awsize;
 
-assign m0_awstashlpiden = 1'b0;
+assign m0_awvalid = out_awvalid;
 
-assign m0_awatop = 6'h0;
+assign m0_awstashnid = out_awstashnid;
+
+assign m0_awstashniden = out_awstashniden;
+
+assign m0_awstashlpid = out_awstashlpid;
+
+assign m0_awstashlpiden = out_awstashlpiden;
+
+assign m0_awatop = out_awatop;
 
 endmodule
 }

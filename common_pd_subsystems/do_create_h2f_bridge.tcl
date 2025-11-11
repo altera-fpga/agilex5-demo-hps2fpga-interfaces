@@ -71,6 +71,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value default_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value default_sub poison {false}
 	set_instantiation_interface_parameter_value default_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value default_sub readDataReorderingDepth {1}
@@ -224,6 +225,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -360,6 +362,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -496,6 +499,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -632,6 +636,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -768,6 +773,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -904,6 +910,7 @@ proc do_create_h2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -953,8 +960,10 @@ proc do_create_h2f_bridge {} {
 	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 20.0.0
 	load_component sysid
+	set_component_parameter_value USE_LIVE_TIMESTAMP {0}
+	set_component_parameter_value USE_MANUAL_ID {1}
 	set_component_parameter_value id {541471304}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component

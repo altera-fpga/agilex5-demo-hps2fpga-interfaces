@@ -259,6 +259,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value instruction_manager noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value instruction_manager optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value instruction_manager poison {false}
 	set_instantiation_interface_parameter_value instruction_manager readIssuingCapability {8}
 	set_instantiation_interface_parameter_value instruction_manager securityAttribute {false}
@@ -299,6 +300,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value data_manager noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value data_manager optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value data_manager poison {false}
 	set_instantiation_interface_parameter_value data_manager readIssuingCapability {1}
 	set_instantiation_interface_parameter_value data_manager securityAttribute {false}
@@ -415,6 +417,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}

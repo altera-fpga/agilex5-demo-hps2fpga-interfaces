@@ -39,6 +39,7 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value ace5lite_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value ace5lite_manager dataCheck {false}
 	set_instantiation_interface_parameter_value ace5lite_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value ace5lite_manager isTranslator {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesWRAPBursts {false}
@@ -59,6 +60,8 @@ proc do_create_no_periph {} {
 	add_instantiation_interface_port ace5lite_manager m0_arsize arsize 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awburst awburst 2 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awlock awlock 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_awmmusecsid awmmusecsid 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_awmmusid awmmusid 16 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awcache awcache 4 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awprot awprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awqos awqos 4 STD_LOGIC_VECTOR Output
@@ -85,6 +88,8 @@ proc do_create_no_periph {} {
 	add_instantiation_interface_port ace5lite_manager m0_arlen arlen 8 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arburst arburst 2 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arlock arlock 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_armmusecsid armmusecsid 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_armmusid armmusid 16 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arcache arcache 4 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arprot arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arqos arqos 4 STD_LOGIC_VECTOR Output
@@ -134,6 +139,7 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value axi4_man noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value axi4_man optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}

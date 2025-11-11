@@ -7,7 +7,7 @@ proc do_create_no_pins_pd_top {} {
 	# create the system
 	create_system no_pins_pd_top
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -15,7 +15,7 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component axi4_br ip/no_pins_pd_top/axi4_br.ip altera_axi_bridge axi4_br 19.9.5
+	add_component axi4_br ip/no_pins_pd_top/axi4_br.ip altera_axi_bridge axi4_br 19.10.0
 	load_component axi4_br
 	set_component_parameter_value ACE5_LITE_SUPPORT {0}
 	set_component_parameter_value ACE_LITE_SUPPORT {0}
@@ -153,6 +153,7 @@ proc do_create_no_pins_pd_top {} {
 	set_instantiation_interface_parameter_value s0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value s0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value s0 poison {false}
 	set_instantiation_interface_parameter_value s0 readAcceptanceCapability {16}
 	set_instantiation_interface_parameter_value s0 readDataReorderingDepth {1}
@@ -216,6 +217,7 @@ proc do_create_no_pins_pd_top {} {
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value m0 noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value m0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value m0 poison {false}
 	set_instantiation_interface_parameter_value m0 readIssuingCapability {16}
 	set_instantiation_interface_parameter_value m0 securityAttribute {false}

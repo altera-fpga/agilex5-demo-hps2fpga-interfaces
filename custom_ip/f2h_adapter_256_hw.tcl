@@ -183,6 +183,10 @@ add_interface_port ace5lite_manager m0_awsize awsize Output 3
 add_interface_port ace5lite_manager m0_arsize arsize Output 3
 add_interface_port ace5lite_manager m0_awburst awburst Output 2
 add_interface_port ace5lite_manager m0_awlock awlock Output 1
+
+add_interface_port ace5lite_manager m0_awmmusecsid awmmusecsid Output 1
+add_interface_port ace5lite_manager m0_awmmusid awmmusid Output 16
+
 add_interface_port ace5lite_manager m0_awcache awcache Output 4
 add_interface_port ace5lite_manager m0_awprot awprot Output 3
 add_interface_port ace5lite_manager m0_awqos awqos Output 4
@@ -209,6 +213,10 @@ add_interface_port ace5lite_manager m0_arsnoop arsnoop Output 4
 add_interface_port ace5lite_manager m0_arlen arlen Output 8
 add_interface_port ace5lite_manager m0_arburst arburst Output 2
 add_interface_port ace5lite_manager m0_arlock arlock Output 1
+
+add_interface_port ace5lite_manager m0_armmusecsid armmusecsid Output 1
+add_interface_port ace5lite_manager m0_armmusid armmusid Output 16
+
 add_interface_port ace5lite_manager m0_arcache arcache Output 4
 add_interface_port ace5lite_manager m0_arprot arprot Output 3
 add_interface_port ace5lite_manager m0_arqos arqos Output 4
@@ -248,6 +256,10 @@ module ${output_name} (
 		output wire \[2:0\]   m0_awsize,
 		output wire \[1:0\]   m0_awburst,
 		output wire           m0_awlock,
+
+		output wire           m0_awmmusecsid,
+		output wire \[15:0\]  m0_awmmusid,
+
 		output wire \[3:0\]   m0_awcache,
 		output wire \[2:0\]   m0_awprot,
 		output wire           m0_awvalid,
@@ -273,6 +285,10 @@ module ${output_name} (
 		output wire \[2:0\]   m0_arsize,
 		output wire \[1:0\]   m0_arburst,
 		output wire           m0_arlock,
+
+		output wire           m0_armmusecsid,
+		output wire \[15:0\]  m0_armmusid,
+
 		output wire \[3:0\]   m0_arcache,
 		output wire \[2:0\]   m0_arprot,
 		output wire           m0_arvalid,
@@ -384,7 +400,13 @@ assign m0_arid = s0_arid;
 
 assign m0_arlock = 1'b0;
 
+assign m0_armmusecsid = 1'b0;
+assign m0_armmusid = 16'h1;
+
 assign m0_awlock = 1'b0;
+
+assign m0_awmmusecsid = 1'b0;
+assign m0_awmmusid = 16'h1;
 
 assign m0_awaddr = s0_awaddr;
 

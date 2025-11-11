@@ -93,6 +93,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value default_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value default_sub poison {false}
 	set_instantiation_interface_parameter_value default_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value default_sub readDataReorderingDepth {1}
@@ -160,6 +161,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_subordinate optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_subordinate poison {false}
 	set_instantiation_interface_parameter_value axi4_subordinate readAcceptanceCapability {8}
 	set_instantiation_interface_parameter_value axi4_subordinate readDataReorderingDepth {8}
@@ -221,6 +223,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value ace5lite_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value ace5lite_manager dataCheck {false}
 	set_instantiation_interface_parameter_value ace5lite_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value ace5lite_manager isTranslator {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value ace5lite_manager issuesWRAPBursts {false}
@@ -241,6 +244,8 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port ace5lite_manager m0_arsize arsize 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awburst awburst 2 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awlock awlock 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_awmmusecsid awmmusecsid 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_awmmusid awmmusid 16 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awcache awcache 4 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awprot awprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_awqos awqos 4 STD_LOGIC_VECTOR Output
@@ -267,6 +272,8 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port ace5lite_manager m0_arlen arlen 8 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arburst arburst 2 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arlock arlock 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_armmusecsid armmusecsid 1 STD_LOGIC Output
+	add_instantiation_interface_port ace5lite_manager m0_armmusid armmusid 16 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arcache arcache 4 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arprot arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port ace5lite_manager m0_arqos arqos 4 STD_LOGIC_VECTOR Output
@@ -487,6 +494,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value m0 noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value m0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value m0 poison {false}
 	set_instantiation_interface_parameter_value m0 readIssuingCapability {16}
 	set_instantiation_interface_parameter_value m0 securityAttribute {false}
@@ -532,7 +540,7 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.2.5
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.2
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -558,6 +566,7 @@ proc do_create_f2h_bridge {} {
 	set_component_parameter_value PREFETCHER_READ_BURST_ENABLE {0}
 	set_component_parameter_value PROGRAMMABLE_BURST_ENABLE {0}
 	set_component_parameter_value RESPONSE_PORT {2}
+	set_component_parameter_value SIDEBAND_ENABLE {0}
 	set_component_parameter_value STRIDE_ENABLE {0}
 	set_component_parameter_value TRANSFER_TYPE {Full Word Accesses Only}
 	set_component_parameter_value USE_FIX_ADDRESS_WIDTH {1}
@@ -587,6 +596,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.PREFETCHER_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.PROGRAMMABLE_BURST_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_PORT {2}
+	set_instantiation_assignment_value embeddedsw.CMacro.SIDEBAND_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE_DERIVED {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.TRANSFER_TYPE {Full Word Accesses Only}
@@ -993,20 +1003,20 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value out_reset synchronousEdges {NONE}
 	add_instantiation_interface_port out_reset out_reset reset 1 STD_LOGIC Output
 	save_instantiation
-	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
+	add_component sysid ip/no_pins_pd_top/sysid.ip altera_avalon_sysid_qsys sysid 20.0.0
 	load_component sysid
+	set_component_parameter_value USE_LIVE_TIMESTAMP {0}
+	set_component_parameter_value USE_MANUAL_ID {1}
 	set_component_parameter_value id {541602374}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {541602374}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {541602374}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}

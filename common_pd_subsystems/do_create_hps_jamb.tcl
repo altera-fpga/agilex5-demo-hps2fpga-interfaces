@@ -7,7 +7,7 @@ proc do_create_hps_jamb {} {
 	# create the system
 	create_system hps_jamb
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -67,6 +67,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value axi4_man noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value axi4_man optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
@@ -142,6 +143,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_sub poison {false}
 	set_instantiation_interface_parameter_value axi4_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi4_sub readDataReorderingDepth {1}

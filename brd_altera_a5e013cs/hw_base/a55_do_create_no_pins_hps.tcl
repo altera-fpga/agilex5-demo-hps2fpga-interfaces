@@ -1,4 +1,5 @@
 #
+# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
@@ -6,7 +7,7 @@ proc do_create_no_pins_hps {} {
 	# create the system
 	create_system no_pins_hps
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED013BB32AE5S}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -14,7 +15,7 @@ proc do_create_no_pins_hps {} {
 	# add HDL parameters
 
 	# add the components
-	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 9.0.0
+	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 11.1.0
 	load_component agilex_5_soc
 	set_component_parameter_value ATB_Enable {0}
 	set_component_parameter_value CM_Mode {N/A}
@@ -24,6 +25,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value Debug_APB_Enable {0}
 	set_component_parameter_value ED_en_questa {1}
 	set_component_parameter_value ED_en_riviera {0}
+	set_component_parameter_value ED_en_sim_gen {1}
 	set_component_parameter_value ED_en_synth_gen {0}
 	set_component_parameter_value ED_en_vcsmx {1}
 	set_component_parameter_value ED_en_xcelium {1}
@@ -317,7 +319,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value User1_clk_freq {200.0}
 	set_component_parameter_value User1_clk_src_select {1}
 	set_component_parameter_value eosc1_clk_mhz {25.0}
-	set_component_parameter_value f2s_SMMU {0}
+	set_component_parameter_value f2s_SMMU {1}
 	set_component_parameter_value f2s_address_width {32}
 	set_component_parameter_value f2s_data_width {256}
 	set_component_parameter_value f2s_mode {ace5lite}
@@ -414,6 +416,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value hps2fpga maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value hps2fpga maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value hps2fpga noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value hps2fpga optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value hps2fpga poison {false}
 	set_instantiation_interface_parameter_value hps2fpga readIssuingCapability {16}
 	set_instantiation_interface_parameter_value hps2fpga securityAttribute {false}
@@ -482,6 +485,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value lwhps2fpga maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value lwhps2fpga maximumOutstandingWrites {1}
 	set_instantiation_interface_parameter_value lwhps2fpga noRepeatedIdsBetweenSubordinates {0}
+	set_instantiation_interface_parameter_value lwhps2fpga optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value lwhps2fpga poison {false}
 	set_instantiation_interface_parameter_value lwhps2fpga readIssuingCapability {16}
 	set_instantiation_interface_parameter_value lwhps2fpga securityAttribute {false}
@@ -692,6 +696,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value f2sdram optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value f2sdram poison {false}
 	set_instantiation_interface_parameter_value f2sdram readAcceptanceCapability {16}
 	set_instantiation_interface_parameter_value f2sdram readDataReorderingDepth {1}
@@ -778,6 +783,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value fpga2hps dfhParameterId {}
 	set_instantiation_interface_parameter_value fpga2hps dfhParameterName {}
 	set_instantiation_interface_parameter_value fpga2hps dfhParameterVersion {}
+	set_instantiation_interface_parameter_value fpga2hps isTranslator {false}
 	set_instantiation_interface_parameter_value fpga2hps poison {false}
 	set_instantiation_interface_parameter_value fpga2hps readAcceptanceCapability {16}
 	set_instantiation_interface_parameter_value fpga2hps readDataReorderingDepth {1}
@@ -833,7 +839,11 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port fpga2hps fpga2hps_rvalid rvalid 1 STD_LOGIC Output
 	add_instantiation_interface_port fpga2hps fpga2hps_rready rready 1 STD_LOGIC Input
 	add_instantiation_interface_port fpga2hps fpga2hps_aruser aruser 8 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port fpga2hps fpga2hps_armmusecsid armmusecsid 1 STD_LOGIC Input
+	add_instantiation_interface_port fpga2hps fpga2hps_armmusid armmusid 16 STD_LOGIC_VECTOR Input
 	add_instantiation_interface_port fpga2hps fpga2hps_awuser awuser 8 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port fpga2hps fpga2hps_awmmusecsid awmmusecsid 1 STD_LOGIC Input
+	add_instantiation_interface_port fpga2hps fpga2hps_awmmusid awmmusid 16 STD_LOGIC_VECTOR Input
 	add_instantiation_interface_port fpga2hps fpga2hps_arregion arregion 4 STD_LOGIC_VECTOR Input
 	add_instantiation_interface_port fpga2hps fpga2hps_awregion awregion 4 STD_LOGIC_VECTOR Input
 	add_instantiation_interface_port fpga2hps fpga2hps_wuser wuser 8 STD_LOGIC_VECTOR Input
@@ -906,7 +916,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.0.0
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.1.0
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {LPDDR4}
 	set_component_parameter_value EMIF_REF_CLK_SHARING {0}

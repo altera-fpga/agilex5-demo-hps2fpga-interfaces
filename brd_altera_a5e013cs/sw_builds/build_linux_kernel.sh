@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS25.1.1_REL_GSRD_PR"
+TAG_NAME="QPDS25.3_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})

@@ -7,7 +7,7 @@ proc do_create_lwh2f_bridge {} {
 	# create the system
 	create_system lwh2f_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -71,6 +71,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value default_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value default_sub poison {false}
 	set_instantiation_interface_parameter_value default_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value default_sub readDataReorderingDepth {1}
@@ -224,6 +225,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -360,6 +362,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
@@ -409,20 +412,22 @@ proc do_create_lwh2f_bridge {} {
 	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
 	save_instantiation
-	add_component sysid ip/lwh2f_bridge/sysid.ip altera_avalon_sysid_qsys sysid 19.1.8
+	add_component sysid ip/lwh2f_bridge/sysid.ip altera_avalon_sysid_qsys sysid 20.0.0
 	load_component sysid
+	set_component_parameter_value USE_LIVE_TIMESTAMP {0}
+	set_component_parameter_value USE_MANUAL_ID {1}
 	set_component_parameter_value id {843601740}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {843601740}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {1753193199}
+	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {843601740}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {1753193199}
+	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}
