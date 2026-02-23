@@ -155,6 +155,18 @@
 			};
 		};
 
+		hw_f2h_bridge_stash {
+			description = "hw_f2h_bridge_stash";
+			data = /incbin/("../hw_f2h_bridge_stash/merged_hps.core.rbf");
+			type = "fpga";
+			arch = "arm64";
+			compression = "none";
+			load = <0x86000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
 		hw_uart {
 			description = "hw_uart";
 			data = /incbin/("../hw_uart/merged_hps.core.rbf");
@@ -388,6 +400,19 @@
 		sw_f2h_bridge {
 			description = "sw_f2h_bridge";
 			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2h_bridge.bin");
+			type = "standalone";
+			arch = "arm64";
+			compression = "none";
+			load = <0x90000000>;
+			entry = <0x90000000>;
+			hash {
+				algo = "crc32";
+			};
+		};
+
+		sw_f2h_bridge_stash {
+			description = "sw_f2h_bridge_stash";
+			data = /incbin/("../sw_builds/u-boot-socfpga/examples/standalone/f2h_bridge_stash.bin");
 			type = "standalone";
 			arch = "arm64";
 			compression = "none";

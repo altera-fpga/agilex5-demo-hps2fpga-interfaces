@@ -62,6 +62,12 @@ SOURCES="
 ../../../common_sw/linux_apps/config_clk.c
 ../../../common_sw/linux_apps/emac.c
 ../../../common_sw/linux_apps/f2h_bridge.c
+../../../common_sw/linux_apps/f2h_bridge_vfio_flush.c
+../../../common_sw/linux_apps/f2h_bridge_vfio_noflush.c
+../../../common_sw/linux_apps/f2h_bridge_stash_vfio_flush.c
+../../../common_sw/linux_apps/f2h_bridge_stash_vfio_noflush.c
+../../../common_sw/linux_apps/f2h_bridge_uio_ws_test.c
+../../../common_sw/linux_apps/f2h_bridge_vfio_ws_test.c
 ../../../common_sw/linux_apps/f2h_irq.c
 ../../../common_sw/linux_apps/f2h_irq_handler.c
 ../../../common_sw/linux_apps/f2sdram_bridge.c

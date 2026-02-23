@@ -1,5 +1,4 @@
 #
-# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
@@ -8,15 +7,15 @@ package require -exact qsys 24.3
 
 
 #
-# module f2h_terminator_256
+# module f2h_terminator_reg_256
 #
 set_module_property DESCRIPTION ""
-set_module_property NAME f2h_terminator_256
+set_module_property NAME f2h_terminator_reg_256
 set_module_property VERSION 1.1
 set_module_property INTERNAL false
 set_module_property OPAQUE_ADDRESS_MAP true
 set_module_property AUTHOR "RSF"
-set_module_property DISPLAY_NAME f2h_terminator_256
+set_module_property DISPLAY_NAME f2h_terminator_reg_256
 set_module_property INSTANTIATE_IN_SYSTEM_MODULE true
 set_module_property EDITABLE false
 set_module_property REPORT_TO_TALKBACK false

@@ -13,6 +13,8 @@ DTSSRCS := \
 ./hw_config_clk.dts \
 ./hw_emac.dts \
 ./hw_f2h_bridge.dts \
+./hw_f2h_bridge_vfio.dts \
+./hw_f2h_bridge_stash_vfio.dts \
 ./hw_f2h_irq.dts \
 ./hw_f2sdram_bridge.dts \
 ./hw_h2f_bridge.dts \

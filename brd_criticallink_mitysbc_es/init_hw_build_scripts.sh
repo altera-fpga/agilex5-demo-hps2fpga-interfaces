@@ -12,6 +12,7 @@ cp -s \
 ../common_build_scripts/build_hw.sh \
 ../common_build_scripts/check_hw_build.sh \
 ../common_build_scripts/create_bitstreams.sh \
+../common_build_scripts/compare_hps_io_hashes.sh \
 ../common_build_scripts/hw_build_dirs.src \
 || { echo "ERROR" ; exit 1 ; }
 

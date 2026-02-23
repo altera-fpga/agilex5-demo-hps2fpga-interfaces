@@ -15,7 +15,7 @@ proc do_create_no_pins_hps {} {
 	# add HDL parameters
 
 	# add the components
-	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 11.1.0
+	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 13.0.0
 	load_component agilex_5_soc
 	set_component_parameter_value ATB_Enable {0}
 	set_component_parameter_value CM_Mode {N/A}
@@ -68,10 +68,14 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value F2H_free_clock_enable {0}
 	set_component_parameter_value FPGA_EMAC0_gtx_clk_mhz {125.0}
 	set_component_parameter_value FPGA_EMAC0_md_clk_mhz {2.5}
+	set_component_parameter_value FPGA_EMAC0_tx_clk_en {1}
 	set_component_parameter_value FPGA_EMAC1_gtx_clk_mhz {125.0}
 	set_component_parameter_value FPGA_EMAC1_md_clk_mhz {2.5}
+	set_component_parameter_value FPGA_EMAC1_tx_clk_en {1}
 	set_component_parameter_value FPGA_EMAC2_gtx_clk_mhz {125.0}
 	set_component_parameter_value FPGA_EMAC2_md_clk_mhz {2.5}
+	set_component_parameter_value FPGA_EMAC2_tx_clk_en {1}
+	set_component_parameter_value FPGA_EMAC_PTP_clk_en {1}
 	set_component_parameter_value FPGA_I2C0_sclk_mhz {125.0}
 	set_component_parameter_value FPGA_I2C1_sclk_mhz {125.0}
 	set_component_parameter_value FPGA_I2CEMAC0_clk_mhz {125.0}
@@ -696,6 +700,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value f2sdram noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value f2sdram optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value f2sdram poison {false}
 	set_instantiation_interface_parameter_value f2sdram readAcceptanceCapability {16}
@@ -916,7 +921,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.1.0
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.1.1
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {LPDDR4}
 	set_component_parameter_value EMIF_REF_CLK_SHARING {0}
@@ -1079,6 +1084,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_USER_WIDTH {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_2N_MODE_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_DM_EN {0}
@@ -1243,6 +1249,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_USER_WIDTH {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_2N_MODE_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_DM_EN {0}

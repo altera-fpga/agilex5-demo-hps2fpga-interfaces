@@ -1,5 +1,6 @@
 # menu-b on hw_f2h_bridge
 <!-- SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation -->
+<!-- SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation -->
 <!-- SPDX-License-Identifier: MIT-0 -->
 
 Return to [**Index**](01_index.md)
@@ -12,6 +13,8 @@ u-boot software applications referenced from this document:
 
 Linux software applications referenced from this document:
 * common_sw/linux_apps/f2h_bridge.c
+* common_sw/linux_apps/f2h_bridge_vfio_noflush.c
+* common_sw/linux_apps/f2h_bridge_vfio_flush.c
 
 ## Overview
 
@@ -226,6 +229,26 @@ The Linux version of this demo is essentially the same as the u-boot standalone 
 The HPS EMIF memory buffer that we use is allocated from a reserved memory buffer that we define in the Linux devicetree so we completely control the allocation of that reserved memory for our own needs. We only demonstrate the non-cacheable flow in Linux because there is no convenient way to map our virtual buffers to be cacheable without a custom kernel module, which we have not created at this time.
 
 In Linux, we also demonstrate two methods of determining when the msgdma core has completed the transfers. First, we demonstrate a polling method like we used in the u-boot application, and then we demonstrate an interrupt method which we also facilitate through a uio driver.
+
+## Software demo - Linux - menu-B
+
+The menu-B Linux variant of this demo is essentially the same as the menu-b version of the demo but instead of using the uio driver framework to interact with the hardware it uses the vfio platform driver framework and the iommufd framework.
+
+The HPS EMIF memory buffer that we use is allocated from the user space heap and the SMMU is configured through the iommufd framework. The non-contiguous cacheable buffer that we allocate from the heap is translated into iova's that we can program into the msgdma for DMA transfers through the F2H bridge using the iommufd framework.
+
+The menu-B variant also demonstrates a polled and interrupt driven example for determining when the msgdma core has completed the transfers. The interrupt method is demonstrated through the vfio framework.
+
+The menu-B variant does not perform any cache flushing as it executes, so you can observe how the performance of the coherent DMA through the F2H bridge interacts with the cacheable buffer that is warmed up with data.
+
+## Software demo - Linux - menu-C
+
+The menu-C Linux variant of this demo is essentially the same as the menu-b version of the demo but instead of using the uio driver framework to interact with the hardware it uses the vfio platform driver framework and the iommufd framework.
+
+The HPS EMIF memory buffer that we use is allocated from the user space heap and the SMMU is configured through the iommufd framework. The non-contiguous cacheable buffer that we allocate from the heap is translated into iova's that we can program into the msgdma for DMA transfers through the F2H bridge using the iommufd framework.
+
+The menu-C variant also demonstrates a polled and interrupt driven example for determining when the msgdma core has completed the transfers. The interrupt method is demonstrated through the vfio framework.
+
+The menu-C variant performs cache flushing as it executes, so you can observe how the performance of the coherent DMA through the F2H bridge interacts with the cacheable buffer that is cold, with no data preloaded into the cache.
 
 ---
 Return to [**Index**](01_index.md)

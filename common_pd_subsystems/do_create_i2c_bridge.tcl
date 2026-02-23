@@ -7,7 +7,7 @@ proc do_create_i2c_bridge {} {
 	# create the system
 	create_system i2c_bridge
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -17,7 +17,7 @@ proc do_create_i2c_bridge {} {
 	# add the components
 	add_component clk_250m ip/no_pins_pd_top/clk_250m.ip altera_clock_bridge clk_250m 19.2.0
 	load_component clk_250m
-	set_component_parameter_value EXPLICIT_CLOCK_RATE {200000000.0}
+	set_component_parameter_value EXPLICIT_CLOCK_RATE {250000000.0}
 	set_component_parameter_value NUM_CLOCK_OUTPUTS {1}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
 	save_component
@@ -30,11 +30,11 @@ proc do_create_i2c_bridge {} {
 	add_instantiation_interface_port in_clk in_clk clk 1 STD_LOGIC Input
 	add_instantiation_interface out_clk clock OUTPUT
 	set_instantiation_interface_parameter_value out_clk associatedDirectClock {in_clk}
-	set_instantiation_interface_parameter_value out_clk clockRate {200000000}
+	set_instantiation_interface_parameter_value out_clk clockRate {250000000}
 	set_instantiation_interface_parameter_value out_clk clockRateKnown {true}
 	set_instantiation_interface_parameter_value out_clk externallyDriven {false}
 	set_instantiation_interface_parameter_value out_clk ptfSchematicName {}
-	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {200000000}
+	set_instantiation_interface_sysinfo_parameter_value out_clk clock_rate {250000000}
 	add_instantiation_interface_port out_clk out_clk clk 1 STD_LOGIC Output
 	save_instantiation
 	add_component gp_in_const ip/no_pins_pd_top/gp_in_const.ip hps_gp_in_constant gp_in_const 1.0
@@ -349,12 +349,12 @@ proc do_create_i2c_bridge {} {
 	# add the connections
 	add_connection clk_250m.out_clk/iamb.clock
 	set_connection_parameter_value clk_250m.out_clk/iamb.clock clockDomainSysInfo {-1}
-	set_connection_parameter_value clk_250m.out_clk/iamb.clock clockRateSysInfo {200000000.0}
+	set_connection_parameter_value clk_250m.out_clk/iamb.clock clockRateSysInfo {250000000.0}
 	set_connection_parameter_value clk_250m.out_clk/iamb.clock clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/iamb.clock resetDomainSysInfo {-1}
 	add_connection clk_250m.out_clk/ocram_4k.clk1
 	set_connection_parameter_value clk_250m.out_clk/ocram_4k.clk1 clockDomainSysInfo {-1}
-	set_connection_parameter_value clk_250m.out_clk/ocram_4k.clk1 clockRateSysInfo {200000000.0}
+	set_connection_parameter_value clk_250m.out_clk/ocram_4k.clk1 clockRateSysInfo {250000000.0}
 	set_connection_parameter_value clk_250m.out_clk/ocram_4k.clk1 clockResetSysInfo {}
 	set_connection_parameter_value clk_250m.out_clk/ocram_4k.clk1 resetDomainSysInfo {-1}
 	add_connection gp_in_const.hps_gp_in/hps_gp_split.hps_gp_in
@@ -384,6 +384,7 @@ proc do_create_i2c_bridge {} {
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 slaveDataWidthSysInfo {-1}
@@ -425,6 +426,7 @@ proc do_create_i2c_bridge {} {
 	set_domain_assignment iamb.avalon_master qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment iamb.avalon_master qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment iamb.avalon_master qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment iamb.avalon_master qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment iamb.avalon_master qsys_mm.syncResets TRUE
 	set_domain_assignment iamb.avalon_master qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

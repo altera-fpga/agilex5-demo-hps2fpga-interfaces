@@ -201,7 +201,14 @@ proc do_create_uart {} {
 	set_component_parameter_value enableAvalonInterface {0}
 	set_component_parameter_value enableECCLite {0}
 	set_component_parameter_value enableResetReq {0}
+	set_component_parameter_value enableZba {0}
+	set_component_parameter_value enableZbb {0}
+	set_component_parameter_value enableZbs {0}
+	set_component_parameter_value enableZicntr {0}
+	set_component_parameter_value enableZicsr {0}
+	set_component_parameter_value enableZmmul {0}
 	set_component_parameter_value hartID {0}
+	set_component_parameter_value interruptMode {0}
 	set_component_parameter_value numGpr {32}
 	set_component_parameter_value resetOffset {0}
 	set_component_parameter_value resetSlave {ocram_8k.axi_s1}
@@ -417,6 +424,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
@@ -570,6 +578,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 slaveDataWidthSysInfo {-1}
@@ -594,6 +603,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 slaveDataWidthSysInfo {-1}
@@ -618,6 +628,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 slaveDataWidthSysInfo {-1}
@@ -656,6 +667,7 @@ proc do_create_uart {} {
 	set_domain_assignment niosv_c.data_manager qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment niosv_c.data_manager qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment niosv_c.data_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment niosv_c.data_manager qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment niosv_c.data_manager qsys_mm.syncResets TRUE
 	set_domain_assignment niosv_c.data_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

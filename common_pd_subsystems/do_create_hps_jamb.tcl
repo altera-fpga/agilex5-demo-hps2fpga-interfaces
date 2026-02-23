@@ -143,6 +143,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_sub noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi4_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_sub poison {false}
 	set_instantiation_interface_parameter_value axi4_sub readAcceptanceCapability {1}
@@ -374,6 +375,7 @@ proc do_create_hps_jamb {} {
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub slaveDataWidthSysInfo {-1}
@@ -414,6 +416,7 @@ proc do_create_hps_jamb {} {
 	set_domain_assignment f2sdram_jamb.master qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment f2sdram_jamb.master qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.syncResets TRUE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

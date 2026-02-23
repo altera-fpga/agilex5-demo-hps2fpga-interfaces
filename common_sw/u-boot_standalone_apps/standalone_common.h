@@ -268,6 +268,7 @@
 #define SAMB_SIG		(0x424D4153)
 #define IAMB_SIG		(0x424D4149)
 #define F2H_SIG			(0x20483246)
+#define F2HS_SIG		(0x53483246)
 #define EMAC_SIG		(0x43414D45)
 
 /* jtag usercodes */

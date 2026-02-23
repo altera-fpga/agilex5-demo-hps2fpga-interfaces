@@ -94,7 +94,7 @@ fdt set /clocks/qspi-clk clock-frequency ${qspi_clock};
 #
 # configure the linux kernel boot parameters
 #
-env set bootargs 'console=ttyS0,115200 earlycon panic=-1 uio_pdrv_genirq.of_id="no-pins,demo" arm-smmu-v3.disable_bypass=false' || echo ERROR: 20 && exit 1
+env set bootargs 'console=ttyS0,115200 earlycon panic=-1 uio_pdrv_genirq.of_id="no-pins,demo" arm-smmu-v3.disable_bypass=false vfio_platform.reset_required=0 iommufd.allow_unsafe_interrupts=1' || echo ERROR: 20 && exit 1
 
 #
 # capture the JTAG USERCODE and an exit timestamp

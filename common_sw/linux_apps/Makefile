@@ -40,6 +40,12 @@ APP_SRCS := \
 ./config_clk.c \
 ./emac.c \
 ./f2h_bridge.c \
+./f2h_bridge_vfio_flush.c \
+./f2h_bridge_vfio_noflush.c \
+./f2h_bridge_stash_vfio_flush.c \
+./f2h_bridge_stash_vfio_noflush.c \
+./f2h_bridge_uio_ws_test.c \
+./f2h_bridge_vfio_ws_test.c \
 ./f2h_irq.c \
 ./f2h_irq_handler.c \
 ./f2sdram_bridge.c \
@@ -126,6 +132,60 @@ f2h_bridge : f2h_bridge.elf
 	$(STRIP) -s -o $@ $<
 
 f2h_bridge.elf : f2h_bridge.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridge_vfio_flush app
+#-------------------------------------------------------------------------------
+f2h_bridge_vfio_flush : f2h_bridge_vfio_flush.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_vfio_flush.elf : f2h_bridge_vfio_flush.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridge_vfio_noflush app
+#-------------------------------------------------------------------------------
+f2h_bridge_vfio_noflush : f2h_bridge_vfio_noflush.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_vfio_noflush.elf : f2h_bridge_vfio_noflush.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridge_stash_vfio_flush app
+#-------------------------------------------------------------------------------
+f2h_bridge_stash_vfio_flush : f2h_bridge_stash_vfio_flush.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_stash_vfio_flush.elf : f2h_bridge_stash_vfio_flush.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridge_stash_vfio_noflush app
+#-------------------------------------------------------------------------------
+f2h_bridge_stash_vfio_noflush : f2h_bridge_stash_vfio_noflush.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_stash_vfio_noflush.elf : f2h_bridge_stash_vfio_noflush.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridge_uio_ws_test app
+#-------------------------------------------------------------------------------
+f2h_bridge_uio_ws_test : f2h_bridge_uio_ws_test.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_uio_ws_test.elf : f2h_bridge_uio_ws_test.o uio_helpers.o
+	$(CC) -static $(CFLAGS) -o $@ $^
+
+#-------------------------------------------------------------------------------
+# f2h_bridgevfio_ws_test app
+#-------------------------------------------------------------------------------
+f2h_bridge_vfio_ws_test : f2h_bridge_vfio_ws_test.elf
+	$(STRIP) -s -o $@ $<
+
+f2h_bridge_vfio_ws_test.elf : f2h_bridge_vfio_ws_test.o uio_helpers.o
 	$(CC) -static $(CFLAGS) -o $@ $^
 
 #-------------------------------------------------------------------------------

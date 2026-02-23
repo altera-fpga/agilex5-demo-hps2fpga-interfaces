@@ -81,7 +81,31 @@
 #define linux_b_menu_HELP_TEXT b_menu_HELP_TEXT \
 "\n\n\
     The demo uses UIO drivers to map the HPS peripheral addresses that\n\
-    it accesses."
+    it accesses.  FPGA DMAs into a non-cacheable memory buffer."
+
+//------------------------------------------------------------------------------
+#define linux_B_menu_HELP_TEXT b_menu_HELP_TEXT \
+"\n\n\
+    Uses VFIO drivers to map the HPS peripheral addresses that it\n\
+    accesses.  FPGA DMAs into a coherent cacheable memory buffer\n\
+    and no cache flush."
+
+//------------------------------------------------------------------------------
+#define linux_C_menu_HELP_TEXT b_menu_HELP_TEXT \
+"\n\n\
+    Uses VFIO drivers to map the HPS peripheral addresses that it\n\
+    accesses.  FPGA DMAs into a coherent cacheable memory buffer\n\
+    with a cache flush."
+
+//------------------------------------------------------------------------------
+#define linux_D_menu_HELP_TEXT D_menu_HELP_TEXT \
+"\n\n\
+    FPGA DMAs into a coherent cacheable memory buffer and no cache flush."
+
+//------------------------------------------------------------------------------
+#define linux_G_menu_HELP_TEXT D_menu_HELP_TEXT \
+"\n\n\
+    FPGA DMAs into a coherent cacheable memory buffer with a cache flush."
 
 //------------------------------------------------------------------------------
 #define linux_k_menu_HELP_TEXT k_menu_HELP_TEXT \

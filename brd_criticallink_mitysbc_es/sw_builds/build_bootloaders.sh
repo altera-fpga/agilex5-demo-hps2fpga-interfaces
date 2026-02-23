@@ -2,10 +2,11 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS25.3_REL_GSRD_PR"
+TAG_NAME="QPDS25.3.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -114,6 +115,7 @@ ln	-s \
 ../../../../../common_sw/u-boot_standalone_apps/emac.c \
 ../../../../../common_sw/u-boot_standalone_apps/config_clk.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_bridge.c \
+../../../../../common_sw/u-boot_standalone_apps/f2h_bridge_stash.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_irq.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2h_irq_handler.c \
 ../../../../../common_sw/u-boot_standalone_apps/f2sdram_bridge.c \

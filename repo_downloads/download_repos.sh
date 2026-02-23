@@ -2,6 +2,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -9,7 +10,7 @@
 cd $(dirname ${0})
 
 
-QPDS_TAG="QPDS25.3_REL_GSRD_PR"
+QPDS_TAG="QPDS25.3.1_REL_GSRD_PR"
 TOYBOX_TAG="0.8.13"
 
 REPO_LIST="

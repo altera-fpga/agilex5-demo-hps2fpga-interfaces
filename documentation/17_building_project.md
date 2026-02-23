@@ -1,6 +1,7 @@
 # building project
 <!-- SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation -->
 <!-- SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation -->
+<!-- SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation -->
 <!-- SPDX-License-Identifier: MIT-0 -->
 
 Return to [**Index**](01_index.md)
@@ -52,6 +53,12 @@ If you do not have patch 1.14 applied to the Quartus tools, you can work around 
 ```text
 sed -i.bak -e "s/oscillator_clock\.reg/oscillator_clock/" ./ip/no_pins_pd_top/config_clk_250m/altera_s10_configuration_clock_1915/synth/altera_s10_configuration_clock.sdc
 ```
+---
+---
+#### Special Note: Quartus 25.3.1 build 100 patch 1.02 and 1.03 requirement
+
+In the Quartus 25.3.1 build 100 tools release, there is a requirement to apply patch 1.02 and 1.03 to the Quartus tools prior to building the hardware examples. Patch 1.02 corrects the date-related crash involving the Distributed Design Management (DDM) client. Patch 1.03 corrects an issue with inconsistent HPS IO hashes across Quartus compiles which can cause the demo to fail some use cases.
+
 ---
 ---
 

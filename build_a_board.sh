@@ -2,6 +2,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -16,6 +17,7 @@ cd $(dirname ${0})
 	echo ""
 	echo "Currently valid board directories:"
 	echo "    'brd_altera_a5e013cs'"
+	echo "    'brd_altera_a5e065_premium'"
 	echo "    'brd_altera_a5e065_premium_es'"
 	echo "    'brd_altera_a5e065_modular_es'"
 	echo "    'brd_arrow_axe5_eagle_es'"
@@ -57,5 +59,7 @@ cd $(dirname ${0})
 ./"${BOARD_DIR:?}"/sw_builds/build_linux_kernel.sh \
 	|| { echo "ERROR" ; exit 1 ; }
 ./"${BOARD_DIR:?}"/images/build_images.sh \
+	|| { echo "ERROR" ; exit 1 ; }
+./"${BOARD_DIR:?}"/compare_hps_io_hashes.sh \
 	|| { echo "ERROR" ; exit 1 ; }
 

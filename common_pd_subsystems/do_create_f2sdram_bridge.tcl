@@ -230,6 +230,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_sub noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi4_sub optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_sub poison {false}
 	set_instantiation_interface_parameter_value axi4_sub readAcceptanceCapability {1}
@@ -536,7 +537,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.2
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.3
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -592,6 +593,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.PREFETCHER_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.PROGRAMMABLE_BURST_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.RESPONSE_PORT {2}
+	set_instantiation_assignment_value embeddedsw.CMacro.SIDEBAND_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.STRIDE_ENABLE_DERIVED {0}
 	set_instantiation_assignment_value embeddedsw.CMacro.TRANSFER_TYPE {Full Word Accesses Only}
@@ -1008,12 +1010,10 @@ proc do_create_f2sdram_bridge {} {
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {1146303046}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {1146303046}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}
@@ -1151,6 +1151,7 @@ proc do_create_f2sdram_bridge {} {
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub slaveDataWidthSysInfo {-1}
@@ -1210,6 +1211,7 @@ proc do_create_f2sdram_bridge {} {
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment limiter_removal_256b.m0 qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.syncResets TRUE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

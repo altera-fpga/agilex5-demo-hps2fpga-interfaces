@@ -387,6 +387,7 @@ proc do_create_spi_bridge {} {
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value samb.avalon_master/ocram_4k.s1 slaveDataWidthSysInfo {-1}
@@ -419,6 +420,7 @@ proc do_create_spi_bridge {} {
 	set_domain_assignment samb.avalon_master qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment samb.avalon_master qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment samb.avalon_master qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment samb.avalon_master qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment samb.avalon_master qsys_mm.syncResets TRUE
 	set_domain_assignment samb.avalon_master qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

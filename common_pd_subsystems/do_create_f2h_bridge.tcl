@@ -161,6 +161,7 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi4_subordinate noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi4_subordinate optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi4_subordinate poison {false}
 	set_instantiation_interface_parameter_value axi4_subordinate readAcceptanceCapability {8}
@@ -540,7 +541,7 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port m0 m0_wstrb wstrb 32 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port m0 m0_wvalid wvalid 1 STD_LOGIC Output
 	save_instantiation
-	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.2
+	add_component msgdma_256b ip/no_pins_pd_top/msgdma_256b.ip altera_msgdma msgdma_256b 19.3.3
 	load_component msgdma_256b
 	set_component_parameter_value BURST_ENABLE {1}
 	set_component_parameter_value BURST_WRAPPING_SUPPORT {0}
@@ -1154,6 +1155,7 @@ proc do_create_f2h_bridge {} {
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value limiter_removal_256b.m0/f2h_adapt_256b.axi4_subordinate slaveDataWidthSysInfo {-1}
@@ -1213,6 +1215,7 @@ proc do_create_f2h_bridge {} {
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment limiter_removal_256b.m0 qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.syncResets TRUE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

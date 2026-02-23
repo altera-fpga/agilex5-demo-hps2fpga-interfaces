@@ -361,9 +361,42 @@ HARDWARE DEMO OVERVIEW\n\
     The demo performs the DMA movement with the data cache flushed and\n\
     then again with the data cache charged to demonstrate the difference\n\
     between cache hits that return data from the data cache versus cache\n\
-    misses that must interact with the HPS EMIF DRAM.  The ACE-lite\n\
+    misses that must interact with the HPS EMIF DRAM.  The ACE5-lite\n\
     transactions created by the DMA are marked as cache coherent so they\n\
     may participate in coherency within the CCU.\n\
+\n\
+    The demo measures how long it takes to perform each DMA and reports\n\
+    the results in the demo summary output."
+
+//------------------------------------------------------------------------------
+#define D_menu_HELP_TEXT \
+"F2H Cache Stash Demo\n\
+\n\
+HARDWARE DEMO OVERVIEW\n\
+    FPGA core logic design connects an MSGDMA core to the F2H bridge and\n\
+    a 32KB FPGA onchip memory core to facilitate DMA data movement\n\
+    to/from the HPS EMIF memory and to/from the FPGA onchip memory.  The\n\
+    LWH2F bridge is connected to the CSR slave of the MSGDMA to\n\
+    facilitate control and monitoring of the core.  A System ID core is\n\
+    also connected to the LWH2F bridge.\n\
+\n\
+    The ACE5-lite interface on the F2H bridge is driven with cache stash\n\
+    write transactions to stash into the L3 cache within the DSU.\n\
+\n",\
+"SOFTWARE DEMO OVERVIEW\n\
+    Demonstrates DMA of a 32KB buffer from HPS EMIF memory to FPGA\n\
+    onchip memory and then DMA the FPGA onchip memory buffer to a second\n\
+    HPS EMIF memory buffer.  The contents of the initial HPS EMIF memory\n\
+    buffer are compared to the second HPS EMIF memory buffer to verify\n\
+    accurate DMA transfer.\n\
+\n\
+    The demo performs the DMA movement with the data cache flushed and\n\
+    then again with the data cache charged to demonstrate the difference\n\
+    between cache hits that return data from the data cache versus cache\n\
+    misses that must interact with the HPS EMIF DRAM.  The ACE5-lite\n\
+    transactions created by the DMA are marked as cache coherent and\n\
+    cache stash writes so they may participate in coherency within the\n\
+    CCU.\n\
 \n\
     The demo measures how long it takes to perform each DMA and reports\n\
     the results in the demo summary output."

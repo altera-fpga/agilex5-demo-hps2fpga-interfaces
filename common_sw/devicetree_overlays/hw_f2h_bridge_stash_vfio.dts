@@ -1,0 +1,33 @@
+/*
+ * SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+ * SPDX-License-Identifier: MIT-0
+ */
+
+/dts-v1/;
+/plugin/;
+/ {
+	fragment@0 {
+		target-path = "/fpga-region";
+		__overlay__ {
+			firmware-name = "hw_f2h_bridge_stash.rbf";
+			config-complete-timeout-us = <30000000>;
+		};
+	};
+	fragment@1 {
+		target-path = "/";
+		__overlay__ {
+			#address-cells = <0x2>;
+			#size-cells = <0x2>;
+
+			f2h_bridge: f2h-bridge@20000000 {
+				compatible = "no-pins,vfio";
+				reg = <0 0x20000000 0 0x10000>;
+				reg-names = "f2h-bridge";
+				interrupt-parent = <&intc>;
+				interrupts = <0 17 4>;
+				iommus = <&smmu 1>;
+			};
+		};
+	};
+};
+

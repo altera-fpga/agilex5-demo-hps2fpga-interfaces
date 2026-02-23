@@ -2,10 +2,11 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS25.3_REL_GSRD_PR"
+TAG_NAME="QPDS25.3.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})

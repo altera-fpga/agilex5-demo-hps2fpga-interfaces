@@ -153,6 +153,7 @@ proc do_create_no_pins_pd_top {} {
 	set_instantiation_interface_parameter_value s0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value s0 noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value s0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value s0 poison {false}
 	set_instantiation_interface_parameter_value s0 readAcceptanceCapability {16}
@@ -324,6 +325,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.def_sub_default_sub slaveDataWidthSysInfo {-1}
@@ -348,6 +350,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_00_axi_s1 slaveDataWidthSysInfo {-1}
@@ -372,6 +375,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_01_axi_s1 slaveDataWidthSysInfo {-1}
@@ -396,6 +400,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_10_axi_s1 slaveDataWidthSysInfo {-1}
@@ -420,6 +425,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_11_axi_s1 slaveDataWidthSysInfo {-1}
@@ -444,6 +450,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_20_axi_s1 slaveDataWidthSysInfo {-1}
@@ -468,6 +475,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.ocram_2k_21_axi_s1 slaveDataWidthSysInfo {-1}
@@ -492,6 +500,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value axi4_br.m0/h2f_bridge.sysid_control_slave slaveDataWidthSysInfo {-1}
@@ -592,6 +601,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {256}
@@ -616,6 +626,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram slaveDataWidthSysInfo {256}
@@ -696,6 +707,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_hps2fpga/axi4_br.s0 slaveDataWidthSysInfo {-1}
@@ -796,6 +808,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment axi4_br.m0 qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment axi4_br.m0 qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment axi4_br.m0 qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment axi4_br.m0 qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment axi4_br.m0 qsys_mm.syncResets TRUE
 	set_domain_assignment axi4_br.m0 qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -811,6 +824,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.syncResets TRUE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -826,6 +840,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.syncResets TRUE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -841,6 +856,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.syncResets TRUE
 	set_domain_assignment no_pins_hps.agilex_5_soc_hps2fpga qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

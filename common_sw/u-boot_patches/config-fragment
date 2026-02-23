@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 CONFIG_CMD_SMC=y
@@ -22,3 +23,4 @@ CONFIG_BOOTMETH_VBE_REQUEST=n
 CONFIG_BOOTMETH_VBE_SIMPLE=n
 CONFIG_BOOTMETH_VBE_SIMPLE_OS=n
 
+CONFIG_WATCHDOG_AUTOSTART=n

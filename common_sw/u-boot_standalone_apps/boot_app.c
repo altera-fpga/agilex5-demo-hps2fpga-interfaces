@@ -375,6 +375,20 @@ int boot_app(int argc, char *const argv[])
 		},
 		{
 			/* menu selection letter */
+			"D",
+			/* display name */
+			"f2h bridge cache stash",
+			/* software name */
+			"sw_f2h_bridge_stash",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_f2h_bridge_stash",
+			/* help text */
+			D_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
 			"k",
 			/* display name */
 			"hps uart",

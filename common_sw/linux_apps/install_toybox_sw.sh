@@ -45,6 +45,12 @@ boot_app
 config_clk
 emac
 f2h_bridge
+f2h_bridge_vfio_flush
+f2h_bridge_vfio_noflush
+f2h_bridge_stash_vfio_flush
+f2h_bridge_stash_vfio_noflush
+f2h_bridge_uio_ws_test
+f2h_bridge_vfio_ws_test
 f2h_irq
 f2h_irq_handler
 f2sdram_bridge

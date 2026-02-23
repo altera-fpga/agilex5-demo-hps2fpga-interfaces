@@ -225,6 +225,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
@@ -362,6 +363,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value axi_s1 noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value axi_s1 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value axi_s1 poison {false}
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
@@ -422,12 +424,10 @@ proc do_create_lwh2f_bridge {} {
 	load_instantiation sysid
 	remove_instantiation_interfaces_and_ports
 	set_instantiation_assignment_value embeddedsw.CMacro.ID {843601740}
-	set_instantiation_assignment_value embeddedsw.CMacro.TIMESTAMP {0}
 	set_instantiation_assignment_value embeddedsw.dts.compatible {altr,sysid-1.0}
 	set_instantiation_assignment_value embeddedsw.dts.group {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.name {sysid}
 	set_instantiation_assignment_value embeddedsw.dts.params.id {843601740}
-	set_instantiation_assignment_value embeddedsw.dts.params.timestamp {0}
 	set_instantiation_assignment_value embeddedsw.dts.vendor {altr}
 	add_instantiation_interface clk clock INPUT
 	set_instantiation_interface_parameter_value clk clockRate {0}

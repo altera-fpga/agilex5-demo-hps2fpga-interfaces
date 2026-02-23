@@ -50,6 +50,7 @@ RBF_DIRS="
 hw_config_clk
 hw_emac
 hw_f2h_bridge
+hw_f2h_bridge_stash
 hw_f2h_irq
 hw_f2sdram_bridge
 hw_h2f_bridge

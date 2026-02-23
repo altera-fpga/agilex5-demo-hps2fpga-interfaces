@@ -1,5 +1,6 @@
 # Documentation Index
 <!-- SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation -->
+<!-- SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation -->
 <!-- SPDX-License-Identifier: MIT-0 -->
 
 ## Overview
@@ -42,13 +43,13 @@ It may be necessary to slow down the JTAG clock while programming the JIC image 
 When the demo boots on the development kit, it stops in u-boot and presents this menu:
 
 ```text
-        Running on board: Altera Premium Dev Kit
-                  Uptime: 0000d'00h'00m'15s'183ms'653us'342ns
+        Running on board: Altera 013CS Dev Kit
+                  Uptime: 0000d'00h'00m'10s'537ms'846us'605ns
          Running on core: 0
                Core type: Cortex A55 r2p0 core
  Current exception level: EL2
  Current exception masks: DaIF
-               MPU CLOCK: 800000000 HZ
+               MPU CLOCK: 1250000000 HZ
 
      Boot Application Menu
   ------------------------------------------------------------------| Help |----
@@ -66,9 +67,9 @@ When the demo boots on the development kit, it stops in u-boot and presents this
  y - h2f user clock demo                x - lwh2f bridge demo
  w - lwh2f bridge default subordinate   t - h2f bridge
  r - h2f bridge default subordinate     p - f2sdram bridge
- b - f2h bridge                         k - hps uart
- f - hps spi bridge                     e - hps i2c bridge
- T - hps emac
+ b - f2h bridge                         D - f2h bridge cache stash
+ k - hps uart                           f - hps spi bridge
+ e - hps i2c bridge                     T - hps emac
   ---------------------------------------------------| Maintenance Options |----
  c - exit to u-boot console             m - display menu
  5 - program a55 rpd image into flash   7 - program a76 rpd image into flash
@@ -82,10 +83,10 @@ Enter menu selection:
 If you select menu-L from the u-boot demo application, then the system boots into Linux and presents this menu in the Linux demo. You will notice that it is basically the same menu layout, however some of the u-boot choices are removed and a few additional choices are added. The removals are because the Linux demos are running from user space, so some of the demonstrations that can be shown in u-boot are not possible from Linux user space and are removed. The additions are because we have access to Linux drivers that we can demonstrate for various peripherals.
 
 ```text
-        Running on board: Altera Premium Dev Kit
-                  Uptime: 0000d'00h'00m'18s'388ms'965us'190ns
+        Running on board: Altera 013CS Dev Kit
+                  Uptime: 0000d'00h'01m'49s'543ms'748us'902ns
                Core type: Cortex A55 r2p0 core
-    Last Linux Boot Time: 2116628472.500 ns
+    Last Linux Boot Time: 1361591675.000 ns
 
      Linux Application Menu
   ------------------------------------------------------------------| Help |----
@@ -99,7 +100,9 @@ If you select menu-L from the u-boot demo application, then the system boots int
  y - h2f user clock demo                x - lwh2f bridge demo
  w - lwh2f bridge default subordinate   t - h2f bridge
  r - h2f bridge default subordinate     p - f2sdram bridge
- b - f2h bridge                         k - hps uart - uio driver
+ b - f2h bridge - uio - non-cacheable   B - f2h bridge - vfio - no cache flush
+ C - f2h bridge - vfio - cache flush    D - f2h bridge - stash, no cache flush
+ G - f2h bridge - stash, cache flush    k - hps uart - uio driver
  K - hps uart - linux driver            f - hps spi bridge - uio driver
  F - hps spi bridge - linux driver      e - hps i2c bridge - uio driver
  E - hps i2c bridge - linux driver      T - hps emac - uio driver
@@ -130,7 +133,9 @@ Enter menu selection:
 
 * [**menu-p on hw_f2sdram_bridge**](09_menu_p_hw_f2sdram_bridge.md) - F2SDRAM bridge demo documentation, describes the hardware project design and software demos that interact through the memory mapped F2SDRAM bridge allowing FPGA logic to interact with HPS EMIF memory
 
-* [**menu-b on hw_f2h_bridge**](10_menu_b_hw_f2h_bridge.md) - F2H bridge demo documentation, describes the hardware project design and software demos that interacts through the memory mapped F2H bridge allowing FPGA logic to interact coherently with HPS EMIF memory
+* [**menu-b, menu-B, menu-C on hw_f2h_bridge**](10_menu_b_hw_f2h_bridge.md) - F2H bridge demo documentation, describes the hardware project design and software demos that interacts through the memory mapped F2H bridge allowing FPGA logic to interact coherently with HPS EMIF memory
+
+* [**menu-D, menu-G on hw_f2h_bridge_stash**](19_menu_DG_hw_f2h_bridge_stash.md) - F2H bridge stash demo documentation, describes the hardware project design and software demos that interacts through the memory mapped F2H bridge allowing FPGA logic to interact coherently with HPS EMIF memory using cache stash write transactions
 
 * [**menu-k on hw_uart**](11_menu_k_hw_uart.md) - HPS UART demo documentation, describes the hardware project design and software demos that interact through the HPS UART peripheral into FPGA logic
 

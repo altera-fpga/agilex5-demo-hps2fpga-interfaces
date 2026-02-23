@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_pins_pd_top {} {
@@ -33,6 +34,221 @@ proc do_create_no_pins_pd_top {} {
 	add_instantiation_interface_port clkout clkout clk 1 STD_LOGIC Output
 	save_instantiation
 	add_instance f2h_bridge f2h_bridge
+	add_component hash_jamb ip/no_pins_pd_top/hash_jamb.ip altera_jtag_avalon_master hash_jamb 19.1
+	load_component hash_jamb
+	set_component_parameter_value FAST_VER {0}
+	set_component_parameter_value FIFO_DEPTHS {2}
+	set_component_parameter_value PLI_PORT {50000}
+	set_component_parameter_value USE_PLI {0}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation hash_jamb
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value debug.hostConnection {type jtag id 110:132}
+	add_instantiation_interface clk clock INPUT
+	set_instantiation_interface_parameter_value clk clockRate {0}
+	set_instantiation_interface_parameter_value clk externallyDriven {false}
+	set_instantiation_interface_parameter_value clk ptfSchematicName {}
+	add_instantiation_interface_port clk clk_clk clk 1 STD_LOGIC Input
+	add_instantiation_interface clk_reset reset INPUT
+	set_instantiation_interface_parameter_value clk_reset associatedClock {}
+	set_instantiation_interface_parameter_value clk_reset synchronousEdges {NONE}
+	add_instantiation_interface_port clk_reset clk_reset_reset reset 1 STD_LOGIC Input
+	add_instantiation_interface master_reset reset OUTPUT
+	set_instantiation_interface_parameter_value master_reset associatedClock {}
+	set_instantiation_interface_parameter_value master_reset associatedDirectReset {}
+	set_instantiation_interface_parameter_value master_reset associatedResetSinks {none}
+	set_instantiation_interface_parameter_value master_reset synchronousEdges {NONE}
+	add_instantiation_interface_port master_reset master_reset_reset reset 1 STD_LOGIC Output
+	add_instantiation_interface master avalon OUTPUT
+	set_instantiation_interface_parameter_value master adaptsTo {}
+	set_instantiation_interface_parameter_value master addressGroup {0}
+	set_instantiation_interface_parameter_value master addressUnits {SYMBOLS}
+	set_instantiation_interface_parameter_value master alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value master associatedClock {clk}
+	set_instantiation_interface_parameter_value master associatedReset {clk_reset}
+	set_instantiation_interface_parameter_value master bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value master burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value master burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value master constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value master dBSBigEndian {false}
+	set_instantiation_interface_parameter_value master doStreamReads {false}
+	set_instantiation_interface_parameter_value master doStreamWrites {false}
+	set_instantiation_interface_parameter_value master enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value master holdTime {0}
+	set_instantiation_interface_parameter_value master interleaveBursts {false}
+	set_instantiation_interface_parameter_value master isAsynchronous {false}
+	set_instantiation_interface_parameter_value master isBigEndian {false}
+	set_instantiation_interface_parameter_value master isReadable {false}
+	set_instantiation_interface_parameter_value master isWriteable {false}
+	set_instantiation_interface_parameter_value master linewrapBursts {false}
+	set_instantiation_interface_parameter_value master maxAddressWidth {32}
+	set_instantiation_interface_parameter_value master maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value master maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value master minimumReadLatency {1}
+	set_instantiation_interface_parameter_value master minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value master optimizedReadsWithBE {0}
+	set_instantiation_interface_parameter_value master prSafe {false}
+	set_instantiation_interface_parameter_value master readLatency {0}
+	set_instantiation_interface_parameter_value master readWaitTime {1}
+	set_instantiation_interface_parameter_value master registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value master registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value master setupTime {0}
+	set_instantiation_interface_parameter_value master timingUnits {Cycles}
+	set_instantiation_interface_parameter_value master waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value master waitrequestTimeout {1024}
+	set_instantiation_interface_parameter_value master writeWaitTime {0}
+	set_instantiation_interface_assignment_value master debug.controlledBy {in_stream}
+	set_instantiation_interface_assignment_value master debug.providesServices {master}
+	set_instantiation_interface_assignment_value master debug.typeName {altera_jtag_avalon_master.master}
+	set_instantiation_interface_assignment_value master debug.visible {true}
+	add_instantiation_interface_port master master_address address 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port master master_readdata readdata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port master master_read read 1 STD_LOGIC Output
+	add_instantiation_interface_port master master_write write 1 STD_LOGIC Output
+	add_instantiation_interface_port master master_writedata writedata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port master master_waitrequest waitrequest 1 STD_LOGIC Input
+	add_instantiation_interface_port master master_readdatavalid readdatavalid 1 STD_LOGIC Input
+	add_instantiation_interface_port master master_byteenable byteenable 4 STD_LOGIC_VECTOR Output
+	save_instantiation
+	add_component hash_ram ip/no_pins_pd_top/hash_ram.ip intel_onchip_memory hash_ram 1.4.10
+	load_component hash_ram
+	set_component_parameter_value AXI_interface {1}
+	set_component_parameter_value allowInSystemMemoryContentEditor {0}
+	set_component_parameter_value blockType {AUTO}
+	set_component_parameter_value clockEnable {0}
+	set_component_parameter_value copyInitFile {0}
+	set_component_parameter_value dataWidth {32}
+	set_component_parameter_value dataWidth2 {32}
+	set_component_parameter_value dualPort {0}
+	set_component_parameter_value ecc_check {0}
+	set_component_parameter_value ecc_encoder_bypass {0}
+	set_component_parameter_value ecc_pipeline_reg {0}
+	set_component_parameter_value enPRInitMode {0}
+	set_component_parameter_value enableDiffWidth {0}
+	set_component_parameter_value gui_debugaccess {0}
+	set_component_parameter_value idWidth {1}
+	set_component_parameter_value initMemContent {1}
+	set_component_parameter_value initializationFileName {onchip_mem.hex}
+	set_component_parameter_value instanceID {NONE}
+	set_component_parameter_value interfaceType {0}
+	set_component_parameter_value lvl1OutputRegA {0}
+	set_component_parameter_value lvl1OutputRegB {0}
+	set_component_parameter_value lvl2OutputRegA {0}
+	set_component_parameter_value lvl2OutputRegB {0}
+	set_component_parameter_value memorySize {4096.0}
+	set_component_parameter_value poison_enable {0}
+	set_component_parameter_value readDuringWriteMode_Mixed {DONT_CARE}
+	set_component_parameter_value resetrequest_enabled {1}
+	set_component_parameter_value singleClockOperation {0}
+	set_component_parameter_value tightly_coupled_ecc {0}
+	set_component_parameter_value useNonDefaultInitFile {0}
+	set_component_parameter_value writable {1}
+	set_component_project_property HIDE_FROM_IP_CATALOG {false}
+	save_component
+	load_instantiation hash_ram
+	remove_instantiation_interfaces_and_ports
+	set_instantiation_assignment_value embeddedsw.CMacro.ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.CONTENTS_INFO {""}
+	set_instantiation_assignment_value embeddedsw.CMacro.DUAL_PORT {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.GUI_RAM_BLOCK_TYPE {AUTO}
+	set_instantiation_assignment_value embeddedsw.CMacro.INIT_CONTENTS_FILE {hash_ram_hash_ram}
+	set_instantiation_assignment_value embeddedsw.CMacro.INIT_MEM_CONTENT {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.INSTANCE_ID {NONE}
+	set_instantiation_assignment_value embeddedsw.CMacro.NON_DEFAULT_INIT_FILE_ENABLED {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.RAM_BLOCK_TYPE {AUTO}
+	set_instantiation_assignment_value embeddedsw.CMacro.READ_DURING_WRITE_MODE {DONT_CARE}
+	set_instantiation_assignment_value embeddedsw.CMacro.SINGLE_CLOCK_OP {0}
+	set_instantiation_assignment_value embeddedsw.CMacro.SIZE_MULTIPLE {1}
+	set_instantiation_assignment_value embeddedsw.CMacro.SIZE_VALUE {4096}
+	set_instantiation_assignment_value embeddedsw.CMacro.WRITABLE {1}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.DAT_SYM_INSTALL_DIR {SIM_DIR}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.GENERATE_DAT_SYM {1}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.GENERATE_HEX {1}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.HAS_BYTE_LANE {0}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.HEX_INSTALL_DIR {QPF_DIR}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.MEM_INIT_DATA_WIDTH {32}
+	set_instantiation_assignment_value embeddedsw.memoryInfo.MEM_INIT_FILENAME {hash_ram_hash_ram}
+	set_instantiation_assignment_value postgeneration.simulation.init_file.param_name {INIT_FILE}
+	set_instantiation_assignment_value postgeneration.simulation.init_file.type {MEM_INIT}
+	add_instantiation_interface clk1 clock INPUT
+	set_instantiation_interface_parameter_value clk1 clockRate {0}
+	set_instantiation_interface_parameter_value clk1 externallyDriven {false}
+	set_instantiation_interface_parameter_value clk1 ptfSchematicName {}
+	add_instantiation_interface_port clk1 clk clk 1 STD_LOGIC Input
+	add_instantiation_interface s1 avalon INPUT
+	set_instantiation_interface_parameter_value s1 addressAlignment {DYNAMIC}
+	set_instantiation_interface_parameter_value s1 addressGroup {0}
+	set_instantiation_interface_parameter_value s1 addressSpan {4096}
+	set_instantiation_interface_parameter_value s1 addressUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 alwaysBurstMaxBurst {false}
+	set_instantiation_interface_parameter_value s1 associatedClock {clk1}
+	set_instantiation_interface_parameter_value s1 associatedReset {reset1}
+	set_instantiation_interface_parameter_value s1 bitsPerSymbol {8}
+	set_instantiation_interface_parameter_value s1 bridgedAddressOffset {0}
+	set_instantiation_interface_parameter_value s1 bridgesToMaster {}
+	set_instantiation_interface_parameter_value s1 burstOnBurstBoundariesOnly {false}
+	set_instantiation_interface_parameter_value s1 burstcountUnits {WORDS}
+	set_instantiation_interface_parameter_value s1 constantBurstBehavior {false}
+	set_instantiation_interface_parameter_value s1 dfhFeatureGuid {0}
+	set_instantiation_interface_parameter_value s1 dfhFeatureId {35}
+	set_instantiation_interface_parameter_value s1 dfhFeatureMajorVersion {0}
+	set_instantiation_interface_parameter_value s1 dfhFeatureMinorVersion {0}
+	set_instantiation_interface_parameter_value s1 dfhFeatureType {3}
+	set_instantiation_interface_parameter_value s1 dfhGroupId {0}
+	set_instantiation_interface_parameter_value s1 dfhParameterData {}
+	set_instantiation_interface_parameter_value s1 dfhParameterDataLength {}
+	set_instantiation_interface_parameter_value s1 dfhParameterId {}
+	set_instantiation_interface_parameter_value s1 dfhParameterName {}
+	set_instantiation_interface_parameter_value s1 dfhParameterVersion {}
+	set_instantiation_interface_parameter_value s1 explicitAddressSpan {4096}
+	set_instantiation_interface_parameter_value s1 holdTime {0}
+	set_instantiation_interface_parameter_value s1 interleaveBursts {false}
+	set_instantiation_interface_parameter_value s1 isBigEndian {false}
+	set_instantiation_interface_parameter_value s1 isFlash {false}
+	set_instantiation_interface_parameter_value s1 isMemoryDevice {true}
+	set_instantiation_interface_parameter_value s1 isNonVolatileStorage {false}
+	set_instantiation_interface_parameter_value s1 linewrapBursts {false}
+	set_instantiation_interface_parameter_value s1 maximumPendingReadTransactions {0}
+	set_instantiation_interface_parameter_value s1 maximumPendingWriteTransactions {0}
+	set_instantiation_interface_parameter_value s1 minimumReadLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumResponseLatency {1}
+	set_instantiation_interface_parameter_value s1 minimumUninterruptedRunLength {1}
+	set_instantiation_interface_parameter_value s1 prSafe {false}
+	set_instantiation_interface_parameter_value s1 printableDevice {false}
+	set_instantiation_interface_parameter_value s1 readLatency {1}
+	set_instantiation_interface_parameter_value s1 readWaitStates {0}
+	set_instantiation_interface_parameter_value s1 readWaitTime {0}
+	set_instantiation_interface_parameter_value s1 registerIncomingSignals {false}
+	set_instantiation_interface_parameter_value s1 registerOutgoingSignals {false}
+	set_instantiation_interface_parameter_value s1 setupTime {0}
+	set_instantiation_interface_parameter_value s1 timingUnits {Cycles}
+	set_instantiation_interface_parameter_value s1 transparentBridge {false}
+	set_instantiation_interface_parameter_value s1 waitrequestAllowance {0}
+	set_instantiation_interface_parameter_value s1 waitrequestTimeout {1024}
+	set_instantiation_interface_parameter_value s1 wellBehavedWaitrequest {false}
+	set_instantiation_interface_parameter_value s1 writeLatency {0}
+	set_instantiation_interface_parameter_value s1 writeWaitStates {0}
+	set_instantiation_interface_parameter_value s1 writeWaitTime {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isFlash {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isMemoryDevice {1}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isNonVolatileStorage {0}
+	set_instantiation_interface_assignment_value s1 embeddedsw.configuration.isPrintableDevice {0}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_map {<address-map><slave name='s1' start='0x0' end='0x1000' datawidth='32' /></address-map>}
+	set_instantiation_interface_sysinfo_parameter_value s1 address_width {12}
+	set_instantiation_interface_sysinfo_parameter_value s1 max_slave_data_width {32}
+	add_instantiation_interface_port s1 address address 10 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 read read 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 readdata readdata 32 STD_LOGIC_VECTOR Output
+	add_instantiation_interface_port s1 byteenable byteenable 4 STD_LOGIC_VECTOR Input
+	add_instantiation_interface_port s1 write write 1 STD_LOGIC Input
+	add_instantiation_interface_port s1 writedata writedata 32 STD_LOGIC_VECTOR Input
+	add_instantiation_interface reset1 reset INPUT
+	set_instantiation_interface_parameter_value reset1 associatedClock {clk1}
+	set_instantiation_interface_parameter_value reset1 synchronousEdges {DEASSERT}
+	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
+	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
+	save_instantiation
 	add_component lwh2f_br ip/no_pins_pd_top/lwh2f_br.ip altera_axi_bridge lwh2f_br 19.10.0
 	load_component lwh2f_br
 	set_component_parameter_value ACE5_LITE_SUPPORT {0}
@@ -171,6 +387,7 @@ proc do_create_no_pins_pd_top {} {
 	set_instantiation_interface_parameter_value s0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value s0 maximumOutstandingWrites {1}
+	set_instantiation_interface_parameter_value s0 noNarrowTransfer {false}
 	set_instantiation_interface_parameter_value s0 optionalAssociatedReset {false}
 	set_instantiation_interface_parameter_value s0 poison {false}
 	set_instantiation_interface_parameter_value s0 readAcceptanceCapability {16}
@@ -308,6 +525,16 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value config_clk_250m.clkout/f2h_bridge.clock_br_in_clk clockRateSysInfo {}
 	set_connection_parameter_value config_clk_250m.clkout/f2h_bridge.clock_br_in_clk clockResetSysInfo {}
 	set_connection_parameter_value config_clk_250m.clkout/f2h_bridge.clock_br_in_clk resetDomainSysInfo {1}
+	add_connection config_clk_250m.clkout/hash_jamb.clk
+	set_connection_parameter_value config_clk_250m.clkout/hash_jamb.clk clockDomainSysInfo {1}
+	set_connection_parameter_value config_clk_250m.clkout/hash_jamb.clk clockRateSysInfo {}
+	set_connection_parameter_value config_clk_250m.clkout/hash_jamb.clk clockResetSysInfo {}
+	set_connection_parameter_value config_clk_250m.clkout/hash_jamb.clk resetDomainSysInfo {1}
+	add_connection config_clk_250m.clkout/hash_ram.clk1
+	set_connection_parameter_value config_clk_250m.clkout/hash_ram.clk1 clockDomainSysInfo {1}
+	set_connection_parameter_value config_clk_250m.clkout/hash_ram.clk1 clockRateSysInfo {}
+	set_connection_parameter_value config_clk_250m.clkout/hash_ram.clk1 clockResetSysInfo {}
+	set_connection_parameter_value config_clk_250m.clkout/hash_ram.clk1 resetDomainSysInfo {1}
 	add_connection config_clk_250m.clkout/lwh2f_br.clk
 	set_connection_parameter_value config_clk_250m.clkout/lwh2f_br.clk clockDomainSysInfo {1}
 	set_connection_parameter_value config_clk_250m.clkout/lwh2f_br.clk clockRateSysInfo {}
@@ -359,6 +586,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2h_bridge.f2h_adapt_256b_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {256}
@@ -373,7 +601,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 addressWidthSysInfo {33}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 arbitrationPriority {1}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 baseAddress {0x0000}
-	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 cpuInfoIdSysInfo {}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 cpuInfoIdSysInfo {8799ed44}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 defaultConnection {0}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 domainAlias {}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -389,6 +617,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.limiter_removal_256b_s0 slaveDataWidthSysInfo {256}
@@ -397,7 +626,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 baseAddress {0x0000000100000000}
-	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 cpuInfoIdSysInfo {}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 cpuInfoIdSysInfo {8799ed44}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 defaultConnection {0}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 domainAlias {}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -413,6 +642,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_read/f2h_bridge.ocram_32k_s1 slaveDataWidthSysInfo {256}
@@ -421,7 +651,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 baseAddress {0x0000}
-	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 cpuInfoIdSysInfo {}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 cpuInfoIdSysInfo {8799ed44}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 defaultConnection {0}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 domainAlias {}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -437,6 +667,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.limiter_removal_256b_s1 slaveDataWidthSysInfo {256}
@@ -445,7 +676,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 addressWidthSysInfo {33}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 arbitrationPriority {1}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 baseAddress {0x0000000100000000}
-	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 cpuInfoIdSysInfo {}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 cpuInfoIdSysInfo {8799ed44}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 defaultConnection {0}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 domainAlias {}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -461,9 +692,35 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value f2h_bridge.msgdma_256b_mm_write/f2h_bridge.ocram_32k_s1 slaveDataWidthSysInfo {256}
+	add_connection hash_jamb.master/hash_ram.s1
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 addressMapSysInfo {<address-map><slave name='hash_ram.s1' start='0x0' end='0x1000' datawidth='32' /></address-map>}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 addressWidthSysInfo {12}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 arbitrationPriority {1}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 baseAddress {0x0000}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 cpuInfoIdSysInfo {}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 defaultConnection {0}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 domainAlias {}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.clockCrossingAdapter {HANDSHAKE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.enableAllPipelines {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.enableEccProtection {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.enableInstrumentation {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.insertDefaultSlave {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.interconnectResetSource {DEFAULT}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.interconnectType {STANDARD}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.maxAdditionalLatency {1}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.optimizeRdFifoSize {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.piplineType {PIPELINE_STAGE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.syncResets {TRUE}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
+	set_connection_parameter_value hash_jamb.master/hash_ram.s1 slaveDataWidthSysInfo {-1}
 	add_connection lwh2f_br.m0/f2h_bridge.def_sub_default_sub
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub addressMapSysInfo {<address-map><slave name='f2h_bridge.sysid.control_slave' start='0x0' end='0x8' datawidth='32' /><slave name='f2h_bridge.msgdma_256b.csr' start='0x1000' end='0x1020' datawidth='32' /><slave name='f2h_bridge.msgdma_256b.descriptor_slave' start='0x2000' end='0x2020' datawidth='256' /><slave name='f2h_bridge.ocram_32k.s1' start='0x8000' end='0x10000' datawidth='256' /></address-map>}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub addressWidthSysInfo {16}
@@ -485,6 +742,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.def_sub_default_sub slaveDataWidthSysInfo {256}
@@ -509,6 +767,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_csr slaveDataWidthSysInfo {256}
@@ -533,6 +792,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.msgdma_256b_descriptor_slave slaveDataWidthSysInfo {256}
@@ -557,6 +817,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.ocram_32k_s1 slaveDataWidthSysInfo {256}
@@ -581,6 +842,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value lwh2f_br.m0/f2h_bridge.sysid_control_slave slaveDataWidthSysInfo {256}
@@ -605,6 +867,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram slaveDataWidthSysInfo {256}
@@ -615,6 +878,14 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/f2h_bridge.reset_br_in_reset clockDomainSysInfo {2}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/f2h_bridge.reset_br_in_reset clockResetSysInfo {<info><reset name="reset_br_in_reset" domain="0" /></info>}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/f2h_bridge.reset_br_in_reset resetDomainSysInfo {2}
+	add_connection no_pins_hps.agilex_5_soc_h2f_reset/hash_jamb.clk_reset
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_jamb.clk_reset clockDomainSysInfo {2}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_jamb.clk_reset clockResetSysInfo {<info><reset name="clk_reset" domain="0" /></info>}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_jamb.clk_reset resetDomainSysInfo {2}
+	add_connection no_pins_hps.agilex_5_soc_h2f_reset/hash_ram.reset1
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_ram.reset1 clockDomainSysInfo {2}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_ram.reset1 clockResetSysInfo {<info><reset name="reset1" domain="0" /></info>}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/hash_ram.reset1 resetDomainSysInfo {2}
 	add_connection no_pins_hps.agilex_5_soc_h2f_reset/lwh2f_br.clk_reset
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/lwh2f_br.clk_reset clockDomainSysInfo {2}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_h2f_reset/lwh2f_br.clk_reset clockResetSysInfo {<info><reset name="clk_reset" domain="0" /></info>}
@@ -644,7 +915,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 addressWidthSysInfo {29}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 arbitrationPriority {1}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 baseAddress {0x0000}
-	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 cpuInfoIdSysInfo {5cf00ee8}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 cpuInfoIdSysInfo {294eb272}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 defaultConnection {0}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 domainAlias {}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.burstAdapterImplementation {GENERIC_CONVERTER}
@@ -660,6 +931,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_br.s0 slaveDataWidthSysInfo {-1}
@@ -667,6 +939,14 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value usermode_entry.ninit_done/f2h_bridge.reset_br_in_reset clockDomainSysInfo {14}
 	set_connection_parameter_value usermode_entry.ninit_done/f2h_bridge.reset_br_in_reset clockResetSysInfo {}
 	set_connection_parameter_value usermode_entry.ninit_done/f2h_bridge.reset_br_in_reset resetDomainSysInfo {14}
+	add_connection usermode_entry.ninit_done/hash_jamb.clk_reset
+	set_connection_parameter_value usermode_entry.ninit_done/hash_jamb.clk_reset clockDomainSysInfo {14}
+	set_connection_parameter_value usermode_entry.ninit_done/hash_jamb.clk_reset clockResetSysInfo {}
+	set_connection_parameter_value usermode_entry.ninit_done/hash_jamb.clk_reset resetDomainSysInfo {14}
+	add_connection usermode_entry.ninit_done/hash_ram.reset1
+	set_connection_parameter_value usermode_entry.ninit_done/hash_ram.reset1 clockDomainSysInfo {14}
+	set_connection_parameter_value usermode_entry.ninit_done/hash_ram.reset1 clockResetSysInfo {}
+	set_connection_parameter_value usermode_entry.ninit_done/hash_ram.reset1 resetDomainSysInfo {14}
 	add_connection usermode_entry.ninit_done/lwh2f_br.clk_reset
 	set_connection_parameter_value usermode_entry.ninit_done/lwh2f_br.clk_reset clockDomainSysInfo {14}
 	set_connection_parameter_value usermode_entry.ninit_done/lwh2f_br.clk_reset clockResetSysInfo {}
@@ -730,6 +1010,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.syncResets TRUE
 	set_domain_assignment f2h_bridge.f2h_adapt_256b_ace5lite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -745,8 +1026,25 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.syncResets TRUE
 	set_domain_assignment f2h_bridge.msgdma_256b_mm_read qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment hash_jamb.master qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
+	set_domain_assignment hash_jamb.master qsys_mm.clockCrossingAdapter HANDSHAKE
+	set_domain_assignment hash_jamb.master qsys_mm.enableAllPipelines FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.enableEccProtection FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.enableInstrumentation FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.insertDefaultSlave FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.interconnectResetSource DEFAULT
+	set_domain_assignment hash_jamb.master qsys_mm.interconnectType STANDARD
+	set_domain_assignment hash_jamb.master qsys_mm.maxAdditionalLatency 1
+	set_domain_assignment hash_jamb.master qsys_mm.optimizeRdFifoSize FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.piplineType PIPELINE_STAGE
+	set_domain_assignment hash_jamb.master qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment hash_jamb.master qsys_mm.splitCommandsFor4KBoundary FALSE
+	set_domain_assignment hash_jamb.master qsys_mm.syncResets TRUE
+	set_domain_assignment hash_jamb.master qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.clockCrossingAdapter HANDSHAKE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableAllPipelines FALSE
@@ -760,6 +1058,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.syncResets TRUE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -775,6 +1074,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.syncResets TRUE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 
@@ -792,6 +1092,12 @@ proc do_create_no_pins_pd_top {} {
  </element>
  <element __value="f2h_bridge.msgdma_256b_descriptor_slave">
   <datum __value="baseAddress" value="8192" type="String" />
+ </element>
+ <element __value="hash_jamb">
+  <datum __value="_sortIndex" value="6" type="int" />
+ </element>
+ <element __value="hash_ram">
+  <datum __value="_sortIndex" value="7" type="int" />
  </element>
  <element __value="lwh2f_br">
   <datum __value="_sortIndex" value="5" type="int" />

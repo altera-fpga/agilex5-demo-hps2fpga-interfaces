@@ -324,7 +324,7 @@ int main(void)
 			/* menu selection letter */
 			"b",
 			/* display name */
-			"f2h bridge",
+			"f2h bridge - uio - non-cacheable",
 			/* software name */
 			"f2h_bridge",
 			/* script name */
@@ -333,6 +333,62 @@ int main(void)
 			"hw_f2h_bridge",
 			/* help text */
 			linux_b_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
+			"B",
+			/* display name */
+			"f2h bridge - vfio - no cache flush",
+			/* software name */
+			"f2h_bridge_vfio_noflush",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_f2h_bridge_vfio",
+			/* help text */
+			linux_B_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
+			"C",
+			/* display name */
+			"f2h bridge - vfio - cache flush",
+			/* software name */
+			"f2h_bridge_vfio_flush",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_f2h_bridge_vfio",
+			/* help text */
+			linux_C_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
+			"D",
+			/* display name */
+			"f2h bridge - stash, no cache flush",
+			/* software name */
+			"f2h_bridge_stash_vfio_noflush",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_f2h_bridge_stash_vfio",
+			/* help text */
+			linux_D_menu_HELP_TEXT
+		},
+		{
+			/* menu selection letter */
+			"G",
+			/* display name */
+			"f2h bridge - stash, cache flush",
+			/* software name */
+			"f2h_bridge_stash_vfio_flush",
+			/* script name */
+			"",
+			/* hardware name */
+			"hw_f2h_bridge_stash_vfio",
+			/* help text */
+			linux_G_menu_HELP_TEXT
 		},
 		{
 			/* menu selection letter */

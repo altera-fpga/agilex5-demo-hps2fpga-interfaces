@@ -2,7 +2,7 @@ diff --git a/include/configs/socfpga_soc64_common.h b/include/configs/socfpga_so
 index cb8969a0..ea2d0fed 100644
 --- a/include/configs/socfpga_soc64_common.h
 +++ b/include/configs/socfpga_soc64_common.h
-@@ -186,6 +186,46 @@
+@@ -183,6 +183,46 @@
  	"smc_fid_rd=0xC2000007\0" \
  	"smc_fid_wr=0xC2000008\0" \
  	"smc_fid_upd=0xC2000009\0 " \
