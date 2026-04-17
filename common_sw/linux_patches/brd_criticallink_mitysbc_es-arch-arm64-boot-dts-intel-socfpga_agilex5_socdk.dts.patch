@@ -2,7 +2,7 @@ diff --git a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts b/arch/arm64/bo
 index a77abf10f2f7..483eb597f444 100644
 --- a/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
 +++ b/arch/arm64/boot/dts/intel/socfpga_agilex5_socdk.dts
-@@ -263,3 +263,217 @@ input@40001 {
+@@ -259,3 +259,217 @@ input@40001 {
  		};
  	};
  };

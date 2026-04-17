@@ -1,26 +1,13 @@
 diff --git a/include/exports.h b/include/exports.h
-index 6f8c9cf451..fcc98b7dcf 100644
+index 12abb356..65bc1c9e 100644
 --- a/include/exports.h
 +++ b/include/exports.h
-@@ -26,6 +26,12 @@ struct spi_slave;
- int jumptable_init(void);
- 
- /* These are declarations of exported functions available in C code */
-+unsigned long cm_get_mpu_clk_hz(void);
-+unsigned int cm_get_l4_sys_free_clk_hz(void);
-+int memcmp(const void *s1, const void *s2, size_t n);
-+void *memcpy(void *restrict dest, const void *restrict src, size_t n);
-+void flush_dcache_range(unsigned long start, unsigned long stop);
-+int env_set_hex(const char *varname, ulong value);
- unsigned long get_version(void);
- int  getc(void);
- int  tstc(void);
-@@ -70,7 +76,7 @@ struct jt_funcs {
+@@ -40,7 +40,7 @@ struct jt_funcs {
  #undef EXPORT_FUNC
  };
  
--#define XF_VERSION	9
-+#define XF_VERSION	10
+-#define XF_VERSION	10
++#define XF_VERSION	11
  
  #if defined(CONFIG_X86)
  extern gd_t *global_data;

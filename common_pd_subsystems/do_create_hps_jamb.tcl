@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_hps_jamb {} {
@@ -368,6 +369,7 @@ proc do_create_hps_jamb {} {
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.fifoDepth {8}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value f2sdram_jamb.master/f2sdram_adapt_64.axi4_sub qsys_mm.interconnectType {STANDARD}
@@ -409,6 +411,7 @@ proc do_create_hps_jamb {} {
 	set_domain_assignment f2sdram_jamb.master qsys_mm.enableEccProtection FALSE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment f2sdram_jamb.master qsys_mm.fifoDepth 8
 	set_domain_assignment f2sdram_jamb.master qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment f2sdram_jamb.master qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment f2sdram_jamb.master qsys_mm.interconnectType STANDARD

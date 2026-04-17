@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_pins_pd_top {} {
@@ -15,7 +16,7 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.6
+	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.7
 	load_component config_clk_250m
 	set_component_parameter_value CBX_AUTO_BLACKBOX {ALL}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -120,6 +121,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
@@ -145,6 +147,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.interconnectType {STANDARD}
@@ -198,6 +201,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.def_sub_default_sub qsys_mm.interconnectType {STANDARD}
@@ -223,6 +227,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_0_axi_s1 qsys_mm.interconnectType {STANDARD}
@@ -248,6 +253,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.ocram_2k_1_axi_s1 qsys_mm.interconnectType {STANDARD}
@@ -273,6 +279,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_pins_hps.agilex_5_soc_lwhps2fpga/lwh2f_bridge.sysid_control_slave qsys_mm.interconnectType {STANDARD}
@@ -354,6 +361,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableEccProtection FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.fifoDepth 8
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectType STANDARD
@@ -370,6 +378,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableEccProtection FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.fifoDepth 8
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.interconnectType STANDARD
@@ -386,6 +395,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.enableEccProtection FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.fifoDepth 8
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment no_pins_hps.agilex_5_soc_lwhps2fpga qsys_mm.interconnectType STANDARD

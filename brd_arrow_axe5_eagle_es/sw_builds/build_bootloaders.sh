@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS25.3.1_REL_GSRD_PR"
+TAG_NAME="QPDS26.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -67,7 +67,7 @@ mv u-boot-socfpga-${TAG_NAME:?} u-boot-socfpga \
 
 cd arm-trusted-firmware || { echo "ERROR" ; exit 1 ; }
 
-make -j 48 PLAT=agilex5 bl31 || { echo "ERROR" ; exit 1 ; }
+make -j 48 PLAT=agilex5 ENABLE_LTO=0 bl31 || { echo "ERROR" ; exit 1 ; }
 
 cd ../u-boot-socfpga || { echo "ERROR" ; exit 1 ; }
 
@@ -82,13 +82,16 @@ ln -s ../arm-trusted-firmware/build/agilex5/release/bl31.bin \
 	../../../common_sw/u-boot_patches/config-fragment \
 	|| { echo "ERROR" ; exit 1 ; }
 
+make olddefconfig
+
 PATCH_FILES="
 ../../../common_sw/u-boot_patches/include-exports.h.patch \
 ../../../common_sw/u-boot_patches/include-configs-socfpga_soc64_common.h.patch \
 ../../../common_sw/u-boot_patches/include-_exports.h.patch \
 ../../../common_sw/u-boot_patches/examples-standalone-Makefile.patch \
 ../../../common_sw/u-boot_patches/examples-Makefile.patch \
-../../../common_sw/u-boot_patches/brd_arrow_axe5_eagle_es-arch-arm-dts-socfpga_agilex5_socdk-u-boot.dtsi.patch
+../../../common_sw/u-boot_patches/brd_arrow_axe5_eagle_es-arch-arm-dts-socfpga_agilex5_socdk-u-boot.dtsi.patch \
+../../../common_sw/u-boot_patches/scripts-Makefile.xpl.patch
 "
 for NEXT_PATCH in ${PATCH_FILES:?}
 do

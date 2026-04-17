@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_i2c_bridge {} {
@@ -147,7 +148,7 @@ proc do_create_i2c_bridge {} {
 	add_instantiation_interface_port conduit_end i2c_data_oe conduit_data_oe 1 STD_LOGIC Output
 	add_instantiation_interface_port conduit_end i2c_clk_oe conduit_clk_oe 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.10
+	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.11
 	load_component ocram_4k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -377,6 +378,7 @@ proc do_create_i2c_bridge {} {
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value iamb.avalon_master/ocram_4k.s1 qsys_mm.interconnectType {STANDARD}
@@ -419,6 +421,7 @@ proc do_create_i2c_bridge {} {
 	set_domain_assignment iamb.avalon_master qsys_mm.enableEccProtection FALSE
 	set_domain_assignment iamb.avalon_master qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment iamb.avalon_master qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment iamb.avalon_master qsys_mm.fifoDepth 8
 	set_domain_assignment iamb.avalon_master qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment iamb.avalon_master qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment iamb.avalon_master qsys_mm.interconnectType STANDARD

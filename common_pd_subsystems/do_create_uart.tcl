@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_uart {} {
@@ -195,7 +196,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value irq irqScheme {NONE}
 	add_instantiation_interface_port irq irq irq 1 STD_LOGIC Output
 	save_instantiation
-	add_component niosv_c ip/uart/niosv_c.ip intel_niosv_c niosv_c 4.1.0
+	add_component niosv_c ip/uart/niosv_c.ip intel_niosv_c niosv_c 4.2.0
 	load_component niosv_c
 	set_component_parameter_value archSize {32}
 	set_component_parameter_value enableAvalonInterface {0}
@@ -204,6 +205,8 @@ proc do_create_uart {} {
 	set_component_parameter_value enableZba {0}
 	set_component_parameter_value enableZbb {0}
 	set_component_parameter_value enableZbs {0}
+	set_component_parameter_value enableZca {0}
+	set_component_parameter_value enableZcb {0}
 	set_component_parameter_value enableZicntr {0}
 	set_component_parameter_value enableZicsr {0}
 	set_component_parameter_value enableZmmul {0}
@@ -231,6 +234,12 @@ proc do_create_uart {} {
 	set_instantiation_assignment_value embeddedsw.CMacro.NUM_GPR {32}
 	set_instantiation_assignment_value embeddedsw.CMacro.RESET_ADDR {0x00002000}
 	set_instantiation_assignment_value embeddedsw.configuration.HDLSimCachesCleared {1}
+	set_instantiation_assignment_value embeddedsw.configuration.ZbaEnabled {false}
+	set_instantiation_assignment_value embeddedsw.configuration.ZbbEnabled {false}
+	set_instantiation_assignment_value embeddedsw.configuration.ZbsEnabled {false}
+	set_instantiation_assignment_value embeddedsw.configuration.ZcaEnabled {false}
+	set_instantiation_assignment_value embeddedsw.configuration.ZcbEnabled {false}
+	set_instantiation_assignment_value embeddedsw.configuration.ZmmulEnabled {false}
 	set_instantiation_assignment_value embeddedsw.configuration.cpuArchitecture {Small Core}
 	set_instantiation_assignment_value embeddedsw.configuration.fpuEnabled {0}
 	set_instantiation_assignment_value embeddedsw.configuration.fsqrtFdivDisabled {0}
@@ -337,7 +346,7 @@ proc do_create_uart {} {
 	add_instantiation_interface_port data_manager data_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port data_manager data_manager_rready rready 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.10
+	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.11
 	load_component ocram_8k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -571,6 +580,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value niosv_c.data_manager/lw_uart.s1 qsys_mm.interconnectType {STANDARD}
@@ -596,6 +606,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value niosv_c.data_manager/ocram_8k.axi_s1 qsys_mm.interconnectType {STANDARD}
@@ -621,6 +632,7 @@ proc do_create_uart {} {
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.fifoDepth {8}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value niosv_c.instruction_manager/ocram_8k.axi_s1 qsys_mm.interconnectType {STANDARD}
@@ -660,6 +672,7 @@ proc do_create_uart {} {
 	set_domain_assignment niosv_c.data_manager qsys_mm.enableEccProtection FALSE
 	set_domain_assignment niosv_c.data_manager qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment niosv_c.data_manager qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment niosv_c.data_manager qsys_mm.fifoDepth 8
 	set_domain_assignment niosv_c.data_manager qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment niosv_c.data_manager qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment niosv_c.data_manager qsys_mm.interconnectType STANDARD

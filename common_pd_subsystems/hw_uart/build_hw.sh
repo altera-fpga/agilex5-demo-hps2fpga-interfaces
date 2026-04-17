@@ -2,6 +2,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 
@@ -70,7 +71,7 @@ qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=no_
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=no_pins_pd_top.qsys && \
 qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG && \
 niosv-shell <<< './niosv_software/niosv_shell.src' && \
-cp ./niosv_software/niosv_app/build/main.hex ./ip/no_pins_pd_top/ocram_8k/intel_onchip_memory_1410/synth/ocram_8k_ocram_8k.hex && \
+cp ./niosv_software/niosv_app/build/main.hex ./ip/no_pins_pd_top/ocram_8k/intel_onchip_memory_1411/synth/ocram_8k_ocram_8k.hex && \
 quartus_sh --flow compile no_pins_top && \
 echo Build flow completed successfully... || \
 echo Build flow encountered errors...

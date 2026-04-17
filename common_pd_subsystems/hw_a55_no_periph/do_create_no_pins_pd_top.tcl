@@ -8,7 +8,7 @@ proc do_create_no_pins_pd_top {} {
 	# create the system
 	create_system no_pins_pd_top
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE6SR0}
+	#set_project_property DEVICE {A5ED013BM16AE4SCS}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -16,7 +16,7 @@ proc do_create_no_pins_pd_top {} {
 	# add HDL parameters
 
 	# add the components
-	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.6
+	add_component config_clk_250m ip/no_pins_pd_top/config_clk_250m.ip altera_s10_configuration_clock config_clk_250m 19.1.7
 	load_component config_clk_250m
 	set_component_parameter_value CBX_AUTO_BLACKBOX {ALL}
 	set_component_project_property HIDE_FROM_IP_CATALOG {false}
@@ -89,6 +89,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.interconnectType {STANDARD}
@@ -96,6 +97,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_periph.f2h_term_ace5lite_manager/no_pins_hps.agilex_5_soc_fpga2hps slaveDataWidthSysInfo {-1}
@@ -113,6 +115,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.fifoDepth {8}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.interconnectType {STANDARD}
@@ -120,6 +123,7 @@ proc do_create_no_pins_pd_top {} {
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.optimizeRdFifoSize {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.piplineType {PIPELINE_STAGE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.responseFifoType {REGISTER_BASED}
+	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.splitCommandsFor4KBoundary {FALSE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.syncResets {TRUE}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram qsys_mm.widthAdapterImplementation {GENERIC_CONVERTER}
 	set_connection_parameter_value no_periph.f2sdram_term_axi4_man/no_pins_hps.agilex_5_soc_f2sdram slaveDataWidthSysInfo {-1}
@@ -178,6 +182,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableEccProtection FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.fifoDepth 8
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.interconnectType STANDARD
@@ -185,6 +190,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.syncResets TRUE
 	set_domain_assignment no_periph.f2h_term_ace5lite_manager qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.burstAdapterImplementation GENERIC_CONVERTER
@@ -193,6 +199,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableEccProtection FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.fifoDepth 8
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.interconnectType STANDARD
@@ -200,6 +207,7 @@ proc do_create_no_pins_pd_top {} {
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.optimizeRdFifoSize FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.piplineType PIPELINE_STAGE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.responseFifoType REGISTER_BASED
+	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.splitCommandsFor4KBoundary FALSE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.syncResets TRUE
 	set_domain_assignment no_periph.f2sdram_term_axi4_man qsys_mm.widthAdapterImplementation GENERIC_CONVERTER
 

@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_f2sdram_bridge {} {
@@ -840,7 +841,7 @@ proc do_create_f2sdram_bridge {} {
 	add_instantiation_interface_port mm_write mm_write_waitrequest waitrequest 1 STD_LOGIC Input
 	add_instantiation_interface_port mm_write mm_write_burstcount burstcount 8 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.10
+	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.11
 	load_component ocram_32k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -1144,6 +1145,7 @@ proc do_create_f2sdram_bridge {} {
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.enableEccProtection {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.enableInstrumentation {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.enableOutOfOrderSupport {FALSE}
+	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.fifoDepth {8}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.insertDefaultSlave {FALSE}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.interconnectResetSource {DEFAULT}
 	set_connection_parameter_value limiter_removal_256b.m0/f2sdram_adapt_256b.axi4_sub qsys_mm.interconnectType {STANDARD}
@@ -1204,6 +1206,7 @@ proc do_create_f2sdram_bridge {} {
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.enableEccProtection FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.enableInstrumentation FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.enableOutOfOrderSupport FALSE
+	set_domain_assignment limiter_removal_256b.m0 qsys_mm.fifoDepth 8
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.insertDefaultSlave FALSE
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.interconnectResetSource DEFAULT
 	set_domain_assignment limiter_removal_256b.m0 qsys_mm.interconnectType STANDARD

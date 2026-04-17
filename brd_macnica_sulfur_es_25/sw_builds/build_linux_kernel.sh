@@ -6,7 +6,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="QPDS25.3.1_REL_GSRD_PR"
+TAG_NAME="QPDS26.1_REL_GSRD_PR"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -66,6 +66,8 @@ make tinyconfig \
 # merge config fragment into the config file
 ./scripts/kconfig/merge_config.sh -O ./ ./.config ../../../common_sw/linux_patches/config-fragment \
 	|| { echo "ERROR" ; exit 1 ; }
+
+make olddefconfig
 
 # apply patches to the kernel sources
 PATCH_FILES="

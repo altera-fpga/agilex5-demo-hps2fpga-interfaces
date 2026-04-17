@@ -1,5 +1,6 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_pins_hps {} {
@@ -14,7 +15,7 @@ proc do_create_no_pins_hps {} {
 	# add HDL parameters
 
 	# add the components
-	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 13.0.0
+	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 14.0.0
 	load_component agilex_5_soc
 	set_component_parameter_value ATB_Enable {0}
 	set_component_parameter_value CM_Mode {N/A}
@@ -269,8 +270,8 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value PPLL_Override {0}
 	set_component_parameter_value PPLL_VCO_Override_mhz {3200.0}
 	set_component_parameter_value Periph_clk_emac0_sel {250}
-	set_component_parameter_value Periph_clk_emac1_sel {50}
-	set_component_parameter_value Periph_clk_emac2_sel {50}
+	set_component_parameter_value Periph_clk_emac1_sel {250}
+	set_component_parameter_value Periph_clk_emac2_sel {250}
 	set_component_parameter_value Periph_clk_override {0}
 	set_component_parameter_value Periph_emac_ptp_freq_override {400.0}
 	set_component_parameter_value Periph_emac_ptp_src_override {7}
@@ -920,7 +921,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.1.1
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.2.0
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {DDR4_COMP}
 	set_component_parameter_value EMIF_REF_CLK_SHARING {0}
@@ -934,12 +935,17 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_ADDR_WIDTH {40}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_USER_WIDTH {32}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_BG_ROTATE_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DMDBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_AUTOCORRECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_PRIORITY_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PERFORMANCE_PROFILE {SEQ}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_RD_DBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_SCRAMBLER_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_WR_DBI_EN {0}
@@ -947,10 +953,11 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp DIAG_HMC_ADDR_SWAP_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_TG_WIDE_IF {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp IS_HPS {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {MEM_TCCD_L_NS MEM_TCCD_S_NS MEM_TFAW_NS MEM_TWTR_L_NS MEM_TWTR_S_NS MEM_TMRD_NS MEM_TCKSRE_NS MEM_TCKSRX_NS MEM_TCKE_NS MEM_TCKESR_CYC MEM_TMPRR_NS MEM_TRFC_DLR_NS MEM_TRRD_DLR_NS MEM_TFAW_DLR_NS MEM_TCCD_DLR_NS MEM_TXP_NS MEM_TXS_DLL_NS MEM_TCPDED_NS MEM_TMOD_NS MEM_TZQCS_NS}
+	set_component_sub_module_parameter_value emif_0_ddr4comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {MEM_TCCD_L_NS MEM_TCCD_S_NS MEM_TFAW_NS MEM_TWTR_L_NS MEM_TWTR_S_NS MEM_TMRD_NS MEM_TCKSRE_NS MEM_TCKSRX_NS MEM_TCKE_NS MEM_TCKESR_CYC MEM_TMPRR_NS MEM_TXP_NS MEM_TXS_DLL_NS MEM_TCPDED_NS MEM_TMOD_NS MEM_TZQCS_NS}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_3DS_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_AC_MIRRORING_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_AC_PARITY_EN {0}
@@ -989,14 +996,14 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_PARK {4}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_WR {off}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ {800}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ_AUTOSET_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ_AUTOSET_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_PAGE_SIZE {1024.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_RANKS_SHARE_CK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_RD_PREAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ROW_ADDR_WIDTH {17}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN {1600L}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN_DATARATE {1600}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_DLR_NS {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_L_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_S_NS {4.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKESR_CYC {5.0}
@@ -1008,7 +1015,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCPDED_NS {4.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_MAX_MIN_NS {0.225}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_NS {0.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TFAW_DLR_NS {20.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TFAW_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TFAW_NS {35.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TMOD_NS {24.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TMPRR_NS {1.0}
@@ -1019,10 +1026,10 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRCD_NS {15.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRC_NS {50.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TREFI_NS {7800.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRFC_DLR_NS {190.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRFC_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRFC_NS {550.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRP_NS {15.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_DLR_NS {4.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_L_NS {6.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_S_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRTP_NS {7.5}
@@ -1043,15 +1050,22 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_WR_CRC_EN {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_WR_PREAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_AC_PLACEMENT {BOT}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_AC_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_ALERT_N_PLACEMENT {AC2}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_CK_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_CS_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_FORCE_MIN_4_AC_LANES_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_ADVANCED_SELECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ {150.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_SWIZZLE_MAP {BYTE_SWIZZLE_CH0=0 X X X 1 2 3 ECC;PIN_SWIZZLE_CH0_DQS0=2 0 6 4 7 5 3 1;PIN_SWIZZLE_CH0_DQS1=14 11 12 8 10 9 13 15;PIN_SWIZZLE_CH0_DQS2=16 20 22 18 23 21 19 17;PIN_SWIZZLE_CH0_DQS3=26 30 28 24 25 27 29 31;PIN_SWIZZLE_CH0_ECC=4 6 2 0 1 7 5 3;}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {SSTL}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_SSTL}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_CK_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_CS_OUTPUT_IO_STD_TYPE {SSTL}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_CS_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_DQS_IO_STD_TYPE {DF_POD}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_DQ_IO_STD_TYPE {POD}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_DQ_SLEW_RATE {FASTEST}
@@ -1084,11 +1098,16 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_USER_WIDTH {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_2N_MODE_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_AUTOCORRECT_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_PRIORITY_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_PERFORMANCE_PROFILE {SEQ}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_SCRAMBLER_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp DIAG_FORCE_SLIM_EN {0}
@@ -1096,6 +1115,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_CH1_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp EX_DESIGN_TG_WIDE_IF {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp IS_HPS {1}
@@ -1205,17 +1225,24 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_WR_POSTAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp MEM_WR_PREAMBLE_MODE {3.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_AC_PLACEMENT {BOT}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_AC_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_CK_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_CS_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_1 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_2 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_3 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DFE_X_TAP_4 {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_REFCLK_ADVANCED_SELECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_REFCLK_FREQ_MHZ {200.0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {POD}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_POD}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_CK_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_CS_OUTPUT_IO_STD_TYPE {POD}
+	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_CS_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_DQS_IO_STD_TYPE {DF_POD}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_DQ_IO_STD_TYPE {POD}
 	set_component_sub_module_parameter_value emif_0_ddr5comp PHY_TERM_X_DQ_SLEW_RATE {FASTEST}
@@ -1249,17 +1276,23 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_USER_WIDTH {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_2N_MODE_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_AUTOCORRECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_PRIORITY_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_PERFORMANCE_PROFILE {SEQ}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_SCRAMBLER_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm DIAG_HMC_ADDR_SWAP_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_CH1_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_TG_WIDE_IF {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm IS_HPS {1}
@@ -1383,17 +1416,24 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_WR_POSTAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm MEM_WR_PREAMBLE_MODE {3.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_AC_PLACEMENT {BOT_BOT}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_AC_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_CK_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_CS_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_1 {n1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_2 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_3 {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DFE_X_TAP_4 {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_REFCLK_ADVANCED_SELECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_REFCLK_FREQ_MHZ {200.0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {POD}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_POD}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_CK_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_CS_OUTPUT_IO_STD_TYPE {POD}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_CS_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_DQS_IO_STD_TYPE {DF_POD}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_DQ_IO_STD_TYPE {POD}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm PHY_TERM_X_DQ_SLEW_RATE {FASTEST}
@@ -1423,11 +1463,16 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_WEQ {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr4 AXI4_ADDR_WIDTH {31}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ECC_AUTOCORRECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ECC_INLINE_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_PRIORITY_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_PERFORMANCE_PROFILE {SEQ}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_RD_DBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_SCRAMBLER_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_WR_DBI_EN {0}
@@ -1439,6 +1484,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 EX_DESIGN_PMON_CH3_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_lpddr4 EX_DESIGN_TG_WIDE_IF {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 IS_HPS {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 JEDEC_OVERRIDE_TABLE_PARAM_NAME {}
@@ -1521,13 +1567,20 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 MEM_WR_POSTAMBLE_CYC {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 NUM_IO96_IN_CHIP {8}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_AC_PLACEMENT {FULL}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_AC_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_CK_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_CS_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_REFCLK_ADVANCED_SELECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_REFCLK_FREQ_MHZ {199.111}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {LVSTL}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_LVSTL}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_CK_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_CS_OUTPUT_IO_STD_TYPE {LVSTL}
+	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_CS_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_DQS_IO_STD_TYPE {DF_LVSTL}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_DQ_IO_STD_TYPE {LVSTL}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_TERM_X_DQ_SLEW_RATE {FASTEST}
@@ -1561,6 +1614,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_WR_DFE {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr5 AXI4_ADDR_WIDTH {32}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_BG_ROTATE_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_DM_EN {0}
@@ -1572,7 +1626,11 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP0 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP1 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP2 {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_FIXED_PRIORITY_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_PERFORMANCE_PROFILE {SEQ}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_RD_DBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_SCRAMBLER_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_WR_DBI_EN {0}
@@ -1584,6 +1642,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 EX_DESIGN_PMON_CH3_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 EX_DESIGN_PMON_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 EX_DESIGN_PMON_INTERNAL_JAMB_EN {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 EX_DESIGN_TG_WIDE_IF {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 IS_HPS {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 JEDEC_OVERRIDE_TABLE_PARAM_NAME {}
@@ -1735,17 +1794,25 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_WR_POSTAMBLE_CYC {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 NUM_IO96_IN_CHIP {8}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_AC_PLACEMENT {FULL}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_AC_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_CK_TX_EQUALIZATION {OFF}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_CS_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_DFE_X_TAP_1 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_DFE_X_TAP_2 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_DFE_X_TAP_3 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_DFE_X_TAP_4 {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_REFCLK_ADVANCED_SELECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_REFCLK_FREQ_MHZ {200.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_RESET_N_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_SWIZZLE_MAP {}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {LVSTL}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_LVSTL}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_CK_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_CS_OUTPUT_IO_STD_TYPE {LVSTL105}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_CS_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_DQS_IO_STD_TYPE {DF_LVSTL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_DQ_IO_STD_TYPE {LVSTL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_DQ_SLEW_RATE {FASTEST}
@@ -1753,6 +1820,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_GPIO_IO_STD_TYPE {LVCMOS}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_REFCLK_IO_STD_TYPE {TRUE_DIFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_RESET_N_OUTPUT_IO_STD_TYPE {LVSTL105}
+	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_RESET_N_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_AC_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_CK_OUTPUT_OHM {SERIES_40_OHM_CAL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_TERM_X_R_S_CS_OUTPUT_OHM {SERIES_40_OHM_CAL}
@@ -1901,12 +1969,12 @@ proc do_create_no_pins_hps {} {
 	# preserve ports for debug
 
 	# add the connections
-	add_connection emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps
-	set_connection_parameter_value emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps endPort {}
-	set_connection_parameter_value emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps endPortLSB {0}
-	set_connection_parameter_value emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps startPort {}
-	set_connection_parameter_value emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps startPortLSB {0}
-	set_connection_parameter_value emif_bank3a_hps.io96b0_to_hps/agilex_5_soc.io96b0_to_hps width {0}
+	add_connection agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps
+	set_connection_parameter_value agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps endPort {}
+	set_connection_parameter_value agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps endPortLSB {0}
+	set_connection_parameter_value agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps startPort {}
+	set_connection_parameter_value agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps startPortLSB {0}
+	set_connection_parameter_value agilex_5_soc.io96b0_to_hps/emif_bank3a_hps.io96b0_to_hps width {0}
 
 	# add the exports
 	set_interface_property agilex_5_soc_h2f_reset EXPORT_OF agilex_5_soc.h2f_reset
