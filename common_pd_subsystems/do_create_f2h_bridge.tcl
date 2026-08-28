@@ -168,6 +168,8 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value axi4_subordinate readAcceptanceCapability {8}
 	set_instantiation_interface_parameter_value axi4_subordinate readDataReorderingDepth {8}
 	set_instantiation_interface_parameter_value axi4_subordinate securityAttribute {false}
+	set_instantiation_interface_parameter_value axi4_subordinate terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi4_subordinate terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi4_subordinate traceSignals {false}
 	set_instantiation_interface_parameter_value axi4_subordinate trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi4_subordinate uniqueIdSupport {false}
@@ -500,6 +502,8 @@ proc do_create_f2h_bridge {} {
 	set_instantiation_interface_parameter_value m0 poison {false}
 	set_instantiation_interface_parameter_value m0 readIssuingCapability {16}
 	set_instantiation_interface_parameter_value m0 securityAttribute {false}
+	set_instantiation_interface_parameter_value m0 terminateReadChannel {false}
+	set_instantiation_interface_parameter_value m0 terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value m0 traceSignals {false}
 	set_instantiation_interface_parameter_value m0 trustzoneAware {true}
 	set_instantiation_interface_parameter_value m0 uniqueIdSupport {false}
@@ -845,7 +849,7 @@ proc do_create_f2h_bridge {} {
 	add_instantiation_interface_port mm_write mm_write_waitrequest waitrequest 1 STD_LOGIC Input
 	add_instantiation_interface_port mm_write mm_write_burstcount burstcount 8 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 1.4.11
+	add_component ocram_32k ip/no_pins_pd_top/ocram_32k.ip intel_onchip_memory ocram_32k 2.0.0
 	load_component ocram_32k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}

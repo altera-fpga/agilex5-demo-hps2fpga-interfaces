@@ -424,6 +424,8 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value hps2fpga poison {false}
 	set_instantiation_interface_parameter_value hps2fpga readIssuingCapability {16}
 	set_instantiation_interface_parameter_value hps2fpga securityAttribute {false}
+	set_instantiation_interface_parameter_value hps2fpga terminateReadChannel {false}
+	set_instantiation_interface_parameter_value hps2fpga terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value hps2fpga traceSignals {false}
 	set_instantiation_interface_parameter_value hps2fpga trustzoneAware {true}
 	set_instantiation_interface_parameter_value hps2fpga uniqueIdSupport {false}
@@ -493,6 +495,8 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value lwhps2fpga poison {false}
 	set_instantiation_interface_parameter_value lwhps2fpga readIssuingCapability {16}
 	set_instantiation_interface_parameter_value lwhps2fpga securityAttribute {false}
+	set_instantiation_interface_parameter_value lwhps2fpga terminateReadChannel {false}
+	set_instantiation_interface_parameter_value lwhps2fpga terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value lwhps2fpga traceSignals {false}
 	set_instantiation_interface_parameter_value lwhps2fpga trustzoneAware {true}
 	set_instantiation_interface_parameter_value lwhps2fpga uniqueIdSupport {false}
@@ -706,6 +710,8 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value f2sdram readAcceptanceCapability {16}
 	set_instantiation_interface_parameter_value f2sdram readDataReorderingDepth {1}
 	set_instantiation_interface_parameter_value f2sdram securityAttribute {false}
+	set_instantiation_interface_parameter_value f2sdram terminateReadChannel {false}
+	set_instantiation_interface_parameter_value f2sdram terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value f2sdram traceSignals {false}
 	set_instantiation_interface_parameter_value f2sdram trustzoneAware {true}
 	set_instantiation_interface_parameter_value f2sdram uniqueIdSupport {false}
@@ -921,7 +927,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 4.2.0
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 5.0.0
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {DDR4_COMP}
 	set_component_parameter_value EMIF_REF_CLK_SHARING {0}
@@ -932,6 +938,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_MARGIN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_REQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_ENABLE_WEQ {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp ADV_CAL_INIT_MEM {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_ADDR_WIDTH {40}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_USER_WIDTH {32}
@@ -941,6 +948,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DMDBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_AUTOCORRECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_WRITEBACK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_R_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_W_PRIORITY {0}
@@ -949,6 +957,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_RD_DBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_SCRAMBLER_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_WR_DBI_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp DEBUG_PRINT_LEVEL {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_ddr4comp DIAG_HMC_ADDR_SWAP_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp EX_DESIGN_PMON_EN {0}
@@ -1094,6 +1103,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_REQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_WEQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_ENABLE_WR_DFE {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp ADV_CAL_INIT_MEM {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_ddr5comp AXI4_USER_WIDTH {0}
@@ -1103,12 +1113,14 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_AUTOCORRECT_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_WRITEBACK_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_R_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_PERFORMANCE_PROFILE {SEQ}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_PLACEMENT_EN {1}
-	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_SCRAMBLER_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_SCRAMBLER_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp DEBUG_PRINT_LEVEL {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_ddr5comp DIAG_FORCE_SLIM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp DIAG_HMC_ADDR_SWAP_EN {0}
@@ -1272,6 +1284,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_REQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WEQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WR_DFE {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_INIT_MEM {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_USER_WIDTH {0}
@@ -1281,12 +1294,14 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_AUTOCORRECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_WRITEBACK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_R_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_PERFORMANCE_PROFILE {SEQ}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_PLACEMENT_EN {1}
-	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_SCRAMBLER_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_SCRAMBLER_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm DEBUG_PRINT_LEVEL {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm DIAG_HMC_ADDR_SWAP_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm EX_DESIGN_PMON_CH1_EN {0}
@@ -1461,6 +1476,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_MARGIN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_REQ {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_ENABLE_WEQ {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 ADV_CAL_INIT_MEM {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr4 AXI4_ADDR_WIDTH {31}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ALL_STRB_EN {0}
@@ -1468,14 +1484,16 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ECC_AUTOCORRECT_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ECC_INLINE_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_ECC_WRITEBACK_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_R_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_FIXED_W_PRIORITY {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_PERFORMANCE_PROFILE {SEQ}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_RD_DBI_EN {0}
-	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_SCRAMBLER_EN {1}
+	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_SCRAMBLER_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 CTRL_WR_DBI_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr4 DEBUG_PRINT_LEVEL {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_lpddr4 DIAG_FORCE_SLIM_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 DIAG_HMC_ADDR_SWAP_EN {0}
@@ -1565,7 +1583,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr4 MEM_VREF_DQ_X_VALUE {18.0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 MEM_WLS {1.0}
 	set_component_sub_module_parameter_value emif_0_lpddr4 MEM_WR_POSTAMBLE_CYC {1}
-	set_component_sub_module_parameter_value emif_0_lpddr4 NUM_IO96_IN_CHIP {8}
+	set_component_sub_module_parameter_value emif_0_lpddr4 NUM_IO96_IN_CHIP {-1}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_AC_PLACEMENT {FULL}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_AC_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr4 PHY_CK_TX_EQUALIZATION {OFF}
@@ -1612,6 +1630,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_REQ {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_WEQ {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_ENABLE_WR_DFE {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 ADV_CAL_INIT_MEM {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_lpddr5 AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ALL_STRB_EN {0}
@@ -1623,6 +1642,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_RD_LINK_EN_FSP0 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_RD_LINK_EN_FSP1 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_RD_LINK_EN_FSP2 {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WRITEBACK_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP0 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP1 {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_ECC_WR_LINK_EN_FSP2 {0}
@@ -1632,8 +1652,9 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_PERFORMANCE_PROFILE {SEQ}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_PLACEMENT_EN {1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_RD_DBI_EN {0}
-	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_SCRAMBLER_EN {1}
+	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_SCRAMBLER_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 CTRL_WR_DBI_EN {0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 DEBUG_PRINT_LEVEL {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 DIAG_EXTRA_PARAMETERS {}
 	set_component_sub_module_parameter_value emif_0_lpddr5 DIAG_FORCE_SLIM_EN {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 DIAG_HMC_ADDR_SWAP_EN {0}
@@ -1792,7 +1813,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_WCK_WIDTH {2}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_WLS {1.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_WR_POSTAMBLE_CYC {0}
-	set_component_sub_module_parameter_value emif_0_lpddr5 NUM_IO96_IN_CHIP {8}
+	set_component_sub_module_parameter_value emif_0_lpddr5 NUM_IO96_IN_CHIP {-1}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_AC_PLACEMENT {FULL}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_AC_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_lpddr5 PHY_CK_TX_EQUALIZATION {OFF}

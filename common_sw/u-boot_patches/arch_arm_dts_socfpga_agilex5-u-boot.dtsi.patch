@@ -2,7 +2,7 @@ diff --git a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi b/arch/arm/dts/socfpga_agi
 index cba3258a..bd7871bf 100644
 --- a/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
 +++ b/arch/arm/dts/socfpga_agilex5-u-boot.dtsi
-@@ -24,6 +24,15 @@
+@@ -28,6 +28,15 @@
  			#size-cells = <1>;
  			bootph-all;
  

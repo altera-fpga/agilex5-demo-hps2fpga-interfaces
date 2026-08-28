@@ -10,8 +10,8 @@
 cd $(dirname ${0})
 
 
-QPDS_TAG="QPDS26.1_REL_GSRD_PR"
-TOYBOX_TAG="0.8.13"
+QPDS_TAG="QPDS26.1.1_REL_GSRD_PR"
+TOYBOX_TAG="0.8.14"
 
 REPO_LIST="
 https://github.com/altera-opensource/arm-trusted-firmware/archive/refs/tags/${QPDS_TAG:?}.tar.gz

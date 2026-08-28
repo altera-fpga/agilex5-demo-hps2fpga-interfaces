@@ -346,7 +346,7 @@ proc do_create_uart {} {
 	add_instantiation_interface_port data_manager data_manager_rvalid rvalid 1 STD_LOGIC Input
 	add_instantiation_interface_port data_manager data_manager_rready rready 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 1.4.11
+	add_component ocram_8k ip/no_pins_pd_top/ocram_8k.ip intel_onchip_memory ocram_8k 2.0.0
 	load_component ocram_8k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -439,6 +439,8 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
 	set_instantiation_interface_parameter_value axi_s1 securityAttribute {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi_s1 traceSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi_s1 uniqueIdSupport {false}

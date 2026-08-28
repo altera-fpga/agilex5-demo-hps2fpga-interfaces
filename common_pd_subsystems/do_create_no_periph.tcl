@@ -1,6 +1,7 @@
 #
 # SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
+# SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
 #
 proc do_create_no_periph {} {
@@ -143,6 +144,8 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
+	set_instantiation_interface_parameter_value axi4_man terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi4_man terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi4_man traceSignals {false}
 	set_instantiation_interface_parameter_value axi4_man trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi4_man uniqueIdSupport {false}

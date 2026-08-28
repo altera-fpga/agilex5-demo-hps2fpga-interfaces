@@ -148,7 +148,7 @@ proc do_create_i2c_bridge {} {
 	add_instantiation_interface_port conduit_end i2c_data_oe conduit_data_oe 1 STD_LOGIC Output
 	add_instantiation_interface_port conduit_end i2c_clk_oe conduit_clk_oe 1 STD_LOGIC Output
 	save_instantiation
-	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.11
+	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 2.0.0
 	load_component ocram_4k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}

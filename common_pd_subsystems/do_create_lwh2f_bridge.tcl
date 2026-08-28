@@ -139,7 +139,7 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
 	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_2k_0 ip/no_pins_pd_top/ocram_2k_0.ip intel_onchip_memory ocram_2k_0 1.4.11
+	add_component ocram_2k_0 ip/no_pins_pd_top/ocram_2k_0.ip intel_onchip_memory ocram_2k_0 2.0.0
 	load_component ocram_2k_0
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -232,6 +232,8 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
 	set_instantiation_interface_parameter_value axi_s1 securityAttribute {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi_s1 traceSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi_s1 uniqueIdSupport {false}
@@ -277,7 +279,7 @@ proc do_create_lwh2f_bridge {} {
 	add_instantiation_interface_port reset1 reset reset 1 STD_LOGIC Input
 	add_instantiation_interface_port reset1 reset_req reset_req 1 STD_LOGIC Input
 	save_instantiation
-	add_component ocram_2k_1 ip/no_pins_pd_top/ocram_2k_1.ip intel_onchip_memory ocram_2k_1 1.4.11
+	add_component ocram_2k_1 ip/no_pins_pd_top/ocram_2k_1.ip intel_onchip_memory ocram_2k_1 2.0.0
 	load_component ocram_2k_1
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}
@@ -370,6 +372,8 @@ proc do_create_lwh2f_bridge {} {
 	set_instantiation_interface_parameter_value axi_s1 readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi_s1 readDataReorderingDepth {1}
 	set_instantiation_interface_parameter_value axi_s1 securityAttribute {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi_s1 terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi_s1 traceSignals {false}
 	set_instantiation_interface_parameter_value axi_s1 trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi_s1 uniqueIdSupport {false}

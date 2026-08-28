@@ -74,7 +74,7 @@ proc do_create_spi_bridge {} {
 	set_instantiation_interface_parameter_value hps_gp_out prSafe {false}
 	add_instantiation_interface_port hps_gp_out gp_out gp_exp 32 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 1.4.11
+	add_component ocram_4k ip/no_pins_pd_top/ocram_4k.ip intel_onchip_memory ocram_4k 2.0.0
 	load_component ocram_4k
 	set_component_parameter_value AXI_interface {1}
 	set_component_parameter_value allowInSystemMemoryContentEditor {0}

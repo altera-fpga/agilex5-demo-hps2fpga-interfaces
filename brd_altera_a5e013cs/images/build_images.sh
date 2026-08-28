@@ -24,7 +24,7 @@ do
 	}
 done
 
-sed -i.bak -e "/flash_loader/ s/A5ED065BB32AR0/A5ED013BM16A/" jic_no-pins-demos.pfg \
+sed -i.bak -e "/flash_loader/ s/A5ED065BB32AR0/A5ED013BM16ACS/" jic_no-pins-demos.pfg \
 	|| { echo "ERROR" ; exit 1 ; }
 
 ./build_jic_image.sh || { echo "ERROR" ; exit 1 ; }
