@@ -11,7 +11,7 @@ index cb8969a0..ea2d0fed 100644
 +"if env exists FIRSTBOOT;" \
 +"then env set NEXTPROG sw_boot_app;" \
 +"else sf probe || echo ERROR: sf probe && exit 1;" \
-+"sf read 86000000 00500000 01b00000 || echo ERROR: sf read && exit 1;" \
++"sf read 86000000 00500000 00b00000 || echo ERROR: sf read && exit 1;" \
 +"imxtract 86000000 lzma-no-pins-demos 8a000000 || echo ERROR: imxtract && exit 1;" \
 +"lzmadec 8a000000 82000000 04000000 || echo ERROR: lzmadec && exit 1;" \
 +"env set NEXTPROG sw_boot_app;" \

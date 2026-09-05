@@ -25,7 +25,7 @@ SPDX-License-Identifier: MIT-0
         <raw_file bitswap="1" type="RBF" id="Raw_File_2">./lzma-no-pins-demos.itb.bin</raw_file>
     </raw_files>
     <flash_devices>
-        <flash_device type="QSPI256" id="Flash_Device_1">
+        <flash_device type="QSPI128" id="Flash_Device_1">
             <partition reserved="1" fixed_s_addr="1" s_addr="0x00000000" e_addr="0x001FFFFF" fixed_e_addr="1" id="BOOT_INFO" size="0"/>
             <partition reserved="0" fixed_s_addr="0" s_addr="auto" e_addr="auto" fixed_e_addr="0" id="P1" size="0"/>
             <partition reserved="0" fixed_s_addr="0" s_addr="0x00400000" e_addr="auto" fixed_e_addr="0" id="SSBL" size="0"/>

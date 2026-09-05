@@ -946,8 +946,8 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ALL_STRB_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_BG_ROTATE_EN {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DMDBI_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DM_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DMDBI_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DM_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_AUTOCORRECT_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_WRITEBACK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_PRIORITY_EN {0}
@@ -967,7 +967,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp HPS_EMIF_RZQ_SHARING {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp INSTANCE_ID {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp IS_HPS {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {MEM_TCCD_L_NS MEM_TCCD_S_NS MEM_TFAW_NS MEM_TWTR_L_NS MEM_TWTR_S_NS MEM_TMRD_NS MEM_TCKSRE_NS MEM_TCKSRX_NS MEM_TCKE_NS MEM_TMPRR_NS MEM_TXP_NS MEM_TXS_DLL_NS MEM_TCPDED_NS MEM_TMOD_NS MEM_TZQCS_NS MEM_TCKESR_CYC}
+	set_component_sub_module_parameter_value emif_0_ddr4comp JEDEC_OVERRIDE_TABLE_PARAM_NAME {MEM_TCCD_L_NS MEM_TCCD_S_NS MEM_TFAW_NS MEM_TWTR_L_NS MEM_TWTR_S_NS MEM_TMRD_NS MEM_TCKSRE_NS MEM_TCKSRX_NS MEM_TCKE_NS MEM_TMPRR_NS MEM_TXP_NS MEM_TXS_DLL_NS MEM_TCPDED_NS MEM_TMOD_NS MEM_TZQCS_NS MEM_TRAS_NS MEM_TRRD_L_NS}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_3DS_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_AC_MIRRORING_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_AC_PARITY_EN {0}
@@ -983,11 +983,11 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CKE_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CK_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CLAMSHELL_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CL_CYC {12.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CL_CYC {15.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_COL_ADDR_WIDTH {10}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH_PHYSICAL {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CWL_CYC {9.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CWL_CYC {11.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_C_WIDTH {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_DIE_DENSITY_GBITS {16}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_DIE_DQ_WIDTH {8}
@@ -1005,25 +1005,25 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_NOM {off}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_PARK {4}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_WR {off}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ {800}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ {1066.667}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ_AUTOSET_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_PAGE_SIZE {1024.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_RANKS_SHARE_CK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_RD_PREAMBLE_MODE {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ROW_ADDR_WIDTH {17}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN {1600L}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN_DATARATE {1600}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN {3200AA}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_SPEEDBIN_DATARATE {3200}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_L_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_S_NS {4.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKESR_CYC {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKESR_CYC {6.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKE_NS {4.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKSRE_NS {8.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKSRX_NS {8.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MAX_NS {1.5}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MIN_NS {1.25}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MAX_NS {1.071}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MIN_NS {0.937}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCPDED_NS {4.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_MAX_MIN_NS {0.225}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_MAX_MIN_NS {0.16}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TFAW_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TFAW_NS {35.0}
@@ -1031,23 +1031,23 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TMPRR_NS {1.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TMRD_NS {8.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRAS_MAX_NS {70200.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRAS_MIN_NS {35.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRAS_MIN_NS {32.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRAS_NS {35.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRCD_NS {15.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRC_NS {50.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRCD_NS {13.75}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRC_NS {45.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TREFI_NS {7800.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRFC_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRFC_NS {550.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRP_NS {15.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRP_NS {13.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_L_NS {6.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_S_NS {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_S_NS {3.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRTP_NS {7.5}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_CRC_DM_NS {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_CRC_DM_NS {4.6875}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_NS {15.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_CRC_DM_NS {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_CRC_DM_NS {4.6875}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_NS {6.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_CRC_DM_NS {5.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_CRC_DM_NS {4.6875}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_NS {2.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TXP_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TXS_DLL_NS {597.0}
@@ -1963,6 +1963,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port mem_0 mem_0_dqs_t mem_dqs_t 5 STD_LOGIC_VECTOR Bidir
 	add_instantiation_interface_port mem_0 mem_0_dqs_c mem_dqs_c 5 STD_LOGIC_VECTOR Bidir
 	add_instantiation_interface_port mem_0 mem_0_alert_n mem_alert_n 1 STD_LOGIC Input
+	add_instantiation_interface_port mem_0 mem_0_dbi_n mem_dbi_n 5 STD_LOGIC_VECTOR Bidir
 	add_instantiation_interface mem_ck_0 conduit INPUT
 	set_instantiation_interface_parameter_value mem_ck_0 associatedClock {}
 	set_instantiation_interface_parameter_value mem_ck_0 associatedReset {}

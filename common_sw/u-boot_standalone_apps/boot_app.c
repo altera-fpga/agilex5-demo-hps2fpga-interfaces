@@ -666,6 +666,9 @@ menu_loop:
 			case(USERCODE_MACNICASULFUR):
 				puts("Macnica Sulfur");
 				break;
+			case(USERCODE_TERASICDE25NAN):
+				puts("Terasic DE25-Nano");
+				break;
 			default:
 				puts("UNKNOWN JTAG USERCODE");
 		}

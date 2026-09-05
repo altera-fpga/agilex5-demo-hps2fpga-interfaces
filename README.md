@@ -10,7 +10,7 @@
 - **family**: Agilex 5
 - **quartus_version**: Version 26.1.1 Build 130 08/06/2026 SC Pro Edition
 - **devkit**: Agilex 5 FPGA E-Series 065B Premium Development Kit, and others
-- **device_part**: A5ED013BM16AE4SCS, A5ED0656BB32AE4S, A5ED065BB32AE4SR0, A5ED065BB32AE5SR0, A5ED065BB32AE6SR0
+- **device_part**: A5ED065AB32AE1V, A5ED013BM16AE4SCS, A5EB013BB23BE4SCS, A5ED0656BB32AE4S, A5ED065BB32AE4SR0, A5ED065BB32AE5SR0, A5ED065BB32AE6SR0
 - **description**: Agilex 5 HPS-to-FPGA interfaces demos.
 - **rich_description**: This project is a demonstration and evaluation example that shows how users can implement and interact with the various hardware interfaces between the Hard Processing System (SoC) and FPGA fabric on the Agilex 5 FPGA device family.
 - **url**: https://github.com/altera-fpga/agilex5-demo-hps2fpga-interfaces
@@ -29,13 +29,17 @@ The project build instructions are documented [**here**](./documentation/17_buil
 | Repo Directory | Board Info |
 | :--- | :--- |
 | brd_altera_a5e013cs | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 013B Development Kit<br>**OPN:** DK-A5E013BM16AEA<br>**Comment:** Production device, A5ED013BM16AE4SCS |
+| brd_altera_a5e065_modular_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Modular Development Kit (ES)<br>**OPN:** MK-A5E065BB32AES1<br>**Comment:** ES device, A5ED0656BB32AE6SR0 |
+| brd_altera_a5e065_modular | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Modular Development Kit<br>**OPN:** MK-A5E065BB32AEA<br>**Comment:** Production device, A5ED0656BB32AE4S |
+| brd_altera_a5e065a_modular | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065A Modular Development Kit<br>**OPN:** MK-A5E065AB32AEA<br>**Comment:** Production device, A5ED065AB32AE1V |
+| brd_altera_a5e065_premium_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit {ES}<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device, A5ED0656BB32AE6SR0 |
 | brd_altera_a5e065_premium | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AEA<br>**Comment:** Production device, A5ED0656BB32AE4S |
-| brd_altera_a5e065_premium_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Premium Development Kit<br>**OPN:** DK-A5E065BB32AES1<br>**Comment:** ES device, A5ED0656BB32AE6SR0 |
-| brd_altera_a5e065_modular_es | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065B Modular Development Kit<br>**OPN:** MK-A5E065BB32AES1<br>**Comment:** ES device, A5ED0656BB32AE6SR0 |
-| brd_arrow_axe5_eagle_es | **Company:** Arrow Electronics, Inc.<br>**Board Name:** Arrow AXE5-Eagle Development Platform<br>**OPN:** AXE5-EAGLE-ES<br>**Comment:** ES device |
-| brd_criticallink_mitysbc_es | **Company:** Critical Link, LLC<br>**Board Name:** MitySBC-A5E Single Board Computer<br>**OPN:** A5ED-B9-C7F-RC-SBC-X<br>**Comment:** ES device |
-| brd_macnica_sulfur_es_125 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device - 125MHz SDM_OSC_CLK |
-| brd_macnica_sulfur_es_25 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device - 25MHz SDM_OSC_CLK |
+| brd_altera_a5e065a_premium | **Company:** Altera Corporation<br>**Board Name:** Agilex* 5 FPGA E-Series 065A Premium Development Kit<br>**OPN:** DK-A5E065AB32AEA<br>**Comment:** Production device, A5ED065AB32AE1V |
+| brd_arrow_axe5_eagle_es | **Company:** Arrow Electronics, Inc.<br>**Board Name:** Arrow AXE5-Eagle Development Platform<br>**OPN:** AXE5-EAGLE-ES<br>**Comment:** ES device, A5ED065BB32AE4SR0 |
+| brd_criticallink_mitysbc_es | **Company:** Critical Link, LLC<br>**Board Name:** MitySBC-A5E Single Board Computer<br>**OPN:** A5ED-B9-C7F-RC-SBC-X<br>**Comment:** ES device, A5ED065BB32AE6SR0 |
+| brd_macnica_sulfur_es_125 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device, A5ED065BB32AE5SR0 - 125MHz SDM_OSC_CLK |
+| brd_macnica_sulfur_es_25 | **Company:** Macnica, Inc.<br>**Board Name:** Macnica Mpression Sulfur Kit / Type A<br>**OPN:** ALTSULFUR_A5ED065B_E5_ES0_typeA<br>**Comment:** ES device, A5ED065BB32AE5SR0 - 25MHz SDM_OSC_CLK |
+| brd_terasic_de25nano_revb | **Company:** Terasic, Inc.<br>**Board Name:** DE25-Nano Development and Education Board<br>**OPN:** P0804<br>**Comment:** Production device, A5EB013BB23BE4SCS |
 
 **Trademarks and disclaimers**\
 All trademarks are the property of their respective owners.\

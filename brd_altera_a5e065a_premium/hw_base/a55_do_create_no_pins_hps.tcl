@@ -8,7 +8,7 @@ proc do_create_no_pins_hps {} {
 	# create the system
 	create_system no_pins_hps
 	set_project_property BOARD {default}
-	#set_project_property DEVICE {A5ED065BB32AE4S}
+	#set_project_property DEVICE {A5ED065AB32AE1V}
 	#set_project_property DEVICE_FAMILY {Agilex 5}
 	set_project_property HIDE_FROM_IP_CATALOG {false}
 	set_use_testbench_naming_pattern 0 {}
@@ -983,11 +983,11 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CKE_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CK_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CLAMSHELL_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CL_CYC {15.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CL_CYC {19.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_COL_ADDR_WIDTH {10}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CS_WIDTH_PHYSICAL {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CWL_CYC {11.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_CWL_CYC {14.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_C_WIDTH {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_DIE_DENSITY_GBITS {16}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_DIE_DQ_WIDTH {8}
@@ -1005,7 +1005,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_NOM {off}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_PARK {4}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_ODT_WR {off}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ {1066.667}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ {1333.333}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_OPERATING_FREQ_MHZ_AUTOSET_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_PAGE_SIZE {1024.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_RANKS_SHARE_CK_EN {1}
@@ -1016,12 +1016,12 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_L_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCCD_S_NS {4.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKESR_CYC {6.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKESR_CYC {7.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKE_NS {4.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKSRE_NS {8.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCKSRX_NS {8.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MAX_NS {1.071}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MIN_NS {0.937}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MAX_NS {0.833}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCK_CL_CWL_MIN_NS {0.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TCPDED_NS {4.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_MAX_MIN_NS {0.16}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TDQSCK_NS {0.0}
@@ -1041,13 +1041,13 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRP_NS {13.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_DLR_NS {0.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_L_NS {6.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_S_NS {3.75}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRRD_S_NS {3.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TRTP_NS {7.5}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_CRC_DM_NS {4.6875}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_CRC_DM_NS {3.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWR_NS {15.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_CRC_DM_NS {4.6875}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_CRC_DM_NS {3.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_L_NS {6.0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_CRC_DM_NS {4.6875}
+	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_CRC_DM_NS {3.75}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TWTR_S_NS {2.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TXP_NS {5.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp MEM_TXS_DLL_NS {597.0}
@@ -1066,8 +1066,8 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_CS_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_FORCE_MIN_4_AC_LANES_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_ADVANCED_SELECT_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ {100.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_ADVANCED_SELECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ {99.9999}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_SWIZZLE_MAP {BYTE_SWIZZLE_CH0=0 X X X 1 2 3 ECC;PIN_SWIZZLE_CH0_DQS0=0 2 6 4 1 3 5 7;PIN_SWIZZLE_CH0_DQS1=12 15 8 11 14 10 13 9;PIN_SWIZZLE_CH0_DQS2=20 16 18 22 23 17 19 21;PIN_SWIZZLE_CH0_DQS3=26 30 28 24 25 27 31 29;PIN_SWIZZLE_CH0_ECC=2 6 0 4 5 3 7 1;}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {SSTL}

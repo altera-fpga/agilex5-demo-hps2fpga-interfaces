@@ -47,6 +47,10 @@ cp ../../common_pd_subsystems/do_create_i2c_bridge.tcl do_create_i2c_bridge.tcl 
 		|| { echo "ERROR" ; exit 1 ; }
 }
 
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065a_modular" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065a_premium" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_modular" ] ||
+[ "$(basename $(dirname $(pwd)))" == "brd_terasic_de25nano_revb" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e065_premium" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013cs" ] ||
 [ "$(basename $(dirname $(pwd)))" == "brd_altera_a5e013b0_premium_es" ] ||

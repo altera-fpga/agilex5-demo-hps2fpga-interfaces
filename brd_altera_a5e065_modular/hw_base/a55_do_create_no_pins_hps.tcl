@@ -1,5 +1,4 @@
 #
-# SPDX-FileCopyrightText: Copyright (C) 2024 Intel Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2025 Altera Corporation
 # SPDX-FileCopyrightText: Copyright (C) 2026 Altera Corporation
 # SPDX-License-Identifier: MIT-0
@@ -118,7 +117,7 @@ proc do_create_no_pins_hps {} {
 	set_component_parameter_value H2F_IRQ_USB1_Enable {0}
 	set_component_parameter_value H2F_IRQ_Watchdog_Enable {0}
 	set_component_parameter_value H2F_Width {32}
-	set_component_parameter_value HPS_IO_Enable {NONE NONE UART0:TX UART0:RX NONE NONE NONE NONE NONE NONE HCLK:HPS_OSC_CLK NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE}
+	set_component_parameter_value HPS_IO_Enable {NONE NONE UART0:TX UART0:RX NONE NONE NONE NONE NONE NONE NONE HCLK:HPS_OSC_CLK NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE NONE}
 	set_component_parameter_value I2C0_Mode {default}
 	set_component_parameter_value I2C0_PinMuxing {FPGA}
 	set_component_parameter_value I2C1_Mode {N/A}
@@ -943,18 +942,18 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_ADDR_WIDTH {40}
 	set_component_sub_module_parameter_value emif_0_ddr4comp AXI4_USER_WIDTH {32}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ALL_STRB_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ALL_STRB_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_AUTO_PRECHARGE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_BG_ROTATE_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DMDBI_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_DM_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_AUTOCORRECT_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_ECC_WRITEBACK_EN {1}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_PRIORITY_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_R_PRIORITY {0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_PRIORITY_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_R_PRIORITY {1}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_FIXED_W_PRIORITY {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PERFORMANCE_PROFILE {SEQ}
-	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PLACEMENT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PERFORMANCE_PROFILE {SEQ_SIMU}
+	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_PLACEMENT_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_RD_DBI_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_SCRAMBLER_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp CTRL_WR_DBI_EN {0}
@@ -1067,9 +1066,9 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_DQ_TX_EQUALIZATION {OFF}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_FORCE_MIN_4_AC_LANES_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_ADVANCED_SELECT_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ {100.0}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ {150.0}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_REFCLK_FREQ_MHZ_AUTOSET_EN {0}
-	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_SWIZZLE_MAP {BYTE_SWIZZLE_CH0=0 X X X 1 2 3 ECC;PIN_SWIZZLE_CH0_DQS0=0 2 6 4 1 3 5 7;PIN_SWIZZLE_CH0_DQS1=12 15 8 11 14 10 13 9;PIN_SWIZZLE_CH0_DQS2=20 16 18 22 23 17 19 21;PIN_SWIZZLE_CH0_DQS3=26 30 28 24 25 27 31 29;PIN_SWIZZLE_CH0_ECC=2 6 0 4 5 3 7 1;}
+	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_SWIZZLE_MAP {BYTE_SWIZZLE_CH0=0 X X X 1 2 3 ECC;PIN_SWIZZLE_CH0_DQS0=2 0 6 4 7 5 3 1;PIN_SWIZZLE_CH0_DQS1=14 11 12 8 10 9 13 15;PIN_SWIZZLE_CH0_DQS2=16 20 22 18 23 21 19 17;PIN_SWIZZLE_CH0_DQS3=26 30 28 24 25 27 29 31;PIN_SWIZZLE_CH0_ECC=4 6 2 0 1 7 5 3;}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_AC_OUTPUT_IO_STD_TYPE {SSTL}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_AC_SLEW_RATE {FASTEST}
 	set_component_sub_module_parameter_value emif_0_ddr4comp PHY_TERM_X_CK_OUTPUT_IO_STD_TYPE {DF_SSTL}

@@ -47,7 +47,7 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name FAMILY "Agilex 5"
 set_global_assignment -name TOP_LEVEL_ENTITY no_pins_top
 set_global_assignment -name BOARD default
-set_global_assignment -name DEVICE A5ED065BB32AE4S
+set_global_assignment -name DEVICE A5ED065AB32AE1V
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 256
 set_global_assignment -name STRATIXV_CONFIGURATION_SCHEME "ACTIVE SERIAL X4"
 set_global_assignment -name ACTIVE_SERIAL_CLOCK AS_FREQ_100MHZ
@@ -61,7 +61,7 @@ set_global_assignment -name PWRMGT_BUS_SPEED_MODE "400 KHZ"
 set_global_assignment -name PWRMGT_PAGE_COMMAND_ENABLE ON
 set_global_assignment -name PWRMGT_SLAVE_DEVICE_TYPE OTHER
 set_global_assignment -name PWRMGT_SLAVE_DEVICE0_ADDRESS 74
-set_global_assignment -name PWRMGT_SLAVE_DEVICE1_ADDRESS 75
+set_global_assignment -name PWRMGT_SLAVE_DEVICE1_ADDRESS 00
 set_global_assignment -name PWRMGT_SLAVE_DEVICE2_ADDRESS 00
 set_global_assignment -name PWRMGT_SLAVE_DEVICE3_ADDRESS 00
 set_global_assignment -name PWRMGT_SLAVE_DEVICE4_ADDRESS 00
@@ -71,7 +71,7 @@ set_global_assignment -name PWRMGT_SLAVE_DEVICE7_ADDRESS 00
 set_global_assignment -name PWRMGT_VOLTAGE_OUTPUT_FORMAT "LINEAR FORMAT"
 set_global_assignment -name PWRMGT_LINEAR_FORMAT_N "-12"
 set_global_assignment -name PWRMGT_TRANSLATED_VOLTAGE_VALUE_UNIT VOLTS
-set_global_assignment -name NUMBER_OF_SLAVE_DEVICE 2
+set_global_assignment -name NUMBER_OF_SLAVE_DEVICE 1
 set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION OFF
 set_global_assignment -name HPS_DAP_SPLIT_MODE "SDM PINS"
 set_global_assignment -name HPS_DAP_NO_CERTIFICATE on

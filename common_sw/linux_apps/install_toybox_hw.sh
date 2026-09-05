@@ -103,10 +103,13 @@ cp ../../../common_sw/devicetree_overlays/*.dtbo \
 COPIED_UART_DTBO=0
 
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e013cs" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065a_modular" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065a_premium" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e013b0_premium_es" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_premium" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_premium_es" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_modular_es" ] ||
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_altera_a5e065_modular" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_arrow_axe5_eagle_es" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_125" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_macnica_sulfur_es_25" ] && {
@@ -115,6 +118,7 @@ COPIED_UART_DTBO=0
 	COPIED_UART_DTBO=1
 }
 
+[ "$(basename $(dirname $(dirname $(pwd))))" == "brd_terasic_de25nano_revb" ] ||
 [ "$(basename $(dirname $(dirname $(pwd))))" == "brd_criticallink_mitysbc_es" ] && {
 	cp "${DEST_DIR:?}/hw_uart0_drvr.dtbo" "${DEST_DIR:?}/hw_uart_drvr.dtbo" \
 		|| { echo "ERROR" ; exit 1 ; }
