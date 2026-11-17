@@ -60,10 +60,12 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
+	set_instantiation_interface_parameter_value axi4_man maximumBurstLength {256}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
@@ -72,6 +74,8 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_man poison {false}
 	set_instantiation_interface_parameter_value axi4_man readIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man securityAttribute {false}
+	set_instantiation_interface_parameter_value axi4_man terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi4_man terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi4_man traceSignals {false}
 	set_instantiation_interface_parameter_value axi4_man trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi4_man uniqueIdSupport {false}
@@ -140,6 +144,7 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_sub isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_sub isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
@@ -150,6 +155,8 @@ proc do_create_hps_jamb {} {
 	set_instantiation_interface_parameter_value axi4_sub readAcceptanceCapability {1}
 	set_instantiation_interface_parameter_value axi4_sub readDataReorderingDepth {1}
 	set_instantiation_interface_parameter_value axi4_sub securityAttribute {false}
+	set_instantiation_interface_parameter_value axi4_sub terminateReadChannel {false}
+	set_instantiation_interface_parameter_value axi4_sub terminateWriteChannel {false}
 	set_instantiation_interface_parameter_value axi4_sub traceSignals {false}
 	set_instantiation_interface_parameter_value axi4_sub trustzoneAware {true}
 	set_instantiation_interface_parameter_value axi4_sub uniqueIdSupport {false}

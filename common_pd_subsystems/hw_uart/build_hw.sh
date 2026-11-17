@@ -73,7 +73,7 @@ quartus_sh --script=../hw_base/create_quartus_project.tcl && \
 qsys-script --quartus-project=no_pins_top --script=create_pd_sys.tcl && \
 qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=no_pins_pd_top.qsys && \
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=no_pins_pd_top.qsys && \
-qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG && \
+qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG --parallel=8 && \
 niosv-shell <<< './niosv_software/niosv_shell.src' && \
 cp ./niosv_software/niosv_app/build/main.hex ./ip/no_pins_pd_top/ocram_8k/intel_onchip_memory_200/synth/ocram_8k_ocram_8k.hex && \
 quartus_sh --flow compile no_pins_top && \

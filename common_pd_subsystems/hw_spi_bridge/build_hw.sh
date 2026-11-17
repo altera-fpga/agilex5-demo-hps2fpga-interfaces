@@ -71,7 +71,7 @@ quartus_sh --script=../hw_base/create_quartus_project.tcl && \
 qsys-script --quartus-project=no_pins_top --script=create_pd_sys.tcl && \
 qsys-script --qpf=none --script=../../scripts/update_sysid.tcl --system-file=no_pins_pd_top.qsys && \
 qsys-script --qpf=none --script=../../scripts/sync_sysid.tcl --system-file=no_pins_pd_top.qsys && \
-qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG && \
+qsys-generate --quartus-project=no_pins_top no_pins_pd_top.qsys --synthesis=VERILOG --parallel=8 && \
 quartus_sh --flow compile no_pins_top && \
 echo Build flow completed successfully... || \
 echo Build flow encountered errors...

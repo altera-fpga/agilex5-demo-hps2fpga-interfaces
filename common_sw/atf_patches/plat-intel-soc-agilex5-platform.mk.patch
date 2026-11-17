@@ -2,7 +2,7 @@ diff --git a/plat/intel/soc/agilex5/platform.mk b/plat/intel/soc/agilex5/platfor
 index 3983661..09b6e76 100644
 --- a/plat/intel/soc/agilex5/platform.mk
 +++ b/plat/intel/soc/agilex5/platform.mk
-@@ -142,7 +142,7 @@ $(eval $(call assert_boolean,SOCFPGA_SECURE_VAB_AUTH))
+@@ -147,7 +147,7 @@ $(eval $(call assert_boolean,SOCFPGA_SECURE_VAB_AUTH))
  $(eval $(call add_define,SOCFPGA_SECURE_VAB_AUTH))
  
  # Configs for UART0/1 Configuration

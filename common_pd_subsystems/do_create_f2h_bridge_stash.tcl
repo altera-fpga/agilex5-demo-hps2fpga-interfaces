@@ -89,6 +89,7 @@ proc do_create_f2h_bridge_stash {} {
 	set_instantiation_interface_parameter_value default_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value default_sub isInterconnectIP {false}
 	set_instantiation_interface_parameter_value default_sub isTranslator {false}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
@@ -157,6 +158,7 @@ proc do_create_f2h_bridge_stash {} {
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_subordinate dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_subordinate isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_subordinate isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_subordinate maximumOutstandingTransactions {1}
@@ -489,10 +491,12 @@ proc do_create_f2h_bridge_stash {} {
 	set_instantiation_interface_parameter_value m0 combinedIssuingCapability {32}
 	set_instantiation_interface_parameter_value m0 dataCheck {false}
 	set_instantiation_interface_parameter_value m0 enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value m0 isInterconnectIP {false}
 	set_instantiation_interface_parameter_value m0 isTranslator {false}
 	set_instantiation_interface_parameter_value m0 issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value m0 issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value m0 issuesWRAPBursts {false}
+	set_instantiation_interface_parameter_value m0 maximumBurstLength {256}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}

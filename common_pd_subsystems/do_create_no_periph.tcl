@@ -132,10 +132,12 @@ proc do_create_no_periph {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
+	set_instantiation_interface_parameter_value axi4_man maximumBurstLength {256}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}

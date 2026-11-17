@@ -81,6 +81,7 @@ set_global_assignment -name STRATIX_JTAG_USER_CODE 55555555
 set_global_assignment -name USE_CHECKSUM_AS_USERCODE OFF
 set_global_assignment -name HPS_INITIALIZATION "HPS FIRST"
 set_global_assignment -name QSPI_OWNERSHIP HPS
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 8
 
 set_location_assignment PIN_T114 -to emif_hps_emif_mem_0_mem_a[0]
 set_instance_assignment -name IO_STANDARD "SSTL-12" -to emif_hps_emif_mem_0_mem_a[0]

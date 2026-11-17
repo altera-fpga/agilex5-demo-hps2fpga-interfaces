@@ -24,3 +24,7 @@ CONFIG_BOOTMETH_VBE_SIMPLE=n
 CONFIG_BOOTMETH_VBE_SIMPLE_OS=n
 
 CONFIG_WATCHDOG_AUTOSTART=n
+
+# QPDS26.3 requires signed FIT configs for 'source' by default; disable this
+CONFIG_BOOTSCR_FIT_SIGNATURE=n
+

@@ -10,22 +10,42 @@
 cd $(dirname ${0})
 
 
-QPDS_TAG="QPDS26.1.1_REL_GSRD_PR"
-TOYBOX_TAG="0.8.14"
+QPDS_TAG="QPDS26.3_REL_BASELINE_PR"
+TOYBOX_TAG="0.8.15"
 
 REPO_LIST="
 https://github.com/altera-opensource/arm-trusted-firmware/archive/refs/tags/${QPDS_TAG:?}.tar.gz
 https://github.com/altera-opensource/linux-socfpga/archive/refs/tags/${QPDS_TAG:?}.tar.gz
 https://github.com/altera-opensource/u-boot-socfpga/archive/refs/tags/${QPDS_TAG:?}.tar.gz
-https://github.com/landley/toybox/archive/refs/tags/${TOYBOX_TAG:?}.tar.gz
 "
 
-# download the repo archives if we don't already have them
+# download the github repo archives if we don't already have them
 for NEXT in ${REPO_LIST:?}
 do
 	ARCHIVE_NAME=${NEXT##*/}
 	TAG_NAME=${ARCHIVE_NAME%%.tar.gz}
 	REPO_NAME_1=${NEXT#*github.com/*/}
+	REPO_NAME=${REPO_NAME_1%%/*}
+	LOCAL_ARCHIVE_NAME="${REPO_NAME:?}-${TAG_NAME:?}.tgz"
+
+	[ -f "${LOCAL_ARCHIVE_NAME:?}" ] || {
+		wget \
+		-O "${LOCAL_ARCHIVE_NAME:?}" \
+		"${NEXT:?}" \
+		|| { echo "ERROR" ; exit 1 ; }
+	}
+done
+
+REPO_LIST="
+https://codeberg.org/landley/toybox/archive/${TOYBOX_TAG:?}.tar.gz
+"
+
+# download the codeberg repo archives if we don't already have them
+for NEXT in ${REPO_LIST:?}
+do
+	ARCHIVE_NAME=${NEXT##*/}
+	TAG_NAME=${ARCHIVE_NAME%%.tar.gz}
+	REPO_NAME_1=${NEXT#*codeberg.org/*/}
 	REPO_NAME=${REPO_NAME_1%%/*}
 	LOCAL_ARCHIVE_NAME="${REPO_NAME:?}-${TAG_NAME:?}.tgz"
 

@@ -90,6 +90,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value default_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value default_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value default_sub isInterconnectIP {false}
 	set_instantiation_interface_parameter_value default_sub isTranslator {false}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value default_sub maximumOutstandingTransactions {1}
@@ -147,10 +148,12 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_man combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value axi4_man dataCheck {false}
 	set_instantiation_interface_parameter_value axi4_man enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value axi4_man isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_man isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_man issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value axi4_man issuesWRAPBursts {true}
+	set_instantiation_interface_parameter_value axi4_man maximumBurstLength {256}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value axi4_man maximumOutstandingWrites {1}
@@ -229,6 +232,7 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterId {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterName {}
 	set_instantiation_interface_parameter_value axi4_sub dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi4_sub isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi4_sub isTranslator {false}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi4_sub maximumOutstandingTransactions {1}
@@ -488,10 +492,12 @@ proc do_create_f2sdram_bridge {} {
 	set_instantiation_interface_parameter_value m0 combinedIssuingCapability {32}
 	set_instantiation_interface_parameter_value m0 dataCheck {false}
 	set_instantiation_interface_parameter_value m0 enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value m0 isInterconnectIP {false}
 	set_instantiation_interface_parameter_value m0 isTranslator {false}
 	set_instantiation_interface_parameter_value m0 issuesFIXEDBursts {false}
 	set_instantiation_interface_parameter_value m0 issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value m0 issuesWRAPBursts {false}
+	set_instantiation_interface_parameter_value m0 maximumBurstLength {256}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value m0 maximumOutstandingWrites {1}

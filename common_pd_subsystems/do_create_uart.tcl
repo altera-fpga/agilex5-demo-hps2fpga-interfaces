@@ -270,6 +270,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value instruction_manager combinedIssuingCapability {8}
 	set_instantiation_interface_parameter_value instruction_manager dataCheck {false}
 	set_instantiation_interface_parameter_value instruction_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value instruction_manager isInterconnectIP {false}
 	set_instantiation_interface_parameter_value instruction_manager isTranslator {false}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value instruction_manager maximumOutstandingTransactions {1}
@@ -311,6 +312,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value data_manager combinedIssuingCapability {1}
 	set_instantiation_interface_parameter_value data_manager dataCheck {false}
 	set_instantiation_interface_parameter_value data_manager enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value data_manager isInterconnectIP {false}
 	set_instantiation_interface_parameter_value data_manager isTranslator {false}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value data_manager maximumOutstandingTransactions {1}
@@ -429,6 +431,7 @@ proc do_create_uart {} {
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterId {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterName {}
 	set_instantiation_interface_parameter_value axi_s1 dfhParameterVersion {}
+	set_instantiation_interface_parameter_value axi_s1 isInterconnectIP {false}
 	set_instantiation_interface_parameter_value axi_s1 isTranslator {false}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value axi_s1 maximumOutstandingTransactions {1}

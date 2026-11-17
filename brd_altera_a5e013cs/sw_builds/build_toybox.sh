@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: MIT-0
 #
 
-TAG_NAME="0.8.14"
+TAG_NAME="0.8.15"
 
 # change into the directory of this script
 cd $(dirname ${0})
@@ -51,8 +51,9 @@ done
 tar xf ../../repo_downloads/toybox-${TAG_NAME:?}.tgz \
 	|| { echo "ERROR" ; exit 1 ; }
 
-mv toybox-${TAG_NAME:?} toybox \
-	|| { echo "ERROR" ; exit 1 ; }
+# codeberg archive does not require renaming as github archive did
+# mv toybox-${TAG_NAME:?} toybox \
+#	|| { echo "ERROR" ; exit 1 ; }
 
 # change into the repo directory
 cd toybox \

@@ -15,7 +15,7 @@ proc do_create_no_pins_hps {} {
 	# add HDL parameters
 
 	# add the components
-	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 14.0.0
+	add_component agilex_5_soc ip/no_pins_hps/agilex_5_soc.ip intel_agilex_5_soc agilex_5_soc 14.1.0
 	load_component agilex_5_soc
 	set_component_parameter_value ATB_Enable {0}
 	set_component_parameter_value CM_Mode {N/A}
@@ -412,10 +412,12 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value hps2fpga combinedIssuingCapability {16}
 	set_instantiation_interface_parameter_value hps2fpga dataCheck {false}
 	set_instantiation_interface_parameter_value hps2fpga enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value hps2fpga isInterconnectIP {false}
 	set_instantiation_interface_parameter_value hps2fpga isTranslator {false}
 	set_instantiation_interface_parameter_value hps2fpga issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value hps2fpga issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value hps2fpga issuesWRAPBursts {true}
+	set_instantiation_interface_parameter_value hps2fpga maximumBurstLength {256}
 	set_instantiation_interface_parameter_value hps2fpga maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value hps2fpga maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value hps2fpga maximumOutstandingWrites {1}
@@ -483,10 +485,12 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value lwhps2fpga combinedIssuingCapability {16}
 	set_instantiation_interface_parameter_value lwhps2fpga dataCheck {false}
 	set_instantiation_interface_parameter_value lwhps2fpga enableConcurrentSubordinateAccess {0}
+	set_instantiation_interface_parameter_value lwhps2fpga isInterconnectIP {false}
 	set_instantiation_interface_parameter_value lwhps2fpga isTranslator {false}
 	set_instantiation_interface_parameter_value lwhps2fpga issuesFIXEDBursts {true}
 	set_instantiation_interface_parameter_value lwhps2fpga issuesINCRBursts {true}
 	set_instantiation_interface_parameter_value lwhps2fpga issuesWRAPBursts {true}
+	set_instantiation_interface_parameter_value lwhps2fpga maximumBurstLength {256}
 	set_instantiation_interface_parameter_value lwhps2fpga maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value lwhps2fpga maximumOutstandingTransactions {1}
 	set_instantiation_interface_parameter_value lwhps2fpga maximumOutstandingWrites {1}
@@ -700,6 +704,7 @@ proc do_create_no_pins_hps {} {
 	set_instantiation_interface_parameter_value f2sdram dfhParameterId {}
 	set_instantiation_interface_parameter_value f2sdram dfhParameterName {}
 	set_instantiation_interface_parameter_value f2sdram dfhParameterVersion {}
+	set_instantiation_interface_parameter_value f2sdram isInterconnectIP {false}
 	set_instantiation_interface_parameter_value f2sdram isTranslator {false}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingReads {1}
 	set_instantiation_interface_parameter_value f2sdram maximumOutstandingTransactions {1}
@@ -927,7 +932,7 @@ proc do_create_no_pins_hps {} {
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_arprot axi4_ch0_arprot 3 STD_LOGIC_VECTOR Output
 	add_instantiation_interface_port io96b0_to_hps io96b0_to_hps_axi4_ch0_awprot axi4_ch0_awprot 3 STD_LOGIC_VECTOR Output
 	save_instantiation
-	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 5.0.0
+	add_component emif_bank3a_hps ip/no_pins_hps/emif_bank3a_hps.ip emif_io96b_hps emif_bank3a_hps 5.1.0
 	load_component emif_bank3a_hps
 	set_component_parameter_value EMIF_PROTOCOL {DDR4_COMP}
 	set_component_parameter_value EMIF_REF_CLK_SHARING {0}
@@ -1113,6 +1118,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_AUTOCORRECT_EN {0}
+	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_INLINE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_ECC_WRITEBACK_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5comp CTRL_FIXED_R_PRIORITY {0}
@@ -1285,6 +1291,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WEQ {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_ENABLE_WR_DFE {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_INIT_MEM {0}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm ADV_CAL_INIT_PMIC {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm ANALOG_PARAM_DERIVATION_PARAM_NAME {}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_ADDR_WIDTH {32}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm AXI4_USER_WIDTH {0}
@@ -1294,6 +1301,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_BG_ROTATE_EN {2}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_DM_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_AUTOCORRECT_EN {1}
+	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_INLINE_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_ECC_WRITEBACK_EN {1}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_PRIORITY_EN {0}
 	set_component_sub_module_parameter_value emif_0_ddr5dimm CTRL_FIXED_R_PRIORITY {0}
@@ -1808,6 +1816,7 @@ proc do_create_no_pins_hps {} {
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_TSR_NS {15.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_TWR_NS {34.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_TZQLAT_NS {30.0}
+	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_VDD2_MODE {0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_VREF_CA_X_CA_VALUE {50.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_VREF_DQ_X_VALUE {24.0}
 	set_component_sub_module_parameter_value emif_0_lpddr5 MEM_WCK_WIDTH {2}
